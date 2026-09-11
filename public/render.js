@@ -56,7 +56,7 @@
         <span class="dim-foot-inline"><span class="dim-score">${score}/10</span> <span class="conf-badge conf-${esc(d.confianza)}">${esc(d.confianza)}</span></span>
       </div>
       <div class="dim-track"><div class="dim-fill ${barClass}" style="width:${pct}%"></div></div>
-      ${justif ? `<p class="dim-justif">${esc(justif)}</p>` : ''}
+      ${justif ? `<details class="dim-more"><summary>Justificación</summary><p class="dim-justif">${esc(justif)}</p></details>` : ''}
     </div>`;
   }
 

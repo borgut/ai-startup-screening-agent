@@ -239,6 +239,11 @@ button:disabled { opacity: 0.55; cursor: wait; }
 .dim-weight { font-family: var(--mono); color: var(--faint); font-size: 0.7rem; font-weight: 400; margin-left: 4px; }
 .dim-foot-inline { display: flex; align-items: center; gap: 8px; }
 .method-note { margin: -6px 0 16px; font-size: 0.78rem; color: var(--muted); line-height: 1.5; max-width: 70ch; }
+.dim-more { margin-top: 5px; }
+.dim-more summary { cursor: pointer; list-style: none; font-family: var(--mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.dim-more summary::-webkit-details-marker { display: none; }
+.dim-more summary::before { content: '+ '; color: var(--faint); }
+.dim-more[open] summary::before { content: '– '; }
 .dim-justif { margin: 7px 0 2px; font-size: 0.8rem; color: var(--ink-soft); line-height: 1.55; }
 .dim-track { height: 6px; background: var(--paper-2); border-radius: 999px; overflow: hidden; }
 .dim-fill { height: 100%; border-radius: 999px; }
