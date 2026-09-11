@@ -52,7 +52,7 @@ async function loadExamples() {
       return `<div class="example-card" data-id="${esc(e.id)}">
         ${logo}
         <h3>${esc(e.nombre)}</h3>
-        <p>${esc(e.sector)} · Score ${esc(e.score_global)}/100</p>
+        <p>${esc(e.sector)} · Score ${esc(e.score_global)}%</p>
         <span class="badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span>
       </div>`;
     }).join('');

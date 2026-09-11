@@ -28,14 +28,14 @@
     const r = 40, circ = 2 * Math.PI * r;
     const off = circ - (s / 100) * circ;
     const ring = { INVESTIGATE: '#1e5b3a', WATCH: '#b98a2e', PASS: '#9c2b1d' }[reco] || '#b98a2e';
-    return `<svg class="gauge" viewBox="0 0 100 100" width="118" height="118" role="img" aria-label="Score ${s} de 100">
+    return `<svg class="gauge" viewBox="0 0 100 100" width="118" height="118" role="img" aria-label="Score ${s}%">
       <circle cx="50" cy="50" r="48" fill="#f6f1e7"/>
       <circle cx="50" cy="50" r="${r}" fill="none" stroke="#ded4bd" stroke-width="9"/>
       <circle class="gauge-ring" cx="50" cy="50" r="${r}" fill="none" stroke="${ring}" stroke-width="9"
         stroke-linecap="round" stroke-dasharray="${circ.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"
         style="--off:${off.toFixed(1)}; --circ:${circ.toFixed(1)}" transform="rotate(-90 50 50)"/>
       <text x="50" y="47" text-anchor="middle" class="gauge-num">${s}</text>
-      <text x="50" y="64" text-anchor="middle" class="gauge-sub">/100</text>
+      <text x="50" y="64" text-anchor="middle" class="gauge-sub">%</text>
     </svg>`;
   }
 
