@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Startup Screening Agent · 4Founders</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1>AI Startup Screening Agent</h1>
+      <p class="tagline">¿Merece esta startup 30 minutos de un inversor? Screening orientado a la tesis de <strong>4Founders Capital</strong>: contrastamos lo que la startup declara con fuentes externas.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card" id="form-card">
+      <h2>Nuevo screening</h2>
+      <form id="screen-form">
+        <label for="url">Web de la startup <span class="req">*</span></label>
+        <input type="text" id="url" name="url" placeholder="https://www.startup.com" required />
+
+        <label for="deck">Pitch deck (PDF, opcional)</label>
+        <input type="file" id="deck" name="deck" accept="application/pdf,.pdf" />
+
+        <label for="linkedin">LinkedIn del fundador/a (opcional)</label>
+        <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/..." />
+
+        <label for="context">Contexto adicional (opcional)</label>
+        <textarea id="context" name="context" rows="3" placeholder="Todo lo que sepas: ronda que levantan, cómo llegó a ti, métricas declaradas..."></textarea>
+
+        <button type="submit" id="submit-btn">Analizar startup</button>
+        <p class="form-note" id="form-note"></p>
+      </form>
+    </section>
+
+    <section class="card" id="examples-card">
+      <h2>Ejemplos (modo demo, sin clave de API)</h2>
+      <p class="muted">Memos pre-generados de startups reales de la cartera de 4Founders. Lo no verificable está marcado como «sin datos».</p>
+      <div id="examples-list" class="examples-grid"></div>
+    </section>
+
+    <section id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p id="loading-text">Analizando la startup... esto puede tardar 1-2 minutos (extracción de la web, búsqueda de verificación externa y generación del memo).</p>
+    </section>
+
+    <section id="memo-container" class="hidden"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>El score 0-100 es una guía de priorización, no una predicción. La decisión de invertir es siempre del inversor; el agente decide si merece 30 minutos.</p>
+    </div>
+  </footer>
+
+  <script src="/render.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

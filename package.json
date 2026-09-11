@@ -1,0 +1,17 @@
+{
+  "name": "ai-startup-screening-agent",
+  "version": "1.0.0",
+  "description": "Agente de screening de startups orientado a la tesis de 4Founders Capital",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "multer": "^2.3.0",
+    "pdf-parse": "^2.4.5"
+  }
+}

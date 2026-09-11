@@ -1,0 +1,248 @@
+{
+  "_demo": true,
+  "nombre": "Vidext",
+  "web": "https://www.vidext.io",
+  "sector": "IA aplicada / SaaS B2B (generación de vídeo y contenido corporativo)",
+  "stage": "Serie A (6M€, sep-2025)",
+  "geografia": "HQ en Valencia; clientes en más de 30 países; expansión anunciada a Reino Unido y EE. UU.",
+  "fecha": "2026-09-11",
+  "fuentes": [
+    "web",
+    "noticias",
+    "LinkedIn",
+    "prensa nacional"
+  ],
+  "recomendacion": "INVESTIGATE",
+  "score_global": 72,
+  "confianza_global": "Media",
+  "justificacion": "Crecimiento declarado del 350% con clientes enterprise nombrables y dos rondas verificadas en prensa (2M€ en 2024, 6M€ Serie A en 2025 liderada por Flashpoint); la limitación es que ingresos y retención son autodeclarados y la categoría (vídeo con IA) está hipercompetida.",
+  "dimensiones": [
+    {
+      "nombre": "Founders",
+      "peso": 25,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Mercado",
+      "peso": 20,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Tracción",
+      "peso": 15,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Producto / Tech",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Modelo de negocio",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Competencia",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Funding / cap table",
+      "peso": 10,
+      "score": 8,
+      "confianza": "Alta"
+    }
+  ],
+  "resumen_ejecutivo": "Vidext automatiza la creación de vídeo y contenido corporativo con IA: convierte presentaciones y materiales estáticos en experiencias interactivas y multilingües que capturan datos en tiempo real. Fundada en Valencia en 2021-2022 (las fuentes difieren) por Jon Enríquez, Beñat Arrizabalaga y Miguel Ángel Castillo, declara +2M€ de ARR, +250 clientes (Iberdrola, Loewe, Mapfre, ISDIN, Yves Rocher, Daiichi-Sankyo) y crecimiento interanual del 350%. Cerró 2M€ en abril de 2024 (4Founders, Draper B1, Sabadell) y una Serie A de 6M€ en septiembre de 2025 liderada por Flashpoint.",
+  "claims": [
+    {
+      "claim": "Serie A de 6M€ (sep-2025) liderada por Flashpoint, con HWK, 4Founders, Sabadell Venture Capital y DraperB1",
+      "fuente_interna": "web (blog corporativo)",
+      "verificacion_externa": "Confirmada por Cinco Días con los mismos importes e inversores",
+      "estado": "verificada",
+      "fuente_externa": "https://cincodias.elpais.com/companias/2025-09-15/la-start-up-vidext-cierra-una-ronda-de-seis-millones-con-flashpoint-sabadell-hwk-4founders-y-draperb1.html"
+    },
+    {
+      "claim": "Ronda de 2M€ en abril de 2024 liderada por 4Founders, con Draper B1 y Sabadell",
+      "fuente_interna": "prensa",
+      "verificacion_externa": "Confirmada por Cinco Días (abr-2024)",
+      "estado": "verificada",
+      "fuente_externa": "https://cincodias.elpais.com/companias/2024-04-10/vidext-startup-de-generacion-de-videos-con-ia-capta-dos-millones-4founders-draper-b1-y-sabadell.html"
+    },
+    {
+      "claim": "+2M€ de ARR y crecimiento interanual del 350%",
+      "fuente_interna": "declaraciones del CEO en prensa y blog",
+      "verificacion_externa": "Solo consta en declaraciones de la propia compañía recogidas por prensa; sin verificación independiente",
+      "estado": "no_verificada",
+      "fuente_externa": "sin datos"
+    },
+    {
+      "claim": "+250 clientes enterprise, entre ellos Iberdrola, Loewe, Mapfre, ISDIN, Yves Rocher y Daiichi-Sankyo",
+      "fuente_interna": "declaraciones del CEO en prensa",
+      "verificacion_externa": "Nombres publicados en Cinco Días citando a la compañía; no hay logos verificables de forma independiente en este screen",
+      "estado": "no_verificada",
+      "fuente_externa": "sin datos"
+    },
+    {
+      "claim": "Equipo de ~55 personas, +21,5% interanual",
+      "fuente_interna": "LinkedIn (datos agregados por terceros)",
+      "verificacion_externa": "Cifra de plantilla y crecimiento proceden de un agregador sobre LinkedIn, no de la propia compañía",
+      "estado": "no_verificada",
+      "fuente_externa": "https://linkedin.com/company/vidext"
+    },
+    {
+      "claim": "Tecnología implementada en más de 30 países",
+      "fuente_interna": "prensa (abr-2024)",
+      "verificacion_externa": "Declaración corporativa recogida por Cinco Días; sin contraste independiente",
+      "estado": "no_verificada",
+      "fuente_externa": "sin datos"
+    }
+  ],
+  "analisis": {
+    "mercado": "Contenido corporativo y vídeo generado con IA: mercado global en crecimiento fuerte impulsado por los modelos generativos (formación, marketing interno, ventas). TAM amplio pero la categoría se está comoditizando rápido: el wedge de Vidext es el proceso empresarial completo (contenido interactivo que captura datos e integra con sistemas), no solo la generación de vídeo.",
+    "producto_tech": "Plataforma que convierte presentaciones en experiencias de vídeo interactivas y multilingües con captura de datos e integración en sistemas corporativos. Más allá del render con IA (comoditizable), el valor declarado está en el workflow enterprise y las integraciones. Grado de tecnología propia vs. orquestación de modelos de terceros: sin datos.",
+    "traccion": "Declara +2M€ ARR, +250 clientes y +350% interanual, con marcas enterprise citadas en prensa nacional. El crecimiento de plantilla (+21,5% según agregador de LinkedIn) y dos rondas en 17 meses son señales externas consistentes con tracción real. Retención, NRR y margen: sin datos.",
+    "modelo_negocio": "SaaS B2B enterprise por suscripción, previsiblemente por seats o volumen de contenido. Escalable y recurrente; el riesgo es el coste de servicio si la producción sigue teniendo componente manual (ofrecen 'servicios multilingües y formación', posible servicio disfrazado de producto). Unit economics: sin datos.",
+    "founders": "Jon Enríquez (CEO), Beñat Arrizabalaga y Miguel Ángel Castillo. Equipo joven que ha escalado de 0 a Serie A en ~3 años, lo que demuestra ejecución. Trayectorias previas y dominio sectorial: sin datos públicos sólidos en este screen. Discrepancia menor: la compañía dice fundarse en 2022; LinkedIn y prensa de 2024 dicen 2021.",
+    "competencia": "Categoría hipercompetida: Synthesia y HeyGen (unicornios bien capitalizados) dominan el vídeo corporativo con IA, y Colossyan, Elai y otros presionan por abajo. Vidext se diferencia hacia el proceso (contenido interactivo con datos), pero necesita defender que ese wedge no lo absorban los líderes. Quién gana hoy: Synthesia/HeyGen en volumen global.",
+    "funding_cap_table": "2022: primera ronda con 4Founders (importe sin datos). Abr-2024: 2M€ (4Founders, Draper B1, Sabadell). Sep-2025: Serie A de 6M€ liderada por Flashpoint con HWK y follow-on de los anteriores. Sindicato sano con VC internacional; total levantado >8M€. Cap table: sin datos, pero la continuidad de todos los inversores early en la Serie A es señal positiva."
+  },
+  "why_now": "Los modelos generativos han hecho viable producir vídeo corporativo multilingüe a coste marginal, y las empresas están presupuestando la automatización de contenidos de formación y ventas. La ventana está en convertir la generación (ya commodity) en proceso de negocio medible antes de que los líderes de la categoría bajen al mid-market europeo.",
+  "why_this_company": "Ejecución rápida desde Valencia con logos enterprise españoles difíciles de conseguir (Iberdrola, Mapfre, Loewe) y un sindicato que ha repetido en cada ronda: sugiere ventas enterprise reales y un equipo que cumple lo que promete a sus inversores.",
+  "encaje": [
+    {
+      "criterio": "Sector (B2B SaaS, fintech, IA, traveltech, ciberseguridad, business services, data)",
+      "encaja": "si",
+      "detalle": "IA aplicada + SaaS B2B, doble encaje con la tesis"
+    },
+    {
+      "criterio": "Stage (pre-seed a Serie A)",
+      "encaja": "si",
+      "detalle": "Serie A recién cerrada; futuras entradas serían follow-on o Serie B"
+    },
+    {
+      "criterio": "Geografía (España / Europa, puntualmente LatAm)",
+      "encaja": "si",
+      "detalle": "HQ Valencia, clientes internacionales, expansión UK/US anunciada"
+    },
+    {
+      "criterio": "Ticket (entrada ~250k-2M€)",
+      "encaja": "parcial",
+      "detalle": "La ronda de 2M€ de 2024 encajaba perfectamente; tras la Serie A de 6M€, el ticket de entrada ya no aplica"
+    },
+    {
+      "criterio": "Ambición internacional (+300M€)",
+      "encaja": "si",
+      "detalle": "Presencia declarada en +30 países y plan explícito de UK y EE. UU."
+    }
+  ],
+  "red_flags": [
+    "Ingresos (+2M€ ARR), crecimiento (350%) y base de clientes (+250) son autodeclarados; ninguna métrica financiera tiene verificación independiente disponible.",
+    "Competencia frontal con Synthesia y HeyGen, con capitalización muy superior y capacidad de bajar precios o absorber el wedge de 'contenido interactivo'.",
+    "Discrepancia menor en el año de fundación (2021 según LinkedIn y prensa de 2024; 2022 según la propia compañía): no es grave, pero conviene aclararlo.",
+    "Posible componente de servicios (traducción, formación) dentro de los ingresos, que inflaría la calidad del ARR."
+  ],
+  "preguntas": [
+    "Del ARR declarado de +2M€, ¿qué porcentaje es suscripción pura de plataforma frente a servicios de producción y formación?",
+    "¿Cuál es la retención neta de ingresos (NRR) de los clientes enterprise que citáis, y cuántos renuevan ampliando?",
+    "¿Qué parte del producto es tecnología propia frente a orquestación de modelos de terceros, y qué pasa con vuestros márgenes si Synthesia o HeyGen bajan precios un 50%?",
+    "¿Cómo se reparte el cap table tras la Serie A y qué runway os queda para la expansión UK/US?",
+    "¿Por qué figura 2021 como año de fundación en unas fuentes y 2022 en la web? ¿Hubo pivote o reinicio de la actividad?"
+  ],
+  "fuentes_utilizadas": [
+    "https://www.vidext.io/en/blog/we-closed-new-6M-investment-round",
+    "https://cincodias.elpais.com/companias/2025-09-15/la-start-up-vidext-cierra-una-ronda-de-seis-millones-con-flashpoint-sabadell-hwk-4founders-y-draperb1.html",
+    "https://cincodias.elpais.com/companias/2024-04-10/vidext-startup-de-generacion-de-videos-con-ia-capta-dos-millones-4founders-draper-b1-y-sabadell.html",
+    "https://linkedin.com/company/vidext"
+  ],
+  "metricas": {
+    "rondas": [
+      {
+        "anio": "2022",
+        "ronda": "Primera ronda",
+        "importe_eur": null,
+        "importe_texto": "sin datos",
+        "inversores": "4Founders"
+      },
+      {
+        "anio": "2024",
+        "ronda": "Seed",
+        "importe_eur": 2000000,
+        "importe_texto": "2M€",
+        "inversores": "4Founders (líder), Draper B1, Sabadell VC"
+      },
+      {
+        "anio": "2025",
+        "ronda": "Serie A",
+        "importe_eur": 6000000,
+        "importe_texto": "6M€",
+        "inversores": "Flashpoint (líder), HWK, 4Founders, Sabadell, DraperB1"
+      }
+    ],
+    "series": [
+      {
+        "titulo": "ARR",
+        "unidad": "M€",
+        "fuente": "CEO en prensa (sep-2025); 2024 estimado del +350% YoY declarado",
+        "puntos": [
+          {
+            "periodo": "2024",
+            "valor": 0.44,
+            "estimado": true
+          },
+          {
+            "periodo": "2025",
+            "valor": 2.0,
+            "estimado": false
+          }
+        ]
+      },
+      {
+        "titulo": "Empleados",
+        "unidad": "personas",
+        "fuente": "LinkedIn (agregador); 2024 estimado del +21,5% YoY",
+        "puntos": [
+          {
+            "periodo": "2024",
+            "valor": 45,
+            "estimado": true
+          },
+          {
+            "periodo": "2025",
+            "valor": 55,
+            "estimado": false
+          }
+        ]
+      }
+    ],
+    "otras_cifras": [
+      {
+        "etiqueta": "Clientes",
+        "valor": "+250",
+        "contexto": "autodeclarado (Iberdrola, Loewe, Mapfre…)"
+      },
+      {
+        "etiqueta": "Crecimiento interanual",
+        "valor": "+350%",
+        "contexto": "autodeclarado"
+      },
+      {
+        "etiqueta": "Países con tecnología desplegada",
+        "valor": "+30",
+        "contexto": "autodeclarado (2024)"
+      },
+      {
+        "etiqueta": "Total levantado",
+        "valor": "+8M€",
+        "contexto": "prensa (rondas conocidas)"
+      }
+    ]
+  }
+}
