@@ -86,7 +86,7 @@
     {
       "claim": "+250 clientes enterprise, entre ellos Iberdrola, Loewe, Mapfre, ISDIN, Yves Rocher y Daiichi-Sankyo",
       "fuente_interna": "declaraciones del CEO en prensa",
-      "verificacion_externa": "Nombres publicados en Cinco Días citando a la compañía; no hay logos verificables de forma independiente en este screen",
+      "verificacion_externa": "Nombres publicados en Cinco Días citando a la compañía; no hay logos verificables de forma independiente en este análisis",
       "estado": "no_verificada",
       "fuente_externa": "sin datos"
     },
@@ -110,7 +110,7 @@
     "producto_tech": "Plataforma que convierte presentaciones en experiencias de vídeo interactivas y multilingües con captura de datos e integración en sistemas corporativos. Más allá del render con IA (comoditizable), el valor declarado está en el workflow enterprise y las integraciones. Grado de tecnología propia vs. orquestación de modelos de terceros: sin datos.",
     "traccion": "Declara +2M€ ARR, +250 clientes y +350% interanual, con marcas enterprise citadas en prensa nacional. El crecimiento de plantilla (+21,5% según agregador de LinkedIn) y dos rondas en 17 meses son señales externas consistentes con tracción real. Retención, NRR y margen: sin datos.",
     "modelo_negocio": "SaaS B2B enterprise por suscripción, previsiblemente por seats o volumen de contenido. Escalable y recurrente; el riesgo es el coste de servicio si la producción sigue teniendo componente manual (ofrecen 'servicios multilingües y formación', posible servicio disfrazado de producto). Unit economics: sin datos.",
-    "founders": "Jon Enríquez (CEO), Beñat Arrizabalaga y Miguel Ángel Castillo. Equipo joven que ha escalado de 0 a Serie A en ~3 años, lo que demuestra ejecución. Trayectorias previas y dominio sectorial: sin datos públicos sólidos en este screen. Discrepancia menor: la compañía dice fundarse en 2022; LinkedIn y prensa de 2024 dicen 2021.",
+    "founders": "Jon Enríquez (CEO), Beñat Arrizabalaga y Miguel Ángel Castillo. Equipo joven que ha escalado de 0 a Serie A en ~3 años, lo que demuestra ejecución. Trayectorias previas y dominio sectorial: sin datos públicos sólidos en este análisis. Discrepancia menor: la compañía dice fundarse en 2022; LinkedIn y prensa de 2024 dicen 2021.",
     "competencia": "Categoría hipercompetida: Synthesia y HeyGen (unicornios bien capitalizados) dominan el vídeo corporativo con IA, y Colossyan, Elai y otros presionan por abajo. Vidext se diferencia hacia el proceso (contenido interactivo con datos), pero necesita defender que ese wedge no lo absorban los líderes. Quién gana hoy: Synthesia/HeyGen en volumen global.",
     "funding_cap_table": "2022: primera ronda con 4Founders (importe sin datos). Abr-2024: 2M€ (4Founders, Draper B1, Sabadell). Sep-2025: Serie A de 6M€ liderada por Flashpoint con HWK y follow-on de los anteriores. Sindicato sano con VC internacional; total levantado >8M€. Cap table: sin datos, pero la continuidad de todos los inversores early en la Serie A es señal positiva."
   },

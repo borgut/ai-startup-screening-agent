@@ -25,7 +25,7 @@
     { "nombre": "Competencia", "peso": 10, "score": 5, "confianza": "Alta" },
     { "nombre": "Funding / cap table", "peso": 10, "score": 9, "confianza": "Alta" }
   ],
-  "resumen_ejecutivo": "Shakers es una plataforma madrileña de orquestación de talento que conecta empresas con freelancers tech vetados y agentes de IA para montar equipos de proyecto híbridos. Fundada en 2021 por cuatro emprendedores (Héctor Mata, Nico de Luis, Adrián de Pedro y Jaime Castillo), declara más de 10.000 freelancers verificados y 450+ empresas cliente, entre ellas Microsoft, Inditex y Telefónica. En mayo de 2025 cerró una Serie A de 14M€ liderada por Partech con KFund, Brighteye Ventures, Athos Capital y Wayra para expandirse por Europa y desarrollar sus capacidades de IA.",
+  "resumen_ejecutivo": "Shakers es una plataforma madrileña de orquestación de talento que conecta empresas con freelancers tech verificados y agentes de IA para montar equipos de proyecto híbridos. Fundada en 2021 por cuatro emprendedores (Héctor Mata, Nico de Luis, Adrián de Pedro y Jaime Castillo), declara más de 10.000 freelancers verificados y 450+ empresas cliente, entre ellas Microsoft, Inditex y Telefónica. En mayo de 2025 cerró una Serie A de 14M€ liderada por Partech con KFund, Brighteye Ventures, Athos Capital y Wayra para expandirse por Europa y desarrollar sus capacidades de IA.",
   "claims": [
     {
       "claim": "Serie A de 14M€ (may-2025) liderada por Partech, con KFund, Brighteye Ventures, Athos Capital y Wayra",
@@ -35,7 +35,7 @@
       "fuente_externa": "https://tech.eu/2025/05/13/madrid-based-shakers-raises-14m-to-power-the-freelance-workforce-across-europe/"
     },
     {
-      "claim": "450+ empresas cliente, entre ellas Microsoft, Inditex y Telefónica, y más de 10.000 freelancers vetados",
+      "claim": "450+ empresas cliente, entre ellas Microsoft, Inditex y Telefónica, y más de 10.000 freelancers verificados",
       "fuente_interna": "web y nota de prensa",
       "verificacion_externa": "Solo consta en notas de prensa derivadas de la propia compañía; no hay verificación independiente de la cifra ni del alcance real de las relaciones con los logos citados",
       "estado": "no_verificada",
@@ -66,14 +66,14 @@
   "analisis": {
     "mercado": "La contratación de talento tech por proyecto y el outsourcing de IT en Europa es un mercado enorme (la compañía cita 180.000M€ creciendo a 280.000M€ en 2030) y en plena transformación por la IA. La tendencia estructural hacia trabajo flexible y equipos híbridos humano+agente es real y favorece el timing. El riesgo es que es un mercado históricamente fragmentado, con márgenes de intermediación y disposición a pagar por plataforma por validar.",
     "producto_tech": "Plataforma de matching entre empresas y freelancers tech con validación end-to-end (hard y soft skills, experiencia, fit cultural) sobre más de 1.000 puntos de datos, y un pre-vetting propio (Shakers Verified) que promete eliminar entrevistas iniciales. La visión de producto añade agentes de IA como miembros del equipo y servicios integrados para el freelancer (banca, seguros, productividad) bajo el paraguas de un «Freelancer OS». Diferenciación técnica real frente a marketplaces clásicos: plausible pero no demostrada externamente.",
-    "traccion": "Declaran 450+ empresas cliente (con logos enterprise como Microsoft, Inditex y Telefónica), 10.000+ freelancers vetados, crecimiento de ingresos 6x interanual, 60% de ingresos recurrentes y 30% de ingresos orgánicos fuera de España. Son cifras grandes y coherentes con una Serie A de 14M€ liderada por un fondo internacional, pero todas son autodeclaradas y sin base absoluta. Ingresos, take rate y retención: sin datos públicos.",
+    "traccion": "Declaran 450+ empresas cliente (con logos enterprise como Microsoft, Inditex y Telefónica), 10.000+ freelancers verificados, crecimiento de ingresos 6x interanual, 60% de ingresos recurrentes y 30% de ingresos orgánicos fuera de España. Son cifras grandes y coherentes con una Serie A de 14M€ liderada por un fondo internacional, pero todas son autodeclaradas y sin base absoluta. Ingresos, take rate y retención: sin datos públicos.",
     "modelo_negocio": "Marketplace/servicio de talento con capa de software: presumiblemente margen sobre el volumen facturado por los freelancers, más potencial de SaaS y servicios financieros embebidos en el Freelancer OS. El modelo escala si el matching automatizado reduce el coste de curaduría, pero los marketplaces de talento suelen requerir operación intensiva en ambos lados. Take rate, margen y unit economics: sin datos.",
-    "founders": "Cuatro cofundadores con roles claros (CEO, COO, CPO, CRO) y backgrounds en IA y desarrollo de software, con experiencia declarada tanto trabajando como freelance como contratando talento. Equipo completo y complementario desde el día uno, lo que reduce el riesgo de fundador único. La prensa los describe como emprendedores seriales; no se han verificado exits previos en este screen.",
+    "founders": "Cuatro cofundadores con roles claros (CEO, COO, CPO, CRO) y trayectoria en IA y desarrollo de software, con experiencia declarada tanto trabajando como freelance como contratando talento. Equipo completo y complementario desde el día uno, lo que reduce el riesgo de fundador único. La prensa los describe como emprendedores seriales; no se han verificado exits previos en este análisis.",
     "competencia": "Mercado muy competido en varios frentes: marketplaces de freelance tech (Malt, Upwork, Fiverr), consultoras y staffing de IT tradicionales, plataformas EOR y, cada vez más, agentes de IA que sustituyen parte del trabajo freelance. La apuesta de Shakers es la curaduría validada con datos y la orquestación híbrida humano+agente. Quién gana hoy en España: Malt y las consultoras; sin datos de cuota para Shakers.",
     "funding_cap_table": "Serie A de 14M€ en may-2025 liderada por Partech con KFund, Brighteye Ventures, Athos Capital y Wayra (Telefónica): sindicato de calidad con mezcla de fondos internacionales y corporate. Rondas anteriores: sin datos públicos de importes ni inversores. Con la Serie A recién cerrada, una entrada de 4Founders al ticket típico (250k-2M€) ya no es posible salvo follow-on futuro o extensión."
   },
   "why_now": "La IA está cambiando cómo se estructura el trabajo técnico: las empresas quieren equipos por proyecto con agentes integrados y los profesionales se mueven al freelance cualificado. El outsourcing de IT tradicional no ha evolucionado en décadas, y la presión por contratar talento especializado rápido (con la escasez de perfiles tech en Europa) abre ventana para una nueva capa de orquestación.",
-  "why_this_company": "Cuatro fundadores cubriendo negocio, operaciones, producto y ventas desde el inicio, tres años de sistema de matching certificado y una red de 10.000+ freelancers ya vetados: la curaduría validada con datos es el activo difícil de replicar, y el respaldo de Partech valida la tracción mejor que cualquier cifra autodeclarada.",
+  "why_this_company": "Cuatro fundadores cubriendo negocio, operaciones, producto y ventas desde el inicio, tres años de sistema de matching certificado y una red de 10.000+ freelancers ya verificados: la curaduría validada con datos es el activo difícil de replicar, y el respaldo de Partech valida la tracción mejor que cualquier cifra autodeclarada.",
   "encaje": [
     { "criterio": "Sector (B2B SaaS, fintech, IA, traveltech, ciberseguridad, business services, data)", "encaja": "parcial", "detalle": "Business services / HRTech con capa fuerte de IA y software; no es SaaS puro sino marketplace de talento" },
     { "criterio": "Stage (pre-seed a Serie A)", "encaja": "parcial", "detalle": "Serie A de 14M€ ya cerrada (may-2025); solo encajaría como follow-on" },
@@ -89,7 +89,7 @@
     "series": [],
     "otras_cifras": [
       { "etiqueta": "Empresas cliente", "valor": "+450", "contexto": "autodeclarado" },
-      { "etiqueta": "Freelancers vetados", "valor": "+10.000", "contexto": "autodeclarado" },
+      { "etiqueta": "Freelancers verificados", "valor": "+10.000", "contexto": "autodeclarado" },
       { "etiqueta": "Crecimiento ingresos YoY", "valor": "6x", "contexto": "autodeclarado, sin base absoluta" },
       { "etiqueta": "Ingresos de clientes recurrentes", "valor": "60%", "contexto": "autodeclarado" },
       { "etiqueta": "Ingresos / take rate", "valor": "sin datos", "contexto": "" }

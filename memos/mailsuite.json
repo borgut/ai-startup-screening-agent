@@ -15,7 +15,7 @@
   "recomendacion": "WATCH",
   "score_global": 62,
   "confianza_global": "Media",
-  "justificacion": "Founder serial con dos exits verificados (Panoramio a Google, Loquo a eBay) y producto con millones de usuarios, pero el mercado de email tracking es mediano y concurrido, la financiación es antigua y menor, y las cifras de usuarios son autodeclaradas e inconsistentes entre páginas.",
+  "justificacion": "Fundador en serie con dos exits verificados (Panoramio a Google, Loquo a eBay) y producto con millones de usuarios, pero el mercado de email tracking es mediano y concurrido, la financiación es antigua y menor, y las cifras de usuarios son autodeclaradas e inconsistentes entre páginas.",
   "dimensiones": [
     {
       "nombre": "Founders",
@@ -65,7 +65,7 @@
     {
       "claim": "Más de 3 millones de usuarios confían en el producto",
       "fuente_interna": "web (home)",
-      "verificacion_externa": "La propia página 'about' habla de 2 millones: cifra autodeclarada e inconsistente entre páginas; el volumen de instalaciones de la extensión en Chrome Web Store sería la vía de contraste (no consultado en este screen)",
+      "verificacion_externa": "La propia página 'about' habla de 2 millones: cifra autodeclarada e inconsistente entre páginas; el volumen de instalaciones de la extensión en Chrome Web Store sería la vía de contraste (no consultado en este análisis)",
       "estado": "no_verificada",
       "fuente_externa": "https://mailsuite.com/en/about"
     },
@@ -77,7 +77,7 @@
       "fuente_externa": "https://www.linkedin.com/in/eduardomanchon"
     },
     {
-      "claim": "Eduardo Manchón es founder serial con exits (Panoramio a Google, Loquo a eBay)",
+      "claim": "Eduardo Manchón es fundador en serie con exits (Panoramio a Google, Loquo a eBay)",
       "fuente_interna": "LinkedIn del CEO",
       "verificacion_externa": "Confirmado en su perfil público ('Acquired x2, Ex Google') y ampliamente documentado en prensa tecnológica española",
       "estado": "verificada",
@@ -99,11 +99,11 @@
     }
   ],
   "analisis": {
-    "mercado": "Productividad de email para profesionales y pymes: mercado real pero mediano y maduro, con gran parte del valor capturado por suites (HubSpot, Microsoft, Google) y herramientas de sales engagement. Crecimiento modesto; difícil de dimensionar con datos externos como mercado independiente. No es un mercado evidente para una compañía de +300M€ en standalone.",
+    "mercado": "Productividad de email para profesionales y pymes: mercado real pero mediano y maduro, con gran parte del valor capturado por suites (HubSpot, Microsoft, Google) y herramientas de sales engagement. Crecimiento modesto; difícil de dimensionar con datos externos como mercado independiente. No es un mercado evidente para una compañía de +300M€ por sí sola.",
     "producto_tech": "Extensión de Chrome/Gmail madura y pulida (tracking de aperturas, enlaces, campañas, firmas). Funcional pero replicable: el núcleo técnico (píxel de apertura, tracking de clics) es conocido, y la dependencia de las APIs y políticas de Google (Gmail, Chrome Web Store) es estructural. Defensibilidad: marca y base instalada más que tecnología.",
     "traccion": "Declara entre 2M y +3M de usuarios (mayoría presumiblemente gratuitos); reseñas públicas en Chrome Web Store y comparadores serían la verificación natural. Plantilla estable en 40-50 personas sugiere negocio rentable pero no en crecimiento explosivo. Ingresos, conversión a pago y retención: sin datos.",
     "modelo_negocio": "Freemium SaaS con pricing público por suscripción mensual/anual. Modelo claro, recurrente y eficiente en capital (apenas ha consumido financiación externa), pero el ARPU de productividad de email es bajo y el techo de conversión de una extensión gratuita limita la escala. Unit economics: sin datos.",
-    "founders": "Eduardo Manchón es de los founders con mejor track record de la escena española (Panoramio vendida a Google, Loquo a eBay; ex-Google), acompañado de CTO co-fundador (Raúl Ramos) y Nacho González-Barros. Equipo full-time, complementario y con 12+ años de compromiso con la compañía. Encaja de sobra con el filtro de equipo de 4Founders.",
+    "founders": "Eduardo Manchón es uno de los fundadores con mejor track record del ecosistema español (Panoramio vendida a Google, Loquo a eBay; ex-Google), acompañado de CTO co-fundador (Raúl Ramos) y Nacho González-Barros. Equipo full-time, complementario y con 12+ años de compromiso con la compañía. Encaja de sobra con el filtro de equipo de 4Founders.",
     "competencia": "Boomerang, Mixmax, Yesware, Mailtrack-competidores históricos y, sobre todo, las funciones nativas de Gmail y las suites de sales engagement (HubSpot free, Outreach). Diferenciación: simplicidad y base instalada, no barreras. Quién gana hoy: las suites capturan el presupuesto enterprise; Mailsuite gana en el segmento individual/pyme.",
     "funding_cap_table": "Financiación externa total ~0,9M$ (CB Insights: rondas secondary 2019-2020 con 4Founders y Bewater). Compañía esencialmente bootstrapped: cap table presumiblemente limpio y con el equipo en control, pero no hay ronda actual conocida ni necesidad declarada de capital. Si no levantan, no hay entrada; si levantan, el tamaño sería pequeño."
   },
@@ -133,7 +133,7 @@
     {
       "criterio": "Ambición internacional (+300M€)",
       "encaja": "parcial",
-      "detalle": "Producto global, pero el mercado de email tracking standalone difícilmente sostiene una compañía de +300M€"
+      "detalle": "Producto global, pero el mercado del email tracking como producto independiente difícilmente sostiene una compañía de +300M€"
     }
   ],
   "red_flags": [

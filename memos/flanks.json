@@ -14,7 +14,7 @@
   "recomendacion": "INVESTIGATE",
   "score_global": 80,
   "confianza_global": "Media",
-  "justificacion": "Equipo fundador con dominio profundo de banca privada y ronda de 14M€ con inversores internacionales de primer nivel verificada en prensa; la limitación es que las métricas de clientes y activos agregados son autodeclaradas y no auditable externamente.",
+  "justificacion": "Equipo fundador con dominio profundo de banca privada y ronda de 14M€ con inversores internacionales de primer nivel verificada en prensa; la limitación es que las métricas de clientes y activos agregados son autodeclaradas y no se pueden auditar externamente.",
   "dimensiones": [
     {
       "nombre": "Founders",
@@ -78,7 +78,7 @@
     {
       "claim": "AISP regulado por el Banco de España bajo PSD2",
       "fuente_interna": "web",
-      "verificacion_externa": "Coherente con la actividad de agregación de cuentas; el registro oficial del BdE es la vía de confirmación definitiva (no consultado en este screen)",
+      "verificacion_externa": "Coherente con la actividad de agregación de cuentas; el registro oficial del BdE es la vía de confirmación definitiva (no consultado en este análisis)",
       "estado": "no_verificada",
       "fuente_externa": "sin datos"
     },

@@ -3,7 +3,7 @@
 (function () {
   const RECO_LABEL = { INVESTIGATE: 'INVESTIGATE', WATCH: 'WATCH', PASS: 'PASS' };
   const RECO_ICON = { INVESTIGATE: '🟢', WATCH: '🟡', PASS: '🔴' };
-  const ESTADO_LABEL = { verificada: '✓ verificada', no_verificada: '⚠ no verificada', contradicha: '✗ contradicha' };
+  const ESTADO_LABEL = { verificada: '✓ verificada', no_verificada: '⚠ no verificada', contradicha: '✗ contradicho' };
   const ENCAJE_ICON = { si: '✓', parcial: '!', no: '✗' };
 
   function esc(s) {
@@ -26,13 +26,14 @@
     const s = Math.max(0, Math.min(100, Number(score) || 0));
     const r = 40, circ = 2 * Math.PI * r;
     const filled = (s / 100) * circ;
-    const color = { INVESTIGATE: '#15803d', WATCH: '#d97706', PASS: '#dc2626' }[reco] || '#d97706';
-    return `<svg class="gauge" viewBox="0 0 100 100" width="104" height="104" role="img" aria-label="Score ${s} de 100">
-      <circle cx="50" cy="50" r="${r}" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="11"/>
-      <circle cx="50" cy="50" r="${r}" fill="none" stroke="${color === '#15803d' ? '#bbf7d0' : color === '#d97706' ? '#fde68a' : '#fecaca'}" stroke-width="11"
+    const ring = { INVESTIGATE: '#1e5b3a', WATCH: '#8a5a13', PASS: '#9c2b1d' }[reco] || '#8a5a13';
+    return `<svg class="gauge" viewBox="0 0 100 100" width="112" height="112" role="img" aria-label="Score ${s} de 100">
+      <circle cx="50" cy="50" r="48" fill="#f6f1e7"/>
+      <circle cx="50" cy="50" r="${r}" fill="none" stroke="#ded4bd" stroke-width="10"/>
+      <circle cx="50" cy="50" r="${r}" fill="none" stroke="${ring}" stroke-width="10"
         stroke-linecap="round" stroke-dasharray="${filled.toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 50 50)"/>
       <text x="50" y="47" text-anchor="middle" class="gauge-num">${s}</text>
-      <text x="50" y="63" text-anchor="middle" class="gauge-sub">/100</text>
+      <text x="50" y="64" text-anchor="middle" class="gauge-sub">/100</text>
     </svg>`;
   }
 
