@@ -209,7 +209,7 @@
       </section>
 
       <section class="memo-sec">
-        <h3>Claims vs evidencia <span class="h3-note">núcleo del memo</span></h3>
+        <h3>Verificación de claims</h3>
         <table class="claims-table">
           <thead><tr><th>#</th><th>Claim</th><th>Fuente interna</th><th>Verificación externa</th><th>Estado</th><th>Fuente</th></tr></thead>
           <tbody>${claims}</tbody>
