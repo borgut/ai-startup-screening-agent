@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Startup Screening Agent</title>
+  <title>Startup Scouting</title>
+  <meta name="description" content="Lee la web y el deck de una startup, contrasta cada claim con fuentes externas y devuelve un memo con score y veredicto." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="theme-poster">
   <header class="masthead">
     <div class="wrap">
       <div class="masthead-top">
-        <span class="kicker">AI Startup Screening Agent</span>
-        <span class="kicker kicker-right">Claims vs evidencia · v1 · 2026</span>
+        <span class="kicker brand">Startup Scouting</span>
+        <span class="kicker kicker-right">Claims vs evidencia · 2026</span>
       </div>
       <h1 class="display">¿Merece esta startup <em>30 minutos</em> de un inversor?</h1>
       <p class="lede">El agente lee la web y el deck, busca fuentes externas y contrasta cada claim uno a uno. Lo que no se puede verificar queda marcado como «sin datos».</p>
@@ -19,6 +21,11 @@
         <summary>¿Qué significa el veredicto?</summary>
         <p class="verdict-legend"><span class="vl-inv">🟢 <strong>INVESTIGATE</strong> (≥65): merece 30 minutos de un inversor</span><span class="vl-watch">🟡 <strong>WATCH</strong> (45-64): faltan datos, revisar en 3-6 meses</span><span class="vl-pass">🔴 <strong>PASS</strong> (&lt;45): fuera de tesis o red flag crítico</span></p>
       </details>
+      <div class="steps">
+        <span class="step"><b>01</b> Lee la web y el deck</span>
+        <span class="step"><b>02</b> Contrasta cada claim con fuentes externas</span>
+        <span class="step"><b>03</b> Score de 0 a 100 y veredicto</span>
+      </div>
     </div>
   </header>
 
@@ -38,20 +45,20 @@
         <label for="context">Contexto adicional (opcional)</label>
         <textarea id="context" name="context" rows="3" placeholder="Todo lo que sepas: ronda que levantan, cómo llegó a ti, métricas declaradas..."></textarea>
 
-        <button type="submit" id="submit-btn">Analizar startup</button>
+        <button type="submit" id="submit-btn">Analizar startup &rarr;</button>
         <p class="form-note" id="form-note"></p>
       </form>
     </section>
 
     <section class="card" id="examples-card">
-      <h2>Ejemplos (modo demo)</h2>
-      <p class="muted">Memos pre-generados de startups reales, como llegarían en un screening real. Lo no verificable está marcado como «sin datos».</p>
+      <h2>Ejemplos reales</h2>
+      <p class="muted">Cinco startups reales pasadas por el filtro, de principio a fin. Lo que no se puede verificar queda marcado como «sin datos».</p>
       <div id="examples-list" class="examples-grid"></div>
     </section>
 
     <section id="loading" class="hidden">
       <div class="spinner"></div>
-      <p id="loading-text">Analizando la startup... esto puede tardar 1-2 minutos (extracción de la web, búsqueda de verificación externa y generación del memo).</p>
+      <p id="loading-text">Leyendo la web, contrastando fuentes externas y redactando el memo. Suele llevar un par de minutos, lo que tarda un cortado.</p>
     </section>
 
     <section id="memo-container" class="hidden"></section>
@@ -59,7 +66,8 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>El score 0-100 es una guía de priorización, no una predicción. La decisión de invertir es siempre del inversor; el agente decide si merece 30 minutos.</p>
+      <p>El score 0-100 es una guía de priorización, no una predicción. La decisión de invertir es siempre del inversor; la herramienta decide si merece 30 minutos.</p>
+      <p class="footer-sign">Startup Scouting · hecho a mano en Madrid · 2026</p>
     </div>
   </footer>
 

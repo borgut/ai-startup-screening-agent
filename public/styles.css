@@ -1,5 +1,5 @@
 /* ============================================================
-   AI Startup Screening Agent · editorial system
+   Startup Scouting · editorial system
    "Investment memo on warm linen" — serif display, mono micro-
    labels, hairline rules, rationed color. No gradients.
    ============================================================ */
@@ -177,11 +177,6 @@ button:disabled { opacity: 0.55; cursor: wait; }
 
 .back-link { display: inline-block; margin: 20px 0 4px; font-size: 0.88rem; color: var(--green); cursor: pointer; text-decoration: none; }
 .back-link:hover { text-decoration: underline; }
-
-.demo-banner {
-  background: var(--paper-2); border: 1px solid var(--hairline-dark); color: var(--ink-soft);
-  border-radius: 10px; padding: 9px 15px; font-size: 0.83rem; margin-bottom: 16px;
-}
 
 .site-footer { border-top: 1px solid var(--hairline-dark); margin-top: 44px; padding: 22px 0 30px; }
 .site-footer p { margin: 0; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--muted); line-height: 1.7; }
@@ -476,3 +471,15 @@ input[type="text"], input[type="url"], textarea { transition: border-color 0.15s
 body.theme-poster input:focus, body.theme-poster textarea:focus { outline-color: var(--sienna); border-color: var(--sienna); }
 .dim-more summary { transition: color 0.15s; }
 .dim-more summary:hover { color: var(--ink); }
+
+/* ---------- Marca y detalles de artesanía ---------- */
+.brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 600; }
+.brand::before { content: ''; width: 9px; height: 9px; background: var(--sienna); flex: none; }
+.steps { display: flex; flex-wrap: wrap; gap: 4px 26px; margin-top: 20px; padding-top: 13px; border-top: 1px solid var(--hairline); }
+.step { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+.step b { color: var(--sienna); font-weight: 600; margin-right: 6px; }
+.examples-grid { counter-reset: ex; }
+.example-card { position: relative; }
+.example-card::after { counter-increment: ex; content: counter(ex, decimal-leading-zero); position: absolute; top: 13px; right: 15px; font-family: var(--mono); font-size: 0.62rem; color: var(--faint); }
+.footer-sign { margin-top: 12px !important; color: var(--ink-soft) !important; }
+@media (max-width: 720px) { .steps { gap: 4px 18px; } }

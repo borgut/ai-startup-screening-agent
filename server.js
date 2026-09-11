@@ -1,4 +1,4 @@
-// AI Startup Screening Agent - servidor Express.
+// Startup Scouting - servidor Express.
 // Local: `npm start` -> http://localhost:3000
 // Vercel: exporta `app` para @vercel/node.
 
@@ -135,7 +135,7 @@ app.post('/api/screen', upload.single('deck'), async (req, res) => {
   }
   if (!process.env.GEMINI_API_KEY) {
     return res.status(503).json({
-      error: 'El análisis en vivo no está activado en esta demo. Mientras tanto, puedes ver los ejemplos de abajo.',
+      error: 'El análisis al momento está en pausa. Mientras tanto, puedes explorar los ejemplos.',
       code: 'NO_API_KEY',
     });
   }
@@ -192,10 +192,10 @@ module.exports = app;
 if (require.main === module) {
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log(`\nAI Startup Screening Agent`);
+    console.log(`\nStartup Scouting - screening de startups`);
     console.log(`  -> http://localhost:${port}`);
     console.log(process.env.GEMINI_API_KEY
       ? '  Clave Gemini detectada: screening en vivo activado.'
-      : '  Sin GEMINI_API_KEY: modo demo (solo ejemplos pre-generados).');
+      : '  Sin GEMINI_API_KEY: solo ejemplos precargados.');
   });
 }

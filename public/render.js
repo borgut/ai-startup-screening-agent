@@ -131,7 +131,7 @@
       </section>`;
   }
 
-  function renderMemoHTML(memo, { demo = false } = {}) {
+  function renderMemoHTML(memo) {
     const reco = memo.recomendacion || 'WATCH';
     const recoClass = { INVESTIGATE: 'hero-green', WATCH: 'hero-amber', PASS: 'hero-red' }[reco] || 'hero-amber';
     const a = memo.analisis || {};
@@ -166,7 +166,6 @@
     const fuentes = `<ol class="src-list">${(memo.fuentes_utilizadas || []).map((f) => `<li>${linkify(f)}</li>`).join('')}</ol>`;
 
     return `
-    ${demo ? '<div class="demo-banner">Ejemplo pre-generado (modo demo). Datos de fuentes públicas; lo no verificable figura como «sin datos».</div>' : ''}
     <article class="memo memo-v2">
 
       <header class="hero ${recoClass}">

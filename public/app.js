@@ -29,9 +29,9 @@ function linkify(url) {
 }
 
 
-function showMemo(memo, opts) {
+function showMemo(memo) {
   const container = $('#memo-container');
-  container.innerHTML = `<span class="back-link" id="back-link">&larr; Volver al formulario</span>` + renderMemoHTML(memo, opts);
+  container.innerHTML = `<span class="back-link" id="back-link">&larr; Volver al formulario</span>` + renderMemoHTML(memo);
   container.classList.remove('hidden');
   $('#loading').classList.add('hidden');
   container.scrollIntoView({ behavior: 'smooth' });
@@ -60,7 +60,7 @@ async function loadExamples() {
       card.addEventListener('click', async () => {
         const res2 = await fetch(`/api/memo/${card.dataset.id}`);
         const data2 = await res2.json();
-        if (data2.memo) showMemo(data2.memo, { demo: true });
+        if (data2.memo) showMemo(data2.memo);
       });
     });
   } catch {
@@ -73,7 +73,7 @@ async function checkStatus() {
     const res = await fetch('/api/status');
     const data = await res.json();
     if (!data.api_key_configured) {
-      $('#form-note').textContent = 'El análisis en vivo no está activado en esta demo. Los ejemplos de abajo funcionan siempre.';
+      $('#form-note').textContent = 'El análisis al momento está en pausa. Mientras tanto, los ejemplos de abajo están siempre disponibles.';
     }
   } catch { /* silencioso */ }
 }
@@ -104,7 +104,7 @@ $('#screen-form').addEventListener('submit', async (ev) => {
       note.classList.add('error');
       note.textContent = data.error || 'Error desconocido.';
     } else {
-      showMemo(data.memo, { demo: false });
+      showMemo(data.memo);
     }
   } catch (err) {
     $('#loading').classList.add('hidden');

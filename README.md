@@ -1,4 +1,4 @@
-# AI Startup Screening Agent
+# Startup Scouting
 
 Agente de screening de startups orientado a la tesis de un fondo VC early-stage. Recibe la web de una startup (más pitch deck y contexto opcionales), contrasta lo que la startup declara con fuentes externas mediante búsqueda web, y genera un **investment memo de 1 página** con recomendación 🟢 INVESTIGATE / 🟡 WATCH / 🔴 PASS, scoring ponderado por dimensión, tabla de claims vs evidencia, red flags y 5 preguntas para el inversor.
 
@@ -14,7 +14,7 @@ La pregunta que responde no es "¿invertimos?" sino: **¿merece esta startup 30 
 ## Requisitos
 
 - **Node.js 18 o superior** (recomendado 20+). Compruébalo con `node --version`.
-- Una **clave de API de Google Gemini** (gratis en [Google AI Studio](https://aistudio.google.com/apikey)). Solo es necesaria para el análisis en vivo: los ejemplos de demostración funcionan sin clave.
+- Una **clave de API de Google Gemini** (gratis en [Google AI Studio](https://aistudio.google.com/apikey)). Solo es necesaria para el análisis en vivo: los ejemplos precargados funcionan sin clave.
 
 ## Instalación (una sola vez)
 
@@ -61,7 +61,7 @@ Abre el navegador en **http://localhost:3000**
 1. **Extracción**: el servidor descarga la web de la startup (página principal + subpáginas tipo about/pricing/producto) y el texto del deck PDF si lo hay.
 2. **Verificación externa**: se llama a la API de Gemini con la herramienta de búsqueda de Google activada, de modo que el modelo busca en la web señales independientes (mercado, competidores, funding, equipo, contratación, reseñas).
 3. **Memo estructurado**: el modelo rellena un esquema JSON fijo que implementa el template (Parte A) y la rúbrica (Parte B) del documento de especificación, y la web lo renderiza como memo de 1 página.
-4. **Modo demo**: la carpeta `memos/` contiene memos pre-generados en el mismo formato JSON; se sirven sin llamar a ninguna API.
+4. **Ejemplos precargados**: la carpeta `memos/` contiene memos generados en el mismo formato JSON; se sirven sin llamar a ninguna API.
 
 Reglas del agente (heredadas de la especificación): si un dato no se puede obtener, el memo dice "sin datos" en vez de inventarlo; todo claim relevante pasa por la tabla de contraste; un claim contradicho en tracción, funding o founders fuerza PASS.
 
@@ -86,7 +86,7 @@ screening-agent/
 │   ├── gemini.js      # Llamada a Gemini (búsqueda + salida estructurada)
 │   └── prompt.js      # Prompt del sistema: template + rúbrica de scoring
 ├── public/            # Interfaz web (index.html, styles.css, app.js)
-├── memos/             # Ejemplos pre-generados (modo demo)
+├── memos/             # Ejemplos precargados
 ├── vercel.json        # Config de despliegue
 └── .env.example       # Plantilla para la clave (no subir el .env real)
 ```
