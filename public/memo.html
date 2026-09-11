@@ -6,7 +6,7 @@
   <title>Memo · AI Startup Screening Agent</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
+<body class="theme-poster">
   <main class="wrap">
     <p style="margin:22px 0 4px"><a class="back-link" href="/">&larr; Volver al inicio</a></p>
     <section id="memo-container"><p class="muted" style="padding:40px 0;text-align:center">Cargando memo...</p></section>
@@ -17,8 +17,10 @@
       const tema = new URLSearchParams(location.search).get('tema');
       if (tema) {
         const t = tema.replace(/[^a-z-]/g, '');
+        document.body.classList.remove('theme-poster', 'poster-ox', 'theme-ink');
         if (t === 'poster-ox') { document.body.classList.add('theme-poster', 'poster-ox'); }
-        else { document.body.classList.add('theme-' + t); }
+        else if (t !== 'poster') { document.body.classList.add('theme-' + t); }
+        else { document.body.classList.add('theme-poster'); }
       }
     })();
     (async () => {

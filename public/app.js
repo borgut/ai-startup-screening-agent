@@ -3,8 +3,10 @@
   const tema = new URLSearchParams(location.search).get('tema');
   if (tema) {
     const t = tema.replace(/[^a-z-]/g, '');
+    document.body.classList.remove('theme-poster', 'poster-ox', 'theme-ink');
     if (t === 'poster-ox') { document.body.classList.add('theme-poster', 'poster-ox'); }
-    else { document.body.classList.add('theme-' + t); }
+    else if (t !== 'poster') { document.body.classList.add('theme-' + t); }
+    else { document.body.classList.add('theme-poster'); }
   }
 })();
 
