@@ -7,7 +7,6 @@ const fs = require('fs');
 const crypto = require('crypto');
 const express = require('express');
 const multer = require('multer');
-const { PDFParse } = require('pdf-parse');
 
 const { extractWebsite } = require('./lib/extract');
 const { generateMemo } = require('./lib/gemini');
@@ -20,8 +19,15 @@ const upload = multer({
 });
 
 const MEMOS_DIR = path.join(__dirname, 'memos');
-const GENERATED_DIR = path.join(__dirname, '.generated');
-fs.mkdirSync(GENERATED_DIR, { recursive: true });
+// En Vercel el filesystem del proyecto es de solo lectura: los memos generados van a /tmp.
+const GENERATED_DIR = process.env.VERCEL
+  ? path.join('/tmp', '.generated')
+  : path.join(__dirname, '.generated');
+try {
+  fs.mkdirSync(GENERATED_DIR, { recursive: true });
+} catch (err) {
+  console.warn('No se pudo crear el directorio de memos generados:', err.message);
+}
 
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -74,6 +80,7 @@ app.get('/api/status', (req, res) => {
 });
 
 async function parseDeck(buffer) {
+  const { PDFParse } = require('pdf-parse');
   const parser = new PDFParse({ data: buffer });
   try {
     const result = await parser.getText();
