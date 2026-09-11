@@ -1,7 +1,11 @@
 // Variante visual: ?tema=ink | poster (lino editorial por defecto)
 (() => {
   const tema = new URLSearchParams(location.search).get('tema');
-  if (tema) document.body.classList.add('theme-' + tema.replace(/[^a-z]/g, ''));
+  if (tema) {
+    const t = tema.replace(/[^a-z-]/g, '');
+    if (t === 'poster-ox') { document.body.classList.add('theme-poster', 'poster-ox'); }
+    else { document.body.classList.add('theme-' + t); }
+  }
 })();
 
 const $ = (sel) => document.querySelector(sel);

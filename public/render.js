@@ -22,13 +22,21 @@
     return esc(url);
   }
 
-  // Barra de score animada: se rellena al cargar hasta su valor y ahí se queda.
-  function scoreBar(score, reco) {
+  // Anillo de score animado: disco crema, el anillo se rellena al cargar hasta la nota.
+  function gaugeSVG(score, reco) {
     const s = Math.max(0, Math.min(100, Number(score) || 0));
-    return `<div class="scorebar" role="img" aria-label="Score ${s} de 100">
-      <div class="scorebar-track"><div class="scorebar-fill" style="--pct:${s}%"></div></div>
-      <div class="scorebar-scale"><span>0</span><span>100</span></div>
-    </div>`;
+    const r = 40, circ = 2 * Math.PI * r;
+    const off = circ - (s / 100) * circ;
+    const ring = { INVESTIGATE: '#1e5b3a', WATCH: '#b98a2e', PASS: '#9c2b1d' }[reco] || '#b98a2e';
+    return `<svg class="gauge" viewBox="0 0 100 100" width="118" height="118" role="img" aria-label="Score ${s} de 100">
+      <circle cx="50" cy="50" r="48" fill="#f6f1e7"/>
+      <circle cx="50" cy="50" r="${r}" fill="none" stroke="#ded4bd" stroke-width="9"/>
+      <circle class="gauge-ring" cx="50" cy="50" r="${r}" fill="none" stroke="${ring}" stroke-width="9"
+        stroke-linecap="round" stroke-dasharray="${circ.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"
+        style="--off:${off.toFixed(1)}; --circ:${circ.toFixed(1)}" transform="rotate(-90 50 50)"/>
+      <text x="50" y="47" text-anchor="middle" class="gauge-num">${s}</text>
+      <text x="50" y="64" text-anchor="middle" class="gauge-sub">/100</text>
+    </svg>`;
   }
 
   // Mapea el nombre de la dimensión con su bloque de análisis (la evidencia).
@@ -56,7 +64,7 @@
         <span class="dim-foot-inline"><span class="dim-score">${score}/10</span> <span class="conf-badge conf-${esc(d.confianza)}">${esc(d.confianza)}</span></span>
       </div>
       <div class="dim-track"><div class="dim-fill ${barClass}" style="width:${pct}%"></div></div>
-      ${justif ? `<details class="dim-more"><summary>Justificación</summary><p class="dim-justif">${esc(justif)}</p></details>` : ''}
+      ${justif ? `<details class="dim-more"><summary>Por qué esta nota</summary><p class="dim-justif">${esc(justif)}</p></details>` : ''}
     </div>`;
   }
 
@@ -171,10 +179,9 @@
           <p class="hero-justif">${esc(memo.justificacion)}</p>
         </div>
         <div class="hero-score">
-          <div class="hero-score-num">${Math.max(0, Math.min(100, Number(memo.score_global) || 0))}<span class="hero-score-max">/100</span></div>
+          ${gaugeSVG(memo.score_global, reco)}
           <div class="hero-conf">Confianza global <span class="conf-badge conf-${esc(memo.confianza_global)}">${esc(memo.confianza_global)}</span></div>
         </div>
-        ${scoreBar(memo.score_global, reco)}
       </header>
 
       <section class="memo-sec">
