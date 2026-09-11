@@ -3,7 +3,7 @@
 (function () {
   const RECO_LABEL = { INVESTIGATE: 'INVESTIGATE', WATCH: 'WATCH', PASS: 'PASS' };
   const RECO_ICON = { INVESTIGATE: '🟢', WATCH: '🟡', PASS: '🔴' };
-  const ESTADO_LABEL = { verificada: '✓ verificada', no_verificada: '⚠ no verificada', contradicha: '✗ contradicho' };
+  const ESTADO_LABEL = () => ({ verificada: '✓ ' + t('st_verificada'), no_verificada: '⚠ ' + t('st_no_verificada'), contradicha: '✗ ' + t('st_contradicha') });
   const ENCAJE_ICON = { si: '✓', parcial: '!', no: '✗' };
 
   function esc(s) {
@@ -13,13 +13,20 @@
   }
 
   function linkify(url) {
-    if (!url || url === 'sin datos') return '<span class="snd">sin datos</span>';
+    if (!url || url === 'sin datos' || url === 'no data') return '<span class="snd">' + t('sin_datos') + '</span>';
     if (/^https?:\/\//i.test(url)) {
       let short = url.replace(/^https?:\/\//i, '').replace(/\/$/, '');
       if (short.length > 42) short = short.slice(0, 40) + '…';
       return `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(short)}</a>`;
     }
     return esc(url);
+  }
+
+  // Convierte un párrafo en bullets por frases (una frase = un bullet).
+  function bullets(text) {
+    const items = String(text || '').split(/(?<=[.!?])\s+/).map((t) => t.trim()).filter(Boolean);
+    if (items.length <= 1) return `<p>${esc(text || '')}</p>`;
+    return `<ul class="why-list">${items.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`;
   }
 
   // Anillo de score animado: disco crema, el anillo se rellena al cargar hasta la nota.
@@ -43,11 +50,11 @@
   function analysisKey(nombre) {
     const n = String(nombre || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
     if (n.includes('founder') || n.includes('equipo')) return 'founders';
-    if (n.includes('mercado')) return 'mercado';
-    if (n.includes('traccion')) return 'traccion';
+    if (n.includes('mercado') || n.includes('market')) return 'mercado';
+    if (n.includes('traccion') || n.includes('traction')) return 'traccion';
     if (n.includes('producto') || n.includes('tech')) return 'producto_tech';
-    if (n.includes('modelo')) return 'modelo_negocio';
-    if (n.includes('competencia')) return 'competencia';
+    if (n.includes('modelo') || n.includes('model')) return 'modelo_negocio';
+    if (n.includes('competencia') || n.includes('competition')) return 'competencia';
     if (n.includes('funding') || n.includes('cap table')) return 'funding_cap_table';
     return null;
   }
@@ -61,10 +68,10 @@
     return `<div class="dim-row">
       <div class="dim-head">
         <span class="dim-name">${esc(d.nombre)} <span class="dim-weight">${esc(d.peso)}%</span></span>
-        <span class="dim-foot-inline"><span class="dim-score">${score}/10</span> <span class="conf-badge conf-${esc(d.confianza)}">${esc(d.confianza)}</span></span>
+        <span class="dim-foot-inline"><span class="dim-score">${score}/10</span> <span class="conf-badge conf-${esc(d.confianza)}">${esc(t('conf_' + d.confianza))}</span></span>
       </div>
       <div class="dim-track"><div class="dim-fill ${barClass}" style="width:${pct}%"></div></div>
-      ${justif ? `<details class="dim-more"><summary>Por qué esta nota</summary><p class="dim-justif">${esc(justif)}</p></details>` : ''}
+      ${justif ? `<details class="dim-more"><summary>${t('por_que_nota')}</summary><p class="dim-justif">${esc(justif)}</p></details>` : ''}
     </div>`;
   }
 
@@ -76,7 +83,7 @@
     if (!rondas.length && !series.length && !cifras.length) return '';
 
     const cards = cifras.map((c) => {
-      const noData = !c.valor || c.valor === 'sin datos';
+      const noData = !c.valor || c.valor === 'sin datos' || c.valor === 'no data';
       return `<div class="stat-card${noData ? ' stat-nodata' : ''}">
         <div class="stat-value">${esc(c.valor)}</div>
         <div class="stat-label">${esc(c.etiqueta)}</div>
@@ -86,23 +93,10 @@
 
     let roundsHtml = '';
     if (rondas.length) {
-      const max = Math.max(...rondas.map((x) => Number(x.importe_eur) || 0), 1);
-      roundsHtml = '<div class="rounds-chart"><div class="chart-title">Financiación levantada</div>' + rondas.map((x) => {
-        const v = Number(x.importe_eur) || 0;
-        if (!v) {
-          return `<div class="round-row">
-            <div class="round-meta"><span class="round-year">${esc(x.anio)}</span><span class="round-name">${esc(x.ronda)}</span></div>
-            <div class="round-track"><div class="round-bar round-nodata" style="width:26%"><span>sin datos</span></div></div>
-            <div class="round-inv">${esc(x.inversores)}</div>
-          </div>`;
-        }
-        const pct = Math.max(14, Math.round((v / max) * 100));
-        return `<div class="round-row">
-          <div class="round-meta"><span class="round-year">${esc(x.anio)}</span><span class="round-name">${esc(x.ronda)}</span></div>
-          <div class="round-track"><div class="round-bar" style="width:${pct}%"><span>${esc(x.importe_texto)}</span></div></div>
-          <div class="round-inv">${esc(x.inversores)}</div>
-        </div>`;
-      }).join('') + '</div>';
+      roundsHtml = '<div class="rounds-chart"><div class="chart-title">' + t('fin_levantada') + '</div>'
+        + '<table class="rounds-table"><thead><tr><th>' + t('th_anio') + '</th><th>' + t('th_ronda') + '</th><th>' + t('th_importe') + '</th><th>' + t('th_inversores') + '</th></tr></thead><tbody>'
+        + rondas.map((x) => `<tr><td>${esc(x.anio)}</td><td>${esc(x.ronda)}</td><td>${esc(x.importe_texto || t('sin_datos'))}</td><td>${esc(x.inversores || t('sin_datos'))}</td></tr>`).join('')
+        + '</tbody></table></div>';
     }
 
     const seriesHtml = series.filter((s) => (s.puntos || []).length >= 2).map((s) => {
@@ -125,7 +119,7 @@
 
     return `
       <section class="memo-sec">
-        <h3>Métricas financieras</h3>
+        <h3>${t('sec_metricas')}</h3>
         ${cards ? `<div class="stat-cards">${cards}</div>` : ''}
         <div class="charts-grid">${roundsHtml}${seriesHtml}</div>
       </section>`;
@@ -145,10 +139,10 @@
       <tr>
         <td class="c-num">${i + 1}</td>
         <td data-label="Claim">${esc(c.claim)}</td>
-        <td class="c-src" data-label="Fuente interna">${esc(c.fuente_interna)}</td>
-        <td data-label="Verificación externa">${esc(c.verificacion_externa)}</td>
-        <td data-label="Estado"><span class="estado-chip st-${esc(c.estado)}">${ESTADO_LABEL[c.estado] || esc(c.estado)}</span></td>
-        <td class="c-src" data-label="Fuente">${linkify(c.fuente_externa)}</td>
+        <td class="c-src" data-label="${t('cl_fuente_int')}">${esc(c.fuente_interna)}</td>
+        <td data-label="${t('cl_verif')}">${esc(c.verificacion_externa)}</td>
+        <td data-label="${t('cl_estado')}"><span class="estado-chip st-${esc(c.estado)}">${ESTADO_LABEL()[c.estado] || esc(c.estado)}</span></td>
+        <td class="c-src" data-label="${t('cl_fuente')}">${linkify(c.fuente_externa)}</td>
       </tr>`).join('');
 
     const encaje = (memo.encaje || []).map((e) => `
@@ -160,7 +154,7 @@
 
     const redFlags = (memo.red_flags && memo.red_flags.length)
       ? memo.red_flags.map((r, i) => `<div class="flag-row"><span class="flag-num">${String(i + 1).padStart(2, '0')}</span><span>${esc(r)}</span></div>`).join('')
-      : '<p class="snd">No se detectaron red flags relevantes.</p>';
+      : '<p class="snd">' + t('no_redflags') + '</p>';
 
     const preguntas = `<ol class="q-list">${(memo.preguntas || []).map((p) => `<li>${esc(p)}</li>`).join('')}</ol>`;
     const fuentes = `<ol class="src-list">${(memo.fuentes_utilizadas || []).map((f) => `<li>${linkify(f)}</li>`).join('')}</ol>`;
@@ -171,7 +165,7 @@
       <header class="hero ${recoClass}">
         <div class="hero-main">
           ${memo.logo ? `<img class="hero-logo" src="${esc(memo.logo)}" alt="Logo de ${esc(memo.nombre)}" onerror="this.style.display='none'"/>` : ''}
-          <div class="hero-kicker">MEMO DE SCREENING · ${esc(memo.fecha || '')}</div>
+          <div class="hero-kicker">${t('memo_de')} · ${esc(memo.fecha || '')}</div>
           <h2 class="hero-name">${esc(memo.nombre)}</h2>
           <div class="hero-reco">${RECO_ICON[reco] || ''} ${RECO_LABEL[reco] || esc(reco)}</div>
           <div class="hero-chips">${heroChips}</div>
@@ -179,67 +173,67 @@
         </div>
         <div class="hero-score">
           ${gaugeSVG(memo.score_global, reco)}
-          <div class="hero-conf">Confianza global <span class="conf-badge conf-${esc(memo.confianza_global)}">${esc(memo.confianza_global)}</span></div>
+          <div class="hero-conf">${t('conf_global')} <span class="conf-badge conf-${esc(memo.confianza_global)}">${esc(t('conf_' + memo.confianza_global))}</span></div>
         </div>
         <details class="reco-help">
-          <summary>¿Qué significa el veredicto?</summary>
+          <summary>${t('que_veredicto')}</summary>
           <div class="rl-list">
-            <span class="rl-item rl-inv${reco === 'INVESTIGATE' ? ' rl-active' : ''}">🟢 INVESTIGATE (≥65) — sin señales críticas: merece 30 minutos de un inversor</span>
-            <span class="rl-item rl-watch${reco === 'WATCH' ? ' rl-active' : ''}">🟡 WATCH (45-64) — potencial, pero faltan datos: revisar en 3-6 meses</span>
-            <span class="rl-item rl-pass${reco === 'PASS' ? ' rl-active' : ''}">🔴 PASS (<45) — fuera de tesis o red flag crítico</span>
+            <span class="rl-item rl-inv${reco === 'INVESTIGATE' ? ' rl-active' : ''}">${t('rl_inv')}</span>
+            <span class="rl-item rl-watch${reco === 'WATCH' ? ' rl-active' : ''}">${t('rl_watch')}</span>
+            <span class="rl-item rl-pass${reco === 'PASS' ? ' rl-active' : ''}">${t('rl_pass')}</span>
           </div>
         </details>
       </header>
 
       <section class="memo-sec">
-        <h3>Resumen ejecutivo</h3>
+        <h3>${t('sec_resumen')}</h3>
         <p class="exec-sum">${esc(memo.resumen_ejecutivo)}</p>
         <div class="why-grid">
-          <div class="why-block"><strong>Why now?</strong><p>${esc(memo.why_now)}</p></div>
-          <div class="why-block"><strong>Why this company?</strong><p>${esc(memo.why_this_company)}</p></div>
+          <div class="why-block"><strong>${t('why_now')}</strong>${bullets(memo.why_now)}</div>
+          <div class="why-block"><strong>${t('why_company')}</strong>${bullets(memo.why_this_company)}</div>
         </div>
       </section>
 
       ${metricasSection(memo.metricas)}
 
       <section class="memo-sec">
-        <h3>Scoring por dimensión</h3>
-        <p class="method-note">Cada dimensión se puntúa de 0 a 10 según la evidencia citada debajo de cada barra; la nota global es la media ponderada con los pesos de la rúbrica. No es un benchmark de mercado, es criterio estructurado para priorizar el tiempo del inversor.</p>
+        <h3>${t('sec_scoring')}</h3>
+        <p class="method-note">${t('method_note')}</p>
         <div class="dims-grid">${dims}</div>
       </section>
 
       <section class="memo-sec">
-        <h3>Verificación de claims</h3>
+        <h3>${t('sec_claims')}</h3>
         <table class="claims-table">
-          <thead><tr><th>#</th><th>Claim</th><th>Fuente interna</th><th>Verificación externa</th><th>Estado</th><th>Fuente</th></tr></thead>
+          <thead><tr><th>#</th><th>Claim</th><th>${t('cl_fuente_int')}</th><th>${t('cl_verif')}</th><th>${t('cl_estado')}</th><th>${t('cl_fuente')}</th></tr></thead>
           <tbody>${claims}</tbody>
         </table>
       </section>
 
       <section class="memo-sec">
-        <h3>Encaje con la tesis</h3>
+        <h3>${t('sec_encaje')}</h3>
         <div class="fit-list">${encaje}</div>
       </section>
 
       <section class="memo-sec">
-        <h3>Red flags y riesgos clave</h3>
+        <h3>${t('sec_redflags')}</h3>
         <div class="flags-list">${redFlags}</div>
       </section>
 
       <section class="memo-sec">
-        <h3>5 preguntas que debería hacer el inversor</h3>
+        <h3>${t('sec_preguntas')}</h3>
         ${preguntas}
       </section>
 
       <details class="memo-sec collapsible">
-        <summary><h3>Fuentes utilizadas</h3></summary>
+        <summary><h3>${t('sec_fuentes')}</h3></summary>
         ${fuentes}
       </details>
 
       <footer class="memo-foot">
         <span>Web: ${linkify(memo.web)}</span>
-        <span>Fuentes internas: ${esc((memo.fuentes || []).join(', ') || 'web')}</span>
-        <span>Guía de priorización, no predicción. La decisión es del inversor.</span>
+        <span>${t('fuentes_int')}: ${esc((memo.fuentes || []).join(', ') || 'web')}</span>
+        <span>${t('foot_guia')}</span>
       </footer>
     </article>`;
   }

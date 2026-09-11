@@ -19,6 +19,7 @@ const upload = multer({
 });
 
 const MEMOS_DIR = path.join(__dirname, 'memos');
+const MEMOS_EN_DIR = path.join(__dirname, 'memos-en');
 // En Vercel el filesystem del proyecto es de solo lectura: los memos generados van a /tmp.
 const GENERATED_DIR = process.env.VERCEL
   ? path.join('/tmp', '.generated')
@@ -61,12 +62,13 @@ function findStaticLogo(id) {
   } catch { return null; }
 }
 
-function listExamples() {
-  return fs.readdirSync(MEMOS_DIR)
+function listExamples(lang) {
+  const dir = lang === 'en' && fs.existsSync(MEMOS_EN_DIR) ? MEMOS_EN_DIR : MEMOS_DIR;
+  return fs.readdirSync(dir)
     .filter((f) => f.endsWith('.json'))
     .map((f) => {
       const id = f.replace(/\.json$/, '');
-      const memo = JSON.parse(fs.readFileSync(path.join(MEMOS_DIR, f), 'utf8'));
+      const memo = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
       return {
         id,
         nombre: memo.nombre,
@@ -78,10 +80,11 @@ function listExamples() {
     });
 }
 
-function readMemo(id) {
+function readMemo(id, lang) {
   const safe = /^[a-z0-9-]+$/i.test(id) ? id : null;
   if (!safe) return null;
-  for (const dir of [MEMOS_DIR, GENERATED_DIR]) {
+  const dirs = lang === 'en' && fs.existsSync(MEMOS_EN_DIR) ? [MEMOS_EN_DIR, GENERATED_DIR] : [MEMOS_DIR, GENERATED_DIR];
+  for (const dir of dirs) {
     const p = path.join(dir, `${safe}.json`);
     if (fs.existsSync(p)) return JSON.parse(fs.readFileSync(p, 'utf8'));
   }
@@ -94,14 +97,14 @@ app.get('/memo/:id', (req, res) => {
 
 app.get('/api/examples', (req, res) => {
   try {
-    res.json({ examples: listExamples() });
+    res.json({ examples: listExamples(req.query.lang) });
   } catch (err) {
     res.status(500).json({ error: 'No se pudieron cargar los ejemplos' });
   }
 });
 
 app.get('/api/memo/:id', (req, res) => {
-  const memo = readMemo(req.params.id);
+  const memo = readMemo(req.params.id, req.query.lang);
   if (!memo) return res.status(404).json({ error: 'Memo no encontrado' });
   res.json({ memo });
 });

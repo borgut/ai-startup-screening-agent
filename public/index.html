@@ -13,51 +13,52 @@
     <div class="wrap">
       <div class="masthead-top">
         <span class="kicker brand">Startup Scouting</span>
+        <div class="lang-switch"><button class="lang-btn" data-lang="es">ES</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="en">EN</button></div>
       </div>
-      <h1 class="display">¿Merece esta startup <em>30 minutos</em> de un inversor?</h1>
-      <p class="lede">Lee la web y el deck, busca fuentes externas y contrasta cada claim uno a uno. Lo que no se puede verificar queda marcado como «sin datos».</p>
+      <h1 class="display" data-i18n="h1">¿Merece esta startup <em>30 minutos</em> de un inversor?</h1>
+      <p class="lede" data-i18n="lede">Lee la web y el deck, busca fuentes externas y contrasta cada claim uno a uno. Lo que no se puede verificar queda marcado como «sin datos».</p>
       <details class="verdict-help">
-        <summary>¿Qué significa el veredicto?</summary>
-        <p class="verdict-legend"><span class="vl-inv">🟢 <strong>INVESTIGATE</strong> (≥65): merece 30 minutos de un inversor</span><span class="vl-watch">🟡 <strong>WATCH</strong> (45-64): faltan datos, revisar en 3-6 meses</span><span class="vl-pass">🔴 <strong>PASS</strong> (&lt;45): fuera de tesis o red flag crítico</span></p>
+        <summary data-i18n="que_veredicto">¿Qué significa el veredicto?</summary>
+        <p class="verdict-legend"><span class="vl-inv" data-i18n="vl_inv">🟢 <strong>INVESTIGATE</strong> (≥65): merece 30 minutos de un inversor</span><span class="vl-watch" data-i18n="vl_watch">🟡 <strong>WATCH</strong> (45-64): faltan datos, revisar en 3-6 meses</span><span class="vl-pass" data-i18n="vl_pass">🔴 <strong>PASS</strong> (&lt;45): fuera de tesis o red flag crítico</span></p>
       </details>
       <div class="steps">
-        <span class="step"><b>01</b> Lee la web y el deck</span>
-        <span class="step"><b>02</b> Contrasta cada claim con fuentes externas</span>
-        <span class="step"><b>03</b> Score de 0 a 100 y veredicto</span>
+        <span class="step" data-i18n="step1"><b>01</b> Lee la web y el deck</span>
+        <span class="step" data-i18n="step2"><b>02</b> Contrasta cada claim con fuentes externas</span>
+        <span class="step" data-i18n="step3"><b>03</b> Score de 0 a 100 y veredicto</span>
       </div>
     </div>
   </header>
 
   <main class="wrap">
     <section class="card" id="form-card">
-      <h2>Nuevo screening</h2>
+      <h2 data-i18n="nuevo_screening">Nuevo screening</h2>
       <form id="screen-form">
-        <label for="url">Web de la startup <span class="req">*</span></label>
+        <label for="url"><span data-i18n="label_url">Web de la startup</span> <span class="req">*</span></label>
         <input type="text" id="url" name="url" placeholder="https://www.startup.com" required />
 
-        <label for="deck">Pitch deck (PDF, opcional)</label>
+        <label for="deck" data-i18n="label_deck">Pitch deck (PDF, opcional)</label>
         <input type="file" id="deck" name="deck" accept="application/pdf,.pdf" />
 
-        <label for="linkedin">LinkedIn del fundador/a (opcional)</label>
+        <label for="linkedin" data-i18n="label_linkedin">LinkedIn del fundador/a (opcional)</label>
         <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/..." />
 
-        <label for="context">Contexto adicional (opcional)</label>
-        <textarea id="context" name="context" rows="3" placeholder="Todo lo que sepas: ronda que levantan, cómo llegó a ti, métricas declaradas..."></textarea>
+        <label for="context" data-i18n="label_context">Contexto adicional (opcional)</label>
+        <textarea id="context" name="context" rows="3" data-i18n-ph="ph_context" placeholder="Todo lo que sepas: ronda que levantan, cómo llegó a ti, métricas declaradas..."></textarea>
 
-        <button type="submit" id="submit-btn">Analizar startup &rarr;</button>
+        <button type="submit" id="submit-btn" data-i18n="btn_analizar">Analizar startup &rarr;</button>
         <p class="form-note" id="form-note"></p>
       </form>
     </section>
 
     <section class="card" id="examples-card">
-      <h2>Ejemplos reales</h2>
-      <p class="muted">Cinco startups reales pasadas por el filtro, de principio a fin. Lo que no se puede verificar queda marcado como «sin datos».</p>
+      <h2 data-i18n="ejemplos">Ejemplos reales</h2>
+      <p class="muted" data-i18n="ejemplos_muted">Cinco startups reales pasadas por el filtro, de principio a fin. Lo que no se puede verificar queda marcado como «sin datos».</p>
       <div id="examples-list" class="examples-grid"></div>
     </section>
 
     <section id="loading" class="hidden">
       <div class="spinner"></div>
-      <p id="loading-text">Leyendo la web, contrastando fuentes externas y redactando el memo. Suele llevar un par de minutos.</p>
+      <p id="loading-text" data-i18n="loading">Leyendo la web, contrastando fuentes externas y redactando el memo. Suele llevar un par de minutos.</p>
     </section>
 
     <section id="memo-container" class="hidden"></section>
@@ -65,11 +66,12 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>El score 0-100 es una guía de priorización, no una predicción. La decisión de invertir es siempre del inversor; la herramienta decide si merece 30 minutos.</p>
-      <p class="footer-sign">Startup Scouting · hecho a mano en Madrid · 2026</p>
+      <p data-i18n="footer_disclaimer">El score 0-100 es una guía de priorización, no una predicción. La decisión de invertir es siempre del inversor; la herramienta decide si merece 30 minutos.</p>
+      <p class="footer-sign" data-i18n="footer_sign">Startup Scouting · hecho a mano en Madrid · 2026</p>
     </div>
   </footer>
 
+  <script src="/i18n.js"></script>
   <script src="/render.js"></script>
   <script src="/app.js"></script>
 </body>

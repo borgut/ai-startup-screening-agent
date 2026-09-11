@@ -9,9 +9,11 @@
 </head>
 <body class="theme-poster">
   <main class="wrap">
-    <p style="margin:22px 0 4px"><a class="back-link" href="/">&larr; Volver al inicio</a></p>
-    <section id="memo-container"><p class="muted" style="padding:40px 0;text-align:center">Cargando memo...</p></section>
+    <div class="memo-topbar"><a class="back-link" href="/" data-i18n="volver_inicio">&larr; Volver al inicio</a>
+      <div class="lang-switch"><button class="lang-btn" data-lang="es">ES</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="en">EN</button></div></div>
+    <section id="memo-container"><p class="muted" style="padding:40px 0;text-align:center" data-i18n="cargando_memo">Cargando memo...</p></section>
   </main>
+  <script src="/i18n.js"></script>
   <script src="/render.js"></script>
   <script>
     (() => {
@@ -24,11 +26,13 @@
         else { document.body.classList.add('theme-poster'); }
       }
     })();
+    document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+    applyI18n();
     (async () => {
       const id = location.pathname.split('/').pop();
       const container = document.getElementById('memo-container');
       try {
-        const res = await fetch('/api/memo/' + id);
+        const res = await fetch('/api/memo/' + id + '?lang=' + getLang());
         const data = await res.json();
         if (!res.ok || !data.memo) {
           container.innerHTML = '<p class="form-note error" style="padding:40px 0">' + (data.error || 'Memo no encontrado') + '</p>';

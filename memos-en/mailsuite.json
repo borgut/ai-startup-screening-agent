@@ -1,0 +1,195 @@
+{
+  "_demo": true,
+  "nombre": "Mailsuite",
+  "web": "https://mailsuite.com",
+  "sector": "B2B SaaS / productivity (email tracking for Gmail)",
+  "stage": "no data (mature company, mostly bootstrapped)",
+  "geografia": "HQ in Barcelona; global English-language product, declared presence in the UK",
+  "fecha": "2026-09-11",
+  "fuentes": [
+    "web",
+    "LinkedIn",
+    "Crunchbase/CB Insights",
+    "news"
+  ],
+  "recomendacion": "WATCH",
+  "score_global": 62,
+  "confianza_global": "Media",
+  "justificacion": "Serial founder with two verified exits (Panoramio to Google, Loquo to eBay) and a product with millions of users, but the email tracking market is mid-sized and crowded, funding is old and small, and user figures are self-reported and inconsistent across pages.",
+  "dimensiones": [
+    {
+      "nombre": "Founders",
+      "peso": 25,
+      "score": 9,
+      "confianza": "Alta"
+    },
+    {
+      "nombre": "Market",
+      "peso": 20,
+      "score": 5,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Traction",
+      "peso": 15,
+      "score": 6,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Product / Tech",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Business model",
+      "peso": 10,
+      "score": 6,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Competition",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Funding / cap table",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Media"
+    }
+  ],
+  "resumen_ejecutivo": "Mailsuite (formerly Mailtrack) is an email tracking extension for Gmail: read receipts, link tracking and campaigns, on a freemium model. Founded in Barcelona in 2013 by Eduardo Manchón (Panoramio, sold to Google; Loquo, sold to eBay), Raúl Ramos (CTO) and Nacho González-Barros. It claims between 2 and 3M+ users depending on the page, with an estimated team of 40-50 people and very limited total external funding (~$0.9M, with 4Founders among the investors).",
+  "claims": [
+    {
+      "claim": "More than 3 million users trust the product",
+      "fuente_interna": "website (home)",
+      "verificacion_externa": "The company's own 'about' page states 2 million: self-reported figure inconsistent across pages; the extension's install count on the Chrome Web Store would be the natural cross-check (not reviewed in this analysis)",
+      "estado": "no_verificada",
+      "fuente_externa": "https://mailsuite.com/en/about"
+    },
+    {
+      "claim": "Founding team: Eduardo Manchón (CEO), Raúl Ramos (CTO), Nacho González-Barros",
+      "fuente_interna": "website (about)",
+      "verificacion_externa": "Corroborated by the CEO's LinkedIn and public profiles",
+      "estado": "verificada",
+      "fuente_externa": "https://www.linkedin.com/in/eduardomanchon"
+    },
+    {
+      "claim": "Eduardo Manchón is a serial founder with exits (Panoramio to Google, Loquo to eBay)",
+      "fuente_interna": "CEO's LinkedIn",
+      "verificacion_externa": "Confirmed on his public profile ('Acquired x2, Ex Google') and widely documented in the Spanish tech press",
+      "estado": "verificada",
+      "fuente_externa": "https://www.linkedin.com/in/eduardomanchon"
+    },
+    {
+      "claim": "Limited total funding (~$0.9M across 2 rounds, with 4Founders and Bewater among the investors)",
+      "fuente_interna": "aggregators (CB Insights, Crunchbase)",
+      "verificacion_externa": "CB Insights records secondary market rounds of ~$0.3M (2019-2020) with 4Founders as investor; consistent with a mostly bootstrapped company",
+      "estado": "verificada",
+      "fuente_externa": "https://www.cbinsights.com/company/mailsuite/financials"
+    },
+    {
+      "claim": "Team of 40-50 people",
+      "fuente_interna": "LinkedIn-based aggregator",
+      "verificacion_externa": "Third-party estimate with a slight year-over-year decline (-4/5%); the company publishes no official figure",
+      "estado": "no_verificada",
+      "fuente_externa": "https://www.linkedin.com/company/mailsuite"
+    }
+  ],
+  "analisis": {
+    "mercado": "Email productivity for professionals and SMBs: a real but mid-sized, mature market, with much of the value captured by suites (HubSpot, Microsoft, Google) and sales engagement tools. Modest growth; hard to size with external data as a standalone market. Not an obvious market for a €300M+ company on its own.",
+    "producto_tech": "Mature, polished Chrome/Gmail extension (open tracking, links, campaigns, signatures). Functional but replicable: the technical core (open pixel, click tracking) is well known, and dependence on Google's APIs and policies (Gmail, Chrome Web Store) is structural. Defensibility: brand and installed base rather than technology.",
+    "traccion": "Claims between 2M and 3M+ users (mostly free, presumably); public reviews on the Chrome Web Store and comparison sites would be the natural verification. A stable team of 40-50 suggests a profitable business, but not explosive growth. Revenue, paid conversion and retention: no data.",
+    "modelo_negocio": "Freemium SaaS with public monthly/annual subscription pricing. A clear, recurring, capital-efficient model (it has barely consumed external funding), but email productivity ARPU is low and the conversion ceiling of a free extension limits scale. Unit economics: no data.",
+    "founders": "Eduardo Manchón has one of the best track records in the Spanish ecosystem (Panoramio sold to Google, Loquo to eBay; ex-Google), joined by co-founding CTO Raúl Ramos and Nacho González-Barros. Full-time, complementary team with 12+ years of commitment to the company. Comfortably passes the team filter of a typical early-stage fund.",
+    "competencia": "Boomerang, Mixmax, Yesware, the historical Mailtrack competitors and, above all, Gmail's native features and sales engagement suites (HubSpot free, Outreach). Differentiation: simplicity and installed base, not barriers. Who wins today: suites capture the enterprise budget; Mailsuite wins the individual/SMB segment.",
+    "funding_cap_table": "Total external funding ~$0.9M (CB Insights: secondary rounds 2019-2020 with 4Founders and Bewater). Essentially bootstrapped: presumably a clean cap table with the team in control, but no known current round and no declared need for capital. If they are not raising, there is no entry; if they raise, the size would be small."
+  },
+  "why_now": "There is no clear technological why now: the product has been mature for years. The only tailwind is the professionalization of email sales in SMBs and the monetization of freemium bases with AI applied to email. If Mailsuite turns its installed base into a communication copilot, there is an option to re-accelerate.",
+  "why_this_company": "The unfair advantage is the founder: Manchón has already built and sold two companies and has spent a decade accumulating an installed base and brand in Gmail. Few Spanish bootstrapped companies sustain millions of users with 40 people.",
+  "encaje": [
+    {
+      "criterio": "Sector (B2B SaaS, fintech, AI, traveltech, cybersecurity, business services, data)",
+      "encaja": "si",
+      "detalle": "B2B/prosumer productivity SaaS"
+    },
+    {
+      "criterio": "Stage (pre-seed to Series A)",
+      "encaja": "no",
+      "detalle": "Mature company (2013) with no known early round in progress"
+    },
+    {
+      "criterio": "Geography (Spain / Europe, occasionally LatAm)",
+      "encaja": "si",
+      "detalle": "HQ Barcelona, global product"
+    },
+    {
+      "criterio": "Ticket (entry ~€250k-2M)",
+      "encaja": "parcial",
+      "detalle": "Historical stakes (secondary ~$0.3M) fit the ticket, but there is no known open round"
+    },
+    {
+      "criterio": "International ambition (€300M+)",
+      "encaja": "parcial",
+      "detalle": "Global product, but the standalone email tracking market can hardly sustain a €300M+ company"
+    }
+  ],
+  "red_flags": [
+    "Inconsistency in the user figure between the home page (3M+) and the about page (2M): suggests outdated or inflated marketing metrics.",
+    "Structural dependence on Google: changes to Gmail APIs, Chrome Web Store policies or native tracking features can erode the product (precedent: open-pixel blocking for privacy).",
+    "Flat or slightly declining headcount according to aggregators: no external signal of accelerated growth.",
+    "Stage out of thesis for a new entry: 2013 company, mostly bootstrapped, no known round in progress.",
+    "Mid-sized standalone market: without product expansion, the venture ceiling is limited."
+  ],
+  "preguntas": [
+    "How many paying users are there today out of the claimed 2-3M base, and what are the conversion rate and monthly churn?",
+    "What annual revenue does the company generate and is it profitable? (No public data: it is the first question to resolve.)",
+    "What percentage of active users was lost or affected by Apple Mail privacy changes and Gmail's pixel restrictions?",
+    "Is there any intention to raise capital or sell the company? What would you use a €1-2M entry for?",
+    "What is the roadmap for Mailsuite to become 'more than' tracking (AI, communication copilot, light CRM), and how would you validate that the installed base would adopt it?"
+  ],
+  "fuentes_utilizadas": [
+    "https://mailsuite.com/",
+    "https://mailsuite.com/en/about",
+    "https://www.linkedin.com/in/eduardomanchon",
+    "https://www.linkedin.com/company/mailsuite",
+    "https://www.cbinsights.com/company/mailsuite/financials"
+  ],
+  "metricas": {
+    "rondas": [
+      {
+        "anio": "2019–2020",
+        "ronda": "Secondary rounds",
+        "importe_eur": 800000,
+        "importe_texto": "~$0.9M (total)",
+        "inversores": "4Founders, Bewater"
+      }
+    ],
+    "series": [],
+    "otras_cifras": [
+      {
+        "etiqueta": "Claimed users",
+        "valor": "2M–3M+",
+        "contexto": "inconsistent: 2M on about vs 3M+ on home"
+      },
+      {
+        "etiqueta": "Employees",
+        "valor": "40–50",
+        "contexto": "third-party estimate, ~stable"
+      },
+      {
+        "etiqueta": "Revenue / ARR",
+        "valor": "no data",
+        "contexto": "publishes no figures"
+      },
+      {
+        "etiqueta": "Total external funding",
+        "valor": "~$0.9M",
+        "contexto": "CB Insights; mostly bootstrapped"
+      }
+    ]
+  },
+  "logo": "/logos/mailsuite.png"
+}

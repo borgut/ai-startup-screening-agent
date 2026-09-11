@@ -31,7 +31,7 @@ function linkify(url) {
 
 function showMemo(memo) {
   const container = $('#memo-container');
-  container.innerHTML = `<span class="back-link" id="back-link">&larr; Volver al formulario</span>` + renderMemoHTML(memo);
+  container.innerHTML = `<span class="back-link" id="back-link">${t('volver_form')}</span>` + renderMemoHTML(memo);
   container.classList.remove('hidden');
   $('#loading').classList.add('hidden');
   container.scrollIntoView({ behavior: 'smooth' });
@@ -43,7 +43,7 @@ function showMemo(memo) {
 
 async function loadExamples() {
   try {
-    const res = await fetch('/api/examples');
+    const res = await fetch('/api/examples?lang=' + getLang());
     const data = await res.json();
     const list = $('#examples-list');
     list.innerHTML = data.examples.map((e) => {
@@ -58,13 +58,13 @@ async function loadExamples() {
     }).join('');
     list.querySelectorAll('.example-card').forEach((card) => {
       card.addEventListener('click', async () => {
-        const res2 = await fetch(`/api/memo/${card.dataset.id}`);
+        const res2 = await fetch(`/api/memo/${card.dataset.id}?lang=${getLang()}`);
         const data2 = await res2.json();
         if (data2.memo) showMemo(data2.memo);
       });
     });
   } catch {
-    $('#examples-list').innerHTML = '<p class="muted">No se pudieron cargar los ejemplos.</p>';
+    $('#examples-list').innerHTML = '<p class="muted">' + t('err_ejemplos') + '</p>';
   }
 }
 
@@ -73,7 +73,7 @@ async function checkStatus() {
     const res = await fetch('/api/status');
     const data = await res.json();
     if (!data.api_key_configured) {
-      $('#form-note').textContent = 'El análisis al momento está en pausa. Mientras tanto, los ejemplos de abajo están siempre disponibles.';
+      $('#form-note').textContent = t('form_note');
     }
   } catch { /* silencioso */ }
 }
@@ -102,18 +102,20 @@ $('#screen-form').addEventListener('submit', async (ev) => {
     if (!res.ok) {
       $('#loading').classList.add('hidden');
       note.classList.add('error');
-      note.textContent = data.error || 'Error desconocido.';
+      note.textContent = data.error || t('err_desconocido');
     } else {
       showMemo(data.memo);
     }
   } catch (err) {
     $('#loading').classList.add('hidden');
     note.classList.add('error');
-    note.textContent = 'Error de red o del servidor: ' + err.message;
+    note.textContent = t('err_red') + err.message;
   } finally {
     btn.disabled = false;
   }
 });
 
+document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+applyI18n();
 loadExamples();
 checkStatus();

@@ -1,0 +1,207 @@
+{
+  "_demo": true,
+  "nombre": "Enginy (antes Genesy)",
+  "web": "https://www.enginy.ai",
+  "sector": "Applied AI / B2B SaaS (AI agents for sales prospecting)",
+  "stage": "Seed (€5M, Jan 2025)",
+  "geografia": "Offices in Barcelona and Madrid; expansion plan to the US, UK, Germany, Italy, France and the Netherlands",
+  "fecha": "2026-09-11",
+  "fuentes": [
+    "web",
+    "news",
+    "trade press",
+    "investor blogs"
+  ],
+  "recomendacion": "INVESTIGATE",
+  "score_global": 71,
+  "confianza_global": "Media",
+  "justificacion": "Full sector and stage fit with the thesis (B2B SaaS AI at seed, Samaipata + KFund + Itnig syndicate verified in the press) and cited enterprise customers; the limitation is that all traction is self-reported, the sales agents market is hyper-competitive, and the recent rebrand from Genesy to Enginy remains unexplained.",
+  "dimensiones": [
+    {
+      "nombre": "Founders",
+      "peso": 25,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Market",
+      "peso": 20,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Traction",
+      "peso": 15,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Product / Tech",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Business model",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Competition",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Alta"
+    },
+    {
+      "nombre": "Funding / cap table",
+      "peso": 10,
+      "score": 8,
+      "confianza": "Alta"
+    }
+  ],
+  "resumen_ejecutivo": "Enginy (founded as Genesy in 2023 and renamed since: genesy.ai now redirects to enginy.ai) is a platform of AI agents for B2B sales that identifies, qualifies and contacts potential customers autonomously, combining more than 30 data sources, smart workflows and its own AI voice system. Founded by Kai Brandt with offices in Barcelona and Madrid, it closed a €5M seed round in January 2025 led by Samaipata with KFund and Itnig, and cites Factorial, Sequra, Metricool and Red Points as customers.",
+  "claims": [
+    {
+      "claim": "€5M seed round (Jan 2025) led by Samaipata, with existing investors KFund and Itnig",
+      "fuente_interna": "press release",
+      "verificacion_externa": "Confirmed by EU-Startups, Cinco Días and the KFund blog with the same amounts and investors; Tech.eu Funding Explorer records €5.5M total across 2 rounds",
+      "estado": "verificada",
+      "fuente_externa": "https://www.eu-startups.com/2025/01/genesy-secures-e5-million-in-landmark-funding-to-further-b2b-sales-with-ai-powered-agents/"
+    },
+    {
+      "claim": "Customers such as Factorial, Sequra, Metricool and Red Points",
+      "fuente_interna": "press release",
+      "verificacion_externa": "Cited in the company's own round coverage; no public confirmation from the customers and no volume data",
+      "estado": "no_verificada",
+      "fuente_externa": "https://www.eu-startups.com/2025/01/genesy-secures-e5-million-in-landmark-funding-to-further-b2b-sales-with-ai-powered-agents/"
+    },
+    {
+      "claim": "Multiplies sales team productivity by up to 10x and significantly reduces operating costs",
+      "fuente_interna": "website and press release",
+      "verificacion_externa": "Marketing claim with no published customer case to support it",
+      "estado": "no_verificada",
+      "fuente_externa": "https://www.enginy.ai"
+    },
+    {
+      "claim": "The company operates today as Enginy: genesy.ai redirects to enginy.ai, presented as an all-in-one prospecting, enrichment and outreach platform",
+      "fuente_interna": "direct site check (HTTP redirect and current website)",
+      "verificacion_externa": "Verified directly in this analysis; the reason and exact date of the name change are no data",
+      "estado": "verificada",
+      "fuente_externa": "https://www.enginy.ai"
+    },
+    {
+      "claim": "Team of more than 20 people in Jan 2025, planning to reach 40 during 2025",
+      "fuente_interna": "press release",
+      "verificacion_externa": "Self-reported in the round coverage; no independent cross-check",
+      "estado": "no_verificada",
+      "fuente_externa": "https://www.eu-startups.com/2025/01/genesy-secures-e5-million-in-landmark-funding-to-further-b2b-sales-with-ai-powered-agents/"
+    }
+  ],
+  "analisis": {
+    "mercado": "AI-driven sales automation (prospecting, enrichment, outreach and digital SDR) is one of the most active categories in B2B software, with real budget shifting from SDR headcount to tools. A large, global market by construction. The risk is saturation: the perceived entry barrier is low and budgets switch tools quickly, which demands provable differentiation and retention.",
+    "producto_tech": "All-in-one platform integrating more than 30 data sources, smart workflows and its own AI voice system to identify, qualify and contact prospects autonomously. Combining data + agent + voice in a single product is the declared differentiation versus stacks of separate tools. Real maturity of the autonomous agent and data quality: not externally verified.",
+    "traccion": "They cite well-known SaaS customers from the Spanish ecosystem (Factorial, Sequra, Metricool, Red Points) and a 20+ person team within months of the seed. All self-reported: revenue, growth, retention and real platform usage are no public data. The €5M round with a quality syndicate is the strongest external signal available.",
+    "modelo_negocio": "B2B SaaS, presumably subscription per seat or per agent usage volume, with natural expansion to more sales teams. Recurring and scalable if churn is contained, which is critical in a category where tools are tried and abandoned quickly. Pricing, ARPA and retention: no data.",
+    "founders": "Kai Brandt (CEO and founder), backed by the Itnig ecosystem (venture builder with B2B SaaS experience) since the earliest rounds. A young founder with declared global ambition plus Itnig's operational support reduces part of the first-time risk, but the press only profiles the CEO: full founding team composition and prior track records, no data in this analysis.",
+    "competencia": "Hyper-competitive category: 11x, Artisan, Clay, Apollo.io, Amplemarket, plus sales engagement incumbents (Outreach, Salesloft) adding their own agents. Competing requires better data or better agent execution, and international competitors are heavily capitalized. Enginy's defensible edge would be the integrated data+agent+voice system and the multilingual focus: still to be proven.",
+    "funding_cap_table": "€5M seed in Jan 2025 led by Samaipata with KFund and Itnig as existing backers; Tech.eu Funding Explorer records €5.5M total across 2 rounds, implying a small prior pre-seed (exact amount: no data). A first-tier syndicate for the Spanish ecosystem and a presumably healthy cap table. Stage and ticket fully within a typical early-stage fund's entry range, although the round is already closed."
+  },
+  "why_now": "LLMs have made the digital SDR that researches, personalizes and converses viable for the first time; sales teams, under efficiency pressure, are reallocating budget from headcount to agents. Whoever consolidates data + agent + voice in a single layer during this window can define the category in non-English-speaking markets, still poorly covered by the American leaders.",
+  "why_this_company": "One of the few Spanish teams building the end-to-end sales agent (data + qualification + contact + voice) instead of one piece of the stack, with Itnig backing in B2B SaaS and cited enterprise customers from the ecosystem: if execution follows, the multilingual focus is a defensible wedge against the American players.",
+  "encaje": [
+    {
+      "criterio": "Sector (B2B SaaS, fintech, AI, traveltech, cybersecurity, business services, data)",
+      "encaja": "si",
+      "detalle": "Applied AI in B2B SaaS: core of the thesis"
+    },
+    {
+      "criterio": "Stage (pre-seed to Series A)",
+      "encaja": "si",
+      "detalle": "€5M seed (Jan 2025): stage fully in range"
+    },
+    {
+      "criterio": "Geography (Spain / Europe, occasionally LatAm)",
+      "encaja": "si",
+      "detalle": "Barcelona and Madrid, with European and US expansion plan"
+    },
+    {
+      "criterio": "Ticket (entry ~€250k-2M)",
+      "encaja": "parcial",
+      "detalle": "Ticket in range, but the seed is already closed: entry would depend on an extension or the next round"
+    },
+    {
+      "criterio": "International ambition (€300M+)",
+      "encaja": "si",
+      "detalle": "Declared vision of leading 'digital employees' with expansion to 6 markets"
+    }
+  ],
+  "metricas": {
+    "rondas": [
+      {
+        "anio": "2023–2024",
+        "ronda": "Pre-seed",
+        "importe_eur": null,
+        "importe_texto": "no data (Tech.eu records €5.5M total across 2 rounds)",
+        "inversores": "KFund, Itnig (per seed press coverage)"
+      },
+      {
+        "anio": "2025",
+        "ronda": "Seed",
+        "importe_eur": 5000000,
+        "importe_texto": "€5M",
+        "inversores": "Samaipata (lead), KFund, Itnig"
+      }
+    ],
+    "series": [],
+    "otras_cifras": [
+      {
+        "etiqueta": "Cited customers",
+        "valor": "Factorial, Sequra, Metricool, Red Points",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Team (Jan 2025)",
+        "valor": "20+ people",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Integrated data sources",
+        "valor": "30+",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Claimed productivity",
+        "valor": "up to 10x",
+        "contexto": "marketing claim, no published case"
+      },
+      {
+        "etiqueta": "Revenue / ARR",
+        "valor": "no data",
+        "contexto": ""
+      }
+    ]
+  },
+  "red_flags": [
+    "All cited traction (customers, team, 10x productivity) is self-reported with no independent verification available.",
+    "Hyper-competitive, heavily capitalized category (11x, Artisan, Clay, Apollo, Amplemarket), with commoditization risk from the LLMs themselves.",
+    "Recent name change from Genesy to Enginy with no public explanation: reason and cost in accumulated brand/traction, no data.",
+    "Revenue, retention and real platform usage: no public data; in sales tech, tool churn is high.",
+    "The seed round is already closed: any new entry would require an extension or waiting for the next round."
+  ],
+  "preguntas": [
+    "What ARR and net retention do you have today, and what percentage of the cited customers use the agent recurrently versus as a pilot?",
+    "What measurable difference does the integrated data+agent+voice system offer versus a stack of Clay + outreach tool + human SDR?",
+    "What is the monthly customer churn and what depth of usage (active workflows, managed contacts) separates those who stay?",
+    "What motivated the name change from Genesy to Enginy and what effect did it have on pipeline and accumulated traction?",
+    "How much runway is left after the seed and with what milestones would you open the Series A?"
+  ],
+  "fuentes_utilizadas": [
+    "https://www.enginy.ai",
+    "https://www.eu-startups.com/2025/01/genesy-secures-e5-million-in-landmark-funding-to-further-b2b-sales-with-ai-powered-agents/",
+    "https://cincodias.elpais.com/companias/2025-01-14/samaipata-lidera-una-ronda-de-cinco-millones-de-la-startup-genesy-para-impulsar-su-ia-comercial.html",
+    "https://www.kfund.vc/post/our-investment-in-genesy-upscaling-the-quality-of-outbound-sales",
+    "https://funding.tech.eu/companies/8218A96D-97EC-4F07-83EA-F7C25959A5B8"
+  ],
+  "logo": "/logos/enginy.svg"
+}

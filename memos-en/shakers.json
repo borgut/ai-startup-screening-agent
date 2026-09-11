@@ -1,0 +1,207 @@
+{
+  "_demo": true,
+  "nombre": "Shakers",
+  "web": "https://www.shakersworks.com",
+  "sector": "HRTech / future of work (freelance tech talent platform + AI agents)",
+  "stage": "Series A (€14M, May 2025)",
+  "geografia": "HQ in Madrid; customers in Spain and expansion across Europe (30% of revenue organic from other European markets, self-reported)",
+  "fecha": "2026-09-11",
+  "fuentes": [
+    "web",
+    "news",
+    "trade press",
+    "investor blogs"
+  ],
+  "recomendacion": "INVESTIGATE",
+  "score_global": 72,
+  "confianza_global": "Media",
+  "justificacion": "Founding team of four entrepreneurs with AI and software experience and a €14M Series A led by Partech verified in the press; the limitation is that all traction (customers, 6x growth, recurrence) is self-reported and the model is a talent marketplace, not pure SaaS.",
+  "dimensiones": [
+    {
+      "nombre": "Founders",
+      "peso": 25,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Market",
+      "peso": 20,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Traction",
+      "peso": 15,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Product / Tech",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Business model",
+      "peso": 10,
+      "score": 6,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Competition",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Alta"
+    },
+    {
+      "nombre": "Funding / cap table",
+      "peso": 10,
+      "score": 9,
+      "confianza": "Alta"
+    }
+  ],
+  "resumen_ejecutivo": "Shakers is a Madrid-based talent orchestration platform that connects companies with verified tech freelancers and AI agents to build hybrid project teams. Founded in 2021 by four entrepreneurs (Héctor Mata, Nico de Luis, Adrián de Pedro and Jaime Castillo), it claims more than 10,000 verified freelancers and 450+ client companies, including Microsoft, Inditex and Telefónica. In May 2025 it closed a €14M Series A led by Partech with KFund, Brighteye Ventures, Athos Capital and Wayra to expand across Europe and develop its AI capabilities.",
+  "claims": [
+    {
+      "claim": "€14M Series A (May 2025) led by Partech, with KFund, Brighteye Ventures, Athos Capital and Wayra",
+      "fuente_interna": "corporate blog and press release",
+      "verificacion_externa": "Confirmed by tech.eu, EU-Startups and Partech's own blog with the same amounts and investors",
+      "estado": "verificada",
+      "fuente_externa": "https://tech.eu/2025/05/13/madrid-based-shakers-raises-14m-to-power-the-freelance-workforce-across-europe/"
+    },
+    {
+      "claim": "450+ client companies, including Microsoft, Inditex and Telefónica, and more than 10,000 verified freelancers",
+      "fuente_interna": "website and press release",
+      "verificacion_externa": "Only appears in press releases derived from the company itself; no independent verification of the figure or of the real scope of the relationships with the cited logos",
+      "estado": "no_verificada",
+      "fuente_externa": "https://www.eu-startups.com/2025/05/madrid-based-startup-shakers-raises-e14-million-to-help-businesses-integrate-teams-of-specialised-talent-with-ai/"
+    },
+    {
+      "claim": "6x revenue growth in the last year; 60% of revenue from recurring customers; 30% of revenue organic from other European markets",
+      "fuente_interna": "press release",
+      "verificacion_externa": "Self-reported, with no published absolute base and no independent verification",
+      "estado": "no_verificada",
+      "fuente_externa": "https://www.eu-startups.com/2025/05/madrid-based-startup-shakers-raises-e14-million-to-help-businesses-integrate-teams-of-specialised-talent-with-ai/"
+    },
+    {
+      "claim": "Founding team of four entrepreneurs: Héctor Mata (CEO), Nico de Luis (COO), Adrián de Pedro (CPO) and Jaime Castillo (CRO)",
+      "fuente_interna": "website",
+      "verificacion_externa": "Names and roles corroborated by the round coverage (EU-Startups, tech.eu); the 'serial entrepreneurs' label comes from the company itself",
+      "estado": "verificada",
+      "fuente_externa": "https://www.eu-startups.com/2025/05/madrid-based-startup-shakers-raises-e14-million-to-help-businesses-integrate-teams-of-specialised-talent-with-ai/"
+    },
+    {
+      "claim": "The European IT outsourcing market will grow from €180B to more than €280B by 2030",
+      "fuente_interna": "press release",
+      "verificacion_externa": "Figure provided by Shakers itself; not cross-checked against the study's primary source",
+      "estado": "no_verificada",
+      "fuente_externa": "https://tech.eu/2025/05/13/madrid-based-shakers-raises-14m-to-power-the-freelance-workforce-across-europe/"
+    }
+  ],
+  "analisis": {
+    "mercado": "Project-based tech hiring and IT outsourcing in Europe is a huge market (the company cites €180B growing to €280B by 2030) and is being transformed by AI. The structural trend toward flexible work and hybrid human+agent teams is real and favors the timing. The risk is that it is a historically fragmented market, with intermediation margins and willingness to pay for a platform still to be validated.",
+    "producto_tech": "Matching platform between companies and tech freelancers with end-to-end validation (hard and soft skills, experience, culture fit) over more than 1,000 data points, and its own pre-vetting (Shakers Verified) that promises to eliminate initial interviews. The product vision adds AI agents as team members and integrated services for the freelancer (banking, insurance, productivity) under a 'Freelancer OS' umbrella. Real technical differentiation versus classic marketplaces: plausible but not externally proven.",
+    "traccion": "They declare 450+ client companies (with enterprise logos like Microsoft, Inditex and Telefónica), 10,000+ verified freelancers, 6x year-over-year revenue growth, 60% recurring revenue and 30% of revenue organic outside Spain. Large figures consistent with a €14M Series A led by an international fund, but all self-reported with no absolute base. Revenue, take rate and retention: no public data.",
+    "modelo_negocio": "Talent marketplace/service with a software layer: presumably a margin on the volume billed by freelancers, plus SaaS potential and embedded financial services in the Freelancer OS. The model scales if automated matching reduces curation cost, but talent marketplaces usually require intensive operation on both sides. Take rate, margin and unit economics: no data.",
+    "founders": "Four co-founders with clear roles (CEO, COO, CPO, CRO) and a track record in AI and software development, with declared experience both working as freelancers and hiring talent. A complete, complementary team from day one, which reduces single-founder risk. The press describes them as serial entrepreneurs; no prior exits were verified in this analysis.",
+    "competencia": "A highly contested market on several fronts: tech freelance marketplaces (Malt, Upwork, Fiverr), traditional IT consulting and staffing firms, EOR platforms and, increasingly, AI agents replacing part of freelance work. Shakers' bet is data-validated curation and hybrid human+agent orchestration. Who wins today in Spain: Malt and the consulting firms; no market share data for Shakers.",
+    "funding_cap_table": "€14M Series A in May 2025 led by Partech with KFund, Brighteye Ventures, Athos Capital and Wayra (Telefónica): a quality syndicate mixing international funds and corporate. Previous rounds: no public data on amounts or investors. With the Series A just closed, a new entry at the typical ticket (€250k-2M) is no longer possible except as a future follow-on or extension."
+  },
+  "why_now": "AI is changing how technical work is structured: companies want project teams with integrated agents and professionals are moving to skilled freelance. Traditional IT outsourcing has not evolved in decades, and the pressure to hire specialized talent fast (with the shortage of tech profiles in Europe) opens a window for a new orchestration layer.",
+  "why_this_company": "Four founders covering business, operations, product and sales from the start, three years of a certified matching system and a network of 10,000+ already verified freelancers: data-validated curation is the hard-to-replicate asset, and Partech's backing validates the traction better than any self-reported figure.",
+  "encaje": [
+    {
+      "criterio": "Sector (B2B SaaS, fintech, AI, traveltech, cybersecurity, business services, data)",
+      "encaja": "parcial",
+      "detalle": "Business services / HRTech with a strong AI and software layer; not pure SaaS but a talent marketplace"
+    },
+    {
+      "criterio": "Stage (pre-seed to Series A)",
+      "encaja": "parcial",
+      "detalle": "€14M Series A already closed (May 2025); would only fit as follow-on"
+    },
+    {
+      "criterio": "Geography (Spain / Europe, occasionally LatAm)",
+      "encaja": "si",
+      "detalle": "HQ Madrid, European expansion underway"
+    },
+    {
+      "criterio": "Ticket (entry ~€250k-2M)",
+      "encaja": "parcial",
+      "detalle": "With the Series A closed, a new entry would fall outside the typical entry range"
+    },
+    {
+      "criterio": "International ambition (€300M+)",
+      "encaja": "si",
+      "detalle": "Declared goal of 10,000 hybrid projects in Europe by 2027 and a team with continental ambition"
+    }
+  ],
+  "metricas": {
+    "rondas": [
+      {
+        "anio": "2021–2024",
+        "ronda": "Early rounds",
+        "importe_eur": null,
+        "importe_texto": "no data",
+        "inversores": "no data"
+      },
+      {
+        "anio": "2025",
+        "ronda": "Series A",
+        "importe_eur": 14000000,
+        "importe_texto": "€14M",
+        "inversores": "Partech (lead), KFund, Brighteye Ventures, Athos Capital, Wayra"
+      }
+    ],
+    "series": [],
+    "otras_cifras": [
+      {
+        "etiqueta": "Client companies",
+        "valor": "450+",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Verified freelancers",
+        "valor": "10,000+",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Revenue growth YoY",
+        "valor": "6x",
+        "contexto": "self-reported, no absolute base"
+      },
+      {
+        "etiqueta": "Revenue from recurring customers",
+        "valor": "60%",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Revenue / take rate",
+        "valor": "no data",
+        "contexto": ""
+      }
+    ]
+  },
+  "red_flags": [
+    "All cited traction (450+ customers, 10,000+ freelancers, 6x growth, recurrence) is self-reported with no independent verification available.",
+    "The 6x growth is communicated with no absolute base: without knowing the starting point, it says little about real scale.",
+    "It is a talent marketplace, not pure SaaS: take rate, gross margin and the operating cost of curation are no data and define whether the model scales like software.",
+    "Intensely contested category (Malt, Upwork, IT staffing, and AI itself replacing freelance work).",
+    "€14M Series A already closed: the entry opportunity at the typical early-stage ticket (€250k-2M) has likely passed."
+  ],
+  "preguntas": [
+    "What is the annualized GMV and average take rate, and what share of the 450+ customers bills recurrently versus one-off projects?",
+    "The 6x growth: on what absolute revenue base, and what net retention do you have among enterprise customers?",
+    "What is the current operating cost of curation and vetting per freelancer onboarded, and how does automated matching reduce it?",
+    "The Microsoft, Inditex and Telefónica logos: what business volume do they represent and through what structure (direct, subcontracting, pilot)?",
+    "How does the margin evolve when AI agents execute part of the project, and who is accountable to the customer for deliverable quality?"
+  ],
+  "fuentes_utilizadas": [
+    "https://www.shakersworks.com",
+    "https://tech.eu/2025/05/13/madrid-based-shakers-raises-14m-to-power-the-freelance-workforce-across-europe/",
+    "https://www.eu-startups.com/2025/05/madrid-based-startup-shakers-raises-e14-million-to-help-businesses-integrate-teams-of-specialised-talent-with-ai/",
+    "https://partechpartners.com/news/shakers-raises-14m-to-help-businesses-integrate-teams-of-specialised-talent-with-ai",
+    "https://www.kfund.vc/post/our-investment-in-shakers-orchestrating-the-future-of-freelance-work"
+  ],
+  "logo": "/logos/shakers.png"
+}

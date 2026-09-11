@@ -1,0 +1,249 @@
+{
+  "_demo": true,
+  "nombre": "Vidext",
+  "web": "https://www.vidext.io",
+  "sector": "Applied AI / B2B SaaS (corporate video and content generation)",
+  "stage": "Series A (€6M, Sep 2025)",
+  "geografia": "HQ in Valencia; customers in more than 30 countries; announced expansion to the UK and US",
+  "fecha": "2026-09-11",
+  "fuentes": [
+    "web",
+    "news",
+    "LinkedIn",
+    "national press"
+  ],
+  "recomendacion": "INVESTIGATE",
+  "score_global": 72,
+  "confianza_global": "Media",
+  "justificacion": "Declared 350% growth with nameable enterprise customers and two rounds verified in the press (€2M in 2024, €6M Series A in 2025 led by Flashpoint); the limitation is that revenue and retention are self-reported and the category (AI video) is hyper-competitive.",
+  "dimensiones": [
+    {
+      "nombre": "Founders",
+      "peso": 25,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Market",
+      "peso": 20,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Traction",
+      "peso": 15,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Product / Tech",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Business model",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Competition",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Funding / cap table",
+      "peso": 10,
+      "score": 8,
+      "confianza": "Alta"
+    }
+  ],
+  "resumen_ejecutivo": "Vidext automates the creation of corporate video and content with AI: it turns presentations and static materials into interactive, multilingual experiences that capture data in real time. Founded in Valencia in 2021-2022 (sources differ) by Jon Enríquez, Beñat Arrizabalaga and Miguel Ángel Castillo, it declares €2M+ ARR, 250+ customers (Iberdrola, Loewe, Mapfre, ISDIN, Yves Rocher, Daiichi-Sankyo) and 350% year-over-year growth. It closed €2M in April 2024 (4Founders, Draper B1, Sabadell) and a €6M Series A in September 2025 led by Flashpoint.",
+  "claims": [
+    {
+      "claim": "€6M Series A (Sep 2025) led by Flashpoint, with HWK, 4Founders, Sabadell Venture Capital and DraperB1",
+      "fuente_interna": "website (corporate blog)",
+      "verificacion_externa": "Confirmed by Cinco Días with the same amounts and investors",
+      "estado": "verificada",
+      "fuente_externa": "https://cincodias.elpais.com/companias/2025-09-15/la-start-up-vidext-cierra-una-ronda-de-seis-millones-con-flashpoint-sabadell-hwk-4founders-y-draperb1.html"
+    },
+    {
+      "claim": "€2M round in April 2024 led by 4Founders, with Draper B1 and Sabadell",
+      "fuente_interna": "press",
+      "verificacion_externa": "Confirmed by Cinco Días (Apr 2024)",
+      "estado": "verificada",
+      "fuente_externa": "https://cincodias.elpais.com/companias/2024-04-10/vidext-startup-de-generacion-de-videos-con-ia-capta-dos-millones-4founders-draper-b1-y-sabadell.html"
+    },
+    {
+      "claim": "€2M+ ARR and 350% year-over-year growth",
+      "fuente_interna": "CEO statements in press and blog",
+      "verificacion_externa": "Only appears in the company's own statements carried by the press; no independent verification",
+      "estado": "no_verificada",
+      "fuente_externa": "no data"
+    },
+    {
+      "claim": "250+ enterprise customers, including Iberdrola, Loewe, Mapfre, ISDIN, Yves Rocher and Daiichi-Sankyo",
+      "fuente_interna": "CEO statements in the press",
+      "verificacion_externa": "Names published in Cinco Días citing the company; no independently verifiable logos in this analysis",
+      "estado": "no_verificada",
+      "fuente_externa": "no data"
+    },
+    {
+      "claim": "Team of ~55 people, +21.5% year over year",
+      "fuente_interna": "LinkedIn (third-party aggregated data)",
+      "verificacion_externa": "Headcount and growth come from a LinkedIn-based aggregator, not from the company itself",
+      "estado": "no_verificada",
+      "fuente_externa": "https://linkedin.com/company/vidext"
+    },
+    {
+      "claim": "Technology deployed in more than 30 countries",
+      "fuente_interna": "press (Apr 2024)",
+      "verificacion_externa": "Corporate statement carried by Cinco Días; no independent cross-check",
+      "estado": "no_verificada",
+      "fuente_externa": "no data"
+    }
+  ],
+  "analisis": {
+    "mercado": "Corporate content and AI-generated video: a fast-growing global market driven by generative models (training, internal marketing, sales). Broad TAM but the category is commoditizing quickly: Vidext's wedge is the full enterprise process (interactive content that captures data and integrates with systems), not just video generation.",
+    "producto_tech": "Platform that turns presentations into interactive, multilingual video experiences with data capture and integration into corporate systems. Beyond AI rendering (commoditizable), the declared value lies in the enterprise workflow and integrations. Degree of proprietary technology vs. orchestration of third-party models: no data.",
+    "traccion": "Declares €2M+ ARR, 250+ customers and +350% year over year, with enterprise brands cited in the national press. Headcount growth (+21.5% per the LinkedIn aggregator) and two rounds in 17 months are external signals consistent with real traction. Retention, NRR and margin: no data.",
+    "modelo_negocio": "Enterprise B2B SaaS by subscription, presumably per seat or content volume. Scalable and recurring; the risk is service cost if production still has a manual component (they offer 'multilingual services and training', possibly services disguised as product). Unit economics: no data.",
+    "founders": "Jon Enríquez (CEO), Beñat Arrizabalaga and Miguel Ángel Castillo. A young team that has scaled from 0 to Series A in ~3 years, which demonstrates execution. Prior track records and sector domain: no solid public data in this analysis. Minor discrepancy: the company says it was founded in 2022; LinkedIn and 2024 press say 2021.",
+    "competencia": "Hyper-competitive category: Synthesia and HeyGen (well-capitalized unicorns) dominate corporate AI video, and Colossyan, Elai and others pressure from below. Vidext differentiates toward process (interactive content with data), but needs to defend that wedge from being absorbed by the leaders. Who wins today: Synthesia/HeyGen in global volume.",
+    "funding_cap_table": "2022: first round with 4Founders (amount no data). Apr 2024: €2M (4Founders, Draper B1, Sabadell). Sep 2025: €6M Series A led by Flashpoint with HWK and follow-on from previous investors. Healthy syndicate with international VC; total raised >€8M. Cap table: no data, but the continuity of all early investors in the Series A is a positive signal."
+  },
+  "why_now": "Generative models have made it viable to produce multilingual corporate video at marginal cost, and companies are budgeting the automation of training and sales content. The window is in turning generation (already a commodity) into a measurable business process before the category leaders move down into the European mid-market.",
+  "why_this_company": "Fast execution from Valencia with hard-to-win Spanish enterprise logos (Iberdrola, Mapfre, Loewe) and a syndicate that has reinvested in every round: suggests real enterprise sales and a team that delivers what it promises its investors.",
+  "encaje": [
+    {
+      "criterio": "Sector (B2B SaaS, fintech, AI, traveltech, cybersecurity, business services, data)",
+      "encaja": "si",
+      "detalle": "Applied AI + B2B SaaS, double fit with the thesis"
+    },
+    {
+      "criterio": "Stage (pre-seed to Series A)",
+      "encaja": "si",
+      "detalle": "Series A just closed; future entries would be follow-on or Series B"
+    },
+    {
+      "criterio": "Geography (Spain / Europe, occasionally LatAm)",
+      "encaja": "si",
+      "detalle": "HQ Valencia, international customers, announced UK/US expansion"
+    },
+    {
+      "criterio": "Ticket (entry ~€250k-2M)",
+      "encaja": "parcial",
+      "detalle": "The 2024 €2M round fit perfectly; after the €6M Series A, the entry ticket no longer applies"
+    },
+    {
+      "criterio": "International ambition (€300M+)",
+      "encaja": "si",
+      "detalle": "Declared presence in 30+ countries and an explicit UK and US plan"
+    }
+  ],
+  "red_flags": [
+    "Revenue (€2M+ ARR), growth (350%) and customer base (250+) are self-reported; no financial metric has independent verification available.",
+    "Head-on competition with Synthesia and HeyGen, with far greater capitalization and the ability to cut prices or absorb the 'interactive content' wedge.",
+    "Minor discrepancy in the founding year (2021 per LinkedIn and 2024 press; 2022 per the company itself): not serious, but worth clarifying.",
+    "Possible services component (translation, training) inside revenue, which would inflate the quality of the ARR."
+  ],
+  "preguntas": [
+    "Of the declared €2M+ ARR, what percentage is pure platform subscription versus production and training services?",
+    "What is the net revenue retention (NRR) of the enterprise customers you cite, and how many renew with expansion?",
+    "How much of the product is proprietary technology versus orchestration of third-party models, and what happens to your margins if Synthesia or HeyGen cut prices by 50%?",
+    "What does the cap table look like after the Series A and how much runway do you have left for the UK/US expansion?",
+    "Why does 2021 appear as the founding year in some sources and 2022 on the website? Was there a pivot or a restart of the business?"
+  ],
+  "fuentes_utilizadas": [
+    "https://www.vidext.io/en/blog/we-closed-new-6M-investment-round",
+    "https://cincodias.elpais.com/companias/2025-09-15/la-start-up-vidext-cierra-una-ronda-de-seis-millones-con-flashpoint-sabadell-hwk-4founders-y-draperb1.html",
+    "https://cincodias.elpais.com/companias/2024-04-10/vidext-startup-de-generacion-de-videos-con-ia-capta-dos-millones-4founders-draper-b1-y-sabadell.html",
+    "https://linkedin.com/company/vidext"
+  ],
+  "metricas": {
+    "rondas": [
+      {
+        "anio": "2022",
+        "ronda": "First round",
+        "importe_eur": null,
+        "importe_texto": "no data",
+        "inversores": "4Founders"
+      },
+      {
+        "anio": "2024",
+        "ronda": "Seed",
+        "importe_eur": 2000000,
+        "importe_texto": "€2M",
+        "inversores": "4Founders (lead), Draper B1, Sabadell VC"
+      },
+      {
+        "anio": "2025",
+        "ronda": "Series A",
+        "importe_eur": 6000000,
+        "importe_texto": "€6M",
+        "inversores": "Flashpoint (lead), HWK, 4Founders, Sabadell, DraperB1"
+      }
+    ],
+    "series": [
+      {
+        "titulo": "ARR",
+        "unidad": "€M",
+        "fuente": "CEO in the press (Sep 2025); 2024 estimated from the declared +350% YoY",
+        "puntos": [
+          {
+            "periodo": "2024",
+            "valor": 0.44,
+            "estimado": true
+          },
+          {
+            "periodo": "2025",
+            "valor": 2.0,
+            "estimado": false
+          }
+        ]
+      },
+      {
+        "titulo": "Employees",
+        "unidad": "people",
+        "fuente": "LinkedIn (aggregator); 2024 estimated from the +21.5% YoY",
+        "puntos": [
+          {
+            "periodo": "2024",
+            "valor": 45,
+            "estimado": true
+          },
+          {
+            "periodo": "2025",
+            "valor": 55,
+            "estimado": false
+          }
+        ]
+      }
+    ],
+    "otras_cifras": [
+      {
+        "etiqueta": "Customers",
+        "valor": "250+",
+        "contexto": "self-reported (Iberdrola, Loewe, Mapfre…)"
+      },
+      {
+        "etiqueta": "Year-over-year growth",
+        "valor": "+350%",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Countries with deployed technology",
+        "valor": "30+",
+        "contexto": "self-reported (2024)"
+      },
+      {
+        "etiqueta": "Total raised",
+        "valor": "€8M+",
+        "contexto": "press (known rounds)"
+      }
+    ]
+  },
+  "logo": "/logos/vidext.svg"
+}

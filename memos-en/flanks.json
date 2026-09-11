@@ -1,0 +1,199 @@
+{
+  "_demo": true,
+  "nombre": "Flanks",
+  "web": "https://www.flanks.io",
+  "sector": "Fintech / wealthtech (B2B data infrastructure)",
+  "stage": "Series A (€14M growth round in Feb 2025)",
+  "geografia": "HQ in Barcelona; operations in Spain, France and the UK",
+  "fecha": "2026-09-11",
+  "fuentes": [
+    "web",
+    "news",
+    "trade press"
+  ],
+  "recomendacion": "INVESTIGATE",
+  "score_global": 80,
+  "confianza_global": "Media",
+  "justificacion": "Founding team with deep private banking domain expertise and a €14M round with top-tier international investors verified in the press; the limitation is that customer and aggregated-asset metrics are self-reported and cannot be audited externally.",
+  "dimensiones": [
+    {
+      "nombre": "Founders",
+      "peso": 25,
+      "score": 9,
+      "confianza": "Alta"
+    },
+    {
+      "nombre": "Market",
+      "peso": 20,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Traction",
+      "peso": 15,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Product / Tech",
+      "peso": 10,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Business model",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Competition",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Funding / cap table",
+      "peso": 10,
+      "score": 9,
+      "confianza": "Alta"
+    }
+  ],
+  "resumen_ejecutivo": "Flanks is a B2B wealth data aggregation and consolidation platform for banks, family offices and advisors: its Flanks LUME product aggregates, reconciles and enriches data across all asset classes (public and private) and turns it into 360° reporting and automated workflows. It operates as an AISP regulated by the Bank of Spain under PSD2. Founded in Barcelona in 2019, it closed a €14M round in February 2025 led by Motive Ventures with Battery Ventures and existing investors (Earlybird, JME, 4Founders), and has entered the enterprise segment in France and the UK.",
+  "claims": [
+    {
+      "claim": "€14M round (Feb 2025) led by Motive Ventures, with Battery Ventures, Earlybird, JME and 4Founders",
+      "fuente_interna": "website (corporate article)",
+      "verificacion_externa": "Confirmed by Axios and tech.eu with the same amounts and investors",
+      "estado": "verificada",
+      "fuente_externa": "https://tech.eu/2025/02/26/spanish-flanks-secures-14m-for-wealth-management-platform/"
+    },
+    {
+      "claim": "More than 100 banks, family offices and advisors use the platform, with 500k+ portfolios managed per month and $39B+ in assets",
+      "fuente_interna": "website (corporate article)",
+      "verificacion_externa": "Only appears in the company's own channels and derived press releases; no independent verification of the figure",
+      "estado": "no_verificada",
+      "fuente_externa": "https://www.flanks.io/articles/flanks-raises-eu14m-to-lead-wealth-management-for-next-gen-advisory"
+    },
+    {
+      "claim": "AISP regulated by the Bank of Spain under PSD2",
+      "fuente_interna": "website",
+      "verificacion_externa": "Consistent with the account aggregation activity; the official BdE registry is the definitive confirmation route (not reviewed in this analysis)",
+      "estado": "no_verificada",
+      "fuente_externa": "no data"
+    },
+    {
+      "claim": "Expansion into France and the UK and entry into the enterprise segment",
+      "fuente_interna": "website",
+      "verificacion_externa": "Mentioned in the round's press coverage (tech.eu)",
+      "estado": "verificada",
+      "fuente_externa": "https://tech.eu/2025/02/26/spanish-flanks-secures-14m-for-wealth-management-platform/"
+    },
+    {
+      "claim": "Founding team: Joaquim de la Cruz (Forbes 30 Under 30 European Finance), Álvaro Morales (former Global Head of Santander Private Banking) and Sergi Lao (software engineer)",
+      "fuente_interna": "website",
+      "verificacion_externa": "Track records corroborated by the round's press coverage (tech.eu, Axios)",
+      "estado": "verificada",
+      "fuente_externa": "https://www.axios.com/pro/fintech-deals/2025/02/26/european-wealthtech-data-aggregator-flanks-14-million"
+    }
+  ],
+  "analisis": {
+    "mercado": "Wealthtech data infrastructure: European wealth management moves trillions and regulatory pressure (PSD2/PSD3, FIDA) forces institutions to share and consolidate data. Axios highlights that pending regulation will force institutions to share more data and advisors to know their clients' portfolios in depth, which plays in favor of the timing. Large, global market with a clear wedge in European private banking.",
+    "producto_tech": "Aggregation, reconciliation and enrichment platform for data across all asset classes (financial and non-financial), with 360° reporting and projections. The defensible component is not scraping itself but the multi-source reconciliation layer and regulatory compliance (AISP), which create real entry barriers. Evolution from aggregation point to end-to-end platform (LUME).",
+    "traccion": "They declare 100+ client institutions, 500k+ portfolios/month and $39B+ in assets managed through the platform: large but self-reported figures. The €14M round with an international syndicate and the enterprise entry (France, UK) are external signals consistent with real traction. Revenue, growth and retention: no public data.",
+    "modelo_negocio": "B2B SaaS/infrastructure for financial institutions, presumably priced by data or portfolio volume. Recurring, scalable and not capital-intensive once the connector layer is built. Enterprise sales imply long cycles and high acquisition cost; unit economics: no data.",
+    "founders": "Joaquim de la Cruz (CEO, Forbes 30 Under 30 in European finance), Álvaro Morales (former Global Head of Santander Private Banking: first-rate customer and problem domain) and Sergi Lao (technical profile). Complementary business-domain-tech team, full-time, with proven international ambition (France, UK). Fits the typical early-stage fund team filter.",
+    "competencia": "Competes with aggregators and wealth data infrastructure (e.g. Plaid in the US orbit, PureFacts/Altoo and in-house solutions from European private banks). The declared differentiation is coverage of non-financial assets and the end-to-end approach for the advisor. Who wins today: no clear data; the European market is fragmented.",
+    "funding_cap_table": "2019-2025: early rounds with Earlybird, JME Ventures and 4Founders; Feb 2025, €14M led by Motive Ventures (New York) with Battery Ventures. Quality syndicate and presumably healthy cap table. With a €14M round already closed, a new entry would be as follow-on, not as initial entry."
+  },
+  "why_now": "European financial data regulation (PSD2 in force, PSD3/FIDA in progress) forces banks and advisors to consolidate complete wealth data: demand is no longer optional. In addition, the generational wealth transfer pushes private banking to digitize reporting.",
+  "why_this_company": "A former global head of Santander private banking building infrastructure for his own former problem, with an AISP license and 6 years of connectors and reconciliation already built: a combination of domain, regulation and accumulated technical debt that is hard to replicate quickly.",
+  "encaje": [
+    {
+      "criterio": "Sector (B2B SaaS, fintech, AI, traveltech, cybersecurity, business services, data)",
+      "encaja": "si",
+      "detalle": "Fintech / B2B data infrastructure, core of the thesis"
+    },
+    {
+      "criterio": "Stage (pre-seed to Series A)",
+      "encaja": "parcial",
+      "detalle": "Already at a €14M growth round; would fit as follow-on, not as a new early entry"
+    },
+    {
+      "criterio": "Geography (Spain / Europe, occasionally LatAm)",
+      "encaja": "si",
+      "detalle": "HQ Barcelona, France and UK expansion"
+    },
+    {
+      "criterio": "Ticket (entry ~€250k-2M)",
+      "encaja": "parcial",
+      "detalle": "€14M round closed: a new entry would fall outside the typical entry range"
+    },
+    {
+      "criterio": "International ambition (€300M+)",
+      "encaja": "si",
+      "detalle": "European platform with international investors and a global market"
+    }
+  ],
+  "red_flags": [
+    "Key traction metrics (customers, portfolios, assets) are self-reported with no independent verification available.",
+    "With €14M raised in 2025, the entry opportunity at the typical early-stage ticket (€250k-2M) has likely passed: it would be follow-on.",
+    "Regulatory dependence: the business relies on the PSD2/FIDA framework; changes in banking data access would affect the product.",
+    "Unit economics, revenue and retention: no public data."
+  ],
+  "preguntas": [
+    "What recurring revenue and net retention rate do you have today, and how is it distributed across banks, family offices and independent advisors?",
+    "The 500k portfolios and $39B in assets figures: what part is real monthly recurring versus cumulative or pilot tests?",
+    "What is the average sales cycle in the enterprise segment and what percentage of pipeline converts to production?",
+    "What does the cap table look like after the Motive/Battery round and how much room is there for early investors to follow on?",
+    "Which regulatory scenario (PSD3/FIDA) would make you lose access to critical data sources and what is the plan B?"
+  ],
+  "fuentes_utilizadas": [
+    "https://www.flanks.io",
+    "https://www.flanks.io/articles/flanks-raises-eu14m-to-lead-wealth-management-for-next-gen-advisory",
+    "https://tech.eu/2025/02/26/spanish-flanks-secures-14m-for-wealth-management-platform/",
+    "https://www.axios.com/pro/fintech-deals/2025/02/26/european-wealthtech-data-aggregator-flanks-14-million"
+  ],
+  "metricas": {
+    "rondas": [
+      {
+        "anio": "2019–2023",
+        "ronda": "Early rounds",
+        "importe_eur": null,
+        "importe_texto": "no data",
+        "inversores": "Earlybird, JME Ventures, 4Founders"
+      },
+      {
+        "anio": "2025",
+        "ronda": "Growth round",
+        "importe_eur": 14000000,
+        "importe_texto": "€14M",
+        "inversores": "Motive Ventures (lead), Battery Ventures, Earlybird, JME, 4Founders"
+      }
+    ],
+    "series": [],
+    "otras_cifras": [
+      {
+        "etiqueta": "Client institutions",
+        "valor": "100+",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Portfolios managed/month",
+        "valor": "500,000+",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "Assets on platform",
+        "valor": "$39B+",
+        "contexto": "self-reported"
+      },
+      {
+        "etiqueta": "ARR / revenue",
+        "valor": "no data",
+        "contexto": ""
+      }
+    ]
+  },
+  "logo": "/logos/flanks.webp"
+}
