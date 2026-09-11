@@ -72,7 +72,15 @@ body::before {
 .masthead h1.display em { font-style: italic; color: var(--green); }
 .lede { margin: 0; font-size: 1.02rem; color: var(--ink-soft); max-width: 62ch; }
 .lede strong { color: var(--ink); }
-.verdict-legend { margin: 14px 0 0; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.02em; color: var(--muted); line-height: 1.9; }
+.verdict-help { margin: 16px 0 0; }
+.verdict-help summary { cursor: pointer; list-style: none; display: inline-block; font-family: var(--mono); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.15s; }
+.verdict-help summary:hover { color: var(--ink); }
+.verdict-help summary::-webkit-details-marker { display: none; }
+.verdict-help summary::before { content: 'ⓘ '; }
+.verdict-help summary::after { content: ' +'; color: var(--faint); }
+.verdict-help[open] summary::after { content: ' –'; }
+.verdict-legend { margin: 8px 0 0; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.02em; color: var(--muted); line-height: 1.9; }
+.verdict-legend span { display: block; }
 .verdict-legend .vl-inv { color: var(--green); } .verdict-legend .vl-watch { color: #8a5a13; } .verdict-legend .vl-pass { color: var(--red); }
 
 /* ---------- Cards & sections ---------- */
@@ -217,10 +225,17 @@ button:disabled { opacity: 0.55; cursor: wait; }
 .gauge-ring { animation: ringfill 1.5s cubic-bezier(0.22, 0.8, 0.24, 1) 0.2s both; }
 @keyframes ringfill { from { stroke-dashoffset: var(--circ); } }
 @media (prefers-reduced-motion: reduce) { .gauge-ring { animation: none; } }
-.reco-legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 6px; padding-top: 12px; border-top: 1px solid rgba(242,236,219,0.22); }
+.reco-help { grid-column: 1 / -1; margin-top: 6px; padding-top: 10px; border-top: 1px solid rgba(242,236,219,0.22); }
+.reco-help summary { cursor: pointer; list-style: none; display: inline-block; font-family: var(--mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,236,219,0.55); transition: color 0.15s; }
+.reco-help summary:hover { color: rgba(242,236,219,0.85); }
+.reco-help summary::-webkit-details-marker { display: none; }
+.reco-help summary::before { content: 'ⓘ '; }
+.reco-help summary::after { content: ' +'; color: rgba(242,236,219,0.35); }
+.reco-help[open] summary::after { content: ' –'; }
+.rl-list { display: flex; flex-direction: column; gap: 5px; margin-top: 9px; }
 .rl-item { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.04em; line-height: 1.6; }
 .rl-inv { color: #6fb384; } .rl-watch { color: #d9a13b; } .rl-pass { color: #d4604e; }
-.rl-item.rl-active { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.rl-item.rl-active { font-weight: 700; }
 .hero-conf { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(242,236,219,0.7); display: flex; align-items: center; gap: 6px; }
 
 /* Confidence badges */
@@ -423,7 +438,10 @@ body.theme-ink .hero-reco { background: transparent; border: 1px solid var(--ink
 body.theme-ink .hero-chip { color: var(--ink-soft); border-color: var(--hairline-dark); }
 body.theme-ink .hero-justif { color: var(--ink-soft); }
 body.theme-ink .hero-conf { color: var(--muted); }
-body.theme-ink .reco-legend { border-top-color: var(--hairline-dark); }
+body.theme-ink .reco-help { border-top-color: var(--hairline-dark); }
+body.theme-ink .reco-help summary { color: var(--muted); }
+body.theme-ink .reco-help summary:hover { color: var(--ink); }
+body.theme-ink .reco-help summary::after { color: var(--faint); }
 body.theme-ink .rl-inv { color: var(--green); } body.theme-ink .rl-watch { color: #8a5a13; } body.theme-ink .rl-pass { color: var(--red); }
 body.theme-ink .round-bar:not(.round-nodata) { background: var(--ink); }
 body.theme-ink .series-bar { background: var(--ink); }
@@ -445,3 +463,16 @@ body.theme-poster .memo h3 { border-bottom: 2px solid var(--ink); }
 body.theme-poster .round-bar:not(.round-nodata) { background: #17130c; }
 body.theme-poster .series-bar { background: #17130c; }
 body.theme-poster ::selection { background: #ecd9b8; }
+
+
+/* ---------- Pulido general de interacción ---------- */
+.example-card { transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s; }
+.example-card:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--hairline-dark); }
+.example-card:active { transform: translate(0, 0); box-shadow: none; }
+button { transition: background 0.15s, transform 0.08s; }
+button:active { transform: translateY(1px); }
+.memo a { text-underline-offset: 2px; }
+input[type="text"], input[type="url"], textarea { transition: border-color 0.15s, outline-color 0.15s; }
+body.theme-poster input:focus, body.theme-poster textarea:focus { outline-color: var(--sienna); border-color: var(--sienna); }
+.dim-more summary { transition: color 0.15s; }
+.dim-more summary:hover { color: var(--ink); }
