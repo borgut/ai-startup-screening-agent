@@ -22,38 +22,43 @@
     return esc(url);
   }
 
-  function gaugeSVG(score, reco) {
+  // Barra de score animada: se rellena al cargar hasta su valor y ahí se queda.
+  function scoreBar(score, reco) {
     const s = Math.max(0, Math.min(100, Number(score) || 0));
-    const r = 40, circ = 2 * Math.PI * r;
-    const filled = (s / 100) * circ;
-    const ring = { INVESTIGATE: '#1e5b3a', WATCH: '#8a5a13', PASS: '#9c2b1d' }[reco] || '#8a5a13';
-    return `<svg class="gauge" viewBox="0 0 100 100" width="112" height="112" role="img" aria-label="Score ${s} de 100">
-      <circle cx="50" cy="50" r="48" fill="#f6f1e7"/>
-      <circle cx="50" cy="50" r="${r}" fill="none" stroke="#ded4bd" stroke-width="10"/>
-      <circle cx="50" cy="50" r="${r}" fill="none" stroke="${ring}" stroke-width="10"
-        stroke-linecap="round" stroke-dasharray="${filled.toFixed(1)} ${circ.toFixed(1)}" transform="rotate(-90 50 50)"/>
-      <text x="50" y="47" text-anchor="middle" class="gauge-num">${s}</text>
-      <text x="50" y="64" text-anchor="middle" class="gauge-sub">/100</text>
-    </svg>`;
-  }
-
-  function dimBar(d) {
-    const score = Math.max(0, Math.min(10, Number(d.score) || 0));
-    const pct = score * 10;
-    const barClass = score >= 7 ? 'bar-hi' : score >= 4 ? 'bar-mid' : 'bar-lo';
-    return `<div class="dim-row">
-      <div class="dim-head">
-        <span class="dim-name">${esc(d.nombre)}</span>
-        <span class="dim-weight">${esc(d.peso)}%</span>
-      </div>
-      <div class="dim-track"><div class="dim-fill ${barClass}" style="width:${pct}%"></div></div>
-      <div class="dim-foot">
-        <span class="dim-score">${score}/10</span>
-        <span class="conf-badge conf-${esc(d.confianza)}">${esc(d.confianza)}</span>
-      </div>
+    return `<div class="scorebar" role="img" aria-label="Score ${s} de 100">
+      <div class="scorebar-track"><div class="scorebar-fill" style="--pct:${s}%"></div></div>
+      <div class="scorebar-scale"><span>0</span><span>100</span></div>
     </div>`;
   }
 
+  // Mapea el nombre de la dimensión con su bloque de análisis (la evidencia).
+  function analysisKey(nombre) {
+    const n = String(nombre || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    if (n.includes('founder') || n.includes('equipo')) return 'founders';
+    if (n.includes('mercado')) return 'mercado';
+    if (n.includes('traccion')) return 'traccion';
+    if (n.includes('producto') || n.includes('tech')) return 'producto_tech';
+    if (n.includes('modelo')) return 'modelo_negocio';
+    if (n.includes('competencia')) return 'competencia';
+    if (n.includes('funding') || n.includes('cap table')) return 'funding_cap_table';
+    return null;
+  }
+
+  function dimBar(d, analisis) {
+    const score = Math.max(0, Math.min(10, Number(d.score) || 0));
+    const pct = score * 10;
+    const barClass = score >= 7 ? 'bar-hi' : score >= 4 ? 'bar-mid' : 'bar-lo';
+    const key = analysisKey(d.nombre);
+    const justif = d.justificacion || (key && analisis && analisis[key]) || '';
+    return `<div class="dim-row">
+      <div class="dim-head">
+        <span class="dim-name">${esc(d.nombre)} <span class="dim-weight">${esc(d.peso)}%</span></span>
+        <span class="dim-foot-inline"><span class="dim-score">${score}/10</span> <span class="conf-badge conf-${esc(d.confianza)}">${esc(d.confianza)}</span></span>
+      </div>
+      <div class="dim-track"><div class="dim-fill ${barClass}" style="width:${pct}%"></div></div>
+      ${justif ? `<p class="dim-justif">${esc(justif)}</p>` : ''}
+    </div>`;
+  }
 
   function metricasSection(met) {
     if (!met) return '';
@@ -121,37 +126,32 @@
   function renderMemoHTML(memo, { demo = false } = {}) {
     const reco = memo.recomendacion || 'WATCH';
     const recoClass = { INVESTIGATE: 'hero-green', WATCH: 'hero-amber', PASS: 'hero-red' }[reco] || 'hero-amber';
+    const a = memo.analisis || {};
 
     const heroChips = [memo.sector, memo.stage, memo.geografia]
       .filter(Boolean).map((c) => `<span class="hero-chip">${esc(c)}</span>`).join('');
 
-    const dims = (memo.dimensiones || []).map(dimBar).join('');
+    const dims = (memo.dimensiones || []).map((d) => dimBar(d, a)).join('');
 
     const claims = (memo.claims || []).map((c, i) => `
       <tr>
         <td class="c-num">${i + 1}</td>
-        <td>${esc(c.claim)}</td>
-        <td class="c-src">${esc(c.fuente_interna)}</td>
-        <td>${esc(c.verificacion_externa)}</td>
-        <td><span class="estado-chip st-${esc(c.estado)}">${ESTADO_LABEL[c.estado] || esc(c.estado)}</span></td>
-        <td class="c-src">${linkify(c.fuente_externa)}</td>
+        <td data-label="Claim">${esc(c.claim)}</td>
+        <td class="c-src" data-label="Fuente interna">${esc(c.fuente_interna)}</td>
+        <td data-label="Verificación externa">${esc(c.verificacion_externa)}</td>
+        <td data-label="Estado"><span class="estado-chip st-${esc(c.estado)}">${ESTADO_LABEL[c.estado] || esc(c.estado)}</span></td>
+        <td class="c-src" data-label="Fuente">${linkify(c.fuente_externa)}</td>
       </tr>`).join('');
 
-    const a = memo.analisis || {};
-    const dimDetail = [
-      ['Mercado', a.mercado], ['Producto / tech', a.producto_tech], ['Tracción', a.traccion],
-      ['Modelo de negocio', a.modelo_negocio], ['Founders', a.founders],
-      ['Competencia', a.competencia], ['Funding / cap table', a.funding_cap_table],
-    ].map(([name, text]) => `<div class="detail-block"><strong>${name}</strong><p>${esc(text || 'sin datos')}</p></div>`).join('');
-
     const encaje = (memo.encaje || []).map((e) => `
-      <div class="fit-card fit-${esc(e.encaja)}">
-        <div class="fit-top"><span class="fit-icon">${ENCAJE_ICON[e.encaja] || '?'}</span><span class="fit-crit">${esc(e.criterio.split('(')[0].trim())}</span></div>
-        <div class="fit-det">${esc(e.detalle)}</div>
+      <div class="fit-row fit-${esc(e.encaja)}">
+        <span class="fit-mark">${ENCAJE_ICON[e.encaja] || '?'}</span>
+        <span class="fit-body"><span class="fit-crit">${esc(e.criterio.split('(')[0].trim())}</span>
+        <span class="fit-det">${esc(e.detalle)}</span></span>
       </div>`).join('');
 
     const redFlags = (memo.red_flags && memo.red_flags.length)
-      ? memo.red_flags.map((r, i) => `<div class="flag-card"><span class="flag-num">${i + 1}</span><span>${esc(r)}</span></div>`).join('')
+      ? memo.red_flags.map((r, i) => `<div class="flag-row"><span class="flag-num">${String(i + 1).padStart(2, '0')}</span><span>${esc(r)}</span></div>`).join('')
       : '<p class="snd">No se detectaron red flags relevantes.</p>';
 
     const preguntas = `<ol class="q-list">${(memo.preguntas || []).map((p) => `<li>${esc(p)}</li>`).join('')}</ol>`;
@@ -170,18 +170,19 @@
           <div class="hero-chips">${heroChips}</div>
           <p class="hero-justif">${esc(memo.justificacion)}</p>
         </div>
-        <div class="hero-side">
-          ${gaugeSVG(memo.score_global, reco)}
+        <div class="hero-score">
+          <div class="hero-score-num">${Math.max(0, Math.min(100, Number(memo.score_global) || 0))}<span class="hero-score-max">/100</span></div>
           <div class="hero-conf">Confianza global <span class="conf-badge conf-${esc(memo.confianza_global)}">${esc(memo.confianza_global)}</span></div>
         </div>
+        ${scoreBar(memo.score_global, reco)}
       </header>
 
       <section class="memo-sec">
         <h3>Resumen ejecutivo</h3>
         <p class="exec-sum">${esc(memo.resumen_ejecutivo)}</p>
         <div class="why-grid">
-          <div class="why-box"><strong>Why now?</strong><p>${esc(memo.why_now)}</p></div>
-          <div class="why-box"><strong>Why this company?</strong><p>${esc(memo.why_this_company)}</p></div>
+          <div class="why-block"><strong>Why now?</strong><p>${esc(memo.why_now)}</p></div>
+          <div class="why-block"><strong>Why this company?</strong><p>${esc(memo.why_this_company)}</p></div>
         </div>
       </section>
 
@@ -189,6 +190,7 @@
 
       <section class="memo-sec">
         <h3>Scoring por dimensión</h3>
+        <p class="method-note">Cada dimensión se puntúa de 0 a 10 según la evidencia citada debajo de cada barra; la nota global es la media ponderada con los pesos de la rúbrica. No es un benchmark de mercado, es criterio estructurado para priorizar el tiempo del inversor.</p>
         <div class="dims-grid">${dims}</div>
       </section>
 
@@ -202,23 +204,18 @@
 
       <section class="memo-sec">
         <h3>Encaje con 4Founders</h3>
-        <div class="fit-grid">${encaje}</div>
+        <div class="fit-list">${encaje}</div>
       </section>
 
       <section class="memo-sec">
         <h3>Red flags y riesgos clave</h3>
-        <div class="flags-stack">${redFlags}</div>
+        <div class="flags-list">${redFlags}</div>
       </section>
 
       <section class="memo-sec">
         <h3>5 preguntas que debería hacer el inversor</h3>
         ${preguntas}
       </section>
-
-      <details class="memo-sec collapsible">
-        <summary><h3>Análisis por dimensión <span class="h3-note">detalle</span></h3></summary>
-        <div class="details-grid">${dimDetail}</div>
-      </details>
 
       <details class="memo-sec collapsible">
         <summary><h3>Fuentes utilizadas</h3></summary>

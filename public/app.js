@@ -1,3 +1,9 @@
+// Variante visual: ?tema=ink | poster (lino editorial por defecto)
+(() => {
+  const tema = new URLSearchParams(location.search).get('tema');
+  if (tema) document.body.classList.add('theme-' + tema.replace(/[^a-z]/g, ''));
+})();
+
 const $ = (sel) => document.querySelector(sel);
 
 const RECO_LABEL = { INVESTIGATE: '🟢 INVESTIGATE', WATCH: '🟡 WATCH', PASS: '🔴 PASS' };
