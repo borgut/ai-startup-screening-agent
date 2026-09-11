@@ -31,18 +31,49 @@ try {
 
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/logo-cache', express.static(GENERATED_DIR, { maxAge: '1h' }));
+
+async function cacheLogo(logoUrl, id) {
+  if (!logoUrl) return null;
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+    const res = await fetch(logoUrl, { signal: controller.signal, headers: { 'User-Agent': 'Mozilla/5.0' } });
+    clearTimeout(timer);
+    if (!res.ok) return null;
+    const ct = (res.headers.get('content-type') || '').split(';')[0];
+    const ext = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/svg+xml': 'svg', 'image/webp': 'webp', 'image/x-icon': 'ico', 'image/vnd.microsoft.icon': 'ico', 'image/gif': 'gif' }[ct];
+    if (!ext) return null;
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (buf.length > 2 * 1024 * 1024 || buf.length < 100) return null;
+    const file = `logo-${id}.${ext}`;
+    fs.writeFileSync(path.join(GENERATED_DIR, file), buf);
+    return `/logo-cache/${file}`;
+  } catch { return null; }
+}
+
+const LOGOS_DIR = path.join(__dirname, 'public', 'logos');
+
+function findStaticLogo(id) {
+  try {
+    const f = fs.readdirSync(LOGOS_DIR).find((x) => x.startsWith(id + '.'));
+    return f ? `/logos/${f}` : null;
+  } catch { return null; }
+}
 
 function listExamples() {
   return fs.readdirSync(MEMOS_DIR)
     .filter((f) => f.endsWith('.json'))
     .map((f) => {
+      const id = f.replace(/\.json$/, '');
       const memo = JSON.parse(fs.readFileSync(path.join(MEMOS_DIR, f), 'utf8'));
       return {
-        id: f.replace(/\.json$/, ''),
+        id,
         nombre: memo.nombre,
         sector: memo.sector,
         recomendacion: memo.recomendacion,
         score_global: memo.score_global,
+        logo: memo.logo || findStaticLogo(id),
       };
     });
 }
@@ -104,7 +135,7 @@ app.post('/api/screen', upload.single('deck'), async (req, res) => {
   }
   if (!process.env.GEMINI_API_KEY) {
     return res.status(503).json({
-      error: 'Falta la clave de la API de Gemini. Configura GEMINI_API_KEY y reinicia el servidor (ver README). Mientras tanto, puedes ver los ejemplos pre-generados.',
+      error: 'El análisis en vivo no está activado en esta demo. Mientras tanto, puedes ver los ejemplos de abajo.',
       code: 'NO_API_KEY',
     });
   }
@@ -142,6 +173,8 @@ app.post('/api/screen', upload.single('deck'), async (req, res) => {
     if (!memo.fecha) memo.fecha = new Date().toISOString().slice(0, 10);
 
     const id = `gen-${Date.now().toString(36)}-${crypto.randomBytes(3).toString('hex')}`;
+    const logoPath = await cacheLogo(website.logoUrl, id);
+    if (logoPath) memo.logo = logoPath;
     fs.writeFileSync(path.join(GENERATED_DIR, `${id}.json`), JSON.stringify(memo, null, 2));
     res.json({ id, memo });
   } catch (err) {

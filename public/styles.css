@@ -268,3 +268,7 @@ button:disabled { opacity: 0.55; cursor: wait; }
   .series-bar, .round-bar, .stat-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .series-plot { height: 80px; }
 }
+
+/* ---- Logos ---- */
+.card-logo { display: block; max-height: 28px; max-width: 120px; object-fit: contain; object-position: left; margin-bottom: 8px; border-radius: 4px; }
+.hero-logo { display: block; max-height: 40px; max-width: 150px; object-fit: contain; object-position: left; background: #fff; padding: 6px 10px; border-radius: 8px; margin-bottom: 12px; }

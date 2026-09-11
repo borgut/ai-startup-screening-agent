@@ -162,6 +162,7 @@
 
       <header class="hero ${recoClass}">
         <div class="hero-main">
+          ${memo.logo ? `<img class="hero-logo" src="${esc(memo.logo)}" alt="Logo de ${esc(memo.nombre)}" onerror="this.style.display='none'"/>` : ''}
           <div class="hero-kicker">MEMO DE SCREENING · ${esc(memo.fecha || '')}</div>
           <h2 class="hero-name">${esc(memo.nombre)}</h2>
           <div class="hero-reco">${RECO_ICON[reco] || ''} ${RECO_LABEL[reco] || esc(reco)}</div>

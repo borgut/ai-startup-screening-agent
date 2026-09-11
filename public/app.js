@@ -36,7 +36,9 @@ async function loadExamples() {
     const list = $('#examples-list');
     list.innerHTML = data.examples.map((e) => {
       const badgeClass = { INVESTIGATE: 'badge-investigate', WATCH: 'badge-watch', PASS: 'badge-pass' }[e.recomendacion] || 'badge-watch';
+      const logo = e.logo ? `<img class="card-logo" src="${esc(e.logo)}" alt="Logo de ${esc(e.nombre)}" loading="lazy" onerror="this.style.display='none'"/>` : '';
       return `<div class="example-card" data-id="${esc(e.id)}">
+        ${logo}
         <h3>${esc(e.nombre)}</h3>
         <p>${esc(e.sector)} · Score ${esc(e.score_global)}/100</p>
         <span class="badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span>
@@ -59,7 +61,7 @@ async function checkStatus() {
     const res = await fetch('/api/status');
     const data = await res.json();
     if (!data.api_key_configured) {
-      $('#form-note').textContent = 'Sin clave de API configurada: el análisis en vivo está desactivado. Los ejemplos de abajo funcionan siempre. (Ver README para configurar GEMINI_API_KEY.)';
+      $('#form-note').textContent = 'El análisis en vivo no está activado en esta demo. Los ejemplos de abajo funcionan siempre.';
     }
   } catch { /* silencioso */ }
 }
