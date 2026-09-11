@@ -73,7 +73,7 @@ body::before {
 .lede { margin: 0; font-size: 1.02rem; color: var(--ink-soft); max-width: 62ch; }
 .lede strong { color: var(--ink); }
 .verdict-legend { margin: 14px 0 0; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.02em; color: var(--muted); line-height: 1.9; }
-.verdict-legend strong { color: var(--ink-soft); }
+.verdict-legend .vl-inv { color: var(--green); } .verdict-legend .vl-watch { color: #8a5a13; } .verdict-legend .vl-pass { color: var(--red); }
 
 /* ---------- Cards & sections ---------- */
 .card {
@@ -218,8 +218,9 @@ button:disabled { opacity: 0.55; cursor: wait; }
 @keyframes ringfill { from { stroke-dashoffset: var(--circ); } }
 @media (prefers-reduced-motion: reduce) { .gauge-ring { animation: none; } }
 .reco-legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 6px; padding-top: 12px; border-top: 1px solid rgba(242,236,219,0.22); }
-.rl-item { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.04em; color: rgba(242,236,219,0.5); line-height: 1.6; }
-.rl-item.rl-active { color: #f7f2e4; font-weight: 600; }
+.rl-item { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.04em; line-height: 1.6; }
+.rl-inv { color: #6fb384; } .rl-watch { color: #d9a13b; } .rl-pass { color: #d4604e; }
+.rl-item.rl-active { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .hero-conf { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(242,236,219,0.7); display: flex; align-items: center; gap: 6px; }
 
 /* Confidence badges */
@@ -423,8 +424,7 @@ body.theme-ink .hero-chip { color: var(--ink-soft); border-color: var(--hairline
 body.theme-ink .hero-justif { color: var(--ink-soft); }
 body.theme-ink .hero-conf { color: var(--muted); }
 body.theme-ink .reco-legend { border-top-color: var(--hairline-dark); }
-body.theme-ink .rl-item { color: var(--muted); }
-body.theme-ink .rl-item.rl-active { color: var(--ink); }
+body.theme-ink .rl-inv { color: var(--green); } body.theme-ink .rl-watch { color: #8a5a13; } body.theme-ink .rl-pass { color: var(--red); }
 body.theme-ink .round-bar:not(.round-nodata) { background: var(--ink); }
 body.theme-ink .series-bar { background: var(--ink); }
 body.theme-ink .spinner { border-top-color: var(--ink); }
