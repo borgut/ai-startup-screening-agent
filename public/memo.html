@@ -39,6 +39,7 @@
           return;
         }
         container.innerHTML = window.renderMemoHTML(data.memo);
+        if (window.animateGauges) animateGauges(container);
         document.title = 'MEMO: ' + data.memo.nombre + ' · Startup Scouting';
       } catch (err) {
         container.innerHTML = '<p class="form-note error" style="padding:40px 0">Error cargando el memo: ' + (err || '') + '</p>';

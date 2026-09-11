@@ -29,20 +29,25 @@
     return `<ul class="why-list">${items.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`;
   }
 
-  // Anillo de score animado: disco crema, el anillo se rellena al cargar hasta la nota.
+  // Anillo de score: zonas de color por tramo (rojo/ámbar/verde), el anillo se rellena
+  // y el número cuenta hacia arriba (animateGauges) al cargar. % en la misma línea.
   function gaugeSVG(score, reco) {
     const s = Math.max(0, Math.min(100, Number(score) || 0));
     const r = 40, circ = 2 * Math.PI * r;
     const off = circ - (s / 100) * circ;
     const ring = { INVESTIGATE: '#1e5b3a', WATCH: '#b98a2e', PASS: '#9c2b1d' }[reco] || '#b98a2e';
+    const zones = [[0, 45, '#e9d0c9'], [45, 65, '#efdcae'], [65, 100, '#d4e2d6']].map(([a, b, c]) => {
+      const len = ((b - a) / 100) * circ;
+      const zo = circ - (a / 100) * circ;
+      return `<circle cx="50" cy="50" r="${r}" fill="none" stroke="${c}" stroke-width="9" stroke-dasharray="${len.toFixed(1)} ${(circ - len).toFixed(1)}" stroke-dashoffset="${zo.toFixed(1)}" transform="rotate(-90 50 50)"/>`;
+    }).join('');
     return `<svg class="gauge" viewBox="0 0 100 100" width="118" height="118" role="img" aria-label="Score ${s}%">
       <circle cx="50" cy="50" r="48" fill="#f6f1e7"/>
-      <circle cx="50" cy="50" r="${r}" fill="none" stroke="#ded4bd" stroke-width="9"/>
+      ${zones}
       <circle class="gauge-ring" cx="50" cy="50" r="${r}" fill="none" stroke="${ring}" stroke-width="9"
         stroke-linecap="round" stroke-dasharray="${circ.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"
         style="--off:${off.toFixed(1)}; --circ:${circ.toFixed(1)}" transform="rotate(-90 50 50)"/>
-      <text x="50" y="47" text-anchor="middle" class="gauge-num">${s}</text>
-      <text x="50" y="64" text-anchor="middle" class="gauge-sub">%</text>
+      <text x="50" y="56" text-anchor="middle" class="gauge-num"><tspan class="gauge-val" data-target="${s}">${s}</tspan><tspan class="gauge-pct">%</tspan></text>
     </svg>`;
   }
 
@@ -239,6 +244,29 @@
   }
 
   window.renderMemoHTML = renderMemoHTML;
+  // Cuenta ascendente del número del anillo, sincronizada con el relleno.
+  window.animateGauges = function (root) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return; // el atributo stroke-dashoffset y el numero ya muestran el valor final
+    (root || document).querySelectorAll('.gauge').forEach((g) => {
+      const val = g.querySelector('.gauge-val[data-target]');
+      const ring = g.querySelector('.gauge-ring');
+      const target = val ? Number(val.dataset.target) || 0 : 0;
+      const off = ring ? parseFloat(ring.style.getPropertyValue('--off')) : NaN;
+      const circ = ring ? parseFloat(ring.style.getPropertyValue('--circ')) : NaN;
+      if (ring && !isNaN(off) && !isNaN(circ)) ring.style.strokeDashoffset = circ;
+      const t0 = performance.now();
+      const dur = 1400;
+      const step = (t) => {
+        const p = Math.min(1, (t - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        if (val) val.textContent = Math.round(target * eased);
+        if (ring && !isNaN(off) && !isNaN(circ)) ring.style.strokeDashoffset = (circ - (circ - off) * eased).toFixed(1);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  };
   window.addEventListener('beforeprint', () => {
     document.querySelectorAll('details').forEach((d) => { d.open = true; });
   });

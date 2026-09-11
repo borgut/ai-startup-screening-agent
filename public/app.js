@@ -34,6 +34,7 @@ function showMemo(memo) {
   container.innerHTML = `<span class="back-link" id="back-link">${t('volver_form')}</span>` + renderMemoHTML(memo);
   container.classList.remove('hidden');
   $('#loading').classList.add('hidden');
+  if (window.animateGauges) animateGauges(container);
   container.scrollIntoView({ behavior: 'smooth' });
   $('#back-link').addEventListener('click', () => {
     container.classList.add('hidden');
