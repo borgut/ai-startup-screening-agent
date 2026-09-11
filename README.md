@@ -1,6 +1,6 @@
 # AI Startup Screening Agent
 
-Agente de screening de startups orientado a la tesis de **4Founders Capital**. Recibe la web de una startup (más pitch deck y contexto opcionales), contrasta lo que la startup declara con fuentes externas mediante búsqueda web, y genera un **investment memo de 1 página** con recomendación 🟢 INVESTIGATE / 🟡 WATCH / 🔴 PASS, scoring ponderado por dimensión, tabla de claims vs evidencia, red flags y 5 preguntas para el inversor.
+Agente de screening de startups orientado a la tesis de un fondo VC early-stage. Recibe la web de una startup (más pitch deck y contexto opcionales), contrasta lo que la startup declara con fuentes externas mediante búsqueda web, y genera un **investment memo de 1 página** con recomendación 🟢 INVESTIGATE / 🟡 WATCH / 🔴 PASS, scoring ponderado por dimensión, tabla de claims vs evidencia, red flags y 5 preguntas para el inversor.
 
 La pregunta que responde no es "¿invertimos?" sino: **¿merece esta startup 30 minutos de un inversor?**
 
@@ -54,7 +54,7 @@ npm start
 Abre el navegador en **http://localhost:3000**
 
 - **Con clave**: rellena el formulario (web obligatoria; deck PDF, LinkedIn y contexto opcionales) y pulsa *Analizar startup*. Tarda 1-2 minutos: extrae la web, busca verificación externa y genera el memo.
-- **Sin clave**: el formulario avisa de que falta `GEMINI_API_KEY`, pero los **3 ejemplos pre-generados** (Mailsuite, Flanks, Vidext — startups reales de la cartera de 4Founders) se pueden ver igualmente.
+- **Sin clave**: el formulario avisa de que falta `GEMINI_API_KEY`, pero los **5 ejemplos pre-generados** (startups reales) se pueden ver igualmente.
 
 ## Cómo funciona
 
@@ -84,7 +84,7 @@ screening-agent/
 ├── lib/
 │   ├── extract.js     # Extracción de la web de la startup
 │   ├── gemini.js      # Llamada a Gemini (búsqueda + salida estructurada)
-│   └── prompt.js      # Prompt del sistema: template + rúbrica 4Founders
+│   └── prompt.js      # Prompt del sistema: template + rúbrica de scoring
 ├── public/            # Interfaz web (index.html, styles.css, app.js)
 ├── memos/             # Ejemplos pre-generados (modo demo)
 ├── vercel.json        # Config de despliegue

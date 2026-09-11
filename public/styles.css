@@ -274,7 +274,7 @@ button:disabled { opacity: 0.55; cursor: wait; }
 .estado-no_verificada { color: var(--amber); font-weight: 600; }
 .estado-contradicha { color: var(--red); font-weight: 700; }
 
-/* 4Founders fit */
+/* Encaje con la tesis */
 .fit-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 34px; }
 .fit-row { display: grid; grid-template-columns: 20px 1fr; gap: 10px; padding: 11px 0; border-top: 1px solid var(--hairline); }
 .fit-mark { font-family: var(--mono); font-size: 0.8rem; font-weight: 700; padding-top: 1px; }

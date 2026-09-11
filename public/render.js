@@ -178,14 +178,14 @@
           <div class="hero-chips">${heroChips}</div>
           <p class="hero-justif">${esc(memo.justificacion)}</p>
         </div>
+        <div class="hero-score">
+          ${gaugeSVG(memo.score_global, reco)}
+          <div class="hero-conf">Confianza global <span class="conf-badge conf-${esc(memo.confianza_global)}">${esc(memo.confianza_global)}</span></div>
+        </div>
         <div class="reco-legend">
           <span class="rl-item${reco === 'INVESTIGATE' ? ' rl-active' : ''}">🟢 INVESTIGATE (≥65) — sin señales críticas: merece 30 minutos de un inversor</span>
           <span class="rl-item${reco === 'WATCH' ? ' rl-active' : ''}">🟡 WATCH (45-64) — potencial, pero faltan datos: revisar en 3-6 meses</span>
           <span class="rl-item${reco === 'PASS' ? ' rl-active' : ''}">🔴 PASS (<45) — fuera de tesis o red flag crítico</span>
-        </div>
-        <div class="hero-score">
-          ${gaugeSVG(memo.score_global, reco)}
-          <div class="hero-conf">Confianza global <span class="conf-badge conf-${esc(memo.confianza_global)}">${esc(memo.confianza_global)}</span></div>
         </div>
       </header>
 
@@ -215,7 +215,7 @@
       </section>
 
       <section class="memo-sec">
-        <h3>Encaje con 4Founders</h3>
+        <h3>Encaje con la tesis</h3>
         <div class="fit-list">${encaje}</div>
       </section>
 
