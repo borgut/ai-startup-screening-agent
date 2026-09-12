@@ -10,7 +10,8 @@
 <body class="theme-poster">
   <main class="wrap">
     <div class="memo-topbar"><a class="back-link" href="/" data-i18n="volver_inicio">&larr; Volver al inicio</a>
-      <div class="lang-switch"><button class="lang-btn" data-lang="es">ES</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="en">EN</button></div></div>
+      <div class="memo-actions"><a id="ic-link" class="ic-link" href="#">Memo IC &rarr;</a>
+      <div class="lang-switch"><button class="lang-btn" data-lang="es">ES</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="en">EN</button></div></div></div>
     <section id="memo-container"><p class="muted" style="padding:40px 0;text-align:center" data-i18n="cargando_memo">Cargando memo...</p></section>
   </main>
   <script src="/i18n.js"></script>
@@ -30,6 +31,7 @@
     applyI18n();
     (async () => {
       const id = location.pathname.split('/').pop();
+      document.getElementById('ic-link').href = '/ic/' + encodeURIComponent(id) + '?lang=' + getLang();
       const container = document.getElementById('memo-container');
       try {
         const res = await fetch('/api/memo/' + id + '?lang=' + getLang());
