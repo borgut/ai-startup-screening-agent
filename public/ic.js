@@ -46,7 +46,7 @@
       : reco === 'WATCH'
         ? (lang === 'es' ? 'Mantener contacto y reabrir el caso cuando haya evidencia nueva sobre tracción, retención o ronda.' : 'Stay in touch and reopen the case when new evidence emerges on traction, retention or the round.')
         : (lang === 'es' ? 'Cerrar el caso salvo que cambie de forma material la tesis, la tracción o el riesgo principal.' : 'Close the case unless the thesis, traction or main risk changes materially.');
-    const logo = memo.logo ? `<img class="ic-logo" src="${esc(memo.logo)}" alt="Logo de ${esc(memo.nombre)}" onerror="this.style.display='none'">` : '';
+    const logo = memo.logo ? `<img class="ic-logo" src="${esc(memo.logo.replace(/(\.[a-z0-9]+)$/i, '-dark$1'))}" data-orig="${esc(memo.logo)}" alt="Logo de ${esc(memo.nombre)}" onerror="if(this.dataset.orig&&this.src.indexOf(this.dataset.orig)===-1){this.src=this.dataset.orig}else{this.style.display='none'}">` : '';
     const list = (xs, cls='') => `<ul class="ic-list ${cls}">${xs.map((x,i) => `<li><span>${String(i+1).padStart(2,'0')}</span><p>${esc(x)}</p></li>`).join('')}</ul>`;
     return `<article class="ic-doc">
       <header class="ic-cover">
