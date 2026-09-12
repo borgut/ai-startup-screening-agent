@@ -112,15 +112,17 @@ async function loadExamples() {
     list.innerHTML = data.examples.map((e, i) => {
       const badgeClass = { INVESTIGATE: 'badge-investigate', WATCH: 'badge-watch', PASS: 'badge-pass' }[e.recomendacion] || 'badge-watch';
       const logo = e.logo ? `<img class="ed-logo" src="${esc(e.logo)}" alt="" loading="lazy" onerror="this.style.display='none'"/>` : '';
+      const tags = String(e.sector || '').split('/').map((x) => x.trim().replace(/\s*\(.*\)\s*$/, '')).filter(Boolean)
+        .map((x) => `<span class="pill ed-tag">${esc(x)}</span>`).join('');
+      const gauge = window.gaugeSVG ? gaugeSVG(e.score_global, e.recomendacion, { light: true, size: 64 }) : '';
       return `<div class="edition" data-id="${esc(e.id)}">
         <span class="ed-num">${String(i + 1).padStart(2, '0')}</span>
         ${logo}
         <div class="ed-body">
           <h3>${esc(e.nombre)}</h3>
-          <p>${esc(e.sector)}</p>
-          <span class="badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span>
+          <div class="ed-tags">${tags}<span class="pill badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span></div>
         </div>
-        <span class="ed-score">${esc(e.score_global)}<span class="ed-pct">%</span></span>
+        <span class="ed-gauge">${gauge}</span>
       </div>`;
     }).join('');
     list.querySelectorAll('.edition').forEach((card) => {
