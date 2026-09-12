@@ -1,0 +1,26 @@
+{
+  "maps": [
+    {
+      "id": "b2b-ai",
+      "label_es": "B2B Software & AI · España",
+      "label_en": "B2B Software & AI · Spain",
+      "updated": "2026-09-12",
+      "description_es": "Mapa curado de software B2B con raíz española. La etapa refleja la última ronda pública localizada; no implica valoración ni recomendación.",
+      "description_en": "Curated map of B2B software with Spanish roots. Stage reflects the latest public round found; it does not imply valuation or recommendation.",
+      "segments": ["Sales & GTM", "Contenido enterprise", "Talento & workforce", "Wealth infrastructure", "Productividad", "Data & workflow"],
+      "companies": [
+        {"name":"Enginy","slug":"enginy","segment":"Sales & GTM","stage":"Seed","location":"Barcelona","round":"€5M · 2025","analyzed":true,"url":"https://www.enginy.ai","source":"https://www.eu-startups.com/2025/01/genesy-secures-e5-million-in-landmark-funding-to-further-b2b-sales-with-ai-powered-agents/","note_es":"Agentes de IA para prospección y ventas B2B.","note_en":"AI agents for B2B prospecting and sales."},
+        {"name":"Remuner","segment":"Sales & GTM","stage":"Seed","location":"Barcelona","round":"$6.5M · 2025","url":"https://www.remuner.com","source":"https://tech.eu/2025/09/09/remuner-raises-65m-to-transform-sales-incentives-with-ai-driven-automation","note_es":"Automatización de incentivos comerciales.","note_en":"Sales incentive automation."},
+        {"name":"Supersonik","segment":"Sales & GTM","stage":"Seed","location":"España","round":"€4.2M · 2025","url":"https://www.supersonik.ai","source":"https://www.eu-startups.com/2025/09/spanish-startup-supersonik-launches-from-stealth-and-raises-e4-2-million-for-its-multilingual-ai-agent/","note_es":"Agentes de voz multilingües.","note_en":"Multilingual voice agents."},
+        {"name":"Vidext","slug":"vidext","segment":"Contenido enterprise","stage":"Series A","location":"Valencia","round":"€6M · 2025","analyzed":true,"url":"https://www.vidext.io","source":"https://cincodias.elpais.com/companias/2025-09-15/la-start-up-vidext-cierra-una-ronda-de-seis-millones-con-flashpoint-sabadell-hwk-4founders-y-draperb1.html","note_es":"Vídeo y contenido corporativo con IA.","note_en":"AI corporate video and content."},
+        {"name":"Shakers","slug":"shakers","segment":"Talento & workforce","stage":"Series A","location":"Madrid","round":"€14M · 2025","analyzed":true,"url":"https://www.shakersworks.com","source":"https://tech.eu/2025/05/13/madrid-based-shakers-raises-14m-to-power-the-freelance-workforce-across-europe/","note_es":"Equipos freelance especializados con matching por IA.","note_en":"Specialist freelance teams with AI matching."},
+        {"name":"Flanks","slug":"flanks","segment":"Wealth infrastructure","stage":"Series A","location":"Barcelona","round":"€14M · 2025","analyzed":true,"url":"https://www.flanks.io","source":"https://www.flanks.io/articles/flanks-raises-eu14m-to-lead-wealth-management-for-next-gen-advisory","note_es":"Infraestructura de datos para wealth management.","note_en":"Data infrastructure for wealth management."},
+        {"name":"Mailsuite","slug":"mailsuite","segment":"Productividad","stage":"Bootstrapped","location":"Barcelona","round":"sin ronda pública","analyzed":true,"url":"https://mailsuite.com","source":"https://mailsuite.com/en/about","note_es":"Productividad y tracking de email.","note_en":"Email productivity and tracking."},
+        {"name":"Kabilio","segment":"Productividad","stage":"Seed","location":"España","round":"€4M · 2025","url":"https://kabilio.com","source":"https://www.eu-startups.com/2025/11/with-e4-million-in-funding-kabilio-scales-ai-tools-helping-spanish-accounting-firms-lift-productivity-by-up-to-50/","note_es":"Automatización para despachos contables.","note_en":"Automation for accounting firms."},
+        {"name":"Anyformat","segment":"Data & workflow","stage":"Seed","location":"Madrid","round":"€3.3M · 2025","url":"https://anyformat.ai","source":"https://www.eu-startups.com/2025/11/madrids-anyformat-closes-e3-3-million-round-to-scale-its-agentic-ocr-and-data-sovereignty-focused-document-tools/","note_es":"OCR agéntico y procesamiento documental.","note_en":"Agentic OCR and document processing."},
+        {"name":"Lightbase","segment":"Data & workflow","stage":"Pre-seed","location":"Barcelona","round":"€2.2M · 2025","url":"https://lightbase.ai","source":"https://tech.eu/2025/09/15/lightbase-closes-eur22m-pre-seed-round-launches-ai-developer-tool/","note_es":"Herramientas de IA para developers.","note_en":"AI tooling for developers."},
+        {"name":"Uxia","segment":"Data & workflow","stage":"Pre-seed","location":"España","round":"€1M · 2025","url":"https://uxia.com","source":"https://www.thesaasnews.com/news/uxia-secures-1m-pre-seed-round/","note_es":"Testing y calidad de producto digital.","note_en":"Digital product testing and quality."}
+      ]
+    }
+  ]
+}
