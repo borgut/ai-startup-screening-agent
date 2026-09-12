@@ -10,6 +10,29 @@
   }
 })();
 
+
+// Loader por pasos: el backend es una sola llamada, así que las fases
+// avanzan por tiempo estimado (01 al instante, 02 a los ~18s, 03 a los ~55s).
+let loadTimers = [];
+function startLoadSteps() {
+  stopLoadSteps();
+  const items = document.querySelectorAll('#load-steps li');
+  items.forEach((li, idx) => {
+    li.classList.remove('is-active', 'is-done');
+    if (idx === 0) li.classList.add('is-active');
+  });
+  loadTimers.push(setTimeout(() => advanceLoadStep(1), 18000));
+  loadTimers.push(setTimeout(() => advanceLoadStep(2), 55000));
+}
+function advanceLoadStep(n) {
+  const items = document.querySelectorAll('#load-steps li');
+  items.forEach((li, idx) => {
+    if (idx < n) { li.classList.remove('is-active'); li.classList.add('is-done'); }
+    if (idx === n) li.classList.add('is-active');
+  });
+}
+function stopLoadSteps() { loadTimers.forEach(clearTimeout); loadTimers = []; }
+
 const $ = (sel) => document.querySelector(sel);
 
 const RECO_LABEL = { INVESTIGATE: '<span class="vdot vdot-inv"></span>INVESTIGATE', WATCH: '<span class="vdot vdot-watch"></span>WATCH', PASS: '<span class="vdot vdot-pass"></span>PASS' };
@@ -154,6 +177,7 @@ $('#screen-form').addEventListener('submit', async (ev) => {
   btn.disabled = true;
   $('#memo-container').classList.add('hidden');
   $('#loading').classList.remove('hidden');
+  startLoadSteps();
   $('#loading').scrollIntoView({ behavior: 'smooth' });
 
   const fd = new FormData();
@@ -178,6 +202,7 @@ $('#screen-form').addEventListener('submit', async (ev) => {
     note.classList.add('error');
     note.textContent = t('err_red') + err.message;
   } finally {
+    stopLoadSteps();
     btn.disabled = false;
   }
 });

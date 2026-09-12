@@ -68,8 +68,12 @@
     </section>
 
     <section id="loading" class="hidden">
-      <div class="spinner"></div>
-      <p id="loading-text" data-i18n="loading">Leyendo la web, contrastando fuentes externas y redactando el memo. Suele llevar un par de minutos.</p>
+      <ol class="load-steps" id="load-steps">
+        <li data-step="0"><b>01</b><span data-i18n="load_step1">Analizando la web y el deck</span></li>
+        <li data-step="1"><b>02</b><span data-i18n="load_step2">Contrastando cada claim con fuentes externas</span></li>
+        <li data-step="2"><b>03</b><span data-i18n="load_step3">Redactando el memo</span></li>
+      </ol>
+      <p id="loading-text" class="load-note" data-i18n="loading">Suele llevar un par de minutos.</p>
     </section>
 
     <section id="memo-container" class="hidden"></section>
