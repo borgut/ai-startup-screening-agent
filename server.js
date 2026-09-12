@@ -137,6 +137,15 @@ app.get('/memo/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'memo.html'));
 });
 
+app.get('/api/health', async (req, res) => {
+  const out = { ok: true, db_enabled: db.ENABLED() };
+  if (db.ENABLED()) {
+    try { await db.ensureSchema(); out.db_reachable = true; }
+    catch (e) { out.db_reachable = false; out.db_error = String(e.message || e).slice(0, 200); }
+  }
+  res.json(out);
+});
+
 app.get('/api/examples', async (req, res) => {
   try {
     if (db.ENABLED()) {
