@@ -27,6 +27,11 @@
   function sentenceList(text, max) {
     return String(text || '').split(/(?<=[.!?])\s+/).map(x => x.trim()).filter(Boolean).slice(0, max);
   }
+  function clip(text, words) {
+    const clean = String(text || '').replace(/\s+/g, ' ').trim();
+    const parts = clean.split(' ');
+    return parts.length <= words ? clean : parts.slice(0, words).join(' ').replace(/[,:;]$/, '') + '…';
+  }
   function render(memo, lang) {
     const c = copy[lang];
     const reco = memo.recomendacion || 'WATCH';
@@ -36,19 +41,20 @@
     const verified = claims.filter(x => x.estado === 'verificada');
     const unverified = claims.filter(x => x.estado === 'no_verificada');
     const contradicted = claims.filter(x => x.estado === 'contradicha');
-    const signals = verified.slice(0, 4).map(x => x.claim);
-    if (signals.length < 3) signals.push(...sentenceList(memo.justificacion, 3 - signals.length));
-    const risks = (memo.red_flags || []).slice(0, 5);
-    const conditions = (memo.preguntas || []).slice(0, 5);
-    const fit = (memo.encaje || []).slice(0, 5);
+    const signals = verified.slice(0, 3).map(x => clip(x.claim, 18));
+    if (signals.length < 3) signals.push(...sentenceList(memo.justificacion, 3 - signals.length).map(x => clip(x, 18)));
+    const risks = (memo.red_flags || []).slice(0, 4).map(x => clip(x, 20));
+    const conditions = (memo.preguntas || []).slice(0, 4).map(x => clip(x, 22));
+    const fit = (memo.encaje || []).slice(0, 4);
+    const thesis = [clip(memo.why_now, 18), clip(memo.why_this_company, 18), clip(memo.resumen_ejecutivo, 24)].filter(Boolean);
     const nextText = reco === 'INVESTIGATE'
-      ? (lang === 'es' ? 'Abrir due diligence enfocada en las condiciones de abajo antes de debatir precio o términos.' : 'Open due diligence focused on the conditions below before discussing price or terms.')
+      ? (lang === 'es' ? 'Abrir due diligence. No debatir precio hasta cerrar las condiciones.' : 'Open due diligence. Do not discuss price until the conditions are cleared.')
       : reco === 'WATCH'
-        ? (lang === 'es' ? 'Mantener contacto y reabrir el caso cuando haya evidencia nueva sobre tracción, retención o ronda.' : 'Stay in touch and reopen the case when new evidence emerges on traction, retention or the round.')
-        : (lang === 'es' ? 'Cerrar el caso salvo que cambie de forma material la tesis, la tracción o el riesgo principal.' : 'Close the case unless the thesis, traction or main risk changes materially.');
+        ? (lang === 'es' ? 'Revisar cuando haya nueva evidencia de tracción y retención.' : 'Revisit when there is new evidence on traction and retention.')
+        : (lang === 'es' ? 'Cerrar salvo cambio material en tesis, tracción o riesgo.' : 'Close unless thesis, traction or risk changes materially.');
     const logo = memo.logo ? `<img class="ic-logo" src="${esc(memo.logo.replace(/(\.[a-z0-9]+)$/i, '-dark$1'))}" data-orig="${esc(memo.logo)}" alt="Logo de ${esc(memo.nombre)}" onerror="if(this.dataset.orig&&this.src.indexOf(this.dataset.orig)===-1){this.src=this.dataset.orig}else{this.style.display='none'}">` : '';
-    const list = (xs, cls='') => `<ul class="ic-list ${cls}">${xs.map((x,i) => `<li><span>${String(i+1).padStart(2,'0')}</span><p>${esc(x)}</p></li>`).join('')}</ul>`;
-    return `<article class="ic-doc">
+    const shortList = (xs, cls='') => `<ul class="ic-scan-list ${cls}">${xs.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+    return `<article class="ic-doc ic-executive">
       <header class="ic-cover">
         <div class="ic-cover-top"><span>${c.kicker}</span><span>${esc(memo.fecha || '')}</span></div>
         <div class="ic-identity">${logo}<div><p>${esc(memo.sector || '')}</p><h1>${esc(memo.nombre)}</h1></div></div>
@@ -56,40 +62,40 @@
           <div><div class="ic-label">${c.decision}</div><div class="ic-decision ${statusClass}">${decision}</div></div>
           <div class="ic-score"><strong>${esc(memo.score_global)}<small>%</small></strong><span>${c.score}</span></div>
         </div>
-        <p class="ic-stance">${esc(memo.justificacion || memo.resumen_ejecutivo || '')}</p>
-        <div class="ic-tags"><span>${c.confidence}: ${esc(memo.confianza_global || '—')}</span><span>${c.stage}: ${esc(memo.stage || '—')}</span><span>${c.geography}: ${esc(memo.geografia || '—')}</span></div>
+        <div class="ic-at-glance">
+          <div><span>${c.confidence}</span><strong>${esc(memo.confianza_global || '—')}</strong></div>
+          <div><span>${c.stage}</span><strong>${esc(clip(memo.stage || '—', 8))}</strong></div>
+          <div><span>${c.evidence}</span><strong>${verified.length} / ${claims.length}</strong></div>
+        </div>
         <p class="ic-source-note">${c.source}</p>
       </header>
 
-      <section class="ic-section ic-thesis">
-        <div class="ic-section-no">01</div><div class="ic-section-body"><h2>${c.thesis}</h2>
-        <p class="ic-exec">${esc(memo.resumen_ejecutivo || '')}</p>
-        <div class="ic-split"><div><h3>${c.whyNow}</h3><p>${esc(memo.why_now || '')}</p></div><div><h3>${c.whyCo}</h3><p>${esc(memo.why_this_company || '')}</p></div></div></div>
+      <section class="ic-snapshot">
+        <div class="ic-snapshot-head"><span>01</span><h2>${c.thesis}</h2></div>
+        ${shortList(thesis, 'ic-thesis-bullets')}
       </section>
 
-      <section class="ic-section ic-dark-section">
-        <div class="ic-section-no">02</div><div class="ic-section-body"><h2>${c.signals}</h2>${list(signals, 'ic-signals')}</div>
+      <div class="ic-two-up">
+        <section class="ic-panel ic-panel-dark"><div class="ic-panel-head"><span>02</span><h2>${c.signals}</h2></div>${shortList(signals, 'ic-signals')}</section>
+        <section class="ic-panel ic-panel-risk"><div class="ic-panel-head"><span>03</span><h2>${c.risks}</h2></div>${shortList(risks, 'ic-risks')}</section>
+      </div>
+
+      <section class="ic-snapshot ic-conditions-compact">
+        <div class="ic-snapshot-head"><span>04</span><h2>${c.conditions}</h2></div>
+        <ul class="ic-checklist">${conditions.map(x => `<li><span></span><p>${esc(x)}</p></li>`).join('')}</ul>
       </section>
 
-      <section class="ic-section">
-        <div class="ic-section-no">03</div><div class="ic-section-body"><h2>${c.risks}</h2>${list(risks, 'ic-risks')}</div>
-      </section>
-
-      <section class="ic-section ic-conditions">
-        <div class="ic-section-no">04</div><div class="ic-section-body"><h2>${c.conditions}</h2><p class="ic-intro">${c.conditionsNote}</p>${list(conditions, 'ic-checks')}</div>
-      </section>
-
-      <section class="ic-section">
-        <div class="ic-section-no">05</div><div class="ic-section-body"><h2>${c.fit}</h2>
-        <div class="ic-fit">${fit.map(x => `<div><span class="ic-fit-state fit-${esc(x.encaja)}">${x.encaja === 'si' ? '✓' : x.encaja === 'no' ? '×' : '!'}</span><p><strong>${esc(String(x.criterio || '').split('(')[0].trim())}</strong>${esc(x.detalle || '')}</p></div>`).join('')}</div>
-        <div class="ic-evidence"><div><strong>${verified.length}</strong><span>${c.verified}</span></div><div><strong>${unverified.length}</strong><span>${c.unverified}</span></div><div><strong>${contradicted.length}</strong><span>${c.contradicted}</span></div></div>
-        </div>
-      </section>
-
-      <section class="ic-section ic-next"><div class="ic-section-no">06</div><div class="ic-section-body"><h2>${c.next}</h2><p class="ic-next-call">${nextText}</p><h3>${c.dd}</h3>${list(conditions, 'ic-questions')}</div></section>
+      <div class="ic-bottom-grid">
+        <section class="ic-fit-compact"><div class="ic-panel-head"><span>05</span><h2>${c.fit}</h2></div>
+          <div class="ic-fit-pills">${fit.map(x => `<span class="fit-${esc(x.encaja)}"><b>${x.encaja === 'si' ? '✓' : x.encaja === 'no' ? '×' : '!'}</b>${esc(String(x.criterio || '').split('(')[0].trim())}</span>`).join('')}</div>
+          <div class="ic-evidence-strip"><span><b>${verified.length}</b> ${c.verified}</span><span><b>${unverified.length}</b> ${c.unverified}</span><span><b>${contradicted.length}</b> ${c.contradicted}</span></div>
+        </section>
+        <section class="ic-next-compact"><div class="ic-label">${c.next}</div><p>${nextText}</p></section>
+      </div>
       <footer class="ic-footer"><span>Startup Scouting.</span><span>${c.footer}</span></footer>
     </article>`;
   }
+
   async function load() {
     const id = location.pathname.split('/').pop();
     const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : (getLang() || 'es');
