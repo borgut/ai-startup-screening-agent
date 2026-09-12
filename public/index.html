@@ -12,11 +12,34 @@
   <header class="masthead">
     <div class="wrap">
       <div class="masthead-top">
-        <span class="kicker brand">Startup Scouting</span>
+        <span class="wordmark">Startup Scouting<span class="wm-dot">.</span></span>
         <div class="lang-switch"><button class="lang-btn" data-lang="es">ES</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="en">EN</button></div>
       </div>
       <h1 class="display" data-i18n="h1">¿Merece esta startup <em><span class="handmark">30 minutos<svg class="handmark-svg" viewBox="0 0 220 84" aria-hidden="true"><path d="M14 44 C22 16 90 6 150 10 C198 13 214 30 204 50 C193 72 120 80 70 74 C32 69 6 62 14 44 Z"/></svg></span></em> de un inversor?</h1>
       <p class="lede" data-i18n="lede">Lee la web y el deck, busca fuentes externas y contrasta cada claim uno a uno. Lo que no se puede verificar queda marcado como «sin datos».</p>
+      <form id="screen-form" class="hero-form">
+        <label class="visually-hidden" for="url" data-i18n="label_url">Web de la startup</label>
+        <div class="hero-input-row">
+          <input type="text" id="url" name="url" placeholder="https://www.startup.com" required />
+          <button type="submit" id="submit-btn" data-i18n="btn_analizar">Analizar &rarr;</button>
+        </div>
+        <details class="more-context">
+          <summary><span data-i18n="mas_contexto">Más contexto: deck, LinkedIn y notas</span></summary>
+          <div class="more-fields">
+            <label for="deck" data-i18n="label_deck">Pitch deck (PDF, opcional)</label>
+            <input type="file" id="deck" name="deck" accept="application/pdf,.pdf" class="visually-hidden" />
+            <span class="dropzone" id="dropzone" role="button" tabindex="0">
+              <span class="drop-hint" data-i18n="drop_hint">Arrastra el deck (PDF) o haz clic para elegirlo</span>
+              <span class="drop-file hidden" id="drop-file"></span>
+            </span>
+            <label for="linkedin" data-i18n="label_linkedin">LinkedIn del fundador/a (opcional)</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/..." />
+            <label for="context" data-i18n="label_context">Contexto adicional (opcional)</label>
+            <textarea id="context" name="context" rows="3" data-i18n-ph="ph_context" placeholder="Todo lo que sepas: ronda que levantan, cómo llegó a ti, métricas declaradas..."></textarea>
+          </div>
+        </details>
+        <p class="form-note" id="form-note"></p>
+      </form>
       <details class="verdict-help">
         <summary data-i18n="que_veredicto">¿Qué significa el veredicto?</summary>
         <p class="verdict-legend"><span class="vl-inv" data-i18n="vl_inv"><span class="vdot"></span> <strong>INVESTIGATE</strong> (≥65): merece 30 minutos de un inversor</span><span class="vl-watch" data-i18n="vl_watch"><span class="vdot"></span> <strong>WATCH</strong> (45-64): faltan datos, revisar en 3-6 meses</span><span class="vl-pass" data-i18n="vl_pass"><span class="vdot"></span> <strong>PASS</strong> (&lt;45): fuera de tesis o red flag crítico</span></p>
@@ -29,35 +52,19 @@
     </div>
   </header>
 
+  <section class="dossier">
+    <div class="wrap">
+      <p class="dossier-kicker" data-i18n="dossier_kicker">Esto es lo que recibes: extracto del memo real de Vidext</p>
+      <div class="spread" id="dossier-content"></div>
+      <a class="dossier-link" href="/memo/vidext" data-i18n="dossier_ver">Leer el memo completo &rarr;</a>
+    </div>
+  </section>
+
   <main class="wrap">
-    <section class="card" id="form-card">
-      <h2 data-i18n="nuevo_screening">Nuevo screening</h2>
-      <form id="screen-form">
-        <label for="url"><span data-i18n="label_url">Web de la startup</span> <span class="req">*</span></label>
-        <input type="text" id="url" name="url" placeholder="https://www.startup.com" required />
-
-        <label for="deck" data-i18n="label_deck">Pitch deck (PDF, opcional)</label>
-        <input type="file" id="deck" name="deck" accept="application/pdf,.pdf" class="visually-hidden" />
-        <span class="dropzone" id="dropzone" role="button" tabindex="0">
-          <span class="drop-hint" data-i18n="drop_hint">Arrastra el deck (PDF) o haz clic para elegirlo</span>
-          <span class="drop-file hidden" id="drop-file"></span>
-        </span>
-
-        <label for="linkedin" data-i18n="label_linkedin">LinkedIn del fundador/a (opcional)</label>
-        <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/..." />
-
-        <label for="context" data-i18n="label_context">Contexto adicional (opcional)</label>
-        <textarea id="context" name="context" rows="3" data-i18n-ph="ph_context" placeholder="Todo lo que sepas: ronda que levantan, cómo llegó a ti, métricas declaradas..."></textarea>
-
-        <button type="submit" id="submit-btn" data-i18n="btn_analizar">Analizar startup &rarr;</button>
-        <p class="form-note" id="form-note"></p>
-      </form>
-    </section>
-
-    <section class="card" id="examples-card">
-      <h2 data-i18n="ejemplos">Ejemplos reales</h2>
+    <section id="examples-section">
+      <h2 data-i18n="ejemplos">Últimas ediciones</h2>
       <p class="muted" data-i18n="ejemplos_muted">Cinco startups reales pasadas por el filtro, de principio a fin. Lo que no se puede verificar queda marcado como «sin datos».</p>
-      <div id="examples-list" class="examples-grid"></div>
+      <div id="examples-list" class="editions-list"></div>
     </section>
 
     <section id="loading" class="hidden">

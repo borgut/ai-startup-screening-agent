@@ -244,6 +244,7 @@
   }
 
   window.renderMemoHTML = renderMemoHTML;
+  window.gaugeSVG = gaugeSVG;
   // Cuenta ascendente del número del anillo, sincronizada con el relleno.
   window.animateGauges = function (root) {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

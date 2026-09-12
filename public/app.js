@@ -38,8 +38,47 @@ function showMemo(memo) {
   container.scrollIntoView({ behavior: 'smooth' });
   $('#back-link').addEventListener('click', () => {
     container.classList.add('hidden');
-    $('#form-card').scrollIntoView({ behavior: 'smooth' });
+    $('.masthead').scrollIntoView({ behavior: 'smooth' });
   });
+}
+
+
+// Dossier: doble página con extracto real del memo Vidext.
+function renderDossier(memo) {
+  const box = $('#dossier-content');
+  if (!box || !window.gaugeSVG) return;
+  const reco = memo.recomendacion || 'WATCH';
+  const ESTADO_TXT = { verificada: '✓ ' + t('st_verificada'), no_verificada: '⚠ ' + t('st_no_verificada'), contradicha: '✗ ' + t('st_contradicha') };
+  const claims = (memo.claims || []).slice(0, 3);
+  const fuentes = (memo.fuentes_utilizadas || []).slice(0, 4);
+  const full = String(memo.resumen_ejecutivo || '');
+  const sum = full.length > 430 ? esc(full.slice(0, 430).replace(/\s+\S*$/, '') + '…') : esc(full);
+  box.innerHTML = `
+    <div class="page page-left">
+      <div class="pg-kicker">${t('memo_de')} · ${esc(memo.fecha || '')}</div>
+      ${memo.logo ? `<img class="pg-logo" src="${esc(memo.logo)}" alt="" onerror="this.style.display='none'"/>` : ''}
+      <h3 class="pg-name">${esc(memo.nombre)}</h3>
+      <div class="pg-reco">${RECO_LABEL[reco] || esc(reco)}</div>
+      <div class="pg-gauge">${window.gaugeSVG(memo.score_global, reco)}</div>
+      <p class="pg-sum">${sum}</p>
+    </div>
+    <div class="page page-right">
+      <p class="pg-label">${t('sec_claims')} <span class="pg-label-note">· ${t('dossier_extracto')}</span></p>
+      <ul class="pg-claims">
+        ${claims.map((c) => `<li><span class="estado-chip st-${esc(c.estado)}">${ESTADO_TXT[c.estado] || esc(c.estado)}</span> ${esc(c.claim)}</li>`).join('')}
+      </ul>
+      <p class="pg-label">${t('sec_fuentes')}</p>
+      <ol class="src-list pg-src">${fuentes.map((f) => `<li>${linkify(f)}</li>`).join('')}</ol>
+    </div>`;
+  if (window.animateGauges) animateGauges(box);
+}
+
+async function loadDossier() {
+  try {
+    const res = await fetch('/api/memo/vidext?lang=' + getLang());
+    const data = await res.json();
+    if (data.memo) renderDossier(data.memo);
+  } catch { /* sin dossier si falla */ }
 }
 
 async function loadExamples() {
@@ -47,17 +86,21 @@ async function loadExamples() {
     const res = await fetch('/api/examples?lang=' + getLang());
     const data = await res.json();
     const list = $('#examples-list');
-    list.innerHTML = data.examples.map((e) => {
+    list.innerHTML = data.examples.map((e, i) => {
       const badgeClass = { INVESTIGATE: 'badge-investigate', WATCH: 'badge-watch', PASS: 'badge-pass' }[e.recomendacion] || 'badge-watch';
-      const logo = e.logo ? `<img class="card-logo" src="${esc(e.logo)}" alt="Logo de ${esc(e.nombre)}" loading="lazy" onerror="this.style.display='none'"/>` : '';
-      return `<div class="example-card" data-id="${esc(e.id)}">
+      const logo = e.logo ? `<img class="ed-logo" src="${esc(e.logo)}" alt="" loading="lazy" onerror="this.style.display='none'"/>` : '';
+      return `<div class="edition" data-id="${esc(e.id)}">
+        <span class="ed-num">${String(i + 1).padStart(2, '0')}</span>
         ${logo}
-        <h3>${esc(e.nombre)}</h3>
-        <p>${esc(e.sector)} · Score ${esc(e.score_global)}%</p>
-        <span class="badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span>
+        <div class="ed-body">
+          <h3>${esc(e.nombre)}</h3>
+          <p>${esc(e.sector)}</p>
+          <span class="badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span>
+        </div>
+        <span class="ed-score">${esc(e.score_global)}<span class="ed-pct">%</span></span>
       </div>`;
     }).join('');
-    list.querySelectorAll('.example-card').forEach((card) => {
+    list.querySelectorAll('.edition').forEach((card) => {
       card.addEventListener('click', async () => {
         const res2 = await fetch(`/api/memo/${card.dataset.id}?lang=${getLang()}`);
         const data2 = await res2.json();
@@ -141,5 +184,6 @@ $('#screen-form').addEventListener('submit', async (ev) => {
 
 document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
 applyI18n();
+loadDossier();
 loadExamples();
 checkStatus();
