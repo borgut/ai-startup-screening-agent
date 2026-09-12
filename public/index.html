@@ -15,11 +15,11 @@
         <span class="kicker brand">Startup Scouting</span>
         <div class="lang-switch"><button class="lang-btn" data-lang="es">ES</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="en">EN</button></div>
       </div>
-      <h1 class="display" data-i18n="h1">¿Merece esta startup <em>30 minutos</em> de un inversor?</h1>
+      <h1 class="display" data-i18n="h1">¿Merece esta startup <em><span class="handmark">30 minutos<svg class="handmark-svg" viewBox="0 0 220 84" aria-hidden="true"><path d="M14 44 C22 16 90 6 150 10 C198 13 214 30 204 50 C193 72 120 80 70 74 C32 69 6 62 14 44 Z"/></svg></span></em> de un inversor?</h1>
       <p class="lede" data-i18n="lede">Lee la web y el deck, busca fuentes externas y contrasta cada claim uno a uno. Lo que no se puede verificar queda marcado como «sin datos».</p>
       <details class="verdict-help">
         <summary data-i18n="que_veredicto">¿Qué significa el veredicto?</summary>
-        <p class="verdict-legend"><span class="vl-inv" data-i18n="vl_inv">🟢 <strong>INVESTIGATE</strong> (≥65): merece 30 minutos de un inversor</span><span class="vl-watch" data-i18n="vl_watch">🟡 <strong>WATCH</strong> (45-64): faltan datos, revisar en 3-6 meses</span><span class="vl-pass" data-i18n="vl_pass">🔴 <strong>PASS</strong> (&lt;45): fuera de tesis o red flag crítico</span></p>
+        <p class="verdict-legend"><span class="vl-inv" data-i18n="vl_inv"><span class="vdot"></span> <strong>INVESTIGATE</strong> (≥65): merece 30 minutos de un inversor</span><span class="vl-watch" data-i18n="vl_watch"><span class="vdot"></span> <strong>WATCH</strong> (45-64): faltan datos, revisar en 3-6 meses</span><span class="vl-pass" data-i18n="vl_pass"><span class="vdot"></span> <strong>PASS</strong> (&lt;45): fuera de tesis o red flag crítico</span></p>
       </details>
       <div class="steps">
         <span class="step" data-i18n="step1"><b>01</b> Lee la web y el deck</span>
@@ -37,7 +37,11 @@
         <input type="text" id="url" name="url" placeholder="https://www.startup.com" required />
 
         <label for="deck" data-i18n="label_deck">Pitch deck (PDF, opcional)</label>
-        <input type="file" id="deck" name="deck" accept="application/pdf,.pdf" />
+        <input type="file" id="deck" name="deck" accept="application/pdf,.pdf" class="visually-hidden" />
+        <span class="dropzone" id="dropzone" role="button" tabindex="0">
+          <span class="drop-hint" data-i18n="drop_hint">Arrastra el deck (PDF) o haz clic para elegirlo</span>
+          <span class="drop-file hidden" id="drop-file"></span>
+        </span>
 
         <label for="linkedin" data-i18n="label_linkedin">LinkedIn del fundador/a (opcional)</label>
         <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/..." />

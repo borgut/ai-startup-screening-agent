@@ -500,3 +500,31 @@ body.theme-poster .lang-btn.lang-on { text-decoration-color: var(--sienna); }
 body.theme-poster button.lang-btn, button.lang-btn { background: none; border: none; margin: 0; padding: 2px 3px; font: inherit; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; color: var(--muted); cursor: pointer; text-transform: uppercase; border-radius: 0; }
 body.theme-poster button.lang-btn:hover, button.lang-btn:hover { background: none; color: var(--ink); }
 button.lang-btn.lang-on { color: var(--ink); font-weight: 700; text-decoration: underline; text-decoration-color: var(--sienna); text-underline-offset: 4px; }
+
+/* ---------- P0: marcadores tipográficos + trazo a mano + dropzone ---------- */
+.vdot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: currentColor; margin-right: 6px; vertical-align: 1px; }
+.vdot-inv { background: var(--green); }
+.vdot-watch { background: #b98a2e; }
+.vdot-pass { background: var(--red); }
+.hero-reco .vdot { margin-right: 8px; vertical-align: 2px; }
+.hero-reco .vdot-inv { background: #6fb384; }
+.hero-reco .vdot-watch { background: #d9a13b; }
+.hero-reco .vdot-pass { background: #d4604e; }
+
+.handmark { position: relative; white-space: nowrap; }
+.handmark-svg { position: absolute; left: -7%; top: -26%; width: 114%; height: 152%; overflow: visible; pointer-events: none; }
+.handmark-svg path { fill: none; stroke: var(--sienna); stroke-width: 3; stroke-linecap: round; opacity: 0.75; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.dropzone {
+  display: block; cursor: pointer; text-align: center;
+  border: 1.5px dashed var(--hairline-dark); border-radius: 10px;
+  background: var(--paper); padding: 18px 14px; transition: border-color 0.15s, background 0.15s;
+}
+.dropzone:hover, .dropzone:focus-visible { border-color: var(--forest); background: #faf6ec; outline: none; }
+body.theme-poster .dropzone:hover, body.theme-poster .dropzone:focus-visible { border-color: var(--sienna); }
+.dropzone.dz-over { border-color: var(--sienna); background: #f4ede0; border-style: solid; }
+.drop-hint { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.drop-file { display: block; margin-top: 6px; font-size: 0.88rem; font-weight: 600; color: var(--ink); word-break: break-all; }
+.drop-file::before { content: 'PDF · '; font-family: var(--mono); font-size: 0.62rem; color: var(--sienna); letter-spacing: 0.08em; }
+.dz-has-file { border-style: solid; }

@@ -12,7 +12,7 @@
 
 const $ = (sel) => document.querySelector(sel);
 
-const RECO_LABEL = { INVESTIGATE: '🟢 INVESTIGATE', WATCH: '🟡 WATCH', PASS: '🔴 PASS' };
+const RECO_LABEL = { INVESTIGATE: '<span class="vdot vdot-inv"></span>INVESTIGATE', WATCH: '<span class="vdot vdot-watch"></span>WATCH', PASS: '<span class="vdot vdot-pass"></span>PASS' };
 const ESTADO_LABEL = { verificada: '✅ verificada', no_verificada: '⚠️ no verificada', contradicha: '❌ contradicha' };
 const ENCAJE_LABEL = { si: '✅', parcial: '⚠️', no: '❌' };
 
@@ -78,6 +78,29 @@ async function checkStatus() {
     }
   } catch { /* silencioso */ }
 }
+
+// Dropzone del deck: click abre el selector, arrastrar suelta el PDF.
+(() => {
+  const dz = $('#dropzone');
+  const deckInput = $('#deck');
+  const dropFile = $('#drop-file');
+  if (!dz || !deckInput) return;
+  const showName = () => {
+    if (deckInput.files && deckInput.files.length) {
+      dropFile.textContent = deckInput.files[0].name;
+      dropFile.classList.remove('hidden');
+      dz.classList.add('dz-has-file');
+    }
+  };
+  dz.addEventListener('click', () => deckInput.click());
+  dz.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); deckInput.click(); } });
+  deckInput.addEventListener('change', showName);
+  ['dragover', 'dragenter'].forEach((ev) => dz.addEventListener(ev, (e) => { e.preventDefault(); dz.classList.add('dz-over'); }));
+  ['dragleave', 'drop'].forEach((ev) => dz.addEventListener(ev, (e) => { e.preventDefault(); dz.classList.remove('dz-over'); }));
+  dz.addEventListener('drop', (e) => {
+    if (e.dataTransfer.files && e.dataTransfer.files.length) { deckInput.files = e.dataTransfer.files; showName(); }
+  });
+})();
 
 $('#screen-form').addEventListener('submit', async (ev) => {
   ev.preventDefault();

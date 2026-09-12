@@ -2,7 +2,7 @@
 // Autocontenido (IIFE) - usado por la landing (app.js) y las páginas /memo/:id.
 (function () {
   const RECO_LABEL = { INVESTIGATE: 'INVESTIGATE', WATCH: 'WATCH', PASS: 'PASS' };
-  const RECO_ICON = { INVESTIGATE: '🟢', WATCH: '🟡', PASS: '🔴' };
+  const RECO_ICON = { INVESTIGATE: '<span class="vdot vdot-inv"></span>', WATCH: '<span class="vdot vdot-watch"></span>', PASS: '<span class="vdot vdot-pass"></span>' };
   const ESTADO_LABEL = () => ({ verificada: '✓ ' + t('st_verificada'), no_verificada: '⚠ ' + t('st_no_verificada'), contradicha: '✗ ' + t('st_contradicha') });
   const ENCAJE_ICON = { si: '✓', parcial: '!', no: '✗' };
 
