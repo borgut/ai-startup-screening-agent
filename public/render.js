@@ -35,14 +35,14 @@
     const s = Math.max(0, Math.min(100, Number(score) || 0));
     const r = 40, circ = 2 * Math.PI * r;
     const off = circ - (s / 100) * circ;
-    const ring = { INVESTIGATE: '#1e5b3a', WATCH: '#b98a2e', PASS: '#9c2b1d' }[reco] || '#b98a2e';
-    const zones = [[0, 45, '#e9d0c9'], [45, 65, '#efdcae'], [65, 100, '#d4e2d6']].map(([a, b, c]) => {
+    const ring = { INVESTIGATE: '#3ecf6f', WATCH: '#e0b13e', PASS: '#e0604e' }[reco] || '#e0b13e';
+    const zones = [[0, 45, '#2a1512'], [45, 65, '#2e2610'], [65, 100, '#14251a']].map(([a, b, c]) => {
       const len = ((b - a) / 100) * circ;
       const zo = circ - (a / 100) * circ;
       return `<circle cx="50" cy="50" r="${r}" fill="none" stroke="${c}" stroke-width="9" stroke-dasharray="${len.toFixed(1)} ${(circ - len).toFixed(1)}" stroke-dashoffset="${zo.toFixed(1)}" transform="rotate(-90 50 50)"/>`;
     }).join('');
     return `<svg class="gauge" viewBox="0 0 100 100" width="118" height="118" role="img" aria-label="Score ${s}%">
-      <circle cx="50" cy="50" r="48" fill="#f6f1e7"/>
+      <circle cx="50" cy="50" r="48" fill="#101013"/>
       ${zones}
       <circle class="gauge-ring" cx="50" cy="50" r="${r}" fill="none" stroke="${ring}" stroke-width="9"
         stroke-linecap="round" stroke-dasharray="${circ.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"

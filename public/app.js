@@ -53,15 +53,16 @@ function renderDossier(memo) {
   const fuentes = (memo.fuentes_utilizadas || []).slice(0, 4);
   const full = String(memo.resumen_ejecutivo || '');
   const sum = full.length > 430 ? esc(full.slice(0, 430).replace(/\s+\S*$/, '') + '…') : esc(full);
+  const score = Math.max(0, Math.min(100, Number(memo.score_global) || 0));
   box.innerHTML = `
     <div class="page page-left">
       <div class="pg-kicker">${t('memo_de')} · ${esc(memo.fecha || '')}</div>
       ${memo.logo ? `<img class="pg-logo" src="${esc(memo.logo)}" alt="" onerror="this.style.display='none'"/>` : ''}
       <h3 class="pg-name">${esc(memo.nombre)}</h3>
-      <div class="pg-reco">${RECO_LABEL[reco] || esc(reco)}</div>
-      <div class="pg-gauge">${window.gaugeSVG(memo.score_global, reco)}</div>
+      <div class="pg-score-row"><span class="pg-score">${score}<span class="pg-pct">%</span></span><span class="pg-verdict">${RECO_LABEL[reco] || esc(reco)}</span></div>
       <p class="pg-sum">${sum}</p>
     </div>
+    <div class="spread-divider"></div>
     <div class="page page-right">
       <p class="pg-label">${t('sec_claims')} <span class="pg-label-note">· ${t('dossier_extracto')}</span></p>
       <ul class="pg-claims">
@@ -70,7 +71,6 @@ function renderDossier(memo) {
       <p class="pg-label">${t('sec_fuentes')}</p>
       <ol class="src-list pg-src">${fuentes.map((f) => `<li>${linkify(f)}</li>`).join('')}</ol>
     </div>`;
-  if (window.animateGauges) animateGauges(box);
 }
 
 async function loadDossier() {
