@@ -201,7 +201,48 @@
     "https://tech.eu/2025/05/13/madrid-based-shakers-raises-14m-to-power-the-freelance-workforce-across-europe/",
     "https://www.eu-startups.com/2025/05/madrid-based-startup-shakers-raises-e14-million-to-help-businesses-integrate-teams-of-specialised-talent-with-ai/",
     "https://partechpartners.com/news/shakers-raises-14m-to-help-businesses-integrate-teams-of-specialised-talent-with-ai",
-    "https://www.kfund.vc/post/our-investment-in-shakers-orchestrating-the-future-of-freelance-work"
+    "https://www.kfund.vc/post/our-investment-in-shakers-orchestrating-the-future-of-freelance-work",
+    "https://www.shakersworks.com/en/press-kit-shakers-2026",
+    "https://www.nssmag.com/en/lifestyle/44597/shakers-freelance-ai-future-of-work",
+    "https://www.linkedin.com/in/adriandepedro"
   ],
-  "logo": "/logos/shakers.png"
+  "logo": "/logos/shakers.png",
+  "founder_team": {
+    "resumen": "Four co-founders with clear roles and first-hand experience on both sides of the marketplace. Héctor Mata scaled Viaja Wäy to 160+ employees and €25M+ revenue before its acquisition by Barceló; Nico de Luis, Adrián de Pedro and Jaime Castillo cover operations, product and revenue.",
+    "encaje": "Strong founder-market fit across marketplaces, freelance talent, digital product and sales; the team covers all four critical functions from day one.",
+    "personas": [
+      {
+        "nombre": "Héctor Mata",
+        "rol": "CEO and co-founder",
+        "trayectoria": "Entrepreneur since 18; co-founded and led Viaja Wäy, a travel marketplace operating across Spain, Portugal, Mexico and Colombia.",
+        "exits": "Viaja Wäy acquired by Barceló Group.",
+        "estado": "verificada",
+        "fuente": "https://www.shakersworks.com/en/press-kit-shakers-2026"
+      },
+      {
+        "nombre": "Nico de Luis",
+        "rol": "COO and co-founder",
+        "trayectoria": "Operations lead; direct experience hiring and working with freelance talent.",
+        "exits": "No verifiable prior exits.",
+        "estado": "verificada",
+        "fuente": "https://www.nssmag.com/en/lifestyle/44597/shakers-freelance-ai-future-of-work"
+      },
+      {
+        "nombre": "Adrián de Pedro",
+        "rol": "CPO and co-founder",
+        "trayectoria": "Engineer with experience in SEO, analytics, e-commerce and digital product.",
+        "exits": "No verifiable prior exits.",
+        "estado": "verificada",
+        "fuente": "https://www.linkedin.com/in/adriandepedro"
+      },
+      {
+        "nombre": "Jaime Castillo",
+        "rol": "CRO and co-founder",
+        "trayectoria": "Revenue lead; detailed prior track record: no verifiable data in the reviewed sources.",
+        "exits": "No data.",
+        "estado": "sin_datos",
+        "fuente": "https://www.shakersworks.com/en/press-kit-shakers-2026"
+      }
+    ]
+  }
 }

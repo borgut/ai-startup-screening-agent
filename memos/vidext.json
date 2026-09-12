@@ -160,7 +160,9 @@
     "https://www.vidext.io/en/blog/we-closed-new-6M-investment-round",
     "https://cincodias.elpais.com/companias/2025-09-15/la-start-up-vidext-cierra-una-ronda-de-seis-millones-con-flashpoint-sabadell-hwk-4founders-y-draperb1.html",
     "https://cincodias.elpais.com/companias/2024-04-10/vidext-startup-de-generacion-de-videos-con-ia-capta-dos-millones-4founders-draper-b1-y-sabadell.html",
-    "https://linkedin.com/company/vidext"
+    "https://linkedin.com/company/vidext",
+    "https://www.elespanol.com/invertia/disruptores/ecosistema-startup/startups/20230406/elige-ia-deepfakes-produce-calidad-sin-actores/753924682_0.html",
+    "https://lanzadera.es/proyecto/vidext/"
   ],
   "metricas": {
     "rondas": [
@@ -245,5 +247,35 @@
       }
     ]
   },
-  "logo": "/logos/vidext.svg"
+  "logo": "/logos/vidext.svg",
+  "founder_team": {
+    "resumen": "Jon Enríquez, Beñat Arrizabalaga y Miguel Ángel Castillo fundaron Vidext desde la universidad. Jon y Beñat estudiaron Liderazgo, Emprendimiento e Innovación en Mondragon; el proyecto nació tras explorar varios sectores y detectar las barreras de producción audiovisual.",
+    "encaje": "Founder-market fit construido desde el problema: equipo joven con exposición emprendedora y roles de negocio/operaciones/tecnología, aunque sin experiencia previa verificable escalando SaaS enterprise.",
+    "personas": [
+      {
+        "nombre": "Jon Enríquez",
+        "rol": "CEO y cofundador",
+        "trayectoria": "Formación en Liderazgo, Emprendimiento e Innovación en Mondragon; emprendió en varios proyectos antes de Vidext.",
+        "exits": "Sin exits previos verificables.",
+        "estado": "verificada",
+        "fuente": "https://www.elespanol.com/invertia/disruptores/ecosistema-startup/startups/20230406/elige-ia-deepfakes-produce-calidad-sin-actores/753924682_0.html"
+      },
+      {
+        "nombre": "Beñat Arrizabalaga",
+        "rol": "Cofundador",
+        "trayectoria": "Formación en Liderazgo, Emprendimiento e Innovación en Mondragon; emprendió en varios proyectos antes de Vidext.",
+        "exits": "Sin exits previos verificables.",
+        "estado": "verificada",
+        "fuente": "https://www.elespanol.com/invertia/disruptores/ecosistema-startup/startups/20230406/elige-ia-deepfakes-produce-calidad-sin-actores/753924682_0.html"
+      },
+      {
+        "nombre": "Miguel Ángel Castillo",
+        "rol": "CTO y cofundador",
+        "trayectoria": "Perfil técnico según Lanzadera; trayectoria previa detallada: sin datos verificables en las fuentes revisadas.",
+        "exits": "Sin datos.",
+        "estado": "sin_datos",
+        "fuente": "https://lanzadera.es/proyecto/vidext/"
+      }
+    ]
+  }
 }

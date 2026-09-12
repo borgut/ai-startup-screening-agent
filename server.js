@@ -183,7 +183,16 @@ app.get('/api/memo/:id', async (req, res) => {
   try {
     if (db.ENABLED()) {
       const memo = await db.getMemo(req.params.id, req.query.lang);
-      if (memo) return res.json({ memo, source: 'db' });
+      if (memo) {
+        // Los cinco demos ya estaban sembrados antes de añadir founder_team.
+        // Completa solo esta sección editorial desde el JSON versionado, sin tocar
+        // el resto del memo vivo ni el análisis en producción.
+        if (!memo.founder_team) {
+          const enriched = readMemo(req.params.id, req.query.lang);
+          if (enriched && enriched.founder_team) memo.founder_team = enriched.founder_team;
+        }
+        return res.json({ memo, source: 'db' });
+      }
     }
   } catch (err) {
     console.warn('[memo] Postgres no disponible, uso estáticos:', err.message);

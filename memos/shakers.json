@@ -17,13 +17,48 @@
   "confianza_global": "Media",
   "justificacion": "Equipo fundador de cuatro emprendedores con experiencia en IA y software y una Serie A de 14M€ liderada por Partech verificada en prensa; la limitación es que toda la tracción (clientes, crecimiento 6x, recurrencia) es autodeclarada y el modelo es marketplace de talento, no SaaS puro.",
   "dimensiones": [
-    { "nombre": "Founders", "peso": 25, "score": 8, "confianza": "Media" },
-    { "nombre": "Mercado", "peso": 20, "score": 7, "confianza": "Media" },
-    { "nombre": "Tracción", "peso": 15, "score": 7, "confianza": "Media" },
-    { "nombre": "Producto / Tech", "peso": 10, "score": 7, "confianza": "Media" },
-    { "nombre": "Modelo de negocio", "peso": 10, "score": 6, "confianza": "Media" },
-    { "nombre": "Competencia", "peso": 10, "score": 5, "confianza": "Alta" },
-    { "nombre": "Funding / cap table", "peso": 10, "score": 9, "confianza": "Alta" }
+    {
+      "nombre": "Founders",
+      "peso": 25,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Mercado",
+      "peso": 20,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Tracción",
+      "peso": 15,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Producto / Tech",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Modelo de negocio",
+      "peso": 10,
+      "score": 6,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Competencia",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Alta"
+    },
+    {
+      "nombre": "Funding / cap table",
+      "peso": 10,
+      "score": 9,
+      "confianza": "Alta"
+    }
   ],
   "resumen_ejecutivo": "Shakers es una plataforma madrileña de orquestación de talento que conecta empresas con freelancers tech verificados y agentes de IA para montar equipos de proyecto híbridos. Fundada en 2021 por cuatro emprendedores (Héctor Mata, Nico de Luis, Adrián de Pedro y Jaime Castillo), declara más de 10.000 freelancers verificados y 450+ empresas cliente, entre ellas Microsoft, Inditex y Telefónica. En mayo de 2025 cerró una Serie A de 14M€ liderada por Partech con KFund, Brighteye Ventures, Athos Capital y Wayra para expandirse por Europa y desarrollar sus capacidades de IA.",
   "claims": [
@@ -75,24 +110,76 @@
   "why_now": "La IA está cambiando cómo se estructura el trabajo técnico: las empresas quieren equipos por proyecto con agentes integrados y los profesionales se mueven al freelance cualificado. El outsourcing de IT tradicional no ha evolucionado en décadas, y la presión por contratar talento especializado rápido (con la escasez de perfiles tech en Europa) abre ventana para una nueva capa de orquestación.",
   "why_this_company": "Cuatro fundadores cubriendo negocio, operaciones, producto y ventas desde el inicio, tres años de sistema de matching certificado y una red de 10.000+ freelancers ya verificados: la curaduría validada con datos es el activo difícil de replicar, y el respaldo de Partech valida la tracción mejor que cualquier cifra autodeclarada.",
   "encaje": [
-    { "criterio": "Sector (B2B SaaS, fintech, IA, traveltech, ciberseguridad, business services, data)", "encaja": "parcial", "detalle": "Business services / HRTech con capa fuerte de IA y software; no es SaaS puro sino marketplace de talento" },
-    { "criterio": "Stage (pre-seed a Serie A)", "encaja": "parcial", "detalle": "Serie A de 14M€ ya cerrada (may-2025); solo encajaría como follow-on" },
-    { "criterio": "Geografía (España / Europa, puntualmente LatAm)", "encaja": "si", "detalle": "HQ Madrid, expansión europea en marcha" },
-    { "criterio": "Ticket (entrada ~250k-2M€)", "encaja": "parcial", "detalle": "Con la Serie A cerrada, una entrada nueva sería fuera del rango típico de entrada" },
-    { "criterio": "Ambición internacional (+300M€)", "encaja": "si", "detalle": "Objetivo declarado de 10.000 proyectos híbridos en Europa en 2027 y equipo con ambición continental" }
+    {
+      "criterio": "Sector (B2B SaaS, fintech, IA, traveltech, ciberseguridad, business services, data)",
+      "encaja": "parcial",
+      "detalle": "Business services / HRTech con capa fuerte de IA y software; no es SaaS puro sino marketplace de talento"
+    },
+    {
+      "criterio": "Stage (pre-seed a Serie A)",
+      "encaja": "parcial",
+      "detalle": "Serie A de 14M€ ya cerrada (may-2025); solo encajaría como follow-on"
+    },
+    {
+      "criterio": "Geografía (España / Europa, puntualmente LatAm)",
+      "encaja": "si",
+      "detalle": "HQ Madrid, expansión europea en marcha"
+    },
+    {
+      "criterio": "Ticket (entrada ~250k-2M€)",
+      "encaja": "parcial",
+      "detalle": "Con la Serie A cerrada, una entrada nueva sería fuera del rango típico de entrada"
+    },
+    {
+      "criterio": "Ambición internacional (+300M€)",
+      "encaja": "si",
+      "detalle": "Objetivo declarado de 10.000 proyectos híbridos en Europa en 2027 y equipo con ambición continental"
+    }
   ],
   "metricas": {
     "rondas": [
-      { "anio": "2021–2024", "ronda": "Rondas tempranas", "importe_eur": null, "importe_texto": "sin datos", "inversores": "sin datos" },
-      { "anio": "2025", "ronda": "Serie A", "importe_eur": 14000000, "importe_texto": "14M€", "inversores": "Partech (líder), KFund, Brighteye Ventures, Athos Capital, Wayra" }
+      {
+        "anio": "2021–2024",
+        "ronda": "Rondas tempranas",
+        "importe_eur": null,
+        "importe_texto": "sin datos",
+        "inversores": "sin datos"
+      },
+      {
+        "anio": "2025",
+        "ronda": "Serie A",
+        "importe_eur": 14000000,
+        "importe_texto": "14M€",
+        "inversores": "Partech (líder), KFund, Brighteye Ventures, Athos Capital, Wayra"
+      }
     ],
     "series": [],
     "otras_cifras": [
-      { "etiqueta": "Empresas cliente", "valor": "+450", "contexto": "autodeclarado" },
-      { "etiqueta": "Freelancers verificados", "valor": "+10.000", "contexto": "autodeclarado" },
-      { "etiqueta": "Crecimiento ingresos YoY", "valor": "6x", "contexto": "autodeclarado, sin base absoluta" },
-      { "etiqueta": "Ingresos de clientes recurrentes", "valor": "60%", "contexto": "autodeclarado" },
-      { "etiqueta": "Ingresos / take rate", "valor": "sin datos", "contexto": "" }
+      {
+        "etiqueta": "Empresas cliente",
+        "valor": "+450",
+        "contexto": "autodeclarado"
+      },
+      {
+        "etiqueta": "Freelancers verificados",
+        "valor": "+10.000",
+        "contexto": "autodeclarado"
+      },
+      {
+        "etiqueta": "Crecimiento ingresos YoY",
+        "valor": "6x",
+        "contexto": "autodeclarado, sin base absoluta"
+      },
+      {
+        "etiqueta": "Ingresos de clientes recurrentes",
+        "valor": "60%",
+        "contexto": "autodeclarado"
+      },
+      {
+        "etiqueta": "Ingresos / take rate",
+        "valor": "sin datos",
+        "contexto": ""
+      }
     ]
   },
   "red_flags": [
@@ -114,7 +201,48 @@
     "https://tech.eu/2025/05/13/madrid-based-shakers-raises-14m-to-power-the-freelance-workforce-across-europe/",
     "https://www.eu-startups.com/2025/05/madrid-based-startup-shakers-raises-e14-million-to-help-businesses-integrate-teams-of-specialised-talent-with-ai/",
     "https://partechpartners.com/news/shakers-raises-14m-to-help-businesses-integrate-teams-of-specialised-talent-with-ai",
-    "https://www.kfund.vc/post/our-investment-in-shakers-orchestrating-the-future-of-freelance-work"
+    "https://www.kfund.vc/post/our-investment-in-shakers-orchestrating-the-future-of-freelance-work",
+    "https://www.shakersworks.com/en/press-kit-shakers-2026",
+    "https://www.nssmag.com/en/lifestyle/44597/shakers-freelance-ai-future-of-work",
+    "https://www.linkedin.com/in/adriandepedro"
   ],
-  "logo": "/logos/shakers.png"
+  "logo": "/logos/shakers.png",
+  "founder_team": {
+    "resumen": "Cuatro cofundadores con roles claros y experiencia directa a ambos lados del marketplace. Héctor Mata escaló Viaja Wäy a más de 160 empleados y 25M€ de ingresos antes de su adquisición por Barceló; Nico de Luis, Adrián de Pedro y Jaime Castillo cubren operaciones, producto y revenue.",
+    "encaje": "Founder-market fit fuerte en marketplaces, talento freelance, producto digital y ventas; el equipo cubre las cuatro funciones críticas desde el inicio.",
+    "personas": [
+      {
+        "nombre": "Héctor Mata",
+        "rol": "CEO y cofundador",
+        "trayectoria": "Emprendedor desde los 18; cofundó y dirigió Viaja Wäy, marketplace de viajes presente en España, Portugal, México y Colombia.",
+        "exits": "Viaja Wäy adquirida por Barceló Group.",
+        "estado": "verificada",
+        "fuente": "https://www.shakersworks.com/en/press-kit-shakers-2026"
+      },
+      {
+        "nombre": "Nico de Luis",
+        "rol": "COO y cofundador",
+        "trayectoria": "Responsable de operaciones; experiencia directa contratando y trabajando con talento freelance.",
+        "exits": "Sin exits previos verificables.",
+        "estado": "verificada",
+        "fuente": "https://www.nssmag.com/en/lifestyle/44597/shakers-freelance-ai-future-of-work"
+      },
+      {
+        "nombre": "Adrián de Pedro",
+        "rol": "CPO y cofundador",
+        "trayectoria": "Ingeniero con experiencia en SEO, analítica, e-commerce y producto digital.",
+        "exits": "Sin exits previos verificables.",
+        "estado": "verificada",
+        "fuente": "https://www.linkedin.com/in/adriandepedro"
+      },
+      {
+        "nombre": "Jaime Castillo",
+        "rol": "CRO y cofundador",
+        "trayectoria": "Responsable de revenue; trayectoria previa detallada: sin datos verificables en las fuentes revisadas.",
+        "exits": "Sin datos.",
+        "estado": "sin_datos",
+        "fuente": "https://www.shakersworks.com/en/press-kit-shakers-2026"
+      }
+    ]
+  }
 }

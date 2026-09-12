@@ -17,13 +17,48 @@
   "confianza_global": "Media",
   "justificacion": "Encaje pleno de sector y stage con la tesis (IA B2B SaaS en seed, sindicato Samaipata + KFund + Itnig verificado en prensa) y clientes enterprise citados; la limitación es que toda la tracción es autodeclarada, el mercado de agentes de ventas está hipercompetido y el cambio de nombre reciente de Genesy a Enginy queda sin explicar.",
   "dimensiones": [
-    { "nombre": "Founders", "peso": 25, "score": 7, "confianza": "Media" },
-    { "nombre": "Mercado", "peso": 20, "score": 8, "confianza": "Media" },
-    { "nombre": "Tracción", "peso": 15, "score": 7, "confianza": "Media" },
-    { "nombre": "Producto / Tech", "peso": 10, "score": 7, "confianza": "Media" },
-    { "nombre": "Modelo de negocio", "peso": 10, "score": 7, "confianza": "Media" },
-    { "nombre": "Competencia", "peso": 10, "score": 5, "confianza": "Alta" },
-    { "nombre": "Funding / cap table", "peso": 10, "score": 8, "confianza": "Alta" }
+    {
+      "nombre": "Founders",
+      "peso": 25,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Mercado",
+      "peso": 20,
+      "score": 8,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Tracción",
+      "peso": 15,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Producto / Tech",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Modelo de negocio",
+      "peso": 10,
+      "score": 7,
+      "confianza": "Media"
+    },
+    {
+      "nombre": "Competencia",
+      "peso": 10,
+      "score": 5,
+      "confianza": "Alta"
+    },
+    {
+      "nombre": "Funding / cap table",
+      "peso": 10,
+      "score": 8,
+      "confianza": "Alta"
+    }
   ],
   "resumen_ejecutivo": "Enginy (fundada como Genesy en 2023 y renombrada desde entonces: genesy.ai redirige hoy a enginy.ai) es una plataforma de agentes de IA para ventas B2B que identifica, cualifica y contacta clientes potenciales de forma autónoma, combinando más de 30 fuentes de datos, workflows inteligentes y un sistema propio de voz con IA. Fundada por Kai Brandt con oficinas en Barcelona y Madrid, cerró en enero de 2025 una ronda seed de 5M€ liderada por Samaipata con KFund e Itnig, y cita como clientes a Factorial, Sequra, Metricool y Red Points.",
   "claims": [
@@ -75,24 +110,76 @@
   "why_now": "Los LLMs han hecho viable por primera vez el SDR digital que investiga, personaliza y conversa; los equipos comerciales, presionados por eficiencia, están reasignando presupuesto de headcount a agentes. Quien consolide datos + agente + voz en una sola capa durante esta ventana puede definir la categoría en los mercados no anglosajones, todavía poco cubiertos por los líderes americanos.",
   "why_this_company": "Uno de los pocos equipos españoles construyendo el agente de ventas end-to-end (datos + cualificación + contacto + voz) en vez de una pieza del stack, con backing de Itnig en SaaS B2B y clientes enterprise del ecosistema ya citados: si la ejecución acompaña, el foco multilingüe es un wedge defendible frente a los players americanos.",
   "encaje": [
-    { "criterio": "Sector (B2B SaaS, fintech, IA, traveltech, ciberseguridad, business services, data)", "encaja": "si", "detalle": "IA aplicada a SaaS B2B: núcleo de la tesis" },
-    { "criterio": "Stage (pre-seed a Serie A)", "encaja": "si", "detalle": "Seed de 5M€ (ene-2025): stage plenamente en rango" },
-    { "criterio": "Geografía (España / Europa, puntualmente LatAm)", "encaja": "si", "detalle": "Barcelona y Madrid, con plan de expansión europea y EE. UU." },
-    { "criterio": "Ticket (entrada ~250k-2M€)", "encaja": "parcial", "detalle": "Ticket en rango, pero la seed ya está cerrada: la entrada dependería de extensión o próxima ronda" },
-    { "criterio": "Ambición internacional (+300M€)", "encaja": "si", "detalle": "Visión declarada de liderar los «empleados digitales» con expansión a 6 mercados" }
+    {
+      "criterio": "Sector (B2B SaaS, fintech, IA, traveltech, ciberseguridad, business services, data)",
+      "encaja": "si",
+      "detalle": "IA aplicada a SaaS B2B: núcleo de la tesis"
+    },
+    {
+      "criterio": "Stage (pre-seed a Serie A)",
+      "encaja": "si",
+      "detalle": "Seed de 5M€ (ene-2025): stage plenamente en rango"
+    },
+    {
+      "criterio": "Geografía (España / Europa, puntualmente LatAm)",
+      "encaja": "si",
+      "detalle": "Barcelona y Madrid, con plan de expansión europea y EE. UU."
+    },
+    {
+      "criterio": "Ticket (entrada ~250k-2M€)",
+      "encaja": "parcial",
+      "detalle": "Ticket en rango, pero la seed ya está cerrada: la entrada dependería de extensión o próxima ronda"
+    },
+    {
+      "criterio": "Ambición internacional (+300M€)",
+      "encaja": "si",
+      "detalle": "Visión declarada de liderar los «empleados digitales» con expansión a 6 mercados"
+    }
   ],
   "metricas": {
     "rondas": [
-      { "anio": "2023–2024", "ronda": "Pre-seed", "importe_eur": null, "importe_texto": "sin datos (Tech.eu computa 5,5M€ totales en 2 rondas)", "inversores": "KFund, Itnig (según prensa de la seed)" },
-      { "anio": "2025", "ronda": "Seed", "importe_eur": 5000000, "importe_texto": "5M€", "inversores": "Samaipata (líder), KFund, Itnig" }
+      {
+        "anio": "2023–2024",
+        "ronda": "Pre-seed",
+        "importe_eur": null,
+        "importe_texto": "sin datos (Tech.eu computa 5,5M€ totales en 2 rondas)",
+        "inversores": "KFund, Itnig (según prensa de la seed)"
+      },
+      {
+        "anio": "2025",
+        "ronda": "Seed",
+        "importe_eur": 5000000,
+        "importe_texto": "5M€",
+        "inversores": "Samaipata (líder), KFund, Itnig"
+      }
     ],
     "series": [],
     "otras_cifras": [
-      { "etiqueta": "Clientes citados", "valor": "Factorial, Sequra, Metricool, Red Points", "contexto": "autodeclarado" },
-      { "etiqueta": "Equipo (ene-2025)", "valor": "+20 personas", "contexto": "autodeclarado" },
-      { "etiqueta": "Fuentes de datos integradas", "valor": "+30", "contexto": "autodeclarado" },
-      { "etiqueta": "Productividad declarada", "valor": "hasta 10x", "contexto": "claim de marketing, sin caso publicado" },
-      { "etiqueta": "Ingresos / ARR", "valor": "sin datos", "contexto": "" }
+      {
+        "etiqueta": "Clientes citados",
+        "valor": "Factorial, Sequra, Metricool, Red Points",
+        "contexto": "autodeclarado"
+      },
+      {
+        "etiqueta": "Equipo (ene-2025)",
+        "valor": "+20 personas",
+        "contexto": "autodeclarado"
+      },
+      {
+        "etiqueta": "Fuentes de datos integradas",
+        "valor": "+30",
+        "contexto": "autodeclarado"
+      },
+      {
+        "etiqueta": "Productividad declarada",
+        "valor": "hasta 10x",
+        "contexto": "claim de marketing, sin caso publicado"
+      },
+      {
+        "etiqueta": "Ingresos / ARR",
+        "valor": "sin datos",
+        "contexto": ""
+      }
     ]
   },
   "red_flags": [
@@ -114,7 +201,22 @@
     "https://www.eu-startups.com/2025/01/genesy-secures-e5-million-in-landmark-funding-to-further-b2b-sales-with-ai-powered-agents/",
     "https://cincodias.elpais.com/companias/2025-01-14/samaipata-lidera-una-ronda-de-cinco-millones-de-la-startup-genesy-para-impulsar-su-ia-comercial.html",
     "https://www.kfund.vc/post/our-investment-in-genesy-upscaling-the-quality-of-outbound-sales",
-    "https://funding.tech.eu/companies/8218A96D-97EC-4F07-83EA-F7C25959A5B8"
+    "https://funding.tech.eu/companies/8218A96D-97EC-4F07-83EA-F7C25959A5B8",
+    "https://outbounders.es/go-to-market-genesy-podcast/"
   ],
-  "logo": "/logos/enginy.svg"
+  "logo": "/logos/enginy.svg",
+  "founder_team": {
+    "resumen": "Kai Brandt aporta experiencia directa construyendo go-to-market B2B: antes de Enginy fue el primer empleado de Agicap en España y lideró su desarrollo comercial. Enginy nació dentro del ecosistema Itnig. La identidad y trayectoria del resto del equipo fundador: sin datos públicos verificables.",
+    "encaje": "Founder-market fit claro en ventas B2B y construcción comercial; el riesgo es la dependencia de un único fundador públicamente identificable.",
+    "personas": [
+      {
+        "nombre": "Kai Brandt",
+        "rol": "CEO y fundador",
+        "trayectoria": "Primer empleado de Agicap en España; lideró su desarrollo comercial antes de fundar Enginy.",
+        "exits": "Sin exits previos verificables.",
+        "estado": "verificada",
+        "fuente": "https://outbounders.es/go-to-market-genesy-podcast/"
+      }
+    ]
+  }
 }

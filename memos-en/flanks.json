@@ -152,7 +152,9 @@
     "https://www.flanks.io",
     "https://www.flanks.io/articles/flanks-raises-eu14m-to-lead-wealth-management-for-next-gen-advisory",
     "https://tech.eu/2025/02/26/spanish-flanks-secures-14m-for-wealth-management-platform/",
-    "https://www.axios.com/pro/fintech-deals/2025/02/26/european-wealthtech-data-aggregator-flanks-14-million"
+    "https://www.axios.com/pro/fintech-deals/2025/02/26/european-wealthtech-data-aggregator-flanks-14-million",
+    "https://www.flanks.io/company",
+    "https://www.flanks.io/author/alvaro-morales"
   ],
   "metricas": {
     "rondas": [
@@ -195,5 +197,35 @@
       }
     ]
   },
-  "logo": "/logos/flanks.webp"
+  "logo": "/logos/flanks.webp",
+  "founder_team": {
+    "resumen": "Complementary technology and private-banking team. Joaquim de la Cruz and Sergi Lao bring engineering; Álvaro Morales brings 30+ years in banking and former leadership as Santander’s Global Head of Private Banking.",
+    "encaje": "Particularly strong founder-market fit: the technical founders build the infrastructure while Morales knows the buyer, workflows and wealth-management regulation.",
+    "personas": [
+      {
+        "nombre": "Joaquim de la Cruz",
+        "rol": "CEO and co-founder",
+        "trayectoria": "Computer engineer; named to Forbes 30 Under 30 Europe in finance.",
+        "exits": "No verifiable prior exits.",
+        "estado": "verificada",
+        "fuente": "https://www.flanks.io/company"
+      },
+      {
+        "nombre": "Sergi Lao",
+        "rol": "CISO and co-founder",
+        "trayectoria": "Computer engineer specialised in information technology; technical and security profile.",
+        "exits": "No verifiable prior exits.",
+        "estado": "verificada",
+        "fuente": "https://www.flanks.io/company"
+      },
+      {
+        "nombre": "Álvaro Morales",
+        "rol": "Chairman and co-founder",
+        "trayectoria": "30+ years in banking; former Santander Global Head of Private Banking and Santander International CEO.",
+        "exits": "Not applicable / no verifiable entrepreneurial exits.",
+        "estado": "verificada",
+        "fuente": "https://www.flanks.io/author/alvaro-morales"
+      }
+    ]
+  }
 }

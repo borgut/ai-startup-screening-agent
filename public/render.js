@@ -210,6 +210,18 @@
 
       ${metricasSection(memo.metricas)}
 
+      ${memo.founder_team ? `<section class="memo-sec founder-sec">
+        <h3>${t('sec_founders')}</h3>
+        <p class="founder-summary">${esc(memo.founder_team.resumen || '')}</p>
+        <div class="founder-grid">${(memo.founder_team.personas || []).map((p) => `<article class="founder-card">
+          <div class="founder-card-head"><div><strong>${esc(p.nombre)}</strong><span>${esc(p.rol || '')}</span></div><span class="founder-state ${p.estado === 'sin_datos' ? 'founder-unknown' : 'founder-verified'}">${p.estado === 'sin_datos' ? t('founder_no_data') : '✓'}</span></div>
+          <p>${esc(p.trayectoria || '')}</p>
+          <div class="founder-exit"><b>${t('founder_exits')}</b>${esc(p.exits || t('founder_no_data'))}</div>
+          ${p.fuente ? `<a class="founder-source" href="${esc(p.fuente)}" target="_blank" rel="noopener">Fuente ↗</a>` : ''}
+        </article>`).join('')}</div>
+        <div class="founder-fit"><strong>${t('founder_fit')}</strong><p>${esc(memo.founder_team.encaje || '')}</p></div>
+      </section>` : ''}
+
       <section class="memo-sec">
         <h3>${t('sec_scoring')}</h3>
         <p class="method-note">${t('method_note')}</p>

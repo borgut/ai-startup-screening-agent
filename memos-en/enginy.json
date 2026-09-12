@@ -201,7 +201,22 @@
     "https://www.eu-startups.com/2025/01/genesy-secures-e5-million-in-landmark-funding-to-further-b2b-sales-with-ai-powered-agents/",
     "https://cincodias.elpais.com/companias/2025-01-14/samaipata-lidera-una-ronda-de-cinco-millones-de-la-startup-genesy-para-impulsar-su-ia-comercial.html",
     "https://www.kfund.vc/post/our-investment-in-genesy-upscaling-the-quality-of-outbound-sales",
-    "https://funding.tech.eu/companies/8218A96D-97EC-4F07-83EA-F7C25959A5B8"
+    "https://funding.tech.eu/companies/8218A96D-97EC-4F07-83EA-F7C25959A5B8",
+    "https://outbounders.es/go-to-market-genesy-podcast/"
   ],
-  "logo": "/logos/enginy.svg"
+  "logo": "/logos/enginy.svg",
+  "founder_team": {
+    "resumen": "Kai Brandt brings direct B2B go-to-market experience: before Enginy he was Agicap Spain’s first employee and led its commercial build-out. Enginy was born within the Itnig ecosystem. Identity and track record of the rest of the founding team: no verifiable public data.",
+    "encaje": "Clear founder-market fit in B2B sales and commercial execution; key-person risk remains because only one founder is publicly identifiable.",
+    "personas": [
+      {
+        "nombre": "Kai Brandt",
+        "rol": "CEO and founder",
+        "trayectoria": "Agicap Spain’s first employee; led its commercial development before founding Enginy.",
+        "exits": "No verifiable prior exits.",
+        "estado": "verificada",
+        "fuente": "https://outbounders.es/go-to-market-genesy-podcast/"
+      }
+    ]
+  }
 }

@@ -152,7 +152,9 @@
     "https://www.flanks.io",
     "https://www.flanks.io/articles/flanks-raises-eu14m-to-lead-wealth-management-for-next-gen-advisory",
     "https://tech.eu/2025/02/26/spanish-flanks-secures-14m-for-wealth-management-platform/",
-    "https://www.axios.com/pro/fintech-deals/2025/02/26/european-wealthtech-data-aggregator-flanks-14-million"
+    "https://www.axios.com/pro/fintech-deals/2025/02/26/european-wealthtech-data-aggregator-flanks-14-million",
+    "https://www.flanks.io/company",
+    "https://www.flanks.io/author/alvaro-morales"
   ],
   "metricas": {
     "rondas": [
@@ -195,5 +197,35 @@
       }
     ]
   },
-  "logo": "/logos/flanks.webp"
+  "logo": "/logos/flanks.webp",
+  "founder_team": {
+    "resumen": "Equipo complementario de tecnología y banca privada. Joaquim de la Cruz y Sergi Lao aportan ingeniería; Álvaro Morales aporta más de 30 años en banca y fue Global Head of Private Banking de Santander.",
+    "encaje": "Founder-market fit especialmente fuerte: los perfiles técnicos construyen la infraestructura y Morales conoce el comprador, los flujos y la regulación del wealth management.",
+    "personas": [
+      {
+        "nombre": "Joaquim de la Cruz",
+        "rol": "CEO y cofundador",
+        "trayectoria": "Ingeniero informático; reconocido por Forbes 30 Under 30 Europe en finanzas.",
+        "exits": "Sin exits previos verificables.",
+        "estado": "verificada",
+        "fuente": "https://www.flanks.io/company"
+      },
+      {
+        "nombre": "Sergi Lao",
+        "rol": "CISO y cofundador",
+        "trayectoria": "Ingeniero informático especializado en tecnologías de la información; perfil técnico y de seguridad.",
+        "exits": "Sin exits previos verificables.",
+        "estado": "verificada",
+        "fuente": "https://www.flanks.io/company"
+      },
+      {
+        "nombre": "Álvaro Morales",
+        "rol": "Chairman y cofundador",
+        "trayectoria": "Más de 30 años en banca; ex Global Head of Private Banking de Santander y ex CEO de Santander International.",
+        "exits": "No aplica / sin exits emprendedores verificables.",
+        "estado": "verificada",
+        "fuente": "https://www.flanks.io/author/alvaro-morales"
+      }
+    ]
+  }
 }

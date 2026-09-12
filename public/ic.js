@@ -46,7 +46,8 @@
     const risks = (memo.red_flags || []).slice(0, 4).map(x => clip(x, 20));
     const conditions = (memo.preguntas || []).slice(0, 4).map(x => clip(x, 22));
     const fit = (memo.encaje || []).slice(0, 4);
-    const thesis = [clip(memo.why_now, 18), clip(memo.why_this_company, 18), clip(memo.resumen_ejecutivo, 24)].filter(Boolean);
+    const teamBullet = memo.founder_team ? `${lang === 'es' ? 'Equipo' : 'Team'}: ${clip(memo.founder_team.encaje || memo.founder_team.resumen, 20)}` : '';
+    const thesis = [teamBullet, clip(memo.why_now, 18), clip(memo.why_this_company, 18)].filter(Boolean);
     const nextText = reco === 'INVESTIGATE'
       ? (lang === 'es' ? 'Abrir due diligence. No debatir precio hasta cerrar las condiciones.' : 'Open due diligence. Do not discuss price until the conditions are cleared.')
       : reco === 'WATCH'

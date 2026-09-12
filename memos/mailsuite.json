@@ -155,7 +155,9 @@
     "https://mailsuite.com/en/about",
     "https://www.linkedin.com/in/eduardomanchon",
     "https://www.linkedin.com/company/mailsuite",
-    "https://www.cbinsights.com/company/mailsuite/financials"
+    "https://www.cbinsights.com/company/mailsuite/financials",
+    "https://www.elespanol.com/invertia/empresas/20170929/250475950_0.html",
+    "https://www.linkedin.com/in/ra%C3%BAl-ramos-25b73931"
   ],
   "metricas": {
     "rondas": [
@@ -191,5 +193,35 @@
       }
     ]
   },
-  "logo": "/logos/mailsuite.png"
+  "logo": "/logos/mailsuite.png",
+  "founder_team": {
+    "resumen": "Equipo senior y probado. Eduardo Manchón cofundó Panoramio, adquirida por Google, y Loquo, adquirida por eBay. Raúl Ramos suma más de 20 años de ingeniería y liderazgo técnico; Nacho González-Barros figura como tercer fundador, pero su trayectoria operativa detallada: sin datos verificables en las fuentes revisadas.",
+    "encaje": "Track record excepcional en producto digital, crecimiento orgánico y ejecución eficiente; encaja con un SaaS horizontal y mayoritariamente bootstrapped.",
+    "personas": [
+      {
+        "nombre": "Eduardo Manchón",
+        "rol": "CEO y fundador",
+        "trayectoria": "Cofundó Panoramio y trabajó en Google tras la adquisición; también cofundó Loquo.",
+        "exits": "Panoramio adquirida por Google; Loquo adquirida por eBay.",
+        "estado": "verificada",
+        "fuente": "https://www.elespanol.com/invertia/empresas/20170929/250475950_0.html"
+      },
+      {
+        "nombre": "Raúl Ramos",
+        "rol": "CTO y fundador",
+        "trayectoria": "Ingeniero informático con más de 20 años; lideró equipos técnicos en Atrápalo antes de Mailsuite.",
+        "exits": "Sin exits previos verificables.",
+        "estado": "verificada",
+        "fuente": "https://www.linkedin.com/in/ra%C3%BAl-ramos-25b73931"
+      },
+      {
+        "nombre": "Nacho González-Barros",
+        "rol": "Fundador",
+        "trayectoria": "Trayectoria operativa detallada: sin datos verificables en las fuentes revisadas.",
+        "exits": "Sin datos.",
+        "estado": "sin_datos",
+        "fuente": "https://mailsuite.com/en/about"
+      }
+    ]
+  }
 }
