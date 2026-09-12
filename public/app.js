@@ -104,38 +104,81 @@ async function loadDossier() {
   } catch { /* sin dossier si falla */ }
 }
 
+// Últimas ediciones: se cargan una vez y la búsqueda/filtros/orden van en cliente
+// (la base es pequeña; respuesta instantánea). El servidor ya devuelve dedupe por URL y fecha desc.
+const edParams = new URLSearchParams(location.search);
+const edState = { q: edParams.get('ed_q') || '', v: edParams.get('ed_v') || '', s: edParams.get('ed_s') || 'fecha' };
+let edData = [];
+
+function renderExamples() {
+  const list = $('#examples-list');
+  const q = edState.q.trim().toLowerCase();
+  let rows = edData.filter((e) => {
+    if (edState.v && e.recomendacion !== edState.v) return false;
+    if (q && !(`${e.nombre} ${e.sector}`.toLowerCase().includes(q))) return false;
+    return true;
+  });
+  if (edState.s === 'score') rows = [...rows].sort((a, b) => (Number(b.score_global) || 0) - (Number(a.score_global) || 0));
+  if (!rows.length) {
+    list.innerHTML = '<p class="muted ed-empty">' + t('ed_sin_resultados') + '</p>';
+    return;
+  }
+  list.innerHTML = rows.map((e, i) => {
+    const badgeClass = { INVESTIGATE: 'badge-investigate', WATCH: 'badge-watch', PASS: 'badge-pass' }[e.recomendacion] || 'badge-watch';
+    const logo = e.logo ? `<img class="ed-logo" src="${esc(e.logo)}" alt="" loading="lazy" onerror="this.style.display='none'"/>` : '';
+    const tags = String(e.sector || '').split('/').map((x) => x.trim().replace(/\s*\(.*\)\s*$/, '')).filter(Boolean)
+      .map((x) => `<span class="pill ed-tag">${esc(x)}</span>`).join('');
+    const gauge = window.gaugeSVG ? gaugeSVG(e.score_global, e.recomendacion, { light: true, size: 64 }) : '';
+    return `<div class="edition" data-id="${esc(e.id)}">
+      <span class="ed-num">${String(i + 1).padStart(2, '0')}</span>
+      ${logo}
+      <div class="ed-body">
+        <h3>${esc(e.nombre)}</h3>
+        <div class="ed-tags">${tags}<span class="pill badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span></div>
+      </div>
+      <span class="ed-gauge">${gauge}</span>
+    </div>`;
+  }).join('');
+  list.querySelectorAll('.edition').forEach((card) => {
+    card.addEventListener('click', async () => {
+      const res2 = await fetch(`/api/memo/${card.dataset.id}?lang=${getLang()}`);
+      const data2 = await res2.json();
+      if (data2.memo) showMemo(data2.memo);
+    });
+  });
+}
+
 async function loadExamples() {
   try {
     const res = await fetch('/api/examples?lang=' + getLang());
     const data = await res.json();
-    const list = $('#examples-list');
-    list.innerHTML = data.examples.map((e, i) => {
-      const badgeClass = { INVESTIGATE: 'badge-investigate', WATCH: 'badge-watch', PASS: 'badge-pass' }[e.recomendacion] || 'badge-watch';
-      const logo = e.logo ? `<img class="ed-logo" src="${esc(e.logo)}" alt="" loading="lazy" onerror="this.style.display='none'"/>` : '';
-      const tags = String(e.sector || '').split('/').map((x) => x.trim().replace(/\s*\(.*\)\s*$/, '')).filter(Boolean)
-        .map((x) => `<span class="pill ed-tag">${esc(x)}</span>`).join('');
-      const gauge = window.gaugeSVG ? gaugeSVG(e.score_global, e.recomendacion, { light: true, size: 64 }) : '';
-      return `<div class="edition" data-id="${esc(e.id)}">
-        <span class="ed-num">${String(i + 1).padStart(2, '0')}</span>
-        ${logo}
-        <div class="ed-body">
-          <h3>${esc(e.nombre)}</h3>
-          <div class="ed-tags">${tags}<span class="pill badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span></div>
-        </div>
-        <span class="ed-gauge">${gauge}</span>
-      </div>`;
-    }).join('');
-    list.querySelectorAll('.edition').forEach((card) => {
-      card.addEventListener('click', async () => {
-        const res2 = await fetch(`/api/memo/${card.dataset.id}?lang=${getLang()}`);
-        const data2 = await res2.json();
-        if (data2.memo) showMemo(data2.memo);
-      });
-    });
+    edData = data.examples || [];
+    renderExamples();
   } catch {
     $('#examples-list').innerHTML = '<p class="muted">' + t('err_ejemplos') + '</p>';
   }
 }
+
+// Controles de búsqueda, filtro por veredicto y orden.
+(() => {
+  const search = $('#ed-search');
+  if (search) {
+    search.value = edState.q;
+    search.addEventListener('input', () => { edState.q = search.value; renderExamples(); });
+  }
+  document.querySelectorAll('#ed-filters .ed-filter').forEach((x) => x.classList.toggle('is-on', x.dataset.v === edState.v));
+  document.querySelectorAll('#ed-sorts .ed-sort').forEach((x) => x.classList.toggle('is-on', x.dataset.s === edState.s));
+  document.querySelectorAll('#ed-filters .ed-filter').forEach((b) => b.addEventListener('click', () => {
+    edState.v = b.dataset.v;
+    document.querySelectorAll('#ed-filters .ed-filter').forEach((x) => x.classList.toggle('is-on', x === b));
+    renderExamples();
+  }));
+  document.querySelectorAll('#ed-sorts .ed-sort').forEach((b) => b.addEventListener('click', () => {
+    edState.s = b.dataset.s;
+    document.querySelectorAll('#ed-sorts .ed-sort').forEach((x) => x.classList.toggle('is-on', x === b));
+    renderExamples();
+  }));
+})();
 
 async function checkStatus() {
   try {

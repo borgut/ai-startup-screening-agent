@@ -183,6 +183,22 @@ input[type="file"]::file-selector-button {
 
 /* ---------- Últimas ediciones ---------- */
 #examples-section { margin: 56px 0 10px; }
+
+/* Búsqueda y filtros: píldoras (interactivo) */
+.ed-tools { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.ed-search {
+  width: 100%; max-width: 460px; border: 1px solid transparent; border-radius: 999px;
+  background: #f1f1f1; padding: 11px 20px; font-family: var(--mono); font-size: 0.82rem; color: var(--ink);
+  outline: none; transition: box-shadow 0.15s;
+}
+.ed-search:focus { box-shadow: 0 0 0 2px var(--cobalto); }
+.ed-search::placeholder { color: var(--faint); }
+.ed-controls { display: flex; justify-content: space-between; align-items: center; gap: 10px 18px; flex-wrap: wrap; }
+.ed-filters, .ed-sorts { display: flex; gap: 6px; flex-wrap: wrap; }
+.ed-filter, .ed-sort { cursor: pointer; background: #f1f1f1; }
+.ed-filter:hover, .ed-sort:hover { color: var(--ink); }
+.ed-filter.is-on, .ed-sort.is-on { background: transparent; border-color: var(--negro); color: var(--ink); }
+.ed-empty { padding: 26px 0; }
 h2 { font-weight: 700; font-size: 2.2rem; letter-spacing: -0.03em; margin: 0 0 6px; }
 h2 + .muted { margin-top: 2px; max-width: 60ch; }
 .editions-list { margin-top: 22px; border-top: 4px solid var(--negro); }
@@ -384,6 +400,8 @@ h2 + .muted { margin-top: 2px; max-width: 60ch; }
   .edition { grid-template-columns: 38px 76px 1fr auto; gap: 6px 12px; padding: 16px 4px; }
   .ed-logo { max-width: 76px; max-height: 30px; }
   .ed-body h3 { font-size: 1.05rem; }
+  .ed-controls { flex-direction: column; align-items: flex-start; }
+  .ed-search { max-width: none; }
   .ed-gauge { width: 56px; height: 56px; }
   .ed-gauge .gauge { width: 56px; height: 56px; }
   .ed-tags .pill { padding: 4px 10px; font-size: 0.55rem; }

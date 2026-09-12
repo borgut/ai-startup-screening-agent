@@ -64,6 +64,21 @@
     <section id="examples-section">
       <h2 data-i18n="ejemplos">Últimas ediciones</h2>
       <p class="muted" data-i18n="ejemplos_muted">Cinco startups reales pasadas por el filtro, de principio a fin. Lo que no se puede verificar queda marcado como «sin datos».</p>
+      <div class="ed-tools">
+        <input type="search" id="ed-search" class="ed-search" data-i18n-ph="ed_buscar" placeholder="Buscar por nombre o sector…" autocomplete="off" />
+        <div class="ed-controls">
+          <div class="ed-filters" id="ed-filters" role="group" aria-label="Filtrar por veredicto">
+            <button type="button" class="pill ed-filter is-on" data-v="" data-i18n="ed_todos">Todos</button>
+            <button type="button" class="pill ed-filter" data-v="INVESTIGATE">Investigate</button>
+            <button type="button" class="pill ed-filter" data-v="WATCH">Watch</button>
+            <button type="button" class="pill ed-filter" data-v="PASS">Pass</button>
+          </div>
+          <div class="ed-sorts" id="ed-sorts" role="group" aria-label="Ordenar">
+            <button type="button" class="pill ed-sort is-on" data-s="fecha" data-i18n="ed_recientes">Recientes</button>
+            <button type="button" class="pill ed-sort" data-s="score" data-i18n="ed_por_score">Por score</button>
+          </div>
+        </div>
+      </div>
       <div id="examples-list" class="editions-list"></div>
     </section>
 

@@ -11,6 +11,7 @@ const multer = require('multer');
 const { extractWebsite } = require('./lib/extract');
 const { generateMemo } = require('./lib/gemini');
 const { buildUserPrompt } = require('./lib/prompt');
+const db = require('./lib/db');
 
 const app = express();
 const upload = multer({
@@ -34,7 +35,7 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/logo-cache', express.static(GENERATED_DIR, { maxAge: '1h' }));
 
-async function cacheLogo(logoUrl, id) {
+async function fetchLogo(logoUrl) {
   if (!logoUrl) return null;
   try {
     const controller = new AbortController();
@@ -47,10 +48,30 @@ async function cacheLogo(logoUrl, id) {
     if (!ext) return null;
     const buf = Buffer.from(await res.arrayBuffer());
     if (buf.length > 2 * 1024 * 1024 || buf.length < 100) return null;
-    const file = `logo-${id}.${ext}`;
-    fs.writeFileSync(path.join(GENERATED_DIR, file), buf);
-    return `/logo-cache/${file}`;
+    return { ct, ext, buf };
   } catch { return null; }
+}
+
+// Destino del logo: Vercel Blob > Postgres bytea > /tmp (efímero, solo dev).
+async function storeLogo(logo, id) {
+  if (!logo) return null;
+  const { ct, ext, buf } = logo;
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    try {
+      const { put } = require('@vercel/blob');
+      const blob = await put(`logos/logo-${id}.${ext}`, buf, { access: 'public', contentType: ct, addRandomSuffix: false });
+      return blob.url;
+    } catch (e) { console.warn('[logo] Blob no disponible:', e.message); }
+  }
+  if (db.ENABLED()) {
+    try {
+      await db.saveLogoBytes(id, ct, buf);
+      return `/logo-db/${id}`;
+    } catch (e) { console.warn('[logo] Postgres no disponible:', e.message); }
+  }
+  const file = `logo-${id}.${ext}`;
+  fs.writeFileSync(path.join(GENERATED_DIR, file), buf);
+  return `/logo-cache/${file}`;
 }
 
 const LOGOS_DIR = path.join(__dirname, 'public', 'logos');
@@ -60,6 +81,27 @@ function findStaticLogo(id) {
     const f = fs.readdirSync(LOGOS_DIR).find((x) => x.startsWith(id + '.'));
     return f ? `/logos/${f}` : null;
   } catch { return null; }
+}
+
+function staticRows() {
+  const ids = fs.readdirSync(MEMOS_DIR).filter((f) => f.endsWith('.json')).map((f) => f.replace(/\.json$/, ''));
+  return ids.map((id) => {
+    const es = JSON.parse(fs.readFileSync(path.join(MEMOS_DIR, id + '.json'), 'utf8'));
+    const enPath = path.join(MEMOS_EN_DIR, id + '.json');
+    const en = fs.existsSync(enPath) ? JSON.parse(fs.readFileSync(enPath, 'utf8')) : null;
+    return {
+      id,
+      url: es.web || '',
+      nombre: es.nombre,
+      sector: es.sector,
+      recomendacion: es.recomendacion,
+      score_global: es.score_global,
+      logo: es.logo || findStaticLogo(id),
+      memo_es: es,
+      memo_en: en,
+      created_at: es.fecha ? new Date(es.fecha + 'T12:00:00Z').toISOString() : new Date().toISOString(),
+    };
+  });
 }
 
 function listExamples(lang) {
@@ -95,18 +137,46 @@ app.get('/memo/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'memo.html'));
 });
 
-app.get('/api/examples', (req, res) => {
+app.get('/api/examples', async (req, res) => {
   try {
-    res.json({ examples: listExamples(req.query.lang) });
+    if (db.ENABLED()) {
+      await db.seedIfEmpty(staticRows());
+      const rows = await db.listMemos();
+      return res.json({ examples: rows, source: 'db' });
+    }
+  } catch (err) {
+    console.warn('[examples] Postgres no disponible, uso estáticos:', err.message);
+  }
+  try {
+    res.json({ examples: listExamples(req.query.lang), source: 'static' });
   } catch (err) {
     res.status(500).json({ error: 'No se pudieron cargar los ejemplos' });
   }
 });
 
-app.get('/api/memo/:id', (req, res) => {
+// Logos guardados en Postgres (bytea)
+app.get('/logo-db/:id', async (req, res) => {
+  try {
+    const logo = await db.getLogoBytes(req.params.id);
+    if (!logo) return res.status(404).end();
+    res.set('Content-Type', logo.mime);
+    res.set('Cache-Control', 'public, max-age=86400');
+    res.send(logo.bytes);
+  } catch { res.status(404).end(); }
+});
+
+app.get('/api/memo/:id', async (req, res) => {
+  try {
+    if (db.ENABLED()) {
+      const memo = await db.getMemo(req.params.id, req.query.lang);
+      if (memo) return res.json({ memo, source: 'db' });
+    }
+  } catch (err) {
+    console.warn('[memo] Postgres no disponible, uso estáticos:', err.message);
+  }
   const memo = readMemo(req.params.id, req.query.lang);
   if (!memo) return res.status(404).json({ error: 'Memo no encontrado' });
-  res.json({ memo });
+  res.json({ memo, source: 'static' });
 });
 
 app.get('/api/status', (req, res) => {
@@ -176,8 +246,16 @@ app.post('/api/screen', upload.single('deck'), async (req, res) => {
     if (!memo.fecha) memo.fecha = new Date().toISOString().slice(0, 10);
 
     const id = `gen-${Date.now().toString(36)}-${crypto.randomBytes(3).toString('hex')}`;
-    const logoPath = await cacheLogo(website.logoUrl, id);
+    if (db.ENABLED()) {
+      try {
+        await db.insertMemo({ id, url, memoEs: memo }); // la fila existe antes de guardar el logo
+      } catch (e) { console.warn('[screen] no se pudo persistir el memo:', e.message); }
+    }
+    const logoPath = await storeLogo(await fetchLogo(website.logoUrl), id);
     if (logoPath) memo.logo = logoPath;
+    if (db.ENABLED() && logoPath && logoPath.startsWith('http')) {
+      try { await db.setLogoPath(id, logoPath); } catch { /* no crítico */ }
+    }
     fs.writeFileSync(path.join(GENERATED_DIR, `${id}.json`), JSON.stringify(memo, null, 2));
     res.json({ id, memo });
   } catch (err) {
