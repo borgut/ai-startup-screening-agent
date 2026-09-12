@@ -509,9 +509,6 @@ button.lang-btn.lang-on { color: var(--ink); font-weight: 700; text-decoration: 
 .hero-reco .vdot-watch { background: #d9a13b; }
 .hero-reco .vdot-pass { background: #d4604e; }
 
-.handmark { position: relative; white-space: nowrap; }
-.handmark-svg { position: absolute; left: -7%; top: -26%; width: 114%; height: 152%; overflow: visible; pointer-events: none; }
-.handmark-svg path { fill: none; stroke: var(--sienna); stroke-width: 3; stroke-linecap: round; opacity: 0.75; }
 
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .dropzone {

@@ -2,7 +2,7 @@
 (function () {
   const I18N = {
     es: {
-      h1: '¿Merece esta startup <em><span class="handmark">30 minutos<svg class="handmark-svg" viewBox="0 0 220 84" aria-hidden="true"><path d="M14 44 C22 16 90 6 150 10 C198 13 214 30 204 50 C193 72 120 80 70 74 C32 69 6 62 14 44 Z"/></svg></span></em> de un inversor?',
+      h1: '¿Merece esta startup <em>30 minutos</em> de un inversor?',
       lede: 'Lee la web y el deck, busca fuentes externas y contrasta cada claim uno a uno. Lo que no se puede verificar queda marcado como «sin datos».',
       que_veredicto: '¿Qué significa el veredicto?',
       vl_inv: '<span class="vdot"></span> <strong>INVESTIGATE</strong> (≥65): merece 30 minutos de un inversor',
@@ -64,7 +64,7 @@
       foot_guia: 'Guía de priorización, no predicción. La decisión es del inversor.',
     },
     en: {
-      h1: 'Does this startup deserve <em><span class="handmark">30 minutes<svg class="handmark-svg" viewBox="0 0 220 84" aria-hidden="true"><path d="M14 44 C22 16 90 6 150 10 C198 13 214 30 204 50 C193 72 120 80 70 74 C32 69 6 62 14 44 Z"/></svg></span></em> of an investor?',
+      h1: 'Does this startup deserve <em>30 minutes</em> of an investor?',
       lede: 'It reads the website and the deck, finds external sources and checks every claim one by one. Anything that cannot be verified is marked as "no data".',
       que_veredicto: 'What does the verdict mean?',
       vl_inv: '<span class="vdot"></span> <strong>INVESTIGATE</strong> (≥65): worth 30 minutes of an investor',
