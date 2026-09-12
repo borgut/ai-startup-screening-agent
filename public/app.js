@@ -80,7 +80,7 @@ function renderDossier(memo) {
   box.innerHTML = `
     <div class="page page-left">
       <div class="pg-kicker">${t('memo_de')} · ${esc(memo.fecha || '')}</div>
-      ${memo.logo ? `<img class="pg-logo" src="${esc(memo.logo)}" alt="" onerror="this.style.display='none'"/>` : ''}
+      ${memo.logo ? `<img class="pg-logo" src="${esc(memo.logo.replace(/(\.[a-z0-9]+)$/i, '-dark$1'))}" data-orig="${esc(memo.logo)}" alt="" onerror="if(this.dataset.orig&&this.src.indexOf(this.dataset.orig)===-1){this.src=this.dataset.orig}else{this.style.display='none'}"/>` : ''}
       <h3 class="pg-name">${esc(memo.nombre)}</h3>
       <div class="pg-score-row"><span class="pg-score">${score}<span class="pg-pct">%</span></span><span class="pg-verdict">${RECO_LABEL[reco] || esc(reco)}</span></div>
       <p class="pg-sum">${sum}</p>

@@ -151,7 +151,7 @@ input[type="file"]::file-selector-button {
 .spread-divider { background: var(--hair-d); }
 .page { background: var(--dark-2); color: var(--tinta); padding: 34px 34px; min-width: 0; }
 .pg-kicker { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gris-d); }
-.pg-logo { display: block; max-height: 30px; max-width: 120px; object-fit: contain; object-position: left; background: #fff; padding: 4px 8px; margin: 14px 0 4px; }
+.pg-logo { display: block; max-height: 34px; max-width: 124px; object-fit: contain; object-position: left; margin: 14px 0 4px; }
 .pg-name { font-weight: 700; font-size: 2rem; letter-spacing: -0.03em; margin: 6px 0 16px; color: var(--tinta); }
 .pg-score-row { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; margin: 4px 0 18px; }
 .pg-score { font-weight: 700; font-size: 3.6rem; letter-spacing: -0.03em; line-height: 1; color: var(--tinta); font-variant-numeric: tabular-nums; }
@@ -358,7 +358,7 @@ h2 + .muted { margin-top: 2px; max-width: 60ch; }
 .series-period { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); margin-top: 3px; }
 @media (min-width: 760px) { .charts-grid { grid-template-columns: 1fr 1fr; } .charts-grid .rounds-chart:only-child { grid-column: 1 / -1; } }
 
-.hero-logo { display: block; max-height: 40px; max-width: 150px; object-fit: contain; object-position: left; background: #fff; padding: 6px 11px; margin-bottom: 14px; }
+.hero-logo { display: block; max-height: 44px; max-width: 160px; object-fit: contain; object-position: left; margin-bottom: 14px; }
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 4px solid var(--negro); margin-top: 56px; padding: 22px 0 30px; }
