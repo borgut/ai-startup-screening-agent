@@ -138,7 +138,7 @@ app.get('/memo/:id', (req, res) => {
 });
 
 app.get('/api/health', async (req, res) => {
-  const out = { ok: true, db_enabled: db.ENABLED() };
+  const out = { ok: true, db_enabled: db.ENABLED(), ...db.DIAG() };
   if (db.ENABLED()) {
     try { await db.ensureSchema(); out.db_reachable = true; }
     catch (e) { out.db_reachable = false; out.db_error = String(e.message || e).slice(0, 200); }
