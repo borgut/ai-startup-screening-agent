@@ -139,6 +139,7 @@ app.get('/memo/:id', (req, res) => {
 
 app.get('/api/health', async (req, res) => {
   const out = { ok: true, db_enabled: db.ENABLED(), ...db.DIAG() };
+  out.db_env_names = Object.keys(process.env).filter((k) => /POSTGRES|PGSQL|DATABASE|STORAGE|NEON|SUPABASE/i.test(k));
   if (db.ENABLED()) {
     try { await db.ensureSchema(); out.db_reachable = true; }
     catch (e) { out.db_reachable = false; out.db_error = String(e.message || e).slice(0, 200); }
