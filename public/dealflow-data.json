@@ -1,0 +1,12 @@
+{
+  "deals": [
+    {"id":"enginy","company":"Enginy","sector":"Sales & GTM","stage":"Seed","status":"identified","owner":"Analyst","next_es":"Validar NRR y concentración de clientes","next_en":"Validate NRR and customer concentration","due":"2026-09-16","source":"db"},
+    {"id":"mailsuite","company":"Mailsuite","sector":"Productividad","stage":"Bootstrapped","status":"contacted","owner":"Associate","next_es":"Conseguir intro con el CEO","next_en":"Secure CEO introduction","due":"2026-09-18","source":"db"},
+    {"id":"shakers","company":"Shakers","sector":"Talento & workforce","stage":"Series A","status":"meeting","owner":"Partner","next_es":"Primera reunión: unit economics y retención","next_en":"First meeting: unit economics and retention","due":"2026-09-14","source":"db"},
+    {"id":"vidext","company":"Vidext","sector":"Contenido enterprise","stage":"Series A","status":"dd","owner":"Deal team","next_es":"Reconciliar ARR de producto vs servicios","next_en":"Reconcile product ARR vs services","due":"2026-09-15","source":"db"},
+    {"id":"flanks","company":"Flanks","sector":"Wealth infrastructure","stage":"Series A","status":"ic","owner":"Partner","next_es":"Cerrar memo y condiciones de inversión","next_en":"Close IC memo and investment conditions","due":"2026-09-17","source":"db"},
+    {"id":"remuner","company":"Remuner","sector":"Sales & GTM","stage":"Seed","status":"identified","owner":"Analyst","next_es":"Screening inicial de equipo y tracción","next_en":"Initial team and traction screening","due":"2026-09-19","source":"market-map"},
+    {"id":"supersonik","company":"Supersonik","sector":"Sales & GTM","stage":"Seed","status":"passed","owner":"Associate","next_es":"Revisar en 6 meses si mejora retención","next_en":"Revisit in 6 months if retention improves","due":"2027-03-12","source":"market-map"},
+    {"id":"anyformat","company":"Anyformat","sector":"Data & workflow","stage":"Seed","status":"invested","owner":"Deal team","next_es":"Seguimiento mensual de KPIs","next_en":"Monthly KPI monitoring","due":"2026-10-01","source":"market-map"}
+  ]
+}

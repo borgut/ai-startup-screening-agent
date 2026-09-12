@@ -145,6 +145,10 @@ app.get('/market-map', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'market-map.html'));
 });
 
+app.get('/dealflow', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'dealflow.html'));
+});
+
 app.get('/api/health', async (req, res) => {
   const out = { ok: true, db_enabled: db.ENABLED(), ...db.DIAG() };
   out.db_env_names = Object.keys(process.env).filter((k) => /POSTGRES|PGSQL|DATABASE|STORAGE|NEON|SUPABASE/i.test(k));
