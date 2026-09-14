@@ -48,8 +48,10 @@ h1 em{color:var(--gold)}
 .comps h2 em{color:var(--gold)}
 .comps .note{color:var(--faint);font-size:13px;line-height:1.6;max-width:640px;margin:0 0 30px}
 table{width:100%;border-collapse:collapse;font-size:14px}
-th{text-align:left;color:var(--faint);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:10px 0;border-bottom:1px solid var(--hairs)}
-td{padding:15px 0;border-bottom:1px solid var(--hair);color:var(--dim)}
+    td,th{padding-right:18px}td:last-child,th:last-child{padding-right:0}
+    @media(max-width:640px){table{font-size:13px}td,th{padding-right:12px}}
+th{text-align:left;color:var(--faint);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px 10px 0;border-bottom:1px solid var(--hairs)}
+td{padding:15px 18px 15px 0;border-bottom:1px solid var(--hair);color:var(--dim)}td:last-child,th:last-child{padding-right:0}
 td:first-child{color:var(--bone);font-family:Georgia,serif;font-size:17px}
 td a{color:var(--gold);text-decoration:none;font-size:12px}
 .foot{margin-top:70px;border-top:1px solid var(--hair);padding-top:24px;color:var(--faint);font-size:12px;line-height:1.7;max-width:700px}
@@ -62,7 +64,7 @@ td a{color:var(--gold);text-decoration:none;font-size:12px}
 .xact .opts button{color:var(--gold);border-left:1px solid var(--hair);font-size:13px}
 .xact .opts button:hover{background:var(--carbon2)}
 .next b{display:block;color:var(--faint);font-weight:400;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
-.next a{color:var(--gold);text-decoration:none;font:400 18px Georgia,serif;margin-right:34px}
+.next a{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:15px 0;border-bottom:1px solid var(--hair);color:var(--gold);text-decoration:none;font:400 18px Georgia,serif}.next a:first-of-type{border-top:1px solid var(--hair)}.next a .arr{color:var(--faint);flex-shrink:0}.next a:hover .arr{color:var(--gold)}
 .next a:hover{text-decoration:underline}
 .hidden{display:none}
 @media(max-width:760px){.wrap{padding:22px 20px 60px}.grid{grid-template-columns:1fr}.field+.field{border-left:0;padding-left:0}.methods{grid-template-columns:1fr;gap:34px}.kicker{margin-top:60px}}

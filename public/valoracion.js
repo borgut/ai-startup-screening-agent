@@ -85,7 +85,7 @@
     $('xact-copy').onclick=(e)=>{navigator.clipboard&&navigator.clipboard.writeText(document.querySelector('#r-range').textContent+' — '+x.cond); done(e.target);};
     $('xact-link').onclick=(e)=>{navigator.clipboard&&navigator.clipboard.writeText(location.href); done(e.target);};
     const nx=$('next'); nx.innerHTML=''; nx.appendChild(Object.assign(document.createElement('b'),{textContent:x.nextLabel}));
-    x.next.forEach(p=>{const a=document.createElement('a'); a.href=p[0]; a.textContent=p[1]; nx.appendChild(a);});
+    x.next.forEach(p=>{const a=document.createElement('a'); a.href=p[0]; const s=document.createElement('span'); s.textContent=p[1].replace(/\s*→\s*$/,''); const r=document.createElement('span'); r.className='arr'; r.textContent='\u2192'; a.appendChild(s); a.appendChild(r); nx.appendChild(a);});
   }
   $('go').onclick=()=>{calculate(); $('result').scrollIntoView({behavior:'smooth'});};
   $('l-es').onclick=()=>{lang='es';copy();}; $('l-en').onclick=()=>{lang='en';copy();};

@@ -194,7 +194,7 @@
     RIVALES[lang].forEach(function (p) { var o = el('option', null, p[1]); o.value = p[0]; fr.appendChild(o); });
     var nx = $('next'); nx.innerHTML = '';
     nx.appendChild(el('b', null, t.nextLabel));
-    t.next.forEach(function (p) { var a = el('a', null, p[1]); a.href = p[0]; nx.appendChild(a); });
+    t.next.forEach(function (p) { var a = el('a'); a.href = p[0]; var s = el('span', null, p[1].replace(/\s*\u2192\s*$/, '')); var r = el('span', 'arr', '\u2192'); a.appendChild(s); a.appendChild(r); nx.appendChild(a); });
     if (currentMemo === EXAMPLE.es || currentMemo === EXAMPLE.en) currentMemo = EXAMPLE[lang];
     if (currentMemo) render(currentMemo);
   }
