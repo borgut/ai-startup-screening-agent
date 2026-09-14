@@ -11,27 +11,6 @@
 })();
 
 
-// Loader por pasos: el backend es una sola llamada, así que las fases
-// avanzan por tiempo estimado (01 al instante, 02 a los ~18s, 03 a los ~55s).
-let loadTimers = [];
-function startLoadSteps() {
-  stopLoadSteps();
-  const items = document.querySelectorAll('#load-steps li');
-  items.forEach((li, idx) => {
-    li.classList.remove('is-active', 'is-done');
-    if (idx === 0) li.classList.add('is-active');
-  });
-  loadTimers.push(setTimeout(() => advanceLoadStep(1), 18000));
-  loadTimers.push(setTimeout(() => advanceLoadStep(2), 55000));
-}
-function advanceLoadStep(n) {
-  const items = document.querySelectorAll('#load-steps li');
-  items.forEach((li, idx) => {
-    if (idx < n) { li.classList.remove('is-active'); li.classList.add('is-done'); }
-    if (idx === n) li.classList.add('is-active');
-  });
-}
-function stopLoadSteps() { loadTimers.forEach(clearTimeout); loadTimers = []; }
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -178,6 +157,71 @@ async function loadExamples() {
   }));
 })();
 
+
+// Radar en vivo: cada fila es una señal pública con fecha y fuente.
+// Fuentes: portales públicos de empleo (en vivo), rondas anunciadas (next10-data)
+// y screens ya publicados (/api/examples + /api/memo/:id para la fecha).
+(async () => {
+  const list = document.getElementById('radar-list');
+  if (!list) return;
+  const rows = [];
+  const MONTHS = { ene: 1, enero: 1, feb: 2, febrero: 2, mar: 3, marzo: 3, abr: 4, abril: 4, apr: 4, may: 5, mayo: 5, jun: 6, junio: 6, jul: 7, julio: 7, ago: 8, agosto: 8, aug: 8, sep: 9, sept: 9, septiembre: 9, oct: 10, octubre: 10, nov: 11, noviembre: 11, dec: 12, dic: 12, diciembre: 12 };
+  const fmt = (d) => d.toLocaleDateString(getLang() === 'en' ? 'en-GB' : 'es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+
+  // Contratación en vivo (portales públicos, región España)
+  try {
+    const r = await fetch('/api/jobs?region=es');
+    const d = await r.json();
+    const by = {};
+    (d.jobs || []).forEach((x) => { by[x.company] = (by[x.company] || 0) + 1; });
+    Object.entries(by).sort((p, q) => q[1] - p[1]).slice(0, 3).forEach(([co, n]) => {
+      rows.push({ date: new Date(d.fetched_at || Date.now()), live: true, tag: 'hiring', co, desc: t('hiring_line').replace('{n}', n), href: '/empleos', go: t('radar_jobs') });
+    });
+  } catch { /* sin señal de contratación */ }
+
+  // Rondas anunciadas (curadas, con fuente)
+  try {
+    const r = await fetch('/next10-data.json');
+    const d = await r.json();
+    (d.companies || []).forEach((c) => {
+      const dtxt = String(c.round || '').split('·').slice(1).join('·').trim();
+      const my = dtxt.match(/(20\d{2})/);
+      let dt = new Date(0);
+      if (my) {
+        const mm = Object.keys(MONTHS).find((k) => dtxt.toLowerCase().includes(k));
+        dt = mm ? new Date(+my[1], MONTHS[mm] - 1, 1) : new Date(+my[1], 6, 1);
+      }
+      rows.push({ date: dt, tag: 'ronda', co: c.name, desc: [c.stage, c.round, c.city].filter(Boolean).join(' · '), href: c.source, go: t('radar_src') });
+    });
+  } catch { /* sin señal de rondas */ }
+
+  // Screens publicados (fecha real del memo)
+  try {
+    const r = await fetch('/api/examples?lang=' + getLang());
+    const d = await r.json();
+    const det = await Promise.all((d.examples || []).map((e) =>
+      fetch('/api/memo/' + e.id + '?lang=' + getLang()).then((x) => x.json()).then((m) => ({ e, memo: m.memo })).catch(() => null)));
+    det.forEach((x) => {
+      if (!x || !x.memo) return;
+      rows.push({ date: x.memo.fecha ? new Date(x.memo.fecha + 'T00:00:00') : new Date(0), tag: 'memo', co: x.memo.nombre, desc: x.memo.sector || '', href: '/memo/' + x.e.id, go: t('radar_memo') });
+    });
+  } catch { /* sin screens */ }
+
+  rows.sort((p, q) => q.date - p.date);
+  if (!rows.length) { list.innerHTML = '<p class="muted">' + esc(t('radar_empty')) + '</p>'; return; }
+  const TAGS = { ronda: t('tag_ronda'), hiring: t('tag_hiring'), memo: t('tag_memo') };
+  list.innerHTML = rows.map((r) => {
+    const ext = /^https?:/.test(r.href || '');
+    const dateTxt = r.live ? t('radar_live') : (r.date.getTime() ? fmt(r.date) : '');
+    return '<a class="radar-row" href="' + esc(r.href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>'
+      + '<span class="r-date">' + esc(dateTxt) + '</span>'
+      + '<span class="r-tag">' + esc(TAGS[r.tag] || r.tag) + '</span>'
+      + '<span class="r-co">' + esc(r.co) + '</span>'
+      + '<span class="r-desc">' + esc(r.desc) + '</span>'
+      + '<span class="r-go">' + esc(r.go) + '</span></a>';
+  }).join('');
+})();
+
 async function loadStats() {
   const el = document.getElementById('stats-strip');
   if (!el) return;
@@ -196,72 +240,10 @@ async function checkStatus() {
     const res = await fetch('/api/status');
     const data = await res.json();
     if (!data.api_key_configured) {
-      $('#form-note').textContent = t('form_note');
+      const fn = $('#form-note'); if (fn) fn.textContent = t('form_note');
     }
   } catch { /* silencioso */ }
 }
-
-// Dropzone del deck: click abre el selector, arrastrar suelta el PDF.
-(() => {
-  const dz = $('#dropzone');
-  const deckInput = $('#deck');
-  const dropFile = $('#drop-file');
-  if (!dz || !deckInput) return;
-  const showName = () => {
-    if (deckInput.files && deckInput.files.length) {
-      dropFile.textContent = deckInput.files[0].name;
-      dropFile.classList.remove('hidden');
-      dz.classList.add('dz-has-file');
-    }
-  };
-  dz.addEventListener('click', () => deckInput.click());
-  dz.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); deckInput.click(); } });
-  deckInput.addEventListener('change', showName);
-  ['dragover', 'dragenter'].forEach((ev) => dz.addEventListener(ev, (e) => { e.preventDefault(); dz.classList.add('dz-over'); }));
-  ['dragleave', 'drop'].forEach((ev) => dz.addEventListener(ev, (e) => { e.preventDefault(); dz.classList.remove('dz-over'); }));
-  dz.addEventListener('drop', (e) => {
-    if (e.dataTransfer.files && e.dataTransfer.files.length) { deckInput.files = e.dataTransfer.files; showName(); }
-  });
-})();
-
-$('#screen-form').addEventListener('submit', async (ev) => {
-  ev.preventDefault();
-  const btn = $('#submit-btn');
-  const note = $('#form-note');
-  note.classList.remove('error');
-  note.textContent = '';
-  btn.disabled = true;
-  $('#memo-container').classList.add('hidden');
-  $('#loading').classList.remove('hidden');
-  startLoadSteps();
-  $('#loading').scrollIntoView({ behavior: 'smooth' });
-
-  const fd = new FormData();
-  fd.append('url', $('#url').value.trim());
-  fd.append('linkedin', $('#linkedin').value.trim());
-  fd.append('context', $('#context').value.trim());
-  const deckFile = $('#deck').files[0];
-  if (deckFile) fd.append('deck', deckFile);
-
-  try {
-    const res = await fetch('/api/screen', { method: 'POST', body: fd });
-    const data = await res.json();
-    if (!res.ok) {
-      $('#loading').classList.add('hidden');
-      note.classList.add('error');
-      note.textContent = data.error || t('err_desconocido');
-    } else {
-      showMemo(data.memo);
-    }
-  } catch (err) {
-    $('#loading').classList.add('hidden');
-    note.classList.add('error');
-    note.textContent = t('err_red') + err.message;
-  } finally {
-    stopLoadSteps();
-    btn.disabled = false;
-  }
-});
 
 document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
 applyI18n();

@@ -32,4 +32,33 @@
       document.getElementById('fit-no').innerHTML = '<b>' + n[0] + ':</b> ' + n[1];
     }
   }
+
+  // Intake founder (deck + LinkedIn): vive aqui, no en el lado inversor.
+  if (founder) {
+    const TX = {
+      es: { sum: 'Tu screen: web, deck y LinkedIn', url: 'Web de tu startup', deck: 'Pitch deck (PDF, opcional)', li: 'Tu LinkedIn (opcional)', cx: 'Contexto adicional (opcional)', go: 'Analizar mi startup', busy: 'Analizando… suele llevar un par de minutos.', paused: 'El analisis en vivo esta en pausa temporal. Mientras tanto, las herramientas de abajo funcionan sin el.', err: 'No se pudo analizar ahora.' },
+      en: { sum: 'Your screen: site, deck and LinkedIn', url: 'Your startup website', deck: 'Pitch deck (PDF, optional)', li: 'Your LinkedIn (optional)', cx: 'Additional context (optional)', go: 'Analyse my startup', busy: 'Analysing… usually a couple of minutes.', paused: 'Live analysis is temporarily paused. Meanwhile, the tools below work without it.', err: 'Could not analyse right now.' },
+    }[l];
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('fs-sum', TX.sum); set('fs-l-url', TX.url); set('fs-l-deck', TX.deck); set('fs-l-li', TX.li); set('fs-l-cx', TX.cx); set('fs-go', TX.go);
+    const form = document.getElementById('fscreen-form');
+    if (form) form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const note = document.getElementById('fs-note');
+      const fd = new FormData();
+      fd.append('url', document.getElementById('fs-url').value.trim());
+      fd.append('linkedin', document.getElementById('fs-li').value.trim());
+      fd.append('context', document.getElementById('fs-cx').value.trim());
+      const f = document.getElementById('fs-deck').files[0];
+      if (f) fd.append('deck', f);
+      note.textContent = TX.busy;
+      try {
+        const res = await fetch('/api/screen', { method: 'POST', body: fd });
+        const data = await res.json();
+        if (!res.ok) { note.textContent = (data && data.code === 'NO_API_KEY') ? TX.paused : (data && data.error) || TX.err; }
+        else if (data.id) { location.href = '/memo/' + data.id + '?lang=' + l; }
+        else { note.textContent = TX.err; }
+      } catch { note.textContent = TX.err; }
+    });
+  }
 })();

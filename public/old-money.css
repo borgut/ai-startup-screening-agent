@@ -134,6 +134,26 @@ body.theme-poster .steps { border-top: 1px solid var(--hair-strong); margin-top:
 body.theme-poster .step { border-right: 1px solid var(--hair); color: var(--bone-dim); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.06em; text-transform: none; }
 body.theme-poster .step b { color: var(--gold); font-weight: 400; font-family: var(--serif); font-style: italic; font-size: 1rem; }
 
+/* Radar en vivo */
+body.theme-poster .radar { padding: 66px 0 8px; }
+body.theme-poster .radar-title { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.4vw, 44px); letter-spacing: -0.02em; color: var(--bone); margin: 10px 0 0; }
+body.theme-poster .radar-title em { color: var(--gold); font-style: normal; }
+body.theme-poster .radar-list { border-top: 1px solid var(--hair-strong); margin-top: 28px; }
+body.theme-poster a.radar-row { display: grid; grid-template-columns: 100px 118px 165px 1fr auto; gap: 18px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--hair); text-decoration: none; }
+body.theme-poster .r-date { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-faint); }
+body.theme-poster .r-tag { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+body.theme-poster .r-co { font-family: var(--serif); font-size: 19px; color: var(--bone); }
+body.theme-poster .r-desc { font-family: Arial, sans-serif; font-size: 13px; color: var(--bone-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.theme-poster .r-go { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-faint); white-space: nowrap; }
+body.theme-poster a.radar-row:hover .r-co { color: var(--gold); }
+body.theme-poster .radar-note { margin-top: 18px; font-family: Arial, sans-serif; font-size: 12px; color: var(--bone-faint); max-width: 640px; line-height: 1.6; }
+@media (max-width: 760px) {
+  body.theme-poster a.radar-row { grid-template-columns: 90px 1fr auto; grid-template-areas: "date tag go" "co co co" "desc desc desc"; row-gap: 3px; padding: 13px 0; }
+  body.theme-poster .r-date { grid-area: date; } body.theme-poster .r-tag { grid-area: tag; }
+  body.theme-poster .r-co { grid-area: co; } body.theme-poster .r-desc { grid-area: desc; white-space: normal; }
+  body.theme-poster .r-go { grid-area: go; }
+}
+
 /* Banda dossier */
 body.theme-poster .dossier { background: var(--carbon-2); border-top: 1px solid var(--hair-strong); border-bottom: 1px solid var(--hair-strong); }
 body.theme-poster .dossier-kicker { color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
