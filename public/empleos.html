@@ -19,7 +19,8 @@ body{margin:0;background:var(--carbon);color:var(--bone);font-family:Arial,sans-
 h1{font:400 clamp(46px,6.4vw,92px)/.95 Georgia,serif;letter-spacing:-.045em;margin:22px 0 26px;max-width:900px}
 h1 em{color:var(--gold)}
 .lede{color:var(--dim);font-size:18px;line-height:1.6;max-width:640px;margin:0 0 56px}
-.chips{display:flex;gap:0;border-top:1px solid var(--hairs);border-bottom:1px solid var(--hairs)}
+.chips{display:flex;gap:0;border-top:1px solid var(--hairs);border-bottom:1px solid var(--hairs);position:relative}
+.chip-ink{position:absolute;bottom:-1px;left:0;width:0;height:2px;background:var(--gold);transition:left .32s cubic-bezier(.4,0,.2,1),width .32s cubic-bezier(.4,0,.2,1);pointer-events:none}
 .chips button{background:none;border:0;border-right:1px solid var(--hair);color:var(--faint);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:16px 26px;cursor:pointer}
 .chips button:first-child{border-left:1px solid var(--hair)}
 .chips button.active{color:var(--gold)}

@@ -81,6 +81,12 @@
       b.addEventListener('click', function () { region = r; paint(); load(); });
       chips.appendChild(b);
     });
+    var ink = el('span', 'chip-ink');
+    chips.appendChild(ink);
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      var act = chips.querySelector('button.active');
+      if (act) { ink.style.left = act.offsetLeft + 'px'; ink.style.width = act.offsetWidth + 'px'; }
+    }); });
     paintBoards();
     paintJobs();
   }

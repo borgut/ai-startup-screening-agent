@@ -54,6 +54,13 @@ td:first-child{color:var(--bone);font-family:Georgia,serif;font-size:17px}
 td a{color:var(--gold);text-decoration:none;font-size:12px}
 .foot{margin-top:70px;border-top:1px solid var(--hair);padding-top:24px;color:var(--faint);font-size:12px;line-height:1.7;max-width:700px}
 .next{margin-top:60px;border-top:1px solid var(--gold);padding-top:26px}
+.xact{margin-top:34px;display:inline-flex;align-items:stretch;border:1px solid var(--hairs);max-width:230px;overflow:hidden;transition:max-width .38s cubic-bezier(.4,0,.2,1),border-color .38s}
+.xact.open{max-width:560px;border-color:var(--gold)}
+.xact button{background:none;border:0;color:var(--bone);font:400 14px Georgia,serif;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.xact .opts{display:flex;opacity:0;transition:opacity .3s .12s}
+.xact.open .opts{opacity:1}
+.xact .opts button{color:var(--gold);border-left:1px solid var(--hair);font-size:13px}
+.xact .opts button:hover{background:var(--carbon2)}
 .next b{display:block;color:var(--faint);font-weight:400;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
 .next a{color:var(--gold);text-decoration:none;font:400 18px Georgia,serif;margin-right:34px}
 .next a:hover{text-decoration:underline}
@@ -108,6 +115,10 @@ td a{color:var(--gold);text-decoration:none;font-size:12px}
       <table><thead><tr><th id="th1">Startup</th><th id="th2">Vertical</th><th id="th3">Ronda</th><th id="th4">Fuente</th></tr></thead><tbody id="comps-body"></tbody></table>
     </div>
     <div class="next" id="next"></div>
+    <div class="xact" id="xact">
+      <button id="xact-go" type="button"></button>
+      <div class="opts"><button id="xact-copy" type="button"></button><button id="xact-link" type="button"></button></div>
+    </div>
     <div class="foot" id="disclaimer"></div>
   </div>
 </div>

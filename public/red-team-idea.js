@@ -31,6 +31,7 @@
       senal: 'Señal de éxito',
       hRisk: 'Semáforo de <em>riesgos</em>',
       dif: { alta: 'difícil', media: 'media', baja: 'fácil' },
+      tip: { alta: 'Lo que más tarda en demostrarse. Si esto no cierra, lo demás no importa.', media: 'Demostrable en semanas, no en años.', baja: 'Casi gratis de demostrar; no es donde muere la idea.' },
       nivel: { alto: 'alto', medio: 'medio', bajo: 'bajo' },
       fuentes: 'Fuentes',
       foot: 'Esto no es una nota ni un diagnóstico cerrado: es la lista de cosas que un VC va a poner en duda antes que tú. Generado con IA y verificación web; confirma los datos que vayas a usar.',
@@ -61,6 +62,7 @@
       senal: 'Success signal',
       hRisk: 'Risk <em>semaphore</em>',
       dif: { alta: 'hard', media: 'medium', baja: 'easy' },
+      tip: { alta: 'The hardest to prove. If this does not hold, the rest does not matter.', media: 'Provable in weeks, not years.', baja: 'Nearly free to prove; not where the idea dies.' },
       nivel: { alto: 'high', medio: 'medium', bajo: 'low' },
       fuentes: 'Sources',
       foot: 'This is not a score or a closed diagnosis: it is the list of things a VC will doubt before you do. Generated with AI and web verification; confirm any data you plan to use.',
@@ -138,6 +140,26 @@
   var RISKCOLOR = { alto: 'var(--red)', medio: 'var(--amber)', bajo: 'var(--green)' };
   var DIFORDER = { alta: 0, media: 1, baja: 2 };
 
+  var ftip = null;
+  function ensureTip() {
+    if (!ftip) { ftip = el('div', 'ftip'); document.body.appendChild(ftip); }
+    return ftip;
+  }
+  function bindTips() {
+    var tp = ensureTip();
+    document.querySelectorAll('.claim .tag').forEach(function (tag) {
+      tag.addEventListener('mouseenter', function () {
+        tp.textContent = tag.getAttribute('data-tip') || '';
+        var r = tag.getBoundingClientRect();
+        tp.style.left = Math.max(12, r.left - 190) + 'px';
+        tp.style.top = (r.top - 14) + 'px';
+        tp.style.transform = 'translateY(-100%)';
+        tp.classList.add('on');
+      });
+      tag.addEventListener('mouseleave', function () { tp.classList.remove('on'); });
+    });
+  }
+
   function paint() {
     var t = T[lang];
     document.documentElement.lang = lang;
@@ -189,9 +211,12 @@
       body.appendChild(el('h4', null, x.claim));
       body.appendChild(el('p', null, x.por_que));
       row.appendChild(body);
-      row.appendChild(el('span', 'tag', t.dif[x.dificultad] || ''));
+      var tag = el('span', 'tag', t.dif[x.dificultad] || '');
+      tag.setAttribute('data-tip', t.tip[x.dificultad] || '');
+      row.appendChild(tag);
       c.appendChild(row);
     });
+    bindTips();
     var md = $('r-muertos'); md.innerHTML = '';
     (m.muertos || []).forEach(function (x) {
       var row = el('div', 'muerto');
