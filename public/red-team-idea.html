@@ -67,6 +67,10 @@ h1 em{color:var(--gold)}
 .fuentes a:hover{color:var(--gold)}
 .foot{margin-top:70px;border-top:1px solid var(--hair);padding-top:24px;color:var(--faint);font-size:12px;line-height:1.7;max-width:700px}
 .paused{border:1px solid var(--hairs);padding:18px 22px;color:var(--dim);font-size:13px;line-height:1.6;margin-top:40px}
+.next{margin-top:60px;border-top:1px solid var(--gold);padding-top:26px}
+.next b{display:block;color:var(--faint);font-weight:400;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.next a{color:var(--gold);text-decoration:none;font:400 18px Georgia,serif;margin-right:34px}
+.next a:hover{text-decoration:underline}
 .hidden{display:none}
 @media(max-width:760px){.wrap{padding:22px 20px 60px}.grid{grid-template-columns:1fr}.field:nth-child(even){border-left:0;padding-left:0}.exp{grid-template-columns:1fr;gap:30px}.exp .side{border-left:0;padding-left:0}.kicker{margin-top:60px}}
 </style>
@@ -82,6 +86,7 @@ h1 em{color:var(--gold)}
     <div class="field"><label id="k-l-url"></label><input id="f-url" inputmode="url" placeholder=""></div>
     <div class="field"><label id="k-l-sector"></label><select id="f-sector"></select></div>
     <div class="field"><label id="k-l-etapa"></label><select id="f-etapa"></select></div>
+    <div class="field"><label id="k-l-rival"></label><select id="f-rival"></select></div>
   </div>
   <div class="cta"><button id="b-go"></button><p id="err"></p></div>
   <div id="paused" class="paused hidden"></div>
@@ -114,6 +119,7 @@ h1 em{color:var(--gold)}
       <div id="r-risks"></div>
     </div>
     <div class="fuentes" id="r-fuentes"></div>
+    <div class="next" id="next"></div>
     <p class="foot" id="k-foot"></p>
   </div>
 </div>

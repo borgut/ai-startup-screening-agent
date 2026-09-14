@@ -398,6 +398,7 @@ app.post('/api/redteam', async (req, res) => {
   const sector = (req.body.sector || '').trim().slice(0, 80);
   const etapa = (req.body.etapa || '').trim().slice(0, 80);
   const lang = req.body.lang === 'en' ? 'en' : 'es';
+  const adversario = ['amigo', 'vc', 'serieb'].includes(req.body.adversario) ? req.body.adversario : 'vc';
 
   if (!url && !descripcion) {
     return res.status(400).json({ error: 'Pega la web de tu idea o cuentala en un par de frases.' });
@@ -427,6 +428,7 @@ app.post('/api/redteam', async (req, res) => {
       sector,
       etapa,
       lang,
+      adversario,
     });
     const memo = await generateRedTeam(userPrompt);
     memo._meta = { ...(memo._meta || {}), lang };

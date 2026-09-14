@@ -38,7 +38,8 @@
   var BOARDS = {
     es: [
       { name: 'JobFluent', desc: { es: 'El board de empleo de startups españolas de referencia.', en: 'The reference job board for Spanish startups.' }, url: 'https://www.jobfluent.com' },
-      { name: 'Nauta Capital', desc: { es: 'Empleo en las startups del portafolio de Nauta (BCN/Londres).', en: 'Jobs across Nauta\u2019s portfolio (BCN/London).' }, url: 'https://www.nautacapital.com/careers' }
+      { name: 'Nauta Capital', desc: { es: 'Empleo en las startups del portafolio de Nauta (BCN/Londres).', en: 'Jobs across Nauta\u2019s portfolio (BCN/London).' }, url: 'https://www.nautacapital.com/careers' },
+      { name: 'Dealflow', desc: { es: 'La newsletter de Jaime Novoa: quién levanta ronda en España cada semana. Las que levantan son las que contratan.', en: 'Jaime Novoa\u2019s newsletter: who raises in Spain every week. The ones raising are the ones hiring.' }, url: 'https://newsletter.dealflow.es' }
     ],
     eu: [
       { name: 'Atomico', desc: { es: 'Todas las vacantes del portafolio de Atomico en un buscador.', en: 'Every opening across Atomico\u2019s portfolio in one search.' }, url: 'https://careers.atomico.com' },

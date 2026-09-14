@@ -3,6 +3,8 @@
   var SECTORES = ['B2B SaaS', 'Fintech', 'Consumer', 'Marketplace', 'Deeptech', 'AI', 'Health', 'Otro'];
   var ETAPAS = { es: ['Solo una idea', 'MVP sin usuarios', 'MVP con usuarios', 'Ingresos iniciales'],
                  en: ['Just an idea', 'MVP, no users', 'MVP with users', 'Early revenue'] };
+  var RIVALES = { es: [['vc', 'Un VC early-stage (estándar)'], ['amigo', 'Un ángel conocido (benevolente)'], ['serieb', 'Un partner de Serie B (sin piedad)']],
+                  en: [['vc', 'An early-stage VC (standard)'], ['amigo', 'An angel you know (kind)'], ['serieb', 'A Series B partner (merciless)']] };
 
   var T = {
     es: {
@@ -13,6 +15,9 @@
       lUrl: 'Web (opcional)',
       lSector: 'Sector',
       lEtapa: 'Etapa',
+      lRival: 'Quién te destroza',
+      nextLabel: 'Si la idea sobrevive',
+      next: [['/valoracion', 'Ponle un rango →'], ['/investor-map', 'Quién la financiaría →']],
       go: 'Ejecutar el red team',
       going: 'Desmontando la idea… (30–60 s)',
       needInput: 'Cuenta la idea o pega la web: uno de los dos es obligatorio.',
@@ -40,6 +45,9 @@
       lUrl: 'Website (optional)',
       lSector: 'Sector',
       lEtapa: 'Stage',
+      lRival: 'Who tears it apart',
+      nextLabel: 'If the idea survives',
+      next: [['/valoracion', 'Put a range on it →'], ['/investor-map', 'Who would fund it →']],
       go: 'Run the red team',
       going: 'Taking the idea apart… (30–60 s)',
       needInput: 'Describe the idea or paste the site: one of the two is required.',
@@ -142,6 +150,7 @@
     $('k-l-url').textContent = t.lUrl;
     $('k-l-sector').textContent = t.lSector;
     $('k-l-etapa').textContent = t.lEtapa;
+    $('k-l-rival').textContent = t.lRival;
     $('b-go').textContent = t.go;
     $('k-h-claims').innerHTML = t.hClaims;
     $('k-n-claims').textContent = t.nClaims;
@@ -158,6 +167,12 @@
     var fe = $('f-etapa');
     fe.innerHTML = '';
     ETAPAS[lang].forEach(function (s) { fe.appendChild(el('option', null, s)); });
+    var fr = $('f-rival');
+    fr.innerHTML = '';
+    RIVALES[lang].forEach(function (p) { var o = el('option', null, p[1]); o.value = p[0]; fr.appendChild(o); });
+    var nx = $('next'); nx.innerHTML = '';
+    nx.appendChild(el('b', null, t.nextLabel));
+    t.next.forEach(function (p) { var a = el('a', null, p[1]); a.href = p[0]; nx.appendChild(a); });
     if (currentMemo === EXAMPLE.es || currentMemo === EXAMPLE.en) currentMemo = EXAMPLE[lang];
     if (currentMemo) render(currentMemo);
   }
@@ -226,7 +241,7 @@
     fetch('/api/redteam', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url: url, descripcion: desc, sector: $('f-sector').value, etapa: $('f-etapa').value, lang: lang })
+      body: JSON.stringify({ url: url, descripcion: desc, sector: $('f-sector').value, etapa: $('f-etapa').value, adversario: $('f-rival').value, lang: lang })
     }).then(function (r) { return r.json().then(function (j) { return { status: r.status, body: j }; }); })
       .then(function (res) {
         if (res.status === 200 && res.body.memo) {
