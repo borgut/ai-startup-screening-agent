@@ -76,13 +76,12 @@ function renderDossier(memo) {
   const fuentes = (memo.fuentes_utilizadas || []).slice(0, 4);
   const full = String(memo.resumen_ejecutivo || '');
   const sum = full.length > 430 ? esc(full.slice(0, 430).replace(/\s+\S*$/, '') + '…') : esc(full);
-  const score = Math.max(0, Math.min(100, Number(memo.score_global) || 0));
   box.innerHTML = `
     <div class="page page-left">
       <div class="pg-kicker">${t('memo_de')} · ${esc(memo.fecha || '')}</div>
       ${memo.logo ? `<img class="pg-logo" src="${esc(memo.logo.replace(/(\.[a-z0-9]+)$/i, '-dark$1'))}" data-orig="${esc(memo.logo)}" alt="" onerror="if(this.dataset.orig&&this.src.indexOf(this.dataset.orig)===-1){this.src=this.dataset.orig}else{this.style.display='none'}"/>` : ''}
       <h3 class="pg-name">${esc(memo.nombre)}</h3>
-      <div class="pg-score-row"><span class="pg-score">${score}<span class="pg-pct">%</span></span><span class="pg-verdict">${RECO_LABEL[reco] || esc(reco)}</span></div>
+      <div class="pg-score-row"><span class="pg-verdict">${RECO_LABEL[reco] || esc(reco)}</span></div>
       <p class="pg-sum">${sum}</p>
     </div>
     <div class="spread-divider"></div>
@@ -118,7 +117,6 @@ function renderExamples() {
     if (q && !(`${e.nombre} ${e.sector}`.toLowerCase().includes(q))) return false;
     return true;
   });
-  if (edState.s === 'score') rows = [...rows].sort((a, b) => (Number(b.score_global) || 0) - (Number(a.score_global) || 0));
   if (!rows.length) {
     list.innerHTML = '<p class="muted ed-empty">' + t('ed_sin_resultados') + '</p>';
     return;
@@ -129,7 +127,6 @@ function renderExamples() {
     const logo = darkLogo ? `<img class="ed-logo" src="${esc(darkLogo)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${esc(e.logo)}'"/>` : '';
     const tags = String(e.sector || '').split('/').map((x) => x.trim().replace(/\s*\(.*\)\s*$/, '')).filter(Boolean)
       .map((x) => `<span class="pill ed-tag">${esc(x)}</span>`).join('');
-    const gauge = window.gaugeSVG ? gaugeSVG(e.score_global, e.recomendacion, { size: 64 }) : '';
     return `<div class="edition" data-id="${esc(e.id)}">
       <span class="ed-num">${String(i + 1).padStart(2, '0')}</span>
       ${logo}
@@ -137,7 +134,7 @@ function renderExamples() {
         <h3>${esc(e.nombre)}</h3>
         <div class="ed-tags">${tags}<span class="pill badge ${badgeClass}">${RECO_LABEL[e.recomendacion] || esc(e.recomendacion)}</span></div>
       </div>
-      <span class="ed-gauge">${gauge}</span>
+
     </div>`;
   }).join('');
   list.querySelectorAll('.edition').forEach((card) => {
