@@ -13,6 +13,7 @@ const { generateMemo, generateRedTeam } = require('./lib/gemini');
 const { buildUserPrompt } = require('./lib/prompt');
 const { buildRedTeamPrompt } = require('./lib/redteam');
 const { getJobs } = require('./lib/jobs');
+const { getRadar } = require('./lib/radar');
 const db = require('./lib/db');
 
 const app = express();
@@ -213,6 +214,10 @@ app.get('/brief', (req, res) => {
 
 app.get('/regulatory-watch', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'regulatory.html'));
+});
+
+app.get('/como-esta-hecho', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'como-esta-hecho.html'));
 });
 
 app.get('/api/health', async (req, res) => {
@@ -451,6 +456,17 @@ app.get('/api/jobs', async (req, res) => {
   } catch (err) {
     console.error('[jobs] Error:', err);
     res.status(502).json({ error: `Error cargando empleos: ${err.message}` });
+  }
+});
+
+// Radar early-stage: senales tempranas (fichajes, lanzamientos, rondas pre-seed/seed), todo publico.
+app.get('/api/radar', async (req, res) => {
+  try {
+    const r = await getRadar();
+    res.json({ signals: r.signals, failed_sources: r.failed_sources, fetched_at: r.fetched_at });
+  } catch (err) {
+    console.error('[radar] Error:', err);
+    res.status(502).json({ error: `Error cargando el radar: ${err.message}` });
   }
 });
 

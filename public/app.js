@@ -157,43 +157,29 @@ async function loadExamples() {
   }));
 })();
 
-
-// Radar en vivo: cada fila es una señal pública con fecha y fuente.
-// Fuentes: portales públicos de empleo (en vivo), rondas anunciadas (next10-data)
+// Radar early-stage: cada fila es una señal pública con fecha y fuente.
+// Fuentes: /api/radar (ATS early + Get on Board + Product Hunt + dealflow curado)
 // y screens ya publicados (/api/examples + /api/memo/:id para la fecha).
-(async () => {
+(async function loadRadar() {
   const list = document.getElementById('radar-list');
   if (!list) return;
   const rows = [];
-  const MONTHS = { ene: 1, enero: 1, feb: 2, febrero: 2, mar: 3, marzo: 3, abr: 4, abril: 4, apr: 4, may: 5, mayo: 5, jun: 6, junio: 6, jul: 7, julio: 7, ago: 8, agosto: 8, aug: 8, sep: 9, sept: 9, septiembre: 9, oct: 10, octubre: 10, nov: 11, noviembre: 11, dec: 12, dic: 12, diciembre: 12 };
   const fmt = (d) => d.toLocaleDateString(getLang() === 'en' ? 'en-GB' : 'es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
 
-  // Contratación en vivo (portales públicos, región España)
+  // Senales tempranas: fichajes, lanzamientos y rondas pre-seed/seed (servidor, fuentes publicas)
   try {
-    const r = await fetch('/api/jobs?region=es');
+    const r = await fetch('/api/radar');
     const d = await r.json();
-    const by = {};
-    (d.jobs || []).forEach((x) => { by[x.company] = (by[x.company] || 0) + 1; });
-    Object.entries(by).sort((p, q) => q[1] - p[1]).slice(0, 3).forEach(([co, n]) => {
-      rows.push({ date: new Date(d.fetched_at || Date.now()), live: true, tag: 'hiring', co, desc: t('hiring_line').replace('{n}', n), href: '/empleos', go: t('radar_jobs') });
+    (d.signals || []).forEach((s) => {
+      let desc = '';
+      if (s.type === 'hiring' && s.kind === 'ats') desc = t('hiring_ats').replace('{n}', s.jobs).replace('{t}', s.last || '');
+      else if (s.type === 'hiring') desc = t('hiring_job').replace('{t}', s.last || '');
+      else if (s.type === 'launch') desc = s.tagline || '';
+      else if (s.type === 'round') desc = [s.stage, s.round, s.city].filter(Boolean).join(' · ');
+      if (s.source) desc = desc ? desc + ' · ' + s.source : s.source;
+      rows.push({ date: s.date ? new Date(s.date) : new Date(0), tag: s.type, co: s.name, desc, href: s.url || '', go: t('radar_src') });
     });
-  } catch { /* sin señal de contratación */ }
-
-  // Rondas anunciadas (curadas, con fuente)
-  try {
-    const r = await fetch('/next10-data.json');
-    const d = await r.json();
-    (d.companies || []).forEach((c) => {
-      const dtxt = String(c.round || '').split('·').slice(1).join('·').trim();
-      const my = dtxt.match(/(20\d{2})/);
-      let dt = new Date(0);
-      if (my) {
-        const mm = Object.keys(MONTHS).find((k) => dtxt.toLowerCase().includes(k));
-        dt = mm ? new Date(+my[1], MONTHS[mm] - 1, 1) : new Date(+my[1], 6, 1);
-      }
-      rows.push({ date: dt, tag: 'ronda', co: c.name, desc: [c.stage, c.round, c.city].filter(Boolean).join(' · '), href: c.source, go: t('radar_src') });
-    });
-  } catch { /* sin señal de rondas */ }
+  } catch { /* sin senales tempranas */ }
 
   // Screens publicados (fecha real del memo)
   try {
@@ -209,10 +195,10 @@ async function loadExamples() {
 
   rows.sort((p, q) => q.date - p.date);
   if (!rows.length) { list.innerHTML = '<p class="muted">' + esc(t('radar_empty')) + '</p>'; return; }
-  const TAGS = { ronda: t('tag_ronda'), hiring: t('tag_hiring'), memo: t('tag_memo') };
+  const TAGS = { round: t('tag_ronda'), hiring: t('tag_hiring'), launch: t('tag_launch'), memo: t('tag_memo') };
   list.innerHTML = rows.map((r) => {
     const ext = /^https?:/.test(r.href || '');
-    const dateTxt = r.live ? t('radar_live') : (r.date.getTime() ? fmt(r.date) : '');
+    const dateTxt = r.date.getTime() ? fmt(r.date) : '';
     return '<a class="radar-row" href="' + esc(r.href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>'
       + '<span class="r-date">' + esc(dateTxt) + '</span>'
       + '<span class="r-tag">' + esc(TAGS[r.tag] || r.tag) + '</span>'
@@ -220,6 +206,30 @@ async function loadExamples() {
       + '<span class="r-desc">' + esc(r.desc) + '</span>'
       + '<span class="r-go">' + esc(r.go) + '</span></a>';
   }).join('');
+})();
+
+// Casos completos: senal temprana -> analisis -> veredicto (datos de next10-data.json)
+(async function loadCasos() {
+  const el = document.getElementById('casos-list');
+  if (!el) return;
+  try {
+    const d = await (await fetch('/next10-data.json')).json();
+    const byId = {};
+    (d.companies || []).forEach((c) => { byId[c.id] = c; });
+    const ids = ['spherag', 'clevergy', 'dcycle'];
+    el.innerHTML = ids.map((id) => {
+      const c = byId[id];
+      if (!c) return '';
+      const senal = t('caso_' + id + '_senal');
+      return '<div class="caso">'
+        + '<div class="caso-head"><span class="caso-co">' + esc(c.name) + '</span>'
+        + '<span class="caso-meta">' + esc([c.vertical, c.city].filter(Boolean).join(' · ')) + '</span>'
+        + '<span class="caso-verdict">' + esc(c.status) + '</span></div>'
+        + '<p class="caso-chain"><b>' + esc(t('caso_senal')) + '</b> ' + esc(senal)
+        + ' &rarr; <b>' + esc(t('caso_analisis')) + '</b> ' + esc(c.why || '')
+        + ' &rarr; <a href="/next-10">' + esc(t('caso_ver')) + '</a></p></div>';
+    }).join('');
+  } catch { /* sin casos */ }
 })();
 
 async function loadStats() {

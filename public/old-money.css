@@ -776,3 +776,34 @@ body.theme-poster .cm-grid p { font-family: Arial, sans-serif; font-size: 0.82re
   body.theme-poster .stats-strip > div { padding: 16px 14px 4px 14px; }
   body.theme-poster .stats-strip > div:first-child { padding-left: 0; }
 }
+
+/* Casos completos: señal -> analisis -> veredicto */
+body.theme-poster .casos { margin-top: 54px; }
+body.theme-poster .caso { border-top: 1px solid var(--hair-strong); padding: 18px 0; }
+body.theme-poster #casos-list .caso:last-child { border-bottom: 1px solid var(--hair); }
+body.theme-poster .caso-head { display: flex; align-items: baseline; gap: 16px; }
+body.theme-poster .caso-co { font-family: var(--serif); font-size: 22px; color: var(--bone); }
+body.theme-poster .caso-meta { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-faint); flex: 1; }
+body.theme-poster .caso-verdict { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+body.theme-poster .caso-chain { font-family: Arial, sans-serif; font-size: 13px; line-height: 1.65; color: var(--bone-dim); margin: 8px 0 0; max-width: 760px; }
+body.theme-poster .caso-chain b { color: var(--bone); font-weight: 700; }
+body.theme-poster .caso-chain a { color: var(--gold); text-decoration: none; }
+body.theme-poster .caso-chain a:hover { color: var(--bone); }
+body.theme-poster .how-link { display: inline-block; margin-top: 16px; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+body.theme-poster .how-link:hover { color: var(--bone); }
+@media (max-width: 760px) {
+  body.theme-poster .caso-head { flex-wrap: wrap; gap: 6px 12px; }
+  body.theme-poster .caso-meta { flex-basis: 100%; order: 3; }
+}
+
+/* Como esta hecho */
+body.theme-poster .como-sec { border-top: 1px solid var(--hair-strong); padding: 34px 0; }
+body.theme-poster .como-sec h2 { font-family: var(--serif); font-weight: 400; font-size: 26px; color: var(--bone); margin: 0 0 14px; }
+body.theme-poster .como-sec h2 b { color: var(--gold); font-weight: 400; font-style: italic; margin-right: 14px; }
+body.theme-poster .como-sec p { font-family: Arial, sans-serif; font-size: 14px; line-height: 1.8; color: var(--bone-dim); max-width: 780px; margin: 0; }
+body.theme-poster .como-sec p b { color: var(--bone); }
+body.theme-poster .como-mods { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
+body.theme-poster .como-mods a { display: flex; justify-content: space-between; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--hair); text-decoration: none; font-family: var(--serif); font-size: 17px; color: var(--bone); }
+body.theme-poster .como-mods a span { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bone-faint); }
+body.theme-poster .como-mods a:hover { color: var(--gold); }
+@media (max-width: 760px) { body.theme-poster .como-mods { grid-template-columns: 1fr; } }

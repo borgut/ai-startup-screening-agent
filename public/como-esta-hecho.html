@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo está hecho · Startup Scouting</title>
+  <meta name="description" content="Las fuentes públicas que rastrea el radar, la cadencia de cada script y el pipeline de la señal al screen. Cero magia." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="/old-money.css">
+</head>
+<body class="theme-poster">
+  <header class="masthead">
+    <div class="wrap">
+      <div class="masthead-top">
+        <a class="wordmark" href="/scouting" style="text-decoration:none">Startup Scouting<span class="wm-sq"></span></a>
+        <div class="lang-switch"><button class="lang-btn" data-lang="es">ES</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="en">EN</button></div>
+      </div>
+      <p class="dossier-kicker" data-i18n="como_kicker" style="margin-top:40px">Cómo está hecho</p>
+      <h1 class="display" data-i18n="como_title">La ingeniería del radar. <em>Cero magia.</em></h1>
+      <p class="lede" data-i18n="como_lede"></p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="como-sec">
+      <h2 data-i18n="como_01_t"></h2>
+      <p data-i18n="como_01_p"></p>
+    </section>
+    <section class="como-sec">
+      <h2 data-i18n="como_02_t"></h2>
+      <p data-i18n="como_02_p"></p>
+    </section>
+    <section class="como-sec">
+      <h2 data-i18n="como_03_t"></h2>
+      <div class="como-mods">
+        <a href="/scouting">Radar de señales <span>scouting</span></a>
+        <a href="/empleos">Empleos en startups <span>ATS</span></a>
+        <a href="/valoracion">Valoración <span>rangos</span></a>
+        <a href="/investor-map">Mapa de inversores <span>directorio</span></a>
+        <a href="/market-map">Market map <span>sectores</span></a>
+        <a href="/dealflow">Dealflow <span>próximas 10</span></a>
+        <a href="/regulatory-watch">Regulación <span>watch</span></a>
+        <a href="/red-team-idea">Red team de ideas <span>founders</span></a>
+        <a href="/raising">Intake de founders <span>screen</span></a>
+      </div>
+    </section>
+    <section class="como-sec">
+      <h2 data-i18n="como_04_t"></h2>
+      <p><a href="https://github.com/borgut/ai-startup-screening-agent" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none" data-i18n="como_04_p"></a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="footer-lab-link" href="/scouting">&larr; Radar</a>
+    </div>
+  </footer>
+
+  <script src="/i18n.js?v=24"></script>
+  <script src="/render.js?v=24"></script>
+  <script>document.querySelectorAll('.lang-btn').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang))); applyI18n();</script>
+</body>
+</html>
