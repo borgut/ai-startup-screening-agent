@@ -228,6 +228,32 @@ app.get('/api/examples', async (req, res) => {
   }
 });
 
+app.get('/api/stats', async (req, res) => {
+  try {
+    if (db.ENABLED()) {
+      await db.seedIfEmpty(staticRows());
+      const s = await db.memoStats();
+      if (s && s.memos > 0) return res.json({ ok: true, memos: s.memos, claims: s.claims, fuentes: s.fuentes, source: 'db' });
+    }
+  } catch (err) {
+    console.warn('[stats] Postgres no disponible, uso estaticos:', err.message);
+  }
+  try {
+    const ids = fs.readdirSync(MEMOS_DIR).filter((f) => f.endsWith('.json'));
+    let claims = 0, fuentes = 0;
+    for (const f of ids) {
+      try {
+        const m = JSON.parse(fs.readFileSync(path.join(MEMOS_DIR, f), 'utf8'));
+        if (Array.isArray(m.claims)) claims += m.claims.length;
+        if (Array.isArray(m.fuentes)) fuentes += m.fuentes.length;
+      } catch {}
+    }
+    res.json({ ok: true, memos: ids.length, claims, fuentes, source: 'static' });
+  } catch (err) {
+    res.status(500).json({ error: 'No se pudieron cargar las stats' });
+  }
+});
+
 // Logos guardados en Postgres (bytea)
 app.get('/logo-db/:id', async (req, res) => {
   try {
