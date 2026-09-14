@@ -155,7 +155,6 @@ async function loadExamples() {
     const data = await res.json();
     edData = data.examples || [];
     renderExamples();
-    renderTape();
   } catch {
     $('#examples-list').innerHTML = '<p class="muted">' + t('err_ejemplos') + '</p>';
   }
@@ -181,28 +180,6 @@ async function loadExamples() {
     renderExamples();
   }));
 })();
-
-// Cinta de ediciones bajo el hero: tipografica por defecto, con logos en gris si ?tape=logos
-function renderTape() {
-  const el = document.getElementById('tape-track');
-  if (!el || !edData.length) return;
-  const mode = new URLSearchParams(location.search).get('tape');
-  if (mode !== 'logos' && mode !== 'text') return;
-  const withLogos = mode === 'logos';
-  document.getElementById('tape').classList.add('on');
-  const item = (e) => {
-    const score = (e.score_global != null && e.score_global !== '') ? e.score_global : '—';
-    const reco = (RECO_LABEL[e.recomendacion] || e.recomendacion || '').toUpperCase();
-    let logo = '';
-    if (withLogos && e.logo) {
-      const src = e.logo.startsWith('/logos/') ? e.logo.replace(/(\.[a-z0-9]+)$/i, '-dark$1') : e.logo;
-      logo = `<img class="tape-logo" src="${esc(src)}" alt="" loading="lazy" onerror="this.remove()"/>`;
-    }
-    return `<span class="tape-item">${logo}<b>${esc(e.nombre)}</b><i class="t-${(e.recomendacion || '').toLowerCase()}">${reco} ${score}</i></span>`;
-  };
-  const half = edData.map(item).join('<span class="tape-dot"></span>') + '<span class="tape-dot"></span>';
-  el.innerHTML = half + half;
-}
 
 async function loadStats() {
   const el = document.getElementById('stats-strip');
