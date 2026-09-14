@@ -157,6 +157,10 @@ app.get('/next-10', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'next10.html'));
 });
 
+app.get('/valoracion', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'valoracion.html'));
+});
+
 app.get('/red-team', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'red-team.html'));
 });

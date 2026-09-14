@@ -1,0 +1,13 @@
+{
+  "basePreMoney": { "preseed": 2200000, "seed": 5000000, "seriesA": 12000000 },
+  "arrBenchmark": { "preseed": 0, "seed": 250000, "seriesA": 1500000 },
+  "exitMultiple": { "saas": 6, "fintech": 6, "climate": 5, "health": 5, "consumer": 3, "devtools": 7, "otro": 4 },
+  "roiTarget": { "preseed": 15, "seed": 10, "seriesA": 6 },
+  "yearsToExit": 6,
+  "weights": { "equipo": 0.30, "mercado": 0.25, "traccion": 0.20, "crecimiento": 0.15, "sector": 0.10 },
+  "mult": {
+    "equipo": { "exit": 1.5, "exp": 1.15, "first": 0.85 },
+    "mercado": { "big": 1.4, "mid": 1.1, "small": 0.8 },
+    "crecimiento": { "high": 1.4, "mid": 1.1, "low": 0.85 }
+  }
+}

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Valoración · Startup Scouting</title>
+<link rel="icon" href="/favicon.svg">
+<style>
+:root{--carbon:#11110f;--carbon2:#171713;--bone:#e9e5dc;--dim:#aaa69f;--faint:#77736d;--gold:#b69a67;--hair:rgba(233,229,220,.16);--hairs:#373630}
+*{box-sizing:border-box}
+body{margin:0;background:var(--carbon);color:var(--bone);font-family:Arial,sans-serif}
+.wrap{max-width:1160px;margin:auto;padding:30px 44px 90px}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--faint)}
+.top a{color:var(--dim);text-decoration:none}
+.lang button{border:0;background:none;color:var(--faint);font-size:12px;cursor:pointer;padding:0}
+.lang button.active{color:var(--bone);text-decoration:underline;text-underline-offset:4px}
+.lang span{margin:0 6px}
+.kicker{color:var(--gold);font-size:11px;letter-spacing:.17em;text-transform:uppercase;margin:90px 0 0}
+h1{font:400 clamp(52px,7vw,100px)/.95 Georgia,serif;letter-spacing:-.045em;margin:22px 0 26px;max-width:900px}
+h1 em{color:var(--gold)}
+.lede{color:var(--dim);font-size:18px;line-height:1.6;max-width:640px;margin:0 0 70px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hairs)}
+.field{padding:26px 26px 26px 0;border-bottom:1px solid var(--hair)}
+.field+.field{border-left:1px solid var(--hair);padding-left:26px}
+.field label{display:block;color:var(--faint);font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.field input,.field select{width:100%;background:transparent;border:0;border-bottom:1px solid var(--hairs);color:var(--bone);font:400 20px Georgia,serif;padding:6px 0;outline:none}
+.field select{cursor:pointer}
+.field select option{background:var(--carbon2)}
+.cta{margin:44px 0 0}
+.cta button{background:var(--gold);color:var(--carbon);border:0;padding:16px 26px;font:700 12px Arial;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+#result{margin-top:90px}
+.range{border-top:1px solid var(--hairs);border-bottom:1px solid var(--hairs);padding:50px 0}
+.range p{margin:0;color:var(--faint);font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+.range h2{font:400 clamp(40px,5.5vw,72px)/1 Georgia,serif;letter-spacing:-.03em;margin:18px 0 14px}
+.range h2 em{color:var(--gold);font-style:italic}
+.range .cond{color:var(--dim);font-size:15px;max-width:640px;line-height:1.6}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:70px}
+.methods>div{border-top:1px solid var(--gold);padding-top:22px}
+.methods h3{font:400 26px Georgia,serif;margin:0 0 6px}
+.methods .val{font:400 34px Georgia,serif;color:var(--gold);margin:14px 0 22px}
+.methods .nodata{color:var(--faint);font-size:14px;line-height:1.6}
+.assume{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px solid var(--hair);font-size:13px;color:var(--dim)}
+.assume b{font-weight:400;color:var(--faint);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.assume input{background:transparent;border:0;border-bottom:1px solid var(--hairs);color:var(--bone);font:400 14px Georgia,serif;width:110px;text-align:right;outline:none}
+.assume .ro{font:400 14px Georgia,serif;color:var(--bone)}
+.comps{margin-top:80px}
+.comps h2{font:400 clamp(30px,4vw,48px)/1 Georgia,serif;letter-spacing:-.03em;margin:0 0 8px}
+.comps h2 em{color:var(--gold)}
+.comps .note{color:var(--faint);font-size:13px;line-height:1.6;max-width:640px;margin:0 0 30px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--faint);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:10px 0;border-bottom:1px solid var(--hairs)}
+td{padding:15px 0;border-bottom:1px solid var(--hair);color:var(--dim)}
+td:first-child{color:var(--bone);font-family:Georgia,serif;font-size:17px}
+td a{color:var(--gold);text-decoration:none;font-size:12px}
+.foot{margin-top:70px;border-top:1px solid var(--hair);padding-top:24px;color:var(--faint);font-size:12px;line-height:1.7;max-width:700px}
+.hidden{display:none}
+@media(max-width:760px){.wrap{padding:22px 20px 60px}.grid{grid-template-columns:1fr}.field+.field{border-left:0;padding-left:0}.methods{grid-template-columns:1fr;gap:34px}.kicker{margin-top:60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a href="/raising" id="back">← Volver</a>
+    <div class="lang"><button id="l-es" class="active">ES</button><span>/</span><button id="l-en">EN</button></div>
+  </div>
+
+  <p class="kicker" id="k">Para founders</p>
+  <h1 id="h">¿Cuánto vale <em>tu startup?</em></h1>
+  <p class="lede" id="p">Un rango, no una cifra. Dos métodos transparentes, cada supuesto editable. Si aceptas los supuestos, el rango aguanta una conversación con un fondo.</p>
+
+  <div class="grid" id="form">
+    <div class="field"><label id="f-sector">Sector</label><select id="in-sector"></select></div>
+    <div class="field"><label id="f-etapa">Etapa</label><select id="in-etapa"></select></div>
+    <div class="field"><label id="f-arr">ARR actual (€)</label><input id="in-arr" type="number" min="0" step="10000" value="300000"></div>
+    <div class="field"><label id="f-growth">Crecimiento anual (%)</label><input id="in-growth" type="number" min="0" max="1000" step="5" value="100"></div>
+    <div class="field"><label id="f-equipo">Equipo</label><select id="in-equipo"></select></div>
+    <div class="field"><label id="f-mercado">Mercado</label><select id="in-mercado"></select></div>
+    <div class="field"><label id="f-raise">Ronda que levantas (€)</label><input id="in-raise" type="number" min="0" step="50000" value="1000000"></div>
+  </div>
+
+  <div class="cta"><button id="go">Calcular el rango →</button></div>
+
+  <div id="result" class="hidden">
+    <div class="range">
+      <p id="r-kicker">Rango orientativo pre-money</p>
+      <h2 id="r-range"></h2>
+      <p class="cond" id="r-cond"></p>
+    </div>
+    <div class="methods">
+      <div>
+        <h3 id="m1-t">Scorecard</h3>
+        <div class="val" id="m1-val"></div>
+        <div id="m1-assume"></div>
+      </div>
+      <div>
+        <h3 id="m2-t">Método VC</h3>
+        <div class="val" id="m2-val"></div>
+        <div id="m2-assume"></div>
+      </div>
+    </div>
+    <div class="comps">
+      <h2 id="c-t">Rondas públicas <em>comparables</em></h2>
+      <p class="note" id="c-note"></p>
+      <table><thead><tr><th id="th1">Startup</th><th id="th2">Vertical</th><th id="th3">Ronda</th><th id="th4">Fuente</th></tr></thead><tbody id="comps-body"></tbody></table>
+    </div>
+    <div class="foot" id="disclaimer"></div>
+  </div>
+</div>
+<script src="/valoracion.js"></script>
+</body>
+</html>
