@@ -9,8 +9,9 @@ const express = require('express');
 const multer = require('multer');
 
 const { extractWebsite } = require('./lib/extract');
-const { generateMemo } = require('./lib/gemini');
+const { generateMemo, generateRedTeam } = require('./lib/gemini');
 const { buildUserPrompt } = require('./lib/prompt');
+const { buildRedTeamPrompt } = require('./lib/redteam');
 const db = require('./lib/db');
 
 const app = express();
@@ -159,6 +160,10 @@ app.get('/next-10', (req, res) => {
 
 app.get('/valoracion', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'valoracion.html'));
+});
+
+app.get('/red-team-idea', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'red-team-idea.html'));
 });
 
 app.get('/red-team', (req, res) => {
@@ -380,6 +385,55 @@ app.post('/api/screen', upload.single('deck'), async (req, res) => {
   }
 });
 
+
+// Red team de una idea para founders: URL opcional + descripcion, sector, etapa.
+app.post('/api/redteam', async (req, res) => {
+  const url = (req.body.url || '').trim();
+  const descripcion = (req.body.descripcion || '').trim().slice(0, 4000);
+  const sector = (req.body.sector || '').trim().slice(0, 80);
+  const etapa = (req.body.etapa || '').trim().slice(0, 80);
+  const lang = req.body.lang === 'en' ? 'en' : 'es';
+
+  if (!url && !descripcion) {
+    return res.status(400).json({ error: 'Pega la web de tu idea o cuentala en un par de frases.' });
+  }
+  if (url) {
+    try {
+      new URL(/^https?:\/\//i.test(url) ? url : `https://${url}`);
+    } catch {
+      return res.status(400).json({ error: 'La URL no parece valida.' });
+    }
+  }
+  if (!process.env.GEMINI_API_KEY) {
+    return res.status(503).json({
+      error: 'El analisis al momento esta en pausa. Mientras tanto, mira el ejemplo.',
+      code: 'NO_API_KEY',
+    });
+  }
+
+  try {
+    let website = { text: null, ok: false };
+    if (url) website = await extractWebsite(/^https?:\/\//i.test(url) ? url : `https://${url}`);
+    const userPrompt = buildRedTeamPrompt({
+      url,
+      websiteText: website.text,
+      websiteOk: website.ok,
+      descripcion,
+      sector,
+      etapa,
+      lang,
+    });
+    const memo = await generateRedTeam(userPrompt);
+    memo._meta = { ...(memo._meta || {}), lang };
+    res.json({ memo });
+  } catch (err) {
+    console.error('[redteam] Error:', err);
+    if (err.code === 'NO_API_KEY') {
+      return res.status(503).json({ error: 'Falta GEMINI_API_KEY.', code: 'NO_API_KEY' });
+    }
+    res.status(502).json({ error: `Error generando el red team: ${err.message}` });
+  }
+});
 
 // Captura de emails del mapa de inversores (opcional, sin envío automático)
 app.post('/api/founder-interest', async (req, res) => {

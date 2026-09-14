@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Red team de tu idea · Startup Scouting</title>
+<link rel="icon" href="/favicon.svg">
+<style>
+:root{--carbon:#11110f;--carbon2:#171713;--bone:#e9e5dc;--dim:#aaa69f;--faint:#77736d;--gold:#b69a67;--hair:rgba(233,229,220,.16);--hairs:#373630;--red:#b3564b;--amber:#c2a24a;--green:#7d9c6f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--carbon);color:var(--bone);font-family:Arial,sans-serif}
+.wrap{max-width:1160px;margin:auto;padding:30px 44px 90px}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--faint)}
+.top a{color:var(--dim);text-decoration:none}
+.lang button{border:0;background:none;color:var(--faint);font-size:12px;cursor:pointer;padding:0}
+.lang button.active{color:var(--bone);text-decoration:underline;text-underline-offset:4px}
+.lang span{margin:0 6px}
+.kicker{color:var(--gold);font-size:11px;letter-spacing:.17em;text-transform:uppercase;margin:90px 0 0}
+h1{font:400 clamp(46px,6.4vw,92px)/.95 Georgia,serif;letter-spacing:-.045em;margin:22px 0 26px;max-width:900px}
+h1 em{color:var(--gold)}
+.lede{color:var(--dim);font-size:18px;line-height:1.6;max-width:640px;margin:0 0 70px}
+.grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--hairs)}
+.field{padding:26px 26px 26px 0;border-bottom:1px solid var(--hair)}
+.field:nth-child(even){border-left:1px solid var(--hair);padding-left:26px}
+.field.full{grid-column:1/-1}
+.field label{display:block;color:var(--faint);font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+.field input,.field select,.field textarea{width:100%;background:transparent;border:0;border-bottom:1px solid var(--hairs);color:var(--bone);font:400 20px Georgia,serif;padding:6px 0;outline:none;resize:vertical}
+.field textarea{min-height:110px;font-size:17px;line-height:1.6}
+.field select{cursor:pointer;font-size:16px}
+.field select option{background:var(--carbon2)}
+.cta{margin:44px 0 0}
+.cta button{background:var(--gold);color:var(--carbon);border:0;padding:16px 26px;font:700 12px Arial;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.cta button:disabled{opacity:.55;cursor:wait}
+#err{color:var(--red);font-size:13px;margin-top:18px}
+#result{margin-top:90px}
+.sum{border-top:1px solid var(--hairs);border-bottom:1px solid var(--hairs);padding:36px 0;color:var(--dim);font:400 italic clamp(19px,2.4vw,26px)/1.5 Georgia,serif}
+.sec{margin-top:80px}
+.sec .num{color:var(--gold);font:400 14px Georgia,serif;letter-spacing:.1em;margin-bottom:10px}
+.sec h2{font:400 clamp(30px,4vw,48px)/1 Georgia,serif;letter-spacing:-.03em;margin:0 0 8px}
+.sec h2 em{color:var(--gold)}
+.sec .note{color:var(--faint);font-size:13px;line-height:1.6;max-width:640px;margin:0 0 30px}
+.claim{padding:22px 0;border-bottom:1px solid var(--hair);display:flex;gap:22px;align-items:baseline}
+.claim .dot{flex:0 0 10px;width:10px;height:10px;border-radius:50%;margin-top:6px}
+.claim h4{font:400 19px Georgia,serif;color:var(--bone);margin:0 0 6px}
+.claim p{color:var(--dim);font-size:14px;line-height:1.6;margin:0}
+.claim .tag{flex:0 0 auto;color:var(--faint);font-size:10px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.muerto{padding:22px 0;border-bottom:1px solid var(--hair)}
+.muerto h4{font:400 20px Georgia,serif;color:var(--bone);margin:0 0 6px}
+.muerto .did{color:var(--dim);font-size:14px;line-height:1.6;margin:0 0 8px}
+.muerto .end{color:var(--bone);font-size:14px;line-height:1.6;margin:0 0 8px}
+.muerto a{color:var(--gold);text-decoration:none;font-size:12px}
+.muerto a:hover{text-decoration:underline}
+.obj{margin-top:80px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:50px 0}
+.obj p{margin:0;color:var(--faint);font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+.obj blockquote{font:400 italic clamp(24px,3.4vw,40px)/1.35 Georgia,serif;color:var(--bone);margin:20px 0 0;max-width:900px}
+.exp{margin-top:80px;display:grid;grid-template-columns:1.6fr 1fr;gap:60px;border-top:1px solid var(--hairs);padding-top:50px}
+.exp h2{font:400 clamp(30px,4vw,48px)/1 Georgia,serif;letter-spacing:-.03em;margin:0 0 20px}
+.exp h2 em{color:var(--gold)}
+.exp .what{font-size:17px;line-height:1.7;color:var(--dim)}
+.exp .side{border-left:1px solid var(--hair);padding-left:34px}
+.exp .side b{display:block;color:var(--faint);font-weight:400;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px}
+.exp .side p{color:var(--bone);font:400 16px/1.55 Georgia,serif;margin:0 0 26px}
+.risk{display:flex;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--hair);font-size:14px;color:var(--dim);line-height:1.6}
+.risk .dot{flex:0 0 9px;width:9px;height:9px;border-radius:50%}
+.fuentes{margin-top:60px;color:var(--faint);font-size:12px;line-height:1.8}
+.fuentes a{color:var(--dim);text-decoration:none;border-bottom:1px solid var(--hairs)}
+.fuentes a:hover{color:var(--gold)}
+.foot{margin-top:70px;border-top:1px solid var(--hair);padding-top:24px;color:var(--faint);font-size:12px;line-height:1.7;max-width:700px}
+.paused{border:1px solid var(--hairs);padding:18px 22px;color:var(--dim);font-size:13px;line-height:1.6;margin-top:40px}
+.hidden{display:none}
+@media(max-width:760px){.wrap{padding:22px 20px 60px}.grid{grid-template-columns:1fr}.field:nth-child(even){border-left:0;padding-left:0}.exp{grid-template-columns:1fr;gap:30px}.exp .side{border-left:0;padding-left:0}.kicker{margin-top:60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="/">← Startup Scouting</a><div class="lang"><button id="l-es" class="active">ES</button><span>/</span><button id="l-en">EN</button></div></div>
+  <p class="kicker" id="k-kicker"></p>
+  <h1 id="k-h1"></h1>
+  <p class="lede" id="k-lede"></p>
+  <div class="grid">
+    <div class="field full"><label id="k-l-desc"></label><textarea id="f-desc" rows="3"></textarea></div>
+    <div class="field"><label id="k-l-url"></label><input id="f-url" inputmode="url" placeholder=""></div>
+    <div class="field"><label id="k-l-sector"></label><select id="f-sector"></select></div>
+    <div class="field"><label id="k-l-etapa"></label><select id="f-etapa"></select></div>
+  </div>
+  <div class="cta"><button id="b-go"></button><p id="err"></p></div>
+  <div id="paused" class="paused hidden"></div>
+  <div id="result" class="hidden">
+    <div class="sum" id="r-sum"></div>
+    <div class="sec">
+      <p class="num">I.</p><h2 id="k-h-claims"></h2><p class="note" id="k-n-claims"></p>
+      <div id="r-claims"></div>
+    </div>
+    <div class="sec">
+      <p class="num">II.</p><h2 id="k-h-muertos"></h2><p class="note" id="k-n-muertos"></p>
+      <div id="r-muertos"></div>
+    </div>
+    <div class="obj">
+      <p class="num">III.</p><p id="k-h-obj"></p>
+      <blockquote id="r-obj"></blockquote>
+    </div>
+    <div class="exp">
+      <div>
+        <p class="num">IV.</p><h2 id="k-h-exp"></h2>
+        <p class="what" id="r-exp-what"></p>
+      </div>
+      <div class="side">
+        <b id="k-coste"></b><p id="r-exp-coste"></p>
+        <b id="k-senal"></b><p id="r-exp-senal"></p>
+      </div>
+    </div>
+    <div class="sec">
+      <p class="num">V.</p><h2 id="k-h-risk"></h2>
+      <div id="r-risks"></div>
+    </div>
+    <div class="fuentes" id="r-fuentes"></div>
+    <p class="foot" id="k-foot"></p>
+  </div>
+</div>
+<script src="/red-team-idea.js"></script>
+</body>
+</html>
