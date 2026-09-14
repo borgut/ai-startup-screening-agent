@@ -133,6 +133,50 @@ function readMemo(id, lang) {
   return null;
 }
 
+app.get('/scouting', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'scouting.html'));
+});
+
+app.get('/for-investors', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'for-investors.html'));
+});
+
+app.get('/raising', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'raising.html'));
+});
+
+app.get('/investor-map', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'investor-map.html'));
+});
+
+app.get('/would-you-invest', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'would-you-invest.html'));
+});
+
+app.get('/next-10', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'next10.html'));
+});
+
+app.get('/red-team', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'red-team.html'));
+});
+
+// SEO: /founders/:stage/:vertical/:geo -> mapa con los filtros aplicados
+const FOUNDER_SLUGS = {
+  'pre-seed': 'Pre-seed', 'seed': 'Seed', 'series-a': 'Series A',
+  'b2b-saas': 'B2B SaaS', 'fintech': 'Fintech', 'consumer': 'Consumer',
+  'marketplace': 'Marketplace', 'deeptech': 'Deeptech', 'ai': 'AI',
+  'espana': 'España', 'europa': 'Europa', 'latam': 'LatAm',
+};
+app.get('/founders/:stage/:vertical/:geo', (req, res) => {
+  const stage = FOUNDER_SLUGS[req.params.stage];
+  const vertical = FOUNDER_SLUGS[req.params.vertical];
+  const geo = FOUNDER_SLUGS[req.params.geo];
+  if (!stage || !vertical || !geo) return res.redirect('/investor-map');
+  const q = new URLSearchParams({ lang: 'es', vertical, stage, geo });
+  res.redirect(`/investor-map?${q.toString()}`);
+});
+
 app.get('/memo/:id', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'memo.html'));
 });
@@ -306,6 +350,31 @@ app.post('/api/screen', upload.single('deck'), async (req, res) => {
   }
 });
 
+
+// Captura de emails del mapa de inversores (opcional, sin envío automático)
+app.post('/api/founder-interest', async (req, res) => {
+  const email = String((req.body && req.body.email) || '').trim().slice(0, 200);
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    return res.status(400).json({ ok: false, error: 'Email no válido' });
+  }
+  const meta = {
+    vertical: String((req.body && req.body.vertical) || '').slice(0, 60),
+    stage: String((req.body && req.body.stage) || '').slice(0, 60),
+    geo: String((req.body && req.body.geo) || '').slice(0, 60),
+    raise: String((req.body && req.body.raise) || '').slice(0, 60),
+  };
+  try {
+    if (db.ENABLED()) {
+      await db.saveFounderInterest(email, meta);
+      return res.json({ ok: true, source: 'db' });
+    }
+  } catch (err) {
+    console.warn('[founder-interest] Postgres no disponible:', err.message);
+  }
+  // Sin base de datos: se acepta pero solo queda en el log de la función.
+  console.log('[founder-interest]', email, JSON.stringify(meta));
+  res.json({ ok: true, source: 'log' });
+});
 
 module.exports = app;
 

@@ -1,0 +1,147 @@
+{
+  "asOf": "2026-09-13",
+  "cases": [
+    {
+      "id": "a",
+      "alias": "Caso 01",
+      "snapshotDate": "22 feb 2018",
+      "snapshot": {
+        "market": "Pymes europeas que gestionan facturación, contabilidad, CRM, proyectos e inventario con herramientas separadas.",
+        "team": "Dos fundadores en Barcelona. Lanzaron la compañía en 2016.",
+        "traction": "10.000 usuarios doce meses después del lanzamiento. La fuente no publica ARR, retención ni clientes de pago.",
+        "round": "$1,6m liderados por Nauta Capital.",
+        "question": "¿El uso gratuito prueba distribución suficiente para vencer la complejidad de un ERP?"
+      },
+      "reveal": {
+        "name": "Holded",
+        "event": "Visma adquirió Holded en 2021. Tech.eu informó de un precio superior a €120m; Visma confirmó la operación, no el precio.",
+        "reading": "La señal decisiva era velocidad de adopción con poco capital. El agujero era monetización: 10.000 usuarios no permitían conocer ARR, retención ni payback.",
+        "note": "Buen desenlace empresarial. El retorno exacto de la ronda no es público."
+      },
+      "sources": [
+        {
+          "label": "Nauta · anuncio de inversión · 22 feb 2018",
+          "url": "https://medium.com/nauta-capital/our-investment-in-holded-the-network-of-connected-smes-c49ccc3ba373"
+        },
+        {
+          "label": "FinSMEs · ronda y 10.000 usuarios · 26 feb 2018",
+          "url": "https://www.finsmes.com/2018/02/holded-raises-1-6m-in-funding.html"
+        },
+        {
+          "label": "Visma · adquisición · 17 jun 2021",
+          "url": "https://www.visma.com/newsroom/visma-moves-into-the-spanish-smb-market-by-acquiring-cloud-erp-software-company-holded-d6642128"
+        },
+        {
+          "label": "Tech.eu · precio informado · 18 jun 2021",
+          "url": "https://tech.eu/2021/06/18/holded-now-held-by-visma-for-e120-million/"
+        }
+      ],
+      "en": {
+        "snapshot": {
+          "market": "European SMEs managing invoicing, accounting, CRM, projects and inventory with separate tools.",
+          "team": "Two founders in Barcelona. They launched the company in 2016.",
+          "traction": "10,000 users twelve months after launch. The source gives no ARR, retention or paid-customer data.",
+          "round": "$1.6m led by Nauta Capital.",
+          "question": "Does free usage prove enough distribution to overcome ERP complexity?"
+        },
+        "reveal": {
+          "event": "Visma acquired Holded in 2021. Tech.eu reported a price above €120m; Visma confirmed the deal, not the price.",
+          "reading": "The decisive signal was adoption speed with little capital. The gap was monetization: 10,000 users did not reveal ARR, retention or payback.",
+          "note": "Strong company outcome. The exact return on the round is not public."
+        }
+      }
+    },
+    {
+      "id": "b",
+      "alias": "Caso 02",
+      "snapshotDate": "18 sep 2017",
+      "snapshot": {
+        "market": "Facturación y cobros para pymes y autónomos, con producto cloud gratuito y capa premium.",
+        "team": "Marcos de la Cueva y Diego Goya detectaron el problema trabajando con facturas en 2015.",
+        "traction": "10.000 empresas y profesionales; €100m en facturas procesadas. Sin ARR, retención ni conversión a pago publicadas.",
+        "round": "€1,5m liderados por Kibo Ventures y K Fund.",
+        "question": "¿El volumen procesado crea una vía de monetización o solo una métrica vistosa?"
+      },
+      "reveal": {
+        "name": "Billin",
+        "event": "TeamSystem adquirió Billin en 2021. El precio no fue publicado.",
+        "reading": "La distribución y el volumen eran reales; la pregunta clave era convertir actividad gratuita en ingresos recurrentes. Sin precio de salida ni cap table, no se puede reconstruir el retorno.",
+        "note": "Exit estratégico confirmado; resultado financiero para el inversor: sin datos."
+      },
+      "sources": [
+        {
+          "label": "Tech.eu · ronda, usuarios y volumen · 18 sep 2017",
+          "url": "https://tech.eu/2017/09/18/billin-funding/"
+        },
+        {
+          "label": "Baker Tilly · equipo y producto · 18 sep 2017",
+          "url": "https://techma.bakertilly.es/en/billin-startup-espanola-de-fintech-recibe-e15m-en-una-nueva-ronda-de-inversion/"
+        },
+        {
+          "label": "El Referente · adquisición · 17 feb 2021",
+          "url": "https://elreferente.es/actualidad/billin-la-startup-de-facturacion-online-espanola-es-adquirida-por-teamsystem/"
+        }
+      ],
+      "en": {
+        "snapshot": {
+          "market": "Invoicing and collections for SMEs and freelancers, with a free cloud product and premium layer.",
+          "team": "Marcos de la Cueva and Diego Goya found the problem while working with invoices in 2015.",
+          "traction": "10,000 companies and professionals; €100m in invoices processed. No published ARR, retention or paid conversion.",
+          "round": "€1.5m led by Kibo Ventures and K Fund.",
+          "question": "Does processed volume create a monetization path, or is it merely an impressive metric?"
+        },
+        "reveal": {
+          "event": "TeamSystem acquired Billin in 2021. The price was not disclosed.",
+          "reading": "Distribution and volume were real; the core question was converting free activity into recurring revenue. Without an exit price or cap table, returns cannot be reconstructed.",
+          "note": "Confirmed strategic exit; financial outcome for the investor: no data."
+        }
+      }
+    },
+    {
+      "id": "c",
+      "alias": "Caso 03",
+      "snapshotDate": "16 mar 2016",
+      "snapshot": {
+        "market": "Location intelligence para retailers con redes físicas: aperturas, cierres, previsión de ventas y campañas locales.",
+        "team": "Fundador ex McKinsey y MBA por Chicago Booth; había trabajado con grandes retailers de moda.",
+        "traction": "Compañía fundada un año antes. Las fuentes de la ronda no publican clientes, ARR ni retención.",
+        "round": "€1m liderado por Nauta; antes recibió €175k de ángeles y €200k de Lanzadera.",
+        "question": "¿La experiencia de dominio compensa una seed sin tracción comercial publicada?"
+      },
+      "reveal": {
+        "name": "Geoblink",
+        "event": "MyTraffic adquirió Geoblink para consolidar el liderazgo europeo en location analytics. El precio no fue publicado.",
+        "reading": "Equipo y problema estaban bien definidos, pero la evidencia pública de la seed no permitía validar demanda. La adquisición confirma valor estratégico, no un retorno concreto.",
+        "note": "Exit por consolidación; calidad del resultado financiero: sin datos."
+      },
+      "sources": [
+        {
+          "label": "Nauta · ronda, equipo y producto · 16 mar 2016",
+          "url": "https://www.nautacapital.com/news-insights/geoblink-raises-eu1-million-investment-led-by-nauta-capital"
+        },
+        {
+          "label": "Geoblink · uso de fondos · 17 mar 2016",
+          "url": "https://www.geoblink.com/blog/announcing-geoblinks-1-1-million-round-led-by-nauta-capital-to-grow-and-to-attract-the-best-talent/"
+        },
+        {
+          "label": "Nauta · adquisición por MyTraffic",
+          "url": "https://www.nautacapital.com/news-insights/mytraffic-acquires-the-spanish-location-management-platform-geoblink-to-become-european-leader"
+        }
+      ],
+      "en": {
+        "snapshot": {
+          "market": "Location intelligence for retailers with physical networks: openings, closures, sales forecasts and local campaigns.",
+          "team": "Founder was ex-McKinsey with a Chicago Booth MBA and had worked with large fashion retailers.",
+          "traction": "Company founded one year earlier. The round sources publish no clients, ARR or retention.",
+          "round": "€1m led by Nauta; it had previously raised €175k from angels and €200k from Lanzadera.",
+          "question": "Does domain expertise compensate for a seed round with no published commercial traction?"
+        },
+        "reveal": {
+          "event": "MyTraffic acquired Geoblink to consolidate European leadership in location analytics. The price was not disclosed.",
+          "reading": "The team and problem were well defined, but public seed evidence could not validate demand. The acquisition confirms strategic value, not a specific return.",
+          "note": "Consolidation exit; quality of the financial outcome: no data."
+        }
+      }
+    }
+  ]
+}

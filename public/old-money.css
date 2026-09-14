@@ -1,0 +1,734 @@
+/* ============================================================
+   OLD MONEY UNIFICADO (2026-09-14)
+   Toda la app pasa a la estetica de la portada: carbon + hueso +
+   un solo acento dorado, serif clasica (Georgia), filetes finos,
+   mucho aire. Sin gradientes, sombras, tarjetas redondeadas ni
+   cobalto. Se aplica despues de styles.css solo a las paginas
+   que aun estaban en la estetica anterior.
+   ============================================================ */
+
+body.theme-poster,
+body.mm-page,
+body.df-page,
+body.brief-page,
+body.rw-page,
+body.vc-workbench {
+  --carbon: #11110f;
+  --carbon-2: #171713;
+  --bone: #e9e5dc;
+  --bone-dim: #aaa69f;
+  --bone-faint: #77736d;
+  --gold: #b69a67;
+  --hair: rgba(233, 229, 220, 0.16);
+  --hair-strong: #373630;
+  --serif: Georgia, 'Times New Roman', serif;
+  --inv: #6fa878;
+  --watch: #c9a24b;
+  --pass: #c96a52;
+  background: var(--carbon);
+  color: var(--bone);
+  font-family: Arial, Helvetica, sans-serif;
+}
+body.theme-poster ::selection, body.mm-page ::selection, body.df-page ::selection,
+body.brief-page ::selection, body.rw-page ::selection, body.vc-workbench ::selection { background: var(--gold); color: var(--carbon); }
+
+/* ---------- Barras superiores ---------- */
+body.theme-poster .memo-topbar, body.mm-page .memo-topbar, body.df-page .memo-topbar,
+body.brief-page .memo-topbar, body.rw-page .memo-topbar, body.vc-workbench .memo-topbar { border-bottom: 1px solid var(--hair); padding-bottom: 14px; }
+body.theme-poster .back-link, body.mm-page .back-link, body.df-page .back-link,
+body.brief-page .back-link, body.rw-page .back-link, body.vc-workbench .back-link {
+  color: var(--bone-dim); font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.04em;
+}
+body.theme-poster .back-link:hover, body.mm-page .back-link:hover, body.df-page .back-link:hover,
+body.brief-page .back-link:hover, body.rw-page .back-link:hover, body.vc-workbench .back-link:hover { color: var(--gold); text-decoration: none; }
+body.theme-poster .lang-switch, body.mm-page .lang-switch, body.df-page .lang-switch,
+body.brief-page .lang-switch, body.rw-page .lang-switch, body.vc-workbench .lang-switch { color: var(--bone-faint); }
+body.theme-poster button.lang-btn, body.mm-page button.lang-btn, body.df-page button.lang-btn,
+body.brief-page button.lang-btn, body.rw-page button.lang-btn, body.vc-workbench button.lang-btn,
+body.vc-workbench .lang-switch button { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.theme-poster button.lang-btn:hover, body.mm-page button.lang-btn:hover, body.df-page button.lang-btn:hover,
+body.brief-page button.lang-btn:hover, body.rw-page button.lang-btn:hover { color: var(--bone); }
+body.theme-poster button.lang-btn.lang-on, body.mm-page button.lang-btn.lang-on, body.df-page button.lang-btn.lang-on,
+body.brief-page button.lang-btn.lang-on, body.rw-page button.lang-btn.lang-on,
+body.vc-workbench .lang-switch button.active {
+  color: var(--bone); font-weight: 400; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 4px;
+}
+.ic-print, body.brief-page .ic-print, body.ic-page .ic-print {
+  background: transparent; border: 1px solid var(--gold); border-radius: 0; color: var(--gold);
+  font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.1em; padding: 8px 16px; cursor: pointer;
+}
+.ic-print:hover { background: var(--gold); color: var(--carbon); }
+
+/* ---------- SCOUTING (portada inversor) ---------- */
+body.theme-poster .masthead { border-bottom: 1px solid var(--hair); padding-top: 6px; }
+body.theme-poster .masthead-top { padding: 22px 0; }
+body.theme-poster .wordmark { font-family: Arial, sans-serif; font-weight: 400; font-size: 12px; letter-spacing: 0.04em; color: var(--bone); }
+body.theme-poster .wm-sq { background: var(--gold); width: 0.5em; height: 0.5em; }
+body.theme-poster .masthead h1.display {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -0.045em;
+  font-size: clamp(2.9rem, 6.2vw, 4.9rem); line-height: 1.0; color: var(--bone);
+  margin: 64px 0 28px; max-width: 18ch;
+}
+body.theme-poster .masthead h1.display em {
+  background: none; color: var(--gold); font-style: italic; font-weight: 400; padding: 0;
+}
+body.theme-poster .lede { color: var(--bone-dim); font-size: 1.02rem; max-width: 56ch; }
+
+/* Formulario */
+body.theme-poster .hero-form { margin-top: 40px; }
+body.theme-poster .hero-input-row {
+  display: flex; border: 0; border-bottom: 1px solid var(--hair-strong); border-radius: 0;
+  background: transparent; padding: 0;
+}
+body.theme-poster .hero-input-row input {
+  background: transparent; border: 0; color: var(--bone); font-size: 1.05rem;
+  padding: 16px 0; outline: none;
+}
+body.theme-poster .hero-input-row input::placeholder { color: var(--bone-faint); }
+body.theme-poster .hero-input-row button, body.theme-poster #submit-btn {
+  background: var(--gold); color: var(--carbon); border: 0; border-radius: 0;
+  font-family: Arial, sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.08em;
+  padding: 0 26px; cursor: pointer; text-transform: none;
+}
+body.theme-poster .hero-input-row button:hover { background: #c8ab7a; }
+body.theme-poster .more-context { margin-top: 18px; }
+body.theme-poster .more-context summary {
+  background: none; border: 0; border-radius: 0; padding: 0;
+  color: var(--gold); font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.06em;
+}
+body.theme-poster .more-context summary:hover { color: var(--bone); }
+body.theme-poster .more-fields label { color: var(--bone-faint); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+body.theme-poster .more-fields input[type="url"], body.theme-poster .more-fields textarea {
+  background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong); border-radius: 0;
+  color: var(--bone); padding: 10px 0; outline: none; font-size: 0.95rem;
+}
+body.theme-poster .more-fields input[type="url"]:focus, body.theme-poster .more-fields textarea:focus { border-bottom-color: var(--gold); }
+body.theme-poster .more-fields textarea::placeholder, body.theme-poster .more-fields input::placeholder { color: var(--bone-faint); }
+body.theme-poster .dropzone {
+  border: 1px dashed var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim);
+}
+body.theme-poster .dropzone:hover { border-color: var(--gold); color: var(--bone); }
+body.theme-poster .form-note { color: var(--bone-faint); font-size: 0.8rem; }
+body.theme-poster .form-note.error { color: var(--pass); }
+
+/* Leyenda del veredicto: cada item en una sola linea, bolita alineada */
+body.theme-poster .verdict-help summary {
+  background: none; border: 0; border-radius: 0; padding: 0; color: var(--bone-faint);
+  font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.1em;
+}
+body.theme-poster .verdict-help summary:hover { color: var(--bone); }
+body.theme-poster .verdict-help[open] summary { border: 0; color: var(--bone); }
+body.theme-poster .verdict-legend { color: var(--bone-dim); font-family: Arial, sans-serif; font-size: 12px; line-height: 2.0; }
+body.theme-poster .verdict-legend > span { display: flex; align-items: baseline; gap: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.theme-poster .verdict-legend .vdot { display: inline-block; flex: none; width: 6px; height: 6px; border-radius: 50%; margin: 0; position: relative; top: -1px; }
+body.theme-poster .verdict-legend strong { font-weight: 600; letter-spacing: 0.04em; }
+body.theme-poster .vl-inv, body.theme-poster .vdot-inv { color: var(--inv); }
+body.theme-poster .vl-watch, body.theme-poster .vdot-watch { color: var(--watch); }
+body.theme-poster .vl-pass, body.theme-poster .vdot-pass { color: var(--pass); }
+body.theme-poster .vdot-inv { background: var(--inv); }
+body.theme-poster .vdot-watch { background: var(--watch); }
+body.theme-poster .vdot-pass { background: var(--pass); }
+
+/* Pasos */
+body.theme-poster .steps { border-top: 1px solid var(--hair-strong); margin-top: 56px; }
+body.theme-poster .step { border-right: 1px solid var(--hair); color: var(--bone-dim); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.06em; text-transform: none; }
+body.theme-poster .step b { color: var(--gold); font-weight: 400; font-family: var(--serif); font-style: italic; font-size: 1rem; }
+
+/* Banda dossier */
+body.theme-poster .dossier { background: var(--carbon-2); border-top: 1px solid var(--hair-strong); border-bottom: 1px solid var(--hair-strong); }
+body.theme-poster .dossier-kicker { color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+body.theme-poster .dossier-link { color: var(--gold); font-size: 13px; }
+body.theme-poster .dossier-link:hover { color: var(--bone); }
+
+/* Ultimas ediciones */
+body.theme-poster #examples-section h2 {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -0.03em; font-size: 2.1rem; color: var(--bone);
+}
+body.theme-poster #examples-section .muted { color: var(--bone-dim); }
+body.theme-poster .ed-search {
+  background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong); border-radius: 0;
+  color: var(--bone); padding: 10px 0; outline: none;
+}
+body.theme-poster .ed-search:focus { border-bottom-color: var(--gold); }
+body.theme-poster .ed-search::placeholder { color: var(--bone-faint); }
+body.theme-poster .pill.ed-filter, body.theme-poster .pill.ed-sort {
+  border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim);
+  font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.04em; padding: 7px 14px;
+}
+body.theme-poster .pill.ed-filter:hover, body.theme-poster .pill.ed-sort:hover { border-color: var(--gold); color: var(--bone); }
+body.theme-poster .pill.ed-filter.is-on, body.theme-poster .pill.ed-sort.is-on { background: var(--gold); border-color: var(--gold); color: var(--carbon); }
+body.theme-poster .edition {
+  background: transparent; border: 0; border-top: 1px solid var(--hair-strong); border-radius: 0;
+  padding: 22px 0; cursor: pointer;
+}
+body.theme-poster .edition:hover { background: var(--carbon-2); }
+body.theme-poster .edition .ed-num { color: var(--gold); font-family: var(--serif); font-style: italic; font-size: 1rem; font-weight: 400; }
+body.theme-poster .edition h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.02em; color: var(--bone); font-size: 1.5rem; }
+body.theme-poster .pill.ed-tag {
+  border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); font-size: 10px; letter-spacing: 0.05em;
+}
+body.theme-poster .pill.badge { border-radius: 0; background: transparent; font-size: 10px; letter-spacing: 0.08em; }
+body.theme-poster .badge-investigate { border: 1px solid var(--inv); color: var(--inv); }
+body.theme-poster .badge-watch { border: 1px solid var(--watch); color: var(--watch); }
+body.theme-poster .badge-pass { border: 1px solid var(--pass); color: var(--pass); }
+
+/* Loading */
+body.theme-poster .load-steps li { color: var(--bone-dim); border-bottom: 1px solid var(--hair); }
+body.theme-poster .load-steps li b { color: var(--gold); font-family: var(--serif); font-style: italic; font-weight: 400; }
+body.theme-poster .load-note { color: var(--bone-faint); }
+
+/* Footer */
+body.theme-poster .site-footer { border-top: 1px solid var(--hair); background: transparent; }
+body.theme-poster .site-footer p, body.theme-poster .site-footer { color: var(--bone-faint); }
+body.theme-poster .footer-lab-link { color: var(--gold); font-size: 13px; }
+body.theme-poster .footer-lab-link:hover { color: var(--bone); }
+
+/* ---------- MEMO (/memo/:id y contenedor en scouting) ---------- */
+body.theme-poster .memo { background: transparent; border: 0; margin: 40px 0 48px; }
+body.theme-poster .memo a { color: var(--gold); }
+body.theme-poster .memo-sec { padding: 34px 0 14px; border-top: 1px solid var(--hair-strong); }
+body.theme-poster .memo-sec:first-of-type { border-top: 0; }
+body.theme-poster .memo-sec h3, body.theme-poster .memo h3 {
+  font-family: Arial, sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.16em;
+  color: var(--gold); border-bottom: 0; padding-bottom: 0; margin: 0 0 20px; text-transform: uppercase;
+}
+body.theme-poster .memo li, body.theme-poster .memo p { color: var(--bone-dim); }
+body.theme-poster .memo strong, body.theme-poster .memo b { color: var(--bone); }
+body.theme-poster .snd { color: var(--bone-faint); }
+
+/* Portada del memo: sin caja, continua con la pagina */
+body.theme-poster .hero {
+  background: transparent; border-bottom: 1px solid var(--hair-strong); padding: 8px 0 34px; color: var(--bone);
+}
+body.theme-poster .hero-kicker { color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.16em; }
+body.theme-poster .hero-name {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -0.045em; color: var(--bone);
+  font-size: clamp(3rem, 6vw, 4.6rem); line-height: 0.98;
+}
+body.theme-poster .hero-reco {
+  border: 1px solid currentColor; border-radius: 0; background: transparent;
+  font-family: Arial, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 7px 16px;
+}
+body.theme-poster .hero-green .hero-reco { border-color: var(--inv); color: var(--inv); }
+body.theme-poster .hero-amber .hero-reco { border-color: var(--watch); color: var(--watch); }
+body.theme-poster .hero-red .hero-reco { border-color: var(--pass); color: var(--pass); }
+body.theme-poster .hero-reco .vdot-inv { background: var(--inv); }
+body.theme-poster .hero-reco .vdot-watch { background: var(--watch); }
+body.theme-poster .hero-reco .vdot-pass { background: var(--pass); }
+body.theme-poster .hero-chip { border: 1px solid var(--hair-strong); border-radius: 0; color: var(--bone-dim); font-family: Arial, sans-serif; font-size: 11px; }
+body.theme-poster .hero-justif { color: var(--bone-dim); }
+body.theme-poster .gauge-num { fill: var(--bone); font-family: var(--serif); font-weight: 400; }
+body.theme-poster .gauge-sub { fill: var(--bone-faint); }
+body.theme-poster .hero-conf { color: var(--bone-faint); }
+body.theme-poster .hero .conf-Alta { color: var(--inv); }
+body.theme-poster .hero .conf-Media { color: var(--watch); }
+body.theme-poster .hero .conf-Baja { color: var(--pass); }
+body.theme-poster .conf-badge { border-radius: 0; }
+body.theme-poster .reco-help { border-top: 1px solid var(--hair); }
+body.theme-poster .reco-help summary { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.theme-poster .reco-help summary:hover { color: var(--bone); }
+body.theme-poster .rl-inv { color: var(--inv); }
+body.theme-poster .rl-watch { color: var(--watch); }
+body.theme-poster .rl-pass { color: var(--pass); }
+body.theme-poster .rl-item { font-family: Arial, sans-serif; font-size: 11px; }
+
+body.theme-poster .exec-sum { color: var(--bone); font-size: 1.05rem; line-height: 1.7; }
+body.theme-poster .why-block { border-top: 1px solid var(--hair-strong); }
+body.theme-poster .why-block strong { color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.12em; }
+body.theme-poster .why-block p, body.theme-poster .why-list li { color: var(--bone-dim); }
+body.theme-poster .method-note { color: var(--bone-faint); }
+
+/* Dimensiones */
+body.theme-poster .dim-name { color: var(--bone); font-weight: 400; }
+body.theme-poster .dim-weight { color: var(--bone-faint); }
+body.theme-poster .dim-score { color: var(--gold); font-family: var(--serif); }
+body.theme-poster .dim-track { background: var(--carbon-2); border: 1px solid var(--hair); border-radius: 0; height: 6px; }
+body.theme-poster .dim-fill { background: var(--gold); border-radius: 0; }
+body.theme-poster .dim-justif { color: var(--bone-dim); }
+body.theme-poster .dim-more summary { color: var(--gold); }
+
+/* Claims */
+body.theme-poster .claims-table { border-top: 1px solid var(--hair-strong); }
+body.theme-poster .claims-table th { color: var(--bone-faint); font-weight: 400; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid var(--hair-strong); }
+body.theme-poster .claims-table td { border-bottom: 1px solid var(--hair); color: var(--bone-dim); }
+body.theme-poster .claims-table td:first-child { color: var(--bone); }
+body.theme-poster .estado-chip { border-radius: 0; font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.08em; padding: 3px 10px; border: 1px solid currentColor; background: transparent; }
+body.theme-poster .st-verificado { color: var(--inv); }
+body.theme-poster .st-no_verificable, body.theme-poster .st-sin_datos { color: var(--watch); }
+body.theme-poster .st-contradicho { color: var(--pass); }
+body.theme-poster .c-src a { color: var(--gold); }
+
+/* Encaje, flags, preguntas, fuentes, metricas */
+body.theme-poster .fit-row { border-bottom: 1px solid var(--hair); }
+body.theme-poster .fit-crit { color: var(--bone); }
+body.theme-poster .fit-det { color: var(--bone-dim); }
+body.theme-poster .flag-row { border: 0; border-top: 1px solid var(--hair-strong); border-radius: 0; background: transparent; }
+body.theme-poster .flag-num { color: var(--gold); font-family: var(--serif); font-style: italic; }
+body.theme-poster .q-list li { border-bottom: 1px solid var(--hair); color: var(--bone-dim); }
+body.theme-poster .src-list a { color: var(--gold); }
+body.theme-poster .stat-card { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; box-shadow: none; }
+body.theme-poster .stat-value { color: var(--bone); font-family: var(--serif); font-weight: 400; }
+body.theme-poster .stat-label { color: var(--bone-faint); }
+body.theme-poster .stat-context { color: var(--bone-faint); }
+body.theme-poster .rounds-table th { color: var(--bone-faint); border-bottom: 1px solid var(--hair-strong); }
+body.theme-poster .rounds-table td { border-bottom: 1px solid var(--hair); color: var(--bone-dim); }
+body.theme-poster .founder-card { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; box-shadow: none; }
+body.theme-poster .founder-card-head b, body.theme-poster .founder-card b { color: var(--bone); }
+body.theme-poster .founder-card p, body.theme-poster .founder-card li { color: var(--bone-dim); }
+body.theme-poster .founder-source { color: var(--gold); }
+body.theme-poster .memo-foot { border-top: 1px solid var(--hair-strong); color: var(--bone-faint); }
+body.theme-poster .ic-link { color: var(--gold); border: 1px solid var(--gold); border-radius: 0; background: transparent; }
+body.theme-poster .ic-link:hover { background: var(--gold); color: var(--carbon); }
+
+/* ---------- IC (/ic/:id) ---------- */
+body.ic-page .ic-doc { background: transparent; border: 0; }
+body.ic-page .ic-cover { background: transparent; border-bottom: 1px solid var(--hair-strong); color: var(--bone); }
+body.ic-page .ic-cover-top { color: var(--gold); font-family: Arial, sans-serif; letter-spacing: 0.16em; }
+body.ic-page .ic-identity h1, body.ic-page .ic-cover h1 {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -0.045em; color: var(--bone);
+}
+body.ic-page .ic-decision { font-family: Arial, sans-serif; letter-spacing: 0.1em; }
+body.ic-page .ic-score { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.ic-page .ic-panel { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; box-shadow: none; }
+body.ic-page .ic-panel-dark { background: var(--carbon-2); }
+body.ic-page .ic-panel-head { color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid var(--hair); }
+body.ic-page .ic-snapshot-head { color: var(--gold); }
+body.ic-page h2, body.ic-page h3 { color: var(--bone); font-family: var(--serif); font-weight: 400; letter-spacing: -0.02em; }
+body.ic-page .ic-label, body.ic-page dt { color: var(--bone-faint); }
+body.ic-page p, body.ic-page li, body.ic-page dd { color: var(--bone-dim); }
+body.ic-page strong, body.ic-page b { color: var(--bone); }
+body.ic-page a { color: var(--gold); }
+body.ic-page .ic-footer { border-top: 1px solid var(--hair-strong); color: var(--bone-faint); }
+body.ic-page .ic-fit-pills span { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); }
+
+/* ---------- MARKET MAP ---------- */
+body.mm-page .mm-hero { background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong); color: var(--bone); }
+body.mm-page .mm-kicker { color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.16em; }
+body.mm-page .mm-hero h1 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.045em; color: var(--bone); }
+body.mm-page .mm-hero h1 em { color: var(--gold); font-style: italic; background: none; }
+body.mm-page .mm-hero p { color: var(--bone-dim); }
+body.mm-page .mm-query select {
+  background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong); border-radius: 0;
+  color: var(--bone); padding: 12px 0; outline: none;
+}
+body.mm-page .mm-query select option { background: var(--carbon); color: var(--bone); }
+body.mm-page .mm-query button, body.mm-page .mm-hero button {
+  background: var(--gold); color: var(--carbon); border: 0; border-radius: 0; font-size: 12px; letter-spacing: 0.08em;
+}
+body.mm-page .mm-filters .pill, body.mm-page .mm-filters button {
+  border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim);
+}
+body.mm-page .mm-filters .is-on { background: var(--gold); border-color: var(--gold); color: var(--carbon); }
+body.mm-page .mm-notes { color: var(--bone-faint); }
+body.mm-page .mm-board, body.mm-page .mm-row { border-color: var(--hair-strong); }
+body.mm-page .mm-row-cards { border: 0; }
+body.mm-page .mm-card {
+  border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; box-shadow: none; color: var(--bone);
+}
+body.mm-page .mm-card h3, body.mm-page .mm-card b { color: var(--bone); font-family: var(--serif); font-weight: 400; }
+body.mm-page .mm-card p, body.mm-page .mm-meta { color: var(--bone-dim); }
+body.mm-page .mm-card a { color: var(--gold); }
+body.mm-page .mm-empty { color: var(--bone-faint); }
+body.mm-page h2, body.mm-page h3 { color: var(--bone); }
+
+/* ---------- DEALFLOW ---------- */
+body.df-page .df-hero { background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong); color: var(--bone); }
+body.df-page .df-kicker { color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.16em; }
+body.df-page .df-hero h1 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.045em; color: var(--bone); }
+body.df-page .df-hero h1 em { color: var(--gold); font-style: italic; background: none; }
+body.df-page .df-hero p { color: var(--bone-dim); }
+body.df-page .df-stats > div, body.df-page .df-stats div {
+  border: 0; border-left: 1px solid var(--hair-strong); background: transparent; box-shadow: none;
+}
+body.df-page .df-stats b, body.df-page .df-stats strong { color: var(--bone); font-family: var(--serif); font-weight: 400; }
+body.df-page .df-stats span { color: var(--bone-faint); }
+body.df-page .df-controls input {
+  background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong); border-radius: 0; color: var(--bone); outline: none;
+}
+body.df-page .df-controls input::placeholder { color: var(--bone-faint); }
+body.df-page .df-filters button, body.df-page .df-view button {
+  border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim);
+}
+body.df-page .df-filters button.is-on, body.df-page .df-view button.is-on { background: var(--gold); border-color: var(--gold); color: var(--carbon); }
+body.df-page .df-column { background: transparent; border: 0; border-left: 1px solid var(--hair); }
+body.df-page .df-column > header, body.df-page .df-column h2 { color: var(--bone-faint); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid var(--hair-strong); }
+body.df-page .df-card { border: 0; border-top: 1px solid var(--hair-strong); border-radius: 0; background: transparent; box-shadow: none; }
+body.df-page .df-card-top b, body.df-page .df-card b { color: var(--bone); font-family: var(--serif); font-weight: 400; }
+body.df-page .df-sector { color: var(--bone-faint); }
+body.df-page .df-next { color: var(--bone-dim); }
+body.df-page .df-card-foot { color: var(--bone-faint); border-top: 1px solid var(--hair); }
+body.df-page .df-status { border-radius: 0; border: 1px solid currentColor; background: transparent; }
+body.df-page .df-note { color: var(--bone-faint); border-top: 1px solid var(--hair); }
+body.df-page .df-note span { color: var(--gold); }
+body.df-page .df-table th { color: var(--bone-faint); border-bottom: 1px solid var(--hair-strong); }
+body.df-page .df-table td { border-bottom: 1px solid var(--hair); color: var(--bone-dim); }
+
+/* ---------- BRIEF ---------- */
+body.brief-page .brief-cover { background: transparent; border-bottom: 1px solid var(--hair-strong); color: var(--bone); }
+body.brief-page .brief-cover h1, body.brief-page .brief-name {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -0.045em; color: var(--bone);
+}
+body.brief-page .brief-top p, body.brief-page .brief-one-line { color: var(--bone-dim); }
+body.brief-page .brief-tags span, body.brief-page .brief-tags b { border-radius: 0; border: 1px solid var(--hair-strong); background: transparent; color: var(--bone-dim); }
+body.brief-page .brief-sheet { border: 0; background: transparent; box-shadow: none; }
+body.brief-page .brief-block { border-top: 1px solid var(--hair-strong); }
+body.brief-page .brief-block h2, body.brief-page h2 { color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; }
+body.brief-page .brief-block h3, body.brief-page h3 { color: var(--bone); font-family: var(--serif); font-weight: 400; }
+body.brief-page p, body.brief-page li { color: var(--bone-dim); }
+body.brief-page strong, body.brief-page b { color: var(--bone); }
+body.brief-page .brief-mini { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; box-shadow: none; }
+body.brief-page .brief-people > div { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; }
+body.brief-page .brief-foot { border-top: 1px solid var(--hair-strong); color: var(--bone-faint); }
+body.brief-page .brief-pick select {
+  background: transparent; border: 0; border-bottom: 1px solid var(--hair-strong); border-radius: 0; color: var(--bone); outline: none;
+}
+body.brief-page .brief-pick select option { background: var(--carbon); color: var(--bone); }
+body.brief-page .brief-pick button { background: var(--gold); color: var(--carbon); border: 0; border-radius: 0; }
+
+/* ---------- REGULATORY WATCH ---------- */
+body.rw-page .rw-hero, body.rw-page header { background: transparent; color: var(--bone); }
+body.rw-page h1, body.rw-page h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.03em; color: var(--bone); }
+body.rw-page h1 em { color: var(--gold); font-style: italic; background: none; }
+body.rw-page p, body.rw-page li { color: var(--bone-dim); }
+body.rw-page .pill, body.rw-page button { border-radius: 0; }
+body.rw-page a { color: var(--gold); }
+
+/* ---------- NEXT 10 (accento azul -> dorado) ---------- */
+body.vc-workbench { background: var(--carbon); }
+body.vc-workbench .vc-eyebrow { color: var(--gold); font-family: Arial, sans-serif; font-weight: 400; }
+body.vc-workbench .next-hero { border-bottom-color: var(--hair-strong); }
+body.vc-workbench .next-hero h1 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.05em; color: var(--bone); }
+body.vc-workbench .next-hero h1 em { color: var(--gold); font-style: italic; }
+body.vc-workbench .next-hero > div > p:last-child { color: var(--bone-dim); }
+body.vc-workbench .next-hero aside { border-top: 1px solid var(--gold); color: var(--bone-dim); }
+body.vc-workbench .next-hero aside b { color: var(--bone); }
+body.vc-workbench .vc-toolbar input { border-bottom-color: var(--hair-strong); color: var(--bone); }
+body.vc-workbench .vc-toolbar input::placeholder { color: var(--bone-faint); }
+body.vc-workbench .vc-pill { border: 1px solid var(--hair-strong); border-radius: 0; color: var(--bone-dim); }
+body.vc-workbench .vc-pill.active { background: var(--gold); border-color: var(--gold); color: var(--carbon); }
+body.vc-workbench .ledger-head { color: var(--bone-faint); }
+body.vc-workbench .next-row { border-top-color: var(--hair-strong); }
+body.vc-workbench .next-company b, body.vc-workbench .next-row h2 { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.vc-workbench .next-row p { color: var(--bone-dim); }
+body.vc-workbench .vc-method { border-top-color: var(--hair-strong); color: var(--bone-dim); }
+body.vc-workbench .vc-method b { color: var(--gold); }
+body.vc-workbench a { color: var(--gold); }
+
+/* ---------- Impresion: siempre claro ---------- */
+@media print {
+  body.theme-poster, body.brief-page, body.ic-page { background: #fff !important; color: #000 !important; }
+  body.theme-poster .memo p, body.theme-poster .memo li, body.brief-page p, body.brief-page li, body.ic-page p, body.ic-page li { color: #222 !important; }
+  body.theme-poster .hero-name, body.ic-page .ic-cover h1, body.brief-page .brief-name { color: #000 !important; }
+}
+
+/* ---------- Patch 1: tablas, charts, chips, founders ---------- */
+body.theme-poster .claims-table th, body.theme-poster .claims-table td {
+  border: 0; border-bottom: 1px solid var(--hair); background: transparent;
+}
+body.theme-poster .claims-table th { border-bottom: 1px solid var(--hair-strong); color: var(--bone-faint); background: transparent; }
+body.theme-poster .c-num { color: var(--bone-faint); }
+body.theme-poster .c-src { color: var(--bone-faint); }
+body.theme-poster .c-src a { color: var(--gold); }
+body.theme-poster .memo .st-verificada, body.theme-poster .editions-list .st-verificada,
+body.theme-poster .st-verificada { background: transparent; border: 1px solid var(--inv); color: var(--inv); border-radius: 0; }
+body.theme-poster .memo .st-no_verificada, body.theme-poster .editions-list .st-no_verificada,
+body.theme-poster .st-no_verificada { background: transparent; border: 1px solid var(--watch); color: var(--watch); border-radius: 0; }
+body.theme-poster .memo .st-contradicha, body.theme-poster .editions-list .st-contradicha,
+body.theme-poster .st-contradicha { background: transparent; border: 1px solid var(--pass); color: var(--pass); border-radius: 0; }
+body.theme-poster .rounds-table th, body.theme-poster .rounds-table td { border: 0; border-bottom: 1px solid var(--hair); }
+body.theme-poster .rounds-table th { border-bottom: 1px solid var(--hair-strong); color: var(--bone-faint); font-family: Arial, sans-serif; font-weight: 400; }
+body.theme-poster .q-list li::before { color: var(--gold); font-family: var(--serif); font-style: italic; font-size: 0.8rem; }
+body.theme-poster .fit-row, body.theme-poster .flag-row { border-top-color: var(--hair); }
+body.theme-poster .fit-si .fit-mark { color: var(--inv); }
+body.theme-poster .fit-parcial .fit-mark { color: var(--watch); }
+body.theme-poster .fit-no .fit-mark { color: var(--pass); }
+body.theme-poster .flag-num { color: var(--pass); font-family: var(--serif); font-style: italic; }
+body.theme-poster .series-chart { border: 1px solid var(--hair-strong); background: transparent; }
+body.theme-poster .series-bar { background: var(--gold); }
+body.theme-poster .series-bar.series-est {
+  background: repeating-linear-gradient(45deg, rgba(182,154,103,0.3), rgba(182,154,103,0.3) 5px, transparent 5px, transparent 10px);
+  border: 1px solid rgba(182,154,103,0.45);
+}
+body.theme-poster .series-val { color: var(--bone); font-family: Arial, sans-serif; }
+body.theme-poster .series-period { color: var(--bone-faint); }
+body.theme-poster .chart-title { color: var(--gold); font-family: Arial, sans-serif; font-weight: 400; }
+body.theme-poster .chart-unit { color: var(--bone-faint); }
+body.theme-poster .chart-src { color: var(--bone-faint); }
+body.theme-poster .est-mark { color: var(--watch); }
+body.theme-poster .founder-state { border-radius: 0; font-family: Arial, sans-serif; letter-spacing: 0.08em; }
+body.theme-poster .founder-verified { background: transparent; border: 1px solid var(--inv); color: var(--inv); }
+body.theme-poster .founder-unknown { background: transparent; border: 1px solid var(--watch); color: var(--watch); }
+body.theme-poster .founder-card-head strong { font-family: var(--serif); font-weight: 400; font-size: 1.15rem; }
+body.theme-poster .founder-card-head div > span { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.theme-poster .founder-exit { border-top-color: var(--hair); color: var(--bone-dim); }
+body.theme-poster .founder-exit b { color: var(--gold); font-family: Arial, sans-serif; font-weight: 400; }
+body.theme-poster .founder-fit { background: var(--carbon-2); color: var(--bone-dim); border: 1px solid var(--hair-strong); }
+body.theme-poster .founder-fit strong { color: var(--gold); font-family: Arial, sans-serif; font-weight: 400; }
+body.theme-poster .founder-fit p { color: var(--bone-dim); }
+body.theme-poster .memo-foot { border-top: 1px solid var(--hair-strong); font-family: Arial, sans-serif; color: var(--bone-faint); padding: 20px 0; }
+body.theme-poster .site-footer { border-top: 1px solid var(--hair); }
+
+/* ---------- Patch 2: IC completo ---------- */
+body.ic-page .ic-doc { border: 0; background: transparent; }
+body.ic-page .ic-cover { padding: 34px 0 30px; background: transparent; border-bottom: 1px solid var(--hair-strong); }
+body.ic-page .ic-cover-top { border-bottom-color: var(--hair); color: var(--gold); font-family: Arial, sans-serif; }
+body.ic-page .ic-cover-top span, body.ic-page .ic-cover-top { letter-spacing: 0.16em; }
+body.ic-page .ic-kicker, body.ic-page .ic-cover .ic-kicker { color: var(--gold); }
+body.ic-page .ic-decision-grid { border-top-color: var(--hair-strong); }
+body.ic-page .ic-decision { letter-spacing: 0.08em; }
+body.ic-page .ic-decision.ic-go, body.ic-page .ic-decision { color: var(--inv); }
+body.ic-page .ic-tags span { border: 1px solid var(--hair-strong); border-radius: 0; color: var(--bone-dim); font-family: Arial, sans-serif; }
+body.ic-page .ic-label { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.ic-page .ic-at-glance { background: transparent; border: 0; border-top: 1px solid var(--hair-strong); border-bottom: 1px solid var(--hair-strong); gap: 0; }
+body.ic-page .ic-at-glance > div { background: transparent; border-left: 1px solid var(--hair); }
+body.ic-page .ic-at-glance > div:first-child { border-left: 0; }
+body.ic-page .ic-section { border-bottom: 1px solid var(--hair-strong); }
+body.ic-page .ic-section-no { border-right: 1px solid var(--hair); color: var(--gold); font-family: var(--serif); font-style: italic; font-weight: 400; }
+body.ic-page .ic-snapshot { border-bottom-color: var(--hair-strong); }
+body.ic-page .ic-snapshot-head > span, body.ic-page .ic-panel-head > span { color: var(--gold); font-family: Arial, sans-serif; font-weight: 400; letter-spacing: 0.14em; }
+body.ic-page .ic-snapshot h2, body.ic-page .ic-panel h2, body.ic-page .ic-fit-compact h2 {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -0.02em; color: var(--bone);
+}
+body.ic-page .ic-split { border-top-color: var(--hair-strong); }
+body.ic-page .ic-list li { border-top-color: var(--hair); color: var(--bone-dim); }
+body.ic-page .ic-list li > span { color: var(--gold); font-family: Arial, sans-serif; }
+body.ic-page .ic-dark-section { background: transparent; color: var(--bone); }
+body.ic-page .ic-scan-list li { border-top-color: var(--hair); color: var(--bone-dim); }
+body.ic-page .ic-scan-list li b, body.ic-page .ic-scan-list li strong { color: var(--bone); }
+body.ic-page .ic-conditions { background: transparent; }
+body.ic-page .ic-checks li > span { border: 1px solid var(--gold); border-radius: 0; }
+body.ic-page .ic-checks li { color: var(--bone-dim); }
+body.ic-page .ic-fit { border-top-color: var(--hair-strong); }
+body.ic-page .ic-fit > div { border-bottom-color: var(--hair); }
+body.ic-page .ic-fit p { color: var(--bone-dim); }
+body.ic-page .ic-fit strong { color: var(--bone); }
+body.ic-page .ic-fit-state { border-radius: 0; background: transparent; }
+body.ic-page .ic-fit-state.fit-si { border: 1px solid var(--inv); color: var(--inv); }
+body.ic-page .ic-fit-state.fit-parcial { border: 1px solid var(--watch); color: var(--watch); }
+body.ic-page .ic-fit-state.fit-no { border: 1px solid var(--pass); color: var(--pass); }
+body.ic-page .ic-fit-pills span { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); }
+body.ic-page .ic-evidence { border: 0; border-top: 1px solid var(--hair-strong); border-bottom: 1px solid var(--hair-strong); }
+body.ic-page .ic-evidence > div { border-right: 1px solid var(--hair); }
+body.ic-page .ic-evidence b, body.ic-page .ic-evidence strong { color: var(--bone); }
+body.ic-page .ic-next-call, body.ic-page .ic-next-compact {
+  background: transparent; color: var(--bone); border: 1px solid var(--gold); border-radius: 0;
+  max-width: 760px; padding: 20px 23px;
+}
+body.ic-page .ic-next-call strong, body.ic-page .ic-next-compact strong, body.ic-page .ic-next-call b { color: var(--gold); }
+body.ic-page .ic-next h3 { color: var(--bone); }
+body.ic-page .ic-bottom-grid { border-top-color: var(--hair-strong); }
+body.ic-page .ic-source-note { color: var(--bone-faint); }
+body.ic-page .ic-footer { background: transparent; border-top: 1px solid var(--hair-strong); color: var(--bone-faint); font-family: Arial, sans-serif; padding: 21px 0; }
+body.ic-page .ic-footer a { color: var(--gold); }
+@media print {
+  body.ic-page .ic-doc, body.ic-page .ic-cover, body.ic-page .ic-footer { background: #fff !important; color: #000 !important; }
+}
+
+/* ---------- Patch 3: IC condiciones y restos ---------- */
+body.ic-page .ic-conditions-compact { background: transparent; }
+body.ic-page .ic-checklist li { border-top-color: var(--hair); }
+body.ic-page .ic-checklist li > span { border: 1px solid var(--gold); border-radius: 0; background: transparent; }
+body.ic-page .ic-checklist p { color: var(--bone-dim); }
+body.ic-page .ic-two-up { border-bottom-color: var(--hair-strong); }
+body.ic-page .ic-fit-compact { border-right-color: var(--hair); }
+body.ic-page .ic-evidence-strip { border-top-color: var(--hair-strong); color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.ic-page .ic-evidence-strip b { color: var(--inv); }
+body.ic-page .ic-next-compact { border: 1px solid var(--gold); }
+
+/* ---------- Patch 4: IC fit pills + evidence ---------- */
+body.ic-page .ic-fit-pills span { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); font-family: Arial, sans-serif; }
+body.ic-page .ic-fit-pills b { border-radius: 0; background: transparent; font-family: Arial, sans-serif; }
+body.ic-page .ic-fit-pills .fit-si b { background: transparent; color: var(--inv); border: 1px solid var(--inv); }
+body.ic-page .ic-fit-pills .fit-parcial b { background: transparent; color: var(--watch); border: 1px solid var(--watch); }
+body.ic-page .ic-fit-pills .fit-no b { background: transparent; color: var(--pass); border: 1px solid var(--pass); }
+body.ic-page .ic-evidence-strip b { color: var(--bone); }
+
+/* ---------- Patch 5: Market Map tablero ---------- */
+body.mm-page { background: var(--carbon); }
+body.mm-page .mm-board { background: transparent; border: 0; border-top: 1px solid var(--hair-strong); }
+body.mm-page .mm-row { border-bottom: 1px solid var(--hair-strong); }
+body.mm-page .mm-row > h2 {
+  border-right: 1px solid var(--hair); font-family: var(--serif); font-weight: 400; color: var(--bone);
+  font-size: 1.35rem; letter-spacing: -0.02em;
+}
+body.mm-page .mm-row > h2 small { color: var(--gold); font-family: Arial, sans-serif; }
+body.mm-page .mm-card { border-right: 1px solid var(--hair); background: transparent; }
+body.mm-page .mm-card:hover { background: var(--carbon-2); }
+body.mm-page .mm-card-top { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.mm-page .mm-card-top i { background: var(--gold); box-shadow: none; }
+body.mm-page .mm-card h3 { color: var(--bone); font-family: var(--serif); font-weight: 400; letter-spacing: -0.02em; }
+body.mm-page .mm-card p { color: var(--bone-dim); }
+body.mm-page .mm-meta span { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); font-family: Arial, sans-serif; }
+body.mm-page .mm-links a { color: var(--gold); font-family: Arial, sans-serif; }
+body.mm-page .mm-toolbar { border-bottom: 1px solid var(--hair-strong); }
+body.mm-page .mm-toolbar > div:first-child { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.mm-page .mm-filters button { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); font-family: Arial, sans-serif; }
+body.mm-page .mm-filters button.is-on { background: var(--gold); border-color: var(--gold); color: var(--carbon); }
+body.mm-page .mm-notes { background: transparent; border: 0; border-top: 1px solid var(--hair-strong); gap: 0; }
+body.mm-page .mm-notes > div { background: transparent; color: var(--bone-dim); }
+body.mm-page .mm-notes span { color: var(--gold); font-family: Arial, sans-serif; }
+body.mm-page .mm-notes p { color: var(--bone-dim); }
+body.mm-page .mm-empty { color: var(--bone-faint); }
+@media(max-width:720px){
+  body.mm-page .mm-row > h2 { border-right: 0; border-bottom: 1px solid var(--hair); }
+  body.mm-page .mm-card { border-right: 0; border-bottom: 1px solid var(--hair); }
+}
+
+/* ---------- Patch 6: Dealflow completo ---------- */
+body.df-page { background: var(--carbon); }
+body.df-page .df-hero { padding: 42px 0; background: transparent; border-bottom: 1px solid var(--hair-strong); }
+body.df-page .df-hero h1 em { color: var(--gold); font-style: italic; }
+body.df-page .df-stats { border: 0; background: transparent; }
+body.df-page .df-stats > div { background: transparent; border: 0; border-top: 1px solid var(--hair-strong); padding: 14px 0; }
+body.df-page .df-stats strong { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.df-page .df-stats span { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.df-page .df-controls input { border-radius: 0; }
+body.df-page .df-filters button, body.df-page .df-view button { font-family: Arial, sans-serif; }
+body.df-page .df-board { background: transparent; border: 0; }
+body.df-page .df-column { background: transparent; border-left: 1px solid var(--hair); }
+body.df-page .df-column header { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.df-page .df-column header b { color: var(--bone); }
+body.df-page .df-card { background: transparent; }
+body.df-page .df-card:hover { background: var(--carbon-2); }
+body.df-page .df-card h3 { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.df-page .df-card-top strong { font-family: var(--serif); font-weight: 400; color: var(--gold); }
+body.df-page .df-note { background: transparent; }
+body.df-page .df-table { border-color: var(--hair-strong); }
+body.df-page .df-table-wrap { border-color: var(--hair-strong); }
+
+/* ---------- Patch 7: Brief completo ---------- */
+body.brief-page { background: var(--carbon); }
+body.brief-page .brief-pick { background: transparent; border-bottom: 1px solid var(--hair-strong); padding: 34px 0; }
+body.brief-page .brief-pick h1 { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.brief-page .brief-pick h1 em { color: var(--gold); font-style: italic; }
+body.brief-page .brief-pick p { color: var(--gold); font-family: Arial, sans-serif; }
+body.brief-page .brief-pick label { color: var(--bone-faint); }
+body.brief-page .brief-pick select { border: 0; border-bottom: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone); }
+body.brief-page .brief-sheet { background: transparent; border: 0; }
+body.brief-page .brief-grid > section, body.brief-page .brief-block { border-color: var(--hair-strong); }
+body.brief-page .brief-cover { border-bottom: 1px solid var(--hair-strong); }
+body.brief-page .brief-cover p { color: var(--bone-dim); }
+body.brief-page .brief-metrics > div, body.brief-page .brief-metric-grid > div { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; }
+body.brief-page .brief-metric-grid b { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.brief-page .brief-signals li, body.brief-page .brief-risks li { border-top-color: var(--hair); }
+body.brief-page .brief-questions li { border-top-color: var(--hair); }
+body.brief-page .muted { color: var(--bone-faint); }
+
+/* ---------- Patch 8: Regulatory watch completo ---------- */
+body.rw-page { background: var(--carbon); }
+body.rw-page .rw-hero { padding: 40px 0; background: transparent; border-bottom: 1px solid var(--hair-strong); }
+body.rw-page .rw-kicker { color: var(--gold); font-family: Arial, sans-serif; }
+body.rw-page .rw-hero h1 { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.rw-page .rw-hero h1 em { color: var(--gold); font-style: italic; }
+body.rw-page .rw-hero > div > p:last-child { color: var(--bone-dim); }
+body.rw-page .rw-market { border: 1px solid var(--hair-strong); background: transparent; }
+body.rw-page .rw-market > span { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.rw-page .rw-market > strong { color: var(--bone); font-family: var(--serif); font-weight: 400; }
+body.rw-page .rw-market > strong small { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.rw-page .rw-market > div { border-top-color: var(--hair); color: var(--bone-dim); font-family: Arial, sans-serif; }
+body.rw-page .rw-market > a { color: var(--gold); font-family: Arial, sans-serif; }
+body.rw-page .rw-bar { border-bottom: 1px solid var(--hair-strong); }
+body.rw-page .rw-bar > div:first-child { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.rw-page .rw-filters button { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); font-family: Arial, sans-serif; }
+body.rw-page .rw-filters button.is-on { background: var(--gold); border-color: var(--gold); color: var(--carbon); }
+body.rw-page .rw-layout { background: transparent; border: 0; }
+body.rw-page .rw-feed { border-right: 1px solid var(--hair); }
+body.rw-page .rw-item { border-bottom: 1px solid var(--hair-strong); }
+body.rw-page .rw-item-head { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.rw-page .rw-urgency { border-radius: 0; background: transparent; border: 1px solid currentColor; font-family: Arial, sans-serif; }
+body.rw-page .u-high { color: var(--pass); }
+body.rw-page .u-medium { color: var(--watch); }
+body.rw-page .u-low { color: var(--bone-faint); }
+body.rw-page .rw-num { color: var(--gold); font-family: var(--serif); font-style: italic; font-weight: 400; }
+body.rw-page .rw-type { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.rw-page .rw-item h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -0.02em; color: var(--bone); }
+body.rw-page .rw-item-body p { color: var(--bone-dim); }
+body.rw-page .rw-assets span { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); font-family: Arial, sans-serif; }
+body.rw-page .rw-impact { border-left: 1px solid var(--gold); background: var(--carbon-2); }
+body.rw-page .rw-impact.i-positive { border-left-color: var(--inv); }
+body.rw-page .rw-impact.i-negative { border-left-color: var(--pass); }
+body.rw-page .rw-impact strong { color: var(--gold); font-family: Arial, sans-serif; }
+body.rw-page .rw-impact p { color: var(--bone-dim); }
+body.rw-page .rw-source { color: var(--gold); font-family: Arial, sans-serif; }
+body.rw-page .rw-watch { background: transparent; color: var(--bone); border-left: 1px solid var(--hair); }
+body.rw-page .rw-watch h2, body.rw-page .rw-method h2 { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.rw-page .rw-watch li { border-top-color: var(--hair); color: var(--bone-dim); }
+body.rw-page .rw-watch li:before { color: var(--gold); }
+body.rw-page .rw-method { border-bottom: 1px solid var(--hair-strong); }
+body.rw-page .rw-method p { color: var(--bone-dim); }
+body.rw-page .rw-footer { background: transparent; border-top: 1px solid var(--hair-strong); color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.rw-page .rw-footer span { color: var(--inv); }
+@media(max-width:720px){
+  body.rw-page .rw-feed { border-right: 0; }
+  body.rw-page .rw-watch { border-left: 0; border-top: 1px solid var(--hair-strong); }
+}
+
+/* ---------- Patch 9: Dealflow tablero ---------- */
+body.df-page .df-board { background: transparent; border: 0; border-top: 1px solid var(--hair-strong); }
+body.df-page .df-column { border-right: 1px solid var(--hair); min-height: 480px; }
+body.df-page .df-column > header {
+  background: transparent; border-bottom: 1px solid var(--hair-strong);
+  color: var(--bone-faint); font-family: Arial, sans-serif; font-weight: 400; letter-spacing: 0.12em;
+}
+body.df-page .df-column > header b { color: var(--gold); font-weight: 400; }
+body.df-page .df-controls { border-bottom: 1px solid var(--hair-strong); }
+body.df-page .df-controls input { border: 0; border-bottom: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone); font-family: Arial, sans-serif; }
+body.df-page .df-filters button, body.df-page .df-view { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); font-family: Arial, sans-serif; }
+body.df-page .df-filters button b { color: var(--gold); }
+body.df-page .df-filters button.is-on { background: var(--gold); border-color: var(--gold); color: var(--carbon); }
+body.df-page .df-filters button.is-on b { color: var(--carbon); }
+body.df-page .df-view { border-color: var(--hair-strong); color: var(--bone); }
+body.df-page .df-card { background: transparent; border: 0; border-top: 1px solid var(--hair-strong); border-radius: 0; }
+body.df-page .df-card-top { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.df-page .df-card-top b { color: var(--bone); font-family: Arial, sans-serif; }
+body.df-page .df-sector { color: var(--bone-faint); }
+body.df-page .df-next { border-top-color: var(--hair); }
+body.df-page .df-next span { color: var(--gold); font-family: Arial, sans-serif; }
+body.df-page .df-next p { color: var(--bone-dim); }
+body.df-page .df-card-foot { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.df-page .df-card > a { color: var(--gold); font-family: Arial, sans-serif; }
+body.df-page .df-column > div > i { color: var(--bone-faint); }
+body.df-page .df-table-wrap { background: transparent; border: 0; border-top: 1px solid var(--hair-strong); }
+body.df-page .df-table th { border-bottom: 1px solid var(--hair-strong); color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.df-page .df-table td { border-bottom: 1px solid var(--hair); color: var(--bone-dim); }
+body.df-page .df-table td small { color: var(--bone-faint); }
+body.df-page .df-status { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); font-family: Arial, sans-serif; }
+
+/* ---------- Patch 10: Brief detalles ---------- */
+body.brief-page .brief-mini > div { border-top: 1px solid var(--gold); }
+body.brief-page .brief-mini span { color: var(--gold); font-family: Arial, sans-serif; font-weight: 400; letter-spacing: 0.1em; }
+body.brief-page .brief-mini p { color: var(--bone-dim); }
+body.brief-page .brief-people > div { border: 1px solid var(--hair-strong); background: transparent; }
+body.brief-page .brief-people b { color: var(--bone); font-family: var(--serif); font-weight: 400; font-size: 0.95rem; }
+body.brief-page .brief-people span { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.brief-page .brief-people p { color: var(--bone-dim); }
+body.brief-page .brief-people i { color: var(--watch); }
+body.brief-page .brief-metric-grid { border: 0; border-top: 1px solid var(--hair-strong); border-bottom: 1px solid var(--hair-strong); }
+body.brief-page .brief-metric-grid > div { border-right: 1px solid var(--hair); }
+body.brief-page .brief-metric-grid strong { font-family: var(--serif); font-weight: 400; color: var(--bone); }
+body.brief-page .brief-metric-grid span { color: var(--bone-faint); font-family: Arial, sans-serif; }
+body.brief-page .brief-metric-grid small { color: var(--bone-faint); }
+body.brief-page .brief-signals li, body.brief-page .brief-risks li, body.brief-page .brief-questions li { border-top-color: var(--hair); color: var(--bone-dim); }
+body.brief-page .brief-signals li:before { background: var(--inv); }
+body.brief-page .brief-risks li:before { background: var(--pass); }
+body.brief-page .brief-signals a { color: var(--gold); font-family: Arial, sans-serif; }
+body.brief-page .brief-questions { background: transparent; }
+body.brief-page .brief-questions li:before { color: var(--gold); font-family: var(--serif); font-style: italic; font-weight: 400; }
+body.brief-page .brief-foot a { color: var(--gold); }
+@media(max-width:720px){
+  body.brief-page .brief-metric-grid > div:nth-child(-n+2) { border-bottom: 1px solid var(--hair); }
+}
+
+/* ---------- Patch 11: Next 10 detalles ---------- */
+body.vc-workbench .next-signal a, body.vc-workbench .vc-method a { color: var(--gold); }
+body.vc-workbench .next-company p, body.vc-workbench .next-company small { color: var(--bone-faint); }
+body.vc-workbench .next-tag { border: 1px solid var(--hair-strong) !important; border-radius: 0; background: transparent !important; color: var(--bone-dim) !important; }
+body.vc-workbench .next-row > div:first-child > span { color: var(--gold); font-family: var(--serif); font-style: italic; }
+body.vc-workbench .next-action textarea { background: var(--carbon-2); border-color: var(--hair-strong); color: var(--bone); }
+
+/* ---------- Patch 12: restos azules (logos + next10) ---------- */
+body.ic-page .ic-logo, body.theme-poster .pg-logo, body.theme-poster .ed-logo { filter: grayscale(1) brightness(1.45) contrast(.92); }
+body.vc-workbench .status { border: 1px solid var(--hair-strong); border-radius: 0; background: transparent; color: var(--bone-dim); }
+body.vc-workbench .status.hot { color: var(--gold); border-color: var(--gold); }
+body.vc-workbench .note-toggle { color: var(--gold); font-weight: 400; }
+body.vc-workbench .vc-eyebrow { color: var(--gold); }

@@ -125,10 +125,11 @@ function renderExamples() {
   }
   list.innerHTML = rows.map((e, i) => {
     const badgeClass = { INVESTIGATE: 'badge-investigate', WATCH: 'badge-watch', PASS: 'badge-pass' }[e.recomendacion] || 'badge-watch';
-    const logo = e.logo ? `<img class="ed-logo" src="${esc(e.logo)}" alt="" loading="lazy" onerror="this.style.display='none'"/>` : '';
+    const darkLogo = e.logo && e.logo.startsWith('/logos/') ? e.logo.replace(/(\.[a-z0-9]+)$/i, '-dark$1') : e.logo;
+    const logo = darkLogo ? `<img class="ed-logo" src="${esc(darkLogo)}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${esc(e.logo)}'"/>` : '';
     const tags = String(e.sector || '').split('/').map((x) => x.trim().replace(/\s*\(.*\)\s*$/, '')).filter(Boolean)
       .map((x) => `<span class="pill ed-tag">${esc(x)}</span>`).join('');
-    const gauge = window.gaugeSVG ? gaugeSVG(e.score_global, e.recomendacion, { light: true, size: 64 }) : '';
+    const gauge = window.gaugeSVG ? gaugeSVG(e.score_global, e.recomendacion, { size: 64 }) : '';
     return `<div class="edition" data-id="${esc(e.id)}">
       <span class="ed-num">${String(i + 1).padStart(2, '0')}</span>
       ${logo}

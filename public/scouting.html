@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Startup Scouting</title>
+  <meta name="description" content="Analiza la web y el deck de una startup, contrasta cada claim con fuentes externas y devuelve un memo con score y veredicto." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" /><link rel="stylesheet" href="/old-money.css">
+</head>
+<body class="theme-poster">
+  <header class="masthead">
+    <div class="wrap">
+      <div class="masthead-top">
+        <span class="wordmark">Startup Scouting<span class="wm-sq"></span></span>
+        <div class="lang-switch"><button class="lang-btn" data-lang="es">ES</button><span class="lang-sep">/</span><button class="lang-btn" data-lang="en">EN</button></div>
+      </div>
+      <h1 class="display" data-i18n="h1">¿Merece esta startup <em>30 minutos</em> de un inversor?</h1>
+      <p class="lede" data-i18n="lede">Analiza la web y el deck, busca fuentes externas y contrasta cada claim uno a uno. Lo que no se puede verificar queda marcado como «sin datos».</p>
+      <form id="screen-form" class="hero-form">
+        <label class="visually-hidden" for="url" data-i18n="label_url">Web de la startup</label>
+        <div class="hero-input-row">
+          <input type="text" id="url" name="url" placeholder="https://www.startup.com" required />
+          <button type="submit" id="submit-btn" data-i18n="btn_analizar">Analizar &rarr;</button>
+        </div>
+        <details class="more-context">
+          <summary><span data-i18n="mas_contexto">Más contexto: deck, LinkedIn y notas</span></summary>
+          <div class="more-fields">
+            <label for="deck" data-i18n="label_deck">Pitch deck (PDF, opcional)</label>
+            <input type="file" id="deck" name="deck" accept="application/pdf,.pdf" class="visually-hidden" />
+            <span class="dropzone" id="dropzone" role="button" tabindex="0">
+              <span class="drop-hint" data-i18n="drop_hint">Arrastra el deck (PDF) o haz clic para elegirlo</span>
+              <span class="drop-file hidden" id="drop-file"></span>
+            </span>
+            <label for="linkedin" data-i18n="label_linkedin">LinkedIn del fundador/a (opcional)</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://www.linkedin.com/in/..." />
+            <label for="context" data-i18n="label_context">Contexto adicional (opcional)</label>
+            <textarea id="context" name="context" rows="3" data-i18n-ph="ph_context" placeholder="Todo lo que sepas: ronda que levantan, cómo llegó a ti, métricas declaradas..."></textarea>
+          </div>
+        </details>
+        <p class="form-note" id="form-note"></p>
+      </form>
+      <details class="verdict-help">
+        <summary data-i18n="que_veredicto">¿Qué significa el veredicto?</summary>
+        <p class="verdict-legend"><span class="vl-inv" data-i18n="vl_inv"><span class="vdot"></span> <strong>INVESTIGATE</strong> (≥65): merece 30 minutos de un inversor</span><span class="vl-watch" data-i18n="vl_watch"><span class="vdot"></span> <strong>WATCH</strong> (45-64): faltan datos, revisar en 3-6 meses</span><span class="vl-pass" data-i18n="vl_pass"><span class="vdot"></span> <strong>PASS</strong> (&lt;45): fuera de tesis o red flag crítico</span></p>
+      </details>
+      <div class="steps">
+        <span class="step" data-i18n="step1"><b>01</b> Analiza la web y el deck</span>
+        <span class="step" data-i18n="step2"><b>02</b> Contrasta cada claim con fuentes externas</span>
+        <span class="step" data-i18n="step3"><b>03</b> Score de 0 a 100 y veredicto</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="dossier">
+    <div class="wrap">
+      <p class="dossier-kicker" data-i18n="dossier_kicker">Esto es lo que recibes: extracto del memo real de Vidext</p>
+      <div class="spread" id="dossier-content"></div>
+      <a class="dossier-link" href="/memo/vidext" data-i18n="dossier_ver">Leer el memo completo &rarr;</a>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section id="examples-section">
+      <h2 data-i18n="ejemplos">Últimas ediciones</h2>
+      <p class="muted" data-i18n="ejemplos_muted">Cinco startups reales pasadas por el filtro, de principio a fin. Lo que no se puede verificar queda marcado como «sin datos».</p>
+      <div class="ed-tools">
+        <input type="search" id="ed-search" class="ed-search" data-i18n-ph="ed_buscar" placeholder="Buscar por nombre o sector…" autocomplete="off" />
+        <div class="ed-controls">
+          <div class="ed-filters" id="ed-filters" role="group" aria-label="Filtrar por veredicto">
+            <button type="button" class="pill ed-filter is-on" data-v="" data-i18n="ed_todos">Todos</button>
+            <button type="button" class="pill ed-filter" data-v="INVESTIGATE">Investigate</button>
+            <button type="button" class="pill ed-filter" data-v="WATCH">Watch</button>
+            <button type="button" class="pill ed-filter" data-v="PASS">Pass</button>
+          </div>
+          <div class="ed-sorts" id="ed-sorts" role="group" aria-label="Ordenar">
+            <button type="button" class="pill ed-sort is-on" data-s="fecha" data-i18n="ed_recientes">Recientes</button>
+            <button type="button" class="pill ed-sort" data-s="score" data-i18n="ed_por_score">Por score</button>
+          </div>
+        </div>
+      </div>
+      <div id="examples-list" class="editions-list"></div>
+    </section>
+
+    <section id="loading" class="hidden">
+      <ol class="load-steps" id="load-steps">
+        <li data-step="0"><b>01</b><span data-i18n="load_step1">Analizando la web y el deck</span></li>
+        <li data-step="1"><b>02</b><span data-i18n="load_step2">Contrastando cada claim con fuentes externas</span></li>
+        <li data-step="2"><b>03</b><span data-i18n="load_step3">Redactando el memo</span></li>
+      </ol>
+      <p id="loading-text" class="load-note" data-i18n="loading">Suele llevar un par de minutos.</p>
+    </section>
+
+    <section id="memo-container" class="hidden"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="footer-lab-link" href="/investor-map" data-i18n="investor_map_link">Mapa de inversores →</a><br><a class="footer-lab-link" href="/would-you-invest" data-i18n="would_invest_link">¿Habrías invertido? →</a><p data-i18n="footer_disclaimer">El score 0-100 es una guía de priorización, no una predicción. La decisión de invertir es siempre del inversor; la herramienta decide si merece 30 minutos.</p>
+    </div>
+  </footer>
+
+  <script src="/i18n.js"></script>
+  <script src="/render.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

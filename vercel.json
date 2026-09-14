@@ -4,7 +4,7 @@
     {
       "src": "server.js",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["public/**", "memos/**"] }
+      "config": { "includeFiles": ["public/**", "memos/**", "memos-en/**"] }
     }
   ],
   "routes": [{ "src": "/(.*)", "dest": "server.js" }]
