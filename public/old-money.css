@@ -736,7 +736,8 @@ body.vc-workbench .vc-eyebrow { color: var(--gold); }
 
 /* ---------- Patch 13: toques BQuant (stats, cero magia) ---------- */
 body.theme-poster .stats-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--hair); margin-top: 54px; }
-body.theme-poster .stats-strip > div { padding: 22px 26px 4px 0; border-right: 1px solid var(--hair); }
+body.theme-poster .stats-strip > div { padding: 22px 26px 4px 26px; border-right: 1px solid var(--hair); }
+.stats-strip > div:first-child { padding-left: 0; }
 body.theme-poster .stats-strip > div:last-child { border-right: 0; }
 body.theme-poster .stats-strip strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 2.1rem; color: var(--bone); }
 body.theme-poster .stats-strip span { font-family: Arial, sans-serif; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-faint); }
@@ -752,4 +753,6 @@ body.theme-poster .cm-grid p { font-family: Arial, sans-serif; font-size: 0.82re
   body.theme-poster .cm-grid { grid-template-columns: 1fr; gap: 28px; }
   body.theme-poster .cero-magia { padding: 54px 0 60px; }
   body.theme-poster .stats-strip strong { font-size: 1.5rem; }
+  body.theme-poster .stats-strip > div { padding: 16px 14px 4px 14px; }
+  body.theme-poster .stats-strip > div:first-child { padding-left: 0; }
 }
