@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Empleos en startups · Startup Scouting</title>
+<link rel="icon" href="/favicon.svg">
+<style>
+:root{--carbon:#11110f;--carbon2:#171713;--bone:#e9e5dc;--dim:#aaa69f;--faint:#77736d;--gold:#b69a67;--hair:rgba(233,229,220,.16);--hairs:#373630}
+*{box-sizing:border-box}
+body{margin:0;background:var(--carbon);color:var(--bone);font-family:Arial,sans-serif}
+.wrap{max-width:1160px;margin:auto;padding:30px 44px 90px}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--faint)}
+.top a{color:var(--dim);text-decoration:none}
+.lang button{border:0;background:none;color:var(--faint);font-size:12px;cursor:pointer;padding:0}
+.lang button.active{color:var(--bone);text-decoration:underline;text-underline-offset:4px}
+.lang span{margin:0 6px}
+.kicker{color:var(--gold);font-size:11px;letter-spacing:.17em;text-transform:uppercase;margin:90px 0 0}
+h1{font:400 clamp(46px,6.4vw,92px)/.95 Georgia,serif;letter-spacing:-.045em;margin:22px 0 26px;max-width:900px}
+h1 em{color:var(--gold)}
+.lede{color:var(--dim);font-size:18px;line-height:1.6;max-width:640px;margin:0 0 56px}
+.chips{display:flex;gap:0;border-top:1px solid var(--hairs);border-bottom:1px solid var(--hairs)}
+.chips button{background:none;border:0;border-right:1px solid var(--hair);color:var(--faint);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:16px 26px;cursor:pointer}
+.chips button:first-child{border-left:1px solid var(--hair)}
+.chips button.active{color:var(--gold)}
+.search{border-bottom:1px solid var(--hairs);padding:18px 0}
+.search input{width:100%;background:transparent;border:0;color:var(--bone);font:400 20px Georgia,serif;padding:6px 0;outline:none}
+.search input::placeholder{color:var(--faint)}
+.live{margin-top:70px}
+.live .head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--hairs);padding-bottom:14px}
+.live h2{font:400 clamp(28px,3.6vw,44px)/1 Georgia,serif;letter-spacing:-.03em;margin:0}
+.live h2 em{color:var(--gold)}
+.live .count{color:var(--faint);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.loading{color:var(--faint);font-size:14px;padding:40px 0}
+.job{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:15px 0;border-bottom:1px solid var(--hair);text-decoration:none}
+.job .co{color:var(--gold);font-size:12px;letter-spacing:.1em;text-transform:uppercase;flex:0 0 150px}
+.job .ti{color:var(--bone);font:400 17px Georgia,serif;flex:1}
+.job .lo{color:var(--faint);font-size:12px;flex:0 0 190px;text-align:right}
+.job:hover .ti{color:var(--gold)}
+.boards{margin-top:80px}
+.boards h2{font:400 clamp(28px,3.6vw,44px)/1 Georgia,serif;letter-spacing:-.03em;margin:0 0 8px}
+.boards h2 em{color:var(--gold)}
+.boards .note{color:var(--faint);font-size:13px;line-height:1.6;max-width:640px;margin:0 0 30px}
+.boards .grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--hairs)}
+.board{padding:24px 24px 24px 0;border-bottom:1px solid var(--hair)}
+.board:nth-child(even){border-left:1px solid var(--hair);padding-left:24px}
+.board h4{font:400 20px Georgia,serif;color:var(--bone);margin:0 0 6px}
+.board p{color:var(--dim);font-size:13px;line-height:1.6;margin:0 0 10px}
+.board a{color:var(--gold);text-decoration:none;font-size:12px}
+.board a:hover{text-decoration:underline}
+.board .tag{display:inline-block;color:var(--faint);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.foot{margin-top:70px;border-top:1px solid var(--hair);padding-top:24px;color:var(--faint);font-size:12px;line-height:1.7;max-width:700px}
+.hidden{display:none}
+@media(max-width:760px){.wrap{padding:22px 20px 60px}.boards .grid{grid-template-columns:1fr}.board:nth-child(even){border-left:0;padding-left:0}.job{flex-direction:column;gap:4px;align-items:flex-start}.job .lo{text-align:left}.kicker{margin-top:60px}.chips button{padding:14px 16px;flex:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="/">← Startup Scouting</a><div class="lang"><button id="l-es" class="active">ES</button><span>/</span><button id="l-en">EN</button></div></div>
+  <p class="kicker" id="k-kicker"></p>
+  <h1 id="k-h1"></h1>
+  <p class="lede" id="k-lede"></p>
+  <div class="chips" id="chips"></div>
+  <div class="search"><input id="q" type="search"></div>
+  <div class="live">
+    <div class="head"><h2 id="k-h-live"></h2><span class="count" id="count"></span></div>
+    <div id="jobs"></div>
+  </div>
+  <div class="boards">
+    <h2 id="k-h-boards"></h2>
+    <p class="note" id="k-n-boards"></p>
+    <div class="grid" id="boards"></div>
+  </div>
+  <p class="foot" id="k-foot"></p>
+</div>
+<script src="/empleos.js"></script>
+</body>
+</html>

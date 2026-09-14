@@ -12,6 +12,7 @@ const { extractWebsite } = require('./lib/extract');
 const { generateMemo, generateRedTeam } = require('./lib/gemini');
 const { buildUserPrompt } = require('./lib/prompt');
 const { buildRedTeamPrompt } = require('./lib/redteam');
+const { getJobs } = require('./lib/jobs');
 const db = require('./lib/db');
 
 const app = express();
@@ -164,6 +165,10 @@ app.get('/valoracion', (req, res) => {
 
 app.get('/red-team-idea', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'red-team-idea.html'));
+});
+
+app.get('/empleos', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'empleos.html'));
 });
 
 app.get('/red-team', (req, res) => {
@@ -432,6 +437,18 @@ app.post('/api/redteam', async (req, res) => {
       return res.status(503).json({ error: 'Falta GEMINI_API_KEY.', code: 'NO_API_KEY' });
     }
     res.status(502).json({ error: `Error generando el red team: ${err.message}` });
+  }
+});
+
+// Empleos en startups: agrega boards publicos de ATS (Greenhouse/Lever) + Get on Board.
+app.get('/api/jobs', async (req, res) => {
+  const region = ['es', 'eu', 'latam'].includes(req.query.region) ? req.query.region : 'es';
+  try {
+    const { jobs, errors, ts } = await getJobs(region);
+    res.json({ region, count: jobs.length, jobs, failed_sources: errors, fetched_at: new Date(ts).toISOString() });
+  } catch (err) {
+    console.error('[jobs] Error:', err);
+    res.status(502).json({ error: `Error cargando empleos: ${err.message}` });
   }
 });
 
