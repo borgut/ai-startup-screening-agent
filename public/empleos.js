@@ -28,7 +28,7 @@
       noJobs: 'No openings right now in this region.',
       hBoards: 'Portfolio job <em>boards</em>',
       nBoards: 'Funds aggregate openings from all their startups in one place. It is the a16z jobs format, applied to our ecosystem.',
-      foot: 'Openings are read live from each company\u2019s public portal (Greenhouse, Lever and Get on Board) and refresh every few hours. Portfolio boards link to each fund\u2019s official page.',
+      foot: 'Openings are read live from each company\u2019s public portal (Greenhouse, Lever, Get on Board and nothiring) and refresh every few hours. Portfolio boards link to each fund\u2019s official page.',
       searchPh: 'Filter by role, company or city…',
       of: 'openings',
       failed: 'Sources not responding right now: '
