@@ -117,7 +117,7 @@
     });
     $('count').textContent = list.length + ' ' + t.of + (data.failed_sources && data.failed_sources.length ? ' · ' + t.failed + data.failed_sources.join(', ') : '');
     if (!list.length) { box.appendChild(el('p', 'loading', t.noJobs)); return; }
-    list.slice(0, 120).forEach(function (j) {
+    list.slice(0, 500).forEach(function (j) {
       var a = el('a', 'job');
       a.href = j.url; a.target = '_blank'; a.rel = 'noopener';
       a.appendChild(el('span', 'co', j.company || ''));
