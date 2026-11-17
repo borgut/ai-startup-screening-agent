@@ -61,4 +61,14 @@
       } catch { note.textContent = TX.err; }
     });
   }
+
+  // PROPUESTA: escena a pantalla completa (imagen generada, luz animada). Sin datos reales ni capacidades prometidas.
+  (() => {
+    const sc = document.createElement('div');
+    sc.className = 'hero-scene ' + (founder ? 'hs-fou' : 'hs-inv');
+    sc.setAttribute('aria-hidden', 'true');
+    const src = '/hero/' + (founder ? 'faro-founder' : 'faro-inversor') + '.jpg';
+    sc.innerHTML = '<div class="hs-in"><img class="hs-base" src="' + src + '" alt=""><img class="hs-lit" src="' + src + '" alt=""><i class="hs-haze"></i><i class="hs-glow"></i></div><i class="hs-fade"></i>';
+    document.body.insertBefore(sc, document.body.firstChild);
+  })();
 })();
