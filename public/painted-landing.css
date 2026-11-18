@@ -3,7 +3,7 @@
 .painted-landing .hero-scene { top:0;height:100svh;min-height:760px;animation:none; }
 .painted-landing .hs-in { inset:0;width:100%;height:100%;aspect-ratio:auto;animation:none;mask-image:none;-webkit-mask-image:none; }
 .painted-landing .hs-base { object-fit:cover;object-position:72% 55%;filter:none; }
-.painted-landing .hs-lit,.painted-landing .hs-haze,.painted-landing .hs-glow { display:none; }
+.painted-landing .hs-lit,.painted-landing .painted-beam,.painted-landing .hs-glow { display:none; }
 .painted-landing .hs-fade { background:linear-gradient(90deg,rgba(237,228,202,.85),rgba(237,228,202,.42) 42%,transparent 70%); }
 .painted-landing .gateway { max-width:none;padding:28px 5vw 0; }
 .painted-landing .gateway nav,.painted-landing .gateway nav a { color:#263b35; }
@@ -61,20 +61,19 @@
 /* A visible landmark in the mobile composition, below the reading area. */
 @media(max-width:760px) { .painted-landing .hs-base { object-position:88% bottom; } }
 /* The light remains the thread of the journey, not a flashing tower. */
-.painted-landing .hs-haze { display:block;inset:0;background:linear-gradient(90deg,rgba(255,241,188,.06),rgba(255,241,188,.65));filter:blur(3px);mask-image:none;-webkit-mask-image:none;clip-path:polygon(80% 33%,0 25%,0 37%);transform-origin:80% 33%;animation:paintedSweep 8s linear infinite;mix-blend-mode:screen; }
-@media(max-width:760px) { .painted-landing .hs-haze { clip-path:polygon(49% 39%,0 31%,0 47%);transform-origin:49% 39%;opacity:.4; } }
-@media(prefers-reduced-motion:reduce) { .painted-landing .hs-haze { animation:none;opacity:.2; } }
+.painted-landing .painted-beam { position:absolute;display:block;inset:0;background:linear-gradient(90deg,rgba(255,241,188,.06),rgba(255,241,188,.65));filter:blur(3px);mask-image:none;-webkit-mask-image:none;clip-path:polygon(80% 33%,0 25%,0 37%);transform-origin:80% 33%;animation:paintedSweep 8s linear infinite;mix-blend-mode:screen; }
+@media(max-width:760px) { .painted-landing .painted-beam { clip-path:polygon(49% 39%,0 31%,0 47%);transform-origin:49% 39%;opacity:.4; } }
+@media(prefers-reduced-motion:reduce) { .painted-landing .painted-beam { animation:none;opacity:.2; } }
 .painted-landing .role-status { color:#273b34;font-size:12px;line-height:1.6;max-width:43ch;margin:16px 0 0;padding-left:12px;border-left:2px solid #2440d6; }
 .painted-landing .fs-form :disabled { opacity:.5;cursor:not-allowed; }
 .painted-landing .fs-form .form-note { color:#233b34;line-height:1.6; }
 
 @keyframes paintedSweep {
-  0% { transform:rotate(-12deg) scaleX(.15);opacity:0; }
-  12% { transform:rotate(-9deg) scaleX(.8);opacity:.85; }
-  30% { transform:rotate(0deg) scaleX(1);opacity:1; }
-  50% { transform:rotate(11deg) scaleX(1);opacity:.8; }
-  64% { transform:rotate(15deg) scaleX(.2);opacity:0; }
-  100% { transform:rotate(-12deg) scaleX(.15);opacity:0; }
+  0%,100% { clip-path:polygon(var(--lamp-x,80%) 33%,0 11%,0 17%);opacity:0; }
+  12% { clip-path:polygon(var(--lamp-x,80%) 33%,0 15%,0 23%);opacity:.85; }
+  30% { clip-path:polygon(var(--lamp-x,80%) 33%,0 25%,0 37%);opacity:1; }
+  50% { clip-path:polygon(var(--lamp-x,80%) 33%,0 40%,0 50%);opacity:.8; }
+  64% { clip-path:polygon(var(--lamp-x,80%) 33%,0 48%,0 54%);opacity:0; }
 }
 /* Mobile gives the lighthouse its own unobstructed space below the reading area. */
 @media(max-width:760px) {
@@ -84,7 +83,9 @@
  .painted-landing .hs-in { top:var(--mobile-art-top,550px);bottom:auto;height:400px; }
  .painted-landing .hs-base { object-position:88% center; }
  .painted-landing .hs-fade { background:linear-gradient(180deg,#e7e0cc 0,#e7e0cc var(--mobile-art-top,550px),transparent calc(var(--mobile-art-top,550px) + 55px)); }
- .painted-landing .hs-haze { clip-path:polygon(74% 33%,0 24%,0 42%);transform-origin:74% 33%; }
+ .painted-landing .painted-beam { --lamp-x:74%;clip-path:polygon(74% 33%,0 24%,0 42%);transform-origin:74% 33%; }
  .painted-landing[data-role="founder"] .hs-fade { background:linear-gradient(180deg,#e7e0cc 0,#e7e0cc var(--mobile-art-top,550px),transparent calc(var(--mobile-art-top,550px) + 55px)); }
  .painted-landing[data-role="founder"] .role-tools { margin-top:30px; }
 }
+
+.painted-landing .painted-beam { transform:none; }
