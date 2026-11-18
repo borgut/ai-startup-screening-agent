@@ -130,3 +130,4 @@ body.atlas:not(.painted-landing) { position:relative;isolation:isolate; }
 @media(max-width:760px) { .atlas .atlas-arrive { animation:none; } .atlas.atlas-leaving { opacity:1;transform:none;filter:none;transition:none; } }
 
 @media(max-width:760px) { .atlas.role-page .gateway section > * { animation:none; } .atlas .gateway nav a,.atlas .gateway nav button { min-height:44px;display:inline-flex;align-items:center; } }
+@media(max-width:760px) { html.atlas-html { scroll-behavior:auto; } }
