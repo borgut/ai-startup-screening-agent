@@ -4,11 +4,11 @@
   const t = {
     es: {
       investor: ['PARA INVERSORES', 'Encuentra lo que merece una segunda mirada.', 'De URL y deck a un memo contrastado. Claims, huecos y preguntas que cambian la decisión.', 'Analizar una oportunidad →'],
-      founder: ['PARA FOUNDERS', 'Llega al inversor correcto, mejor preparado.', 'Descubre qué te van a preguntar, qué debes demostrar y qué fondos encajan contigo.', 'Preparar mi ronda →'],
+      founder: ['PARA FOUNDERS', 'Tu idea. Tu siguiente paso.', 'Pon a prueba lo que construyes y decide cómo seguir. Con ronda o sin ella.', 'Empezar por aquí →'],
     },
     en: {
       investor: ['FOR INVESTORS', 'Find what deserves a second look.', 'From URL and deck to a verified memo. Claims, gaps and the questions that change the decision.', 'Analyze an opportunity →'],
-      founder: ['FOR FOUNDERS', 'Reach the right investor, better prepared.', 'See what they will ask, what you need to prove and which funds fit.', 'Prepare my round →'],
+      founder: ['FOR FOUNDERS', 'Your idea. Your next step.', 'Put what you are building to the test and decide what comes next. With or without funding.', 'Start here →'],
     },
   }[l][founder ? 'founder' : 'investor'];
   document.documentElement.lang = l;
@@ -16,7 +16,7 @@
   document.getElementById('role-h').textContent = t[1];
   document.getElementById('role-p').textContent = t[2];
   document.getElementById('role-cta').textContent = t[3];
-  document.getElementById('role-cta').href = (founder ? '/investor-map' : '/scouting') + '?lang=' + l;
+  document.getElementById('role-cta').href = (founder ? '/founder-intake.html' : '/scouting') + '?lang=' + l;
   document.getElementById('role-back').href = '/?lang=' + l;
   if (founder) {
     const F = {
