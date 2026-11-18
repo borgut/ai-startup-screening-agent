@@ -1,6 +1,6 @@
 /* One painted atlas, from the shoreline to the working pages. */
 @view-transition { navigation:none; }
-@media (min-width:761px) and (prefers-reduced-motion:no-preference) { @view-transition { navigation:auto; } }
+/* Keep the desktop arrival effect without fragile cross-document snapshots. */
 :root { --atlas-paper:#e7e0cc;--atlas-ink:#233b34;--atlas-blue:#2440d6; }
 html.atlas-html { background:var(--atlas-paper); }
 body.atlas { --carbon:#e7e0cc;--carbon-2:#f1ead8;--carbon2:#f1ead8;--bone:#233b34;--bone-dim:#4c6259;--bone-faint:#5e7065;--dim:#4c6259;--faint:#5e7065;--gold:#2440d6;--hair:rgba(35,59,52,.2);--hair-strong:#9da593;--hairs:#9da593;background-color:#e7e0cc;color:#233b34; }
