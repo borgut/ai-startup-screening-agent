@@ -105,3 +105,5 @@ body.atlas:not(.painted-landing) { position:relative;isolation:isolate; }
 .atlas :is(.wizard-next,.wyi-decision button:first-child,#next-case) { background:#2440d6;color:#f5f0e3;border-color:#2440d6; }
 .atlas section.screen .margin-note { opacity:1;color:#233b34; }
 .atlas #beam { display:none; }
+.atlas .imap-list :is(dt,dd,b),.atlas .imap-name>span { color:#4c6259; }
+.atlas #step-back { color:#233b34;background:rgba(249,244,229,.8);border-color:#7d8b79; }
