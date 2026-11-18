@@ -1,5 +1,6 @@
 /* One painted atlas, from the shoreline to the working pages. */
-@view-transition { navigation:auto; }
+@view-transition { navigation:none; }
+@media (min-width:761px) and (prefers-reduced-motion:no-preference) { @view-transition { navigation:auto; } }
 :root { --atlas-paper:#e7e0cc;--atlas-ink:#233b34;--atlas-blue:#2440d6; }
 html.atlas-html { background:var(--atlas-paper); }
 body.atlas { --carbon:#e7e0cc;--carbon-2:#f1ead8;--carbon2:#f1ead8;--bone:#233b34;--bone-dim:#4c6259;--bone-faint:#5e7065;--dim:#4c6259;--faint:#5e7065;--gold:#2440d6;--hair:rgba(35,59,52,.2);--hair-strong:#9da593;--hairs:#9da593;background-color:#e7e0cc;color:#233b34; }
@@ -124,3 +125,8 @@ body.atlas:not(.painted-landing) { position:relative;isolation:isolate; }
 .atlas .ss-cross-navigation a { color:#233b34; }
 .atlas .atlas-directory { margin-top:0;margin-bottom:0; }
 .atlas .ss-cross-navigation { margin-top:0; }
+
+/* Mobile navigation stays immediate: no blank veil or blurred page snapshot. */
+@media(max-width:760px) { .atlas .atlas-arrive { animation:none; } .atlas.atlas-leaving { opacity:1;transform:none;filter:none;transition:none; } }
+
+@media(max-width:760px) { .atlas.role-page .gateway section > * { animation:none; } .atlas .gateway nav a,.atlas .gateway nav button { min-height:44px;display:inline-flex;align-items:center; } }

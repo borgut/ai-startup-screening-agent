@@ -17,7 +17,7 @@
   document.getElementById('role-p').textContent = t[2];
   document.getElementById('role-cta').textContent = t[3];
   document.getElementById('role-cta').href = (founder ? '/founder-intake.html' : '/scouting') + '?lang=' + l;
-  document.getElementById('role-back').href = '/?lang=' + l;
+  document.getElementById('role-back').href = '/?lang=' + l + '#entry';
   if (!founder) { const status = document.createElement('p'); status.className = 'role-status'; status.textContent = l === 'en' ? 'New startup analyses are still in testing and are not available yet.' : 'Los análisis de startups nuevas siguen en pruebas y todavía no están disponibles.'; document.getElementById('role-cta').after(status); }
   if (founder) {
     const F = {

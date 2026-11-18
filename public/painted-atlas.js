@@ -29,7 +29,7 @@
  document.addEventListener('click',event=>{
   const a=event.target.closest('a[href]');if(!a||event.defaultPrevented||event.metaKey||event.ctrlKey||event.shiftKey||a.target==='_blank'||a.hasAttribute('download'))return;
   const url=new URL(a.href);if(url.origin!==location.origin||url.pathname===location.pathname||url.pathname.startsWith('/api/'))return;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches||('onpageswap' in window))return;
+  if(matchMedia('(max-width:760px), (prefers-reduced-motion: reduce)').matches||('onpageswap' in window))return;
   event.preventDefault();document.body.classList.add('atlas-leaving');setTimeout(()=>location.assign(url.href),220);
  });
  window.addEventListener('pageshow',()=>document.body.classList.remove('atlas-leaving'));

@@ -89,7 +89,9 @@
 
   /* la luz revela la escena y se desplaza con el scroll; el haz ambiental sale del faro */
   const journeyScreens = [...document.querySelectorAll('section.screen')];
+  let lightPending = false;
   function lightFrame() {
+    lightPending = false;
     const vh = innerHeight;
     journeyScreens.forEach(s => {
       const r = s.getBoundingClientRect();
@@ -105,7 +107,10 @@
     const out = Math.min(1, Math.max(0, scrollY / (vh * 0.7)));
     beam.style.opacity = (out * 0.9).toFixed(2);
     beam.style.transform = 'rotate(' + (scrollY * 0.004) + 'deg)';
-    requestAnimationFrame(lightFrame);
   }
-  requestAnimationFrame(lightFrame);
+  function queueLight() { if (!lightPending) { lightPending = true; requestAnimationFrame(lightFrame); } }
+  addEventListener('scroll', queueLight, {passive:true});
+  addEventListener('resize', queueLight);
+  addEventListener('pageshow', queueLight);
+  queueLight();
 })();
