@@ -77,6 +77,12 @@
     const src = '/hero/faro-pintura.webp';
     sc.innerHTML = '<div class="hs-in"><img class="hs-base" src="' + src + '" alt=""><img class="hs-lit" src="' + src + '" alt=""><i class="hs-haze"></i><i class="hs-glow"></i></div><i class="hs-fade"></i>';
     document.body.insertBefore(sc, document.body.firstChild);
-    if (!founder) { const cover = document.querySelector('.gateway'); const sizeScene = () => { sc.style.height = cover.offsetHeight + 'px'; }; new ResizeObserver(sizeScene).observe(cover); sizeScene(); }
+    const cover = document.querySelector('.gateway');
+    const sizeScene = () => {
+      const end = document.querySelector('.role-status') || document.getElementById('role-cta');
+      sc.style.setProperty('--mobile-art-top', (end.getBoundingClientRect().bottom + scrollY + 24) + 'px');
+      sc.style.height = cover.offsetHeight + 'px';
+    };
+    new ResizeObserver(sizeScene).observe(cover); sizeScene();
   })();
 })();
