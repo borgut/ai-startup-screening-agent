@@ -25,3 +25,13 @@ body.boat-preview { background:#e7e0cc; }
  .boat-preview .gate-choice { background:linear-gradient(#ede4caee,#ede4cacc),url('/hero/faro-pintura.webp') 74% center/cover; }
 }
 @media(prefers-reduced-motion:reduce){.approach {height:100svh;}.approach-coast {transform:none;}.approach-boat {left:35%;top:72%;transform:none;}.approach-lighthouse {display:none;}}
+
+/* Approved homepage headline and original role-choice type scale. */
+.approach-caption { max-width:710px;top:24%; }
+.approach-caption .approach-instruction { font-weight:400;font-size:clamp(42px,4.7vw,70px);max-width:16ch; }
+.boat-preview .gate-choice #gate-title { font:400 clamp(64px,7vw,110px)/.92 Georgia,serif;letter-spacing:-.055em;max-width:13ch;margin:25px 0 60px;text-wrap:balance; }
+@media(max-width:760px){.approach-caption{top:20%;}.approach-caption .approach-instruction{font-size:40px;max-width:10ch;margin:24px 0;}.boat-preview .gate-choice #gate-title{font-size:55px;margin:20px 0 45px;}}
+.approach-caption { max-width:1000px; }
+.approach-caption .approach-instruction { max-width:24ch; }
+@media(max-width:760px){.approach-caption .approach-instruction{max-width:none;}}
+@media(max-width:760px) and (max-height:650px){.approach-caption{top:17%;}.approach-caption .approach-instruction{font-size:33px;margin:18px 0;}.approach-boat{width:115px;}}
