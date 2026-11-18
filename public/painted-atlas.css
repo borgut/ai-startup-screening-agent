@@ -109,3 +109,18 @@ body.atlas:not(.painted-landing) { position:relative;isolation:isolate; }
 .atlas #step-back { color:#233b34;background:rgba(249,244,229,.8);border-color:#7d8b79; }
 .atlas:not(.painted-landing) :is(dt,dd) { color:#4c6259; }
 .atlas .wyi-decision button:not(:first-child) { color:#233b34;background:#f4ecda;border-color:#7d8b79; }
+/* Navigation lives on a readable paper wash, never bare dark water. */
+.atlas .atlas-directory {
+ position:relative;isolation:isolate;padding:32px 24px 38px;
+ background:linear-gradient(rgba(241,234,216,.96),rgba(241,234,216,.96)),url('/hero/faro-pintura.webp') center 75%/cover;
+ border-top:1px solid #9da593;border-bottom:1px solid #9da593;
+}
+.atlas .atlas-directory summary,.atlas .atlas-directory-grid a { color:#233b34; }
+.atlas .atlas-directory summary { line-height:1.25; }
+.atlas .ss-cross-navigation {
+ background:linear-gradient(rgba(241,234,216,.93),rgba(241,234,216,.93)),url('/hero/faro-pintura.webp') center 78%/cover;
+ color:#233b34;
+}
+.atlas .ss-cross-navigation a { color:#233b34; }
+.atlas .atlas-directory { margin-top:0;margin-bottom:0; }
+.atlas .ss-cross-navigation { margin-top:0; }
