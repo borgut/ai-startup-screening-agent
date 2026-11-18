@@ -84,5 +84,6 @@
       sc.style.height = cover.offsetHeight + 'px';
     };
     new ResizeObserver(sizeScene).observe(cover); sizeScene();
+    document.body.classList.add('role-ready');
   })();
 })();

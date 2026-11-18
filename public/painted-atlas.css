@@ -134,3 +134,6 @@ body.atlas:not(.painted-landing) { position:relative;isolation:isolate; }
 
 /* Keep founder tools and fit notes readable over the lighthouse painting. */
 @media(max-width:760px) { .atlas[data-role="founder"] :is(.role-tools,.role-fit,.founder-screen) { background:rgba(241,234,216,.97);padding:16px;border:1px solid rgba(35,59,52,.2); } .atlas[data-role="founder"] .role-tools a { color:#233b34; } .atlas[data-role="founder"] .role-tools .num { color:#4c6259; } }
+
+/* If content scripts are delayed, keep the initial text on paper. */
+.atlas.role-page:not(.role-ready) .gateway { background:#e7e0cc; }
