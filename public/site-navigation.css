@@ -1,0 +1,18 @@
+/* Shared navigation, same quiet typography as the rest of the site. */
+a.wordmark, a.cm-left, .gateway > nav > a:last-child { color: inherit; text-decoration: none; }
+a.wordmark:hover, a.cm-left:hover { opacity: .7; }
+a.wordmark:focus-visible, a.cm-left:focus-visible, .ss-cross-navigation a:focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
+.ss-cross-navigation { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 26px; padding: 30px 20px; margin: 32px auto 0; border-top: 1px solid rgba(150,140,120,.28); color: inherit; font-family: inherit; font-size: 12px; letter-spacing: .035em; line-height: 1.6; }
+.ss-cross-navigation a { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; opacity: .75; }
+.ss-cross-navigation a:hover, .ss-cross-navigation a[aria-current] { opacity: 1; }
+.ss-cross-navigation a[aria-current] { text-decoration: none; }
+@media(max-width: 450px) { .ss-cross-navigation { gap: 12px 20px; padding: 24px 16px; } }
+/* Wizard visibility must not replace the filters' grid with block layout. */
+.imap-page[data-step="0"] .imap-inputs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.imap-inputs > label { display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; min-width: 0; margin: 0; padding: 24px 22px; }
+.imap-inputs > label:first-child { padding-left: 22px; }
+.imap-inputs > label > span { margin: 0; min-height: 16px; line-height: 16px; }
+.imap-inputs select, .imap-inputs input { box-sizing: border-box; display: block; width: 100%; min-width: 0; height: 38px; margin: 0; padding: 4px 0; line-height: 30px; border-radius: 0; }
+.imap-inputs select:focus-visible, .imap-inputs input:focus-visible { outline: 1px solid #b69a67; outline-offset: 4px; }
+@media(max-width:760px) { .imap-page[data-step="0"] .imap-inputs { grid-template-columns: repeat(2, minmax(0, 1fr)); } .imap-inputs > label, .imap-inputs > label:first-child { padding: 20px 12px; } .imap-inputs > label:nth-child(odd) { padding-left: 0; } .imap-inputs > label:nth-child(even) { border-right: 0; } .imap-inputs > label:nth-last-child(-n+2) { border-bottom: 0; } }
+@media(max-width:360px) { .imap-page[data-step="0"] .imap-inputs { grid-template-columns: 1fr; } .imap-inputs > label, .imap-inputs > label:first-child { padding: 18px 0; border-right: 0; border-bottom: 1px solid #373630; } .imap-inputs > label:last-child { border-bottom: 0; } }

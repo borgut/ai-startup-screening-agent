@@ -20,8 +20,8 @@
   document.getElementById('role-back').href = '/?lang=' + l;
   if (founder) {
     const F = {
-      es: ['Para ti si: prefieres saber qué no cuadra de tu historia antes de que te lo diga un fondo.', 'No para ti si: buscas una plantilla de deck o intros en frío.'],
-      en: ['For you if: you would rather know what does not hold up in your story before a fund tells you.', 'Not for you if: you are looking for a deck template or cold intros.'],
+      es: ['Para ti: si prefieres saber qué no cuadra de tu historia antes de que te lo diga un fondo.', 'No para ti: si buscas una plantilla de deck o intros en frío.'],
+      en: ['For you: if you would rather know what does not hold up in your story before a fund tells you.', 'Not for you: if you are looking for a deck template or cold intros.'],
     }[l];
     const box = document.getElementById('role-fit');
     if (box) {
@@ -31,6 +31,11 @@
       document.getElementById('fit-yes').innerHTML = '<b>' + y[0] + ':</b> ' + y[1];
       document.getElementById('fit-no').innerHTML = '<b>' + n[0] + ':</b> ' + n[1];
     }
+  }
+
+  if (founder) {
+    const tools = l === 'en' ? ['Value my startup', 'Put my idea to the test', 'Startup jobs'] : ['Valorar mi startup', 'Poner a prueba mi idea', 'Empleo en startups'];
+    document.querySelectorAll('.role-tools a > span:last-child').forEach((el, i) => { if (tools[i]) el.textContent = tools[i]; });
   }
 
   // Intake founder (deck + LinkedIn): vive aqui, no en el lado inversor.

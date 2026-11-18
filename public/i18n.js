@@ -12,6 +12,7 @@
       step2: '<b>02</b> Contrasta cada claim con fuentes externas',
       step3: '<b>03</b> Veredicto claro: investigar, seguir o pasar',
       nuevo_screening: 'Nuevo screening',
+      volver_radar: '&larr; Volver al radar',
       label_url: 'Web de la startup',
       label_deck: 'Pitch deck (PDF, opcional)',
       drop_hint: 'Arrastra el deck (PDF) o haz clic para elegirlo',
@@ -132,6 +133,7 @@
       step2: '<b>02</b> Checks every claim against external sources',
       step3: '<b>03</b> A clear verdict: investigate, watch, or pass',
       nuevo_screening: 'New screening',
+      volver_radar: '&larr; Back to radar',
       label_url: 'Startup website',
       label_deck: 'Pitch deck (PDF, optional)',
       drop_hint: 'Drag the deck (PDF) here or click to choose it',
@@ -255,6 +257,6 @@
     document.querySelectorAll('[data-i18n-ph]').forEach((el) => { el.setAttribute('placeholder', t(el.dataset.i18nPh)); });
     document.querySelectorAll('.lang-btn').forEach((b) => b.classList.toggle('lang-on', b.dataset.lang === lang));
   }
-  function setLang(l) { localStorage.setItem('ss-lang', l); location.href = location.pathname; }
+  function setLang(l) { localStorage.setItem('ss-lang', l); const next = new URL(location.href); next.searchParams.set('lang', l); location.href = next.pathname + next.search + next.hash; }
   window.getLang = getLang; window.t = t; window.applyI18n = applyI18n; window.setLang = setLang;
 })();
