@@ -18,7 +18,7 @@
         'Tu siguiente <em>paso.</em>',
       ],
       sub: [
-        'Una cosa. El resto viene después.',
+        'Elige una opción para pasar a la siguiente pregunta.',
         'Una frase, como se lo contarías a un amigo.',
         'Elige la fase más cercana. Tus respuestas se quedan en esta pestaña.',
         'Si no es ahora, también vale.',
@@ -59,7 +59,7 @@
         'Your next <em>step.</em>',
       ],
       sub: [
-        'One thing. The rest comes later.',
+        'Choose an option to move to the next question.',
         'One sentence, the way you would tell a friend.',
         'Pick the closest stage. Your answers stay in this tab.',
         'Not now is also an answer.',
@@ -125,7 +125,7 @@
       b.setAttribute('aria-pressed', current === v ? 'true' : 'false');
       b.appendChild(el('span', 'num', '0' + (i + 1)));
       b.appendChild(el('span', 'lbl', label));
-      b.onclick = () => { onPick(v); render(); };
+      b.onclick = () => { onPick(v); };
       box.appendChild(b);
     });
     return box;
@@ -201,7 +201,7 @@
     const status = el('small', null, '');
     em.appendChild(status);
     const summaryText = () => {
-      const site = 'https://ai-startup-screening-agent.vercel.app';
+      const site = 'https://startup-screening.vercel.app';
       const L = [
         (lang === 'es' ? 'GUÍA DE SIGUIENTE PASO' : 'NEXT-STEP GUIDE') + ' · STARTUP SCOUTING',
         new Date().toISOString().slice(0, 10), '',
@@ -229,7 +229,7 @@
     body.appendChild(rst);
   }
 
-  function render() {
+  function render({ resetPosition = true } = {}) {
     const x = t();
     document.documentElement.lang = lang;
     document.title = 'Startup Scouting';
@@ -249,16 +249,16 @@
     const body = $('fi-body'); body.innerHTML = '';
 
     if (state.step === 0) {
-      body.appendChild(optionList(x.needs, state.need, (v) => { state.need = v; save(); }));
+      body.appendChild(optionList(x.needs, state.need, (v) => { state.need = v; state.step = 1; save(); render(); }));
     } else if (state.step === 1) {
       body.appendChild(field(x.whatLabel, textInput('fi-in-what', x.whatPh, state.what)));
       body.appendChild(field(x.verticalLabel, selectInput('fi-in-vertical', VERTICALS, state.vertical, (v) => { state.vertical = v; save(); })));
     } else if (state.step === 2) {
-      body.appendChild(optionList(x.stages, state.stage, (v) => { state.stage = v; save(); }));
+      body.appendChild(optionList(x.stages, state.stage, (v) => { state.stage = v; save(); render({ resetPosition: false }); }));
       const gap = document.createElement('div'); gap.style.height = '34px'; body.appendChild(gap);
       body.appendChild(field(x.tractionLabel, textInput('fi-in-traction', x.tractionPh, state.traction)));
     } else if (state.step === 3) {
-      body.appendChild(optionList(x.raising, state.raising, (v) => { state.raising = v; save(); }));
+      body.appendChild(optionList(x.raising, state.raising, (v) => { state.raising = v; save(); render({ resetPosition: false }); }));
       if (state.raising && state.raising !== 'no') {
         body.appendChild(field(x.amountLabel, selectInput('fi-in-amount', x.amounts, x.amounts[state.amountIdx] || x.amounts[1], (v) => { state.amountIdx = x.amounts.indexOf(v); save(); })));
         body.appendChild(field(x.geoLabel, selectInput('fi-in-geo', GEOS, state.geo, (v) => { state.geo = v; save(); })));
@@ -267,8 +267,10 @@
       renderResult(body);
     }
     const main = $('fi-main');
-    main.classList.remove('fi-fade'); void main.offsetWidth; main.classList.add('fi-fade');
-    scrollTo({ top: 0, behavior: 'smooth' });
+    if (resetPosition) {
+      main.classList.remove('fi-fade'); void main.offsetWidth; main.classList.add('fi-fade');
+      scrollTo({ top: 0, behavior: 'instant' });
+    }
   }
 
   $('fi-next').onclick = () => {
@@ -280,8 +282,8 @@
     state.step = Math.min(4, state.step + 1); save(); render();
   };
   $('fi-prev').onclick = () => { state.step = Math.max(0, state.step - 1); save(); render(); };
-  $('fi-es').onclick = () => { lang = 'es'; history.replaceState(null, '', '?lang=es'); render(); };
-  $('fi-en').onclick = () => { lang = 'en'; history.replaceState(null, '', '?lang=en'); render(); };
+  $('fi-es').onclick = () => { lang = 'es'; history.replaceState(null, '', '?lang=es'); render({ resetPosition: false }); };
+  $('fi-en').onclick = () => { lang = 'en'; history.replaceState(null, '', '?lang=en'); render({ resetPosition: false }); };
 
   render();
 })();
