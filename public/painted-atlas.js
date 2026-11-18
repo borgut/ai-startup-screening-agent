@@ -1,6 +1,6 @@
 (() => {
  'use strict';
- const en=new URLSearchParams(location.search).get('lang')==='en';
+ let en=new URLSearchParams(location.search).get('lang')==='en';
  const routes=[
  ['/', 'Inicio','Home','lighthouse'],['/for-investors','Inversores','Investors','compass'],['/raising','Founders','Founders','seed'],
  ['/scouting','Radar','Radar','radar'],['/investor-map','Mapa de inversores','Investor map','map'],['/valoracion','Valoración','Valuation','scale'],
@@ -33,5 +33,12 @@
   event.preventDefault();document.body.classList.add('atlas-leaving');setTimeout(()=>location.assign(url.href),220);
  });
  window.addEventListener('pageshow',()=>document.body.classList.remove('atlas-leaving'));
+ const translateAtlas=()=>{
+  en=document.documentElement.lang==='en';
+  const banner=document.querySelector('.atlas-banner');if(banner)banner.lastChild.textContent=en?record[2]:record[1];
+  summary.textContent=en?'The atlas. Every section.':'El atlas. Todas las secciones.';
+  [...grid.children].forEach((a,i)=>{a.lastChild.textContent=en?routes[i][2]:routes[i][1];a.href=routes[i][0]+'?lang='+(en?'en':'es');});
+ };
+ new MutationObserver(translateAtlas).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  const arrival=document.querySelector('main,.wrap,.gateway');if(arrival)arrival.classList.add('atlas-arrive');
 })();
