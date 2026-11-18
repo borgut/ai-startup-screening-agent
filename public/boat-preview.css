@@ -1,0 +1,27 @@
+body.boat-preview { background:#e7e0cc; }
+.approach { height:240svh;position:relative; }
+.approach-frame { position:sticky;top:0;height:100svh;overflow:hidden;background:#e7e0cc;isolation:isolate; }
+.approach-coast,.approach-lighthouse,.approach-wash { position:absolute;inset:0; }
+.approach-coast { background:url('/hero/approach-coast.webp') 65% center/cover;transform:scale(var(--coast-scale,1)); }
+.approach-lighthouse { background:url('/hero/faro-pintura.webp') 74% center/cover;opacity:var(--faro-opacity,0);transform:scale(var(--faro-scale,1.07)); }
+.approach-wash { background:linear-gradient(90deg,rgba(237,228,202,.6),transparent 65%);pointer-events:none; }
+.approach-top { position:absolute;top:28px;left:5vw;right:5vw;display:flex;justify-content:space-between;color:#233b34;font:12px Arial,sans-serif;z-index:3; }
+.approach-top a { color:#233b34;background:#ede4caed;padding:9px 12px;text-underline-offset:4px; }
+.approach-top>span { padding:9px 0; }
+.approach-caption { position:absolute;left:7%;top:25%;color:#233b34;max-width:570px;opacity:var(--caption-opacity,1); }
+.approach-caption>p:first-child,.approach-caption>span { font:10px monospace;letter-spacing:.15em; }
+.approach-caption .approach-instruction { font:clamp(44px,5vw,76px)/1.03 Georgia,serif;letter-spacing:-.045em;margin:26px 0; }
+.approach-caption em { color:#2440d6;font-weight:normal; }
+.approach-boat { position:absolute;width:clamp(100px,16vw,250px);height:auto;left:var(--boat-x,13%);top:var(--boat-y,64%);transform:translate(-50%,-50%) scale(var(--boat-scale,1)) rotate(var(--boat-rotate,-3deg));opacity:var(--boat-opacity,1);filter:drop-shadow(0 4px 2px #263c3733); }
+.boat-preview .gate-choice { background:linear-gradient(90deg,rgba(237,228,202,.97),rgba(237,228,202,.78) 50%,rgba(237,228,202,.2)),url('/hero/faro-pintura.webp') 74% center/cover; }
+@media(max-width:760px){
+ .approach { height:220svh; }
+ .approach-top { left:22px;right:22px;top:20px; }
+ .approach-coast { background-position:73% center; }
+ .approach-lighthouse { background-position:77% center; }
+ .approach-caption { left:22px;right:22px;top:20%; }
+ .approach-caption .approach-instruction { font-size:43px;max-width:8ch; }
+ .approach-boat { width:145px; }
+ .boat-preview .gate-choice { background:linear-gradient(#ede4caee,#ede4cacc),url('/hero/faro-pintura.webp') 74% center/cover; }
+}
+@media(prefers-reduced-motion:reduce){.approach {height:100svh;}.approach-coast {transform:none;}.approach-boat {left:35%;top:72%;transform:none;}.approach-lighthouse {display:none;}}
