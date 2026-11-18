@@ -1,0 +1,107 @@
+/* One painted atlas, from the shoreline to the working pages. */
+@view-transition { navigation:auto; }
+:root { --atlas-paper:#e7e0cc;--atlas-ink:#233b34;--atlas-blue:#2440d6; }
+html.atlas-html { background:var(--atlas-paper); }
+body.atlas { --carbon:#e7e0cc;--carbon-2:#f1ead8;--carbon2:#f1ead8;--bone:#233b34;--bone-dim:#4c6259;--bone-faint:#5e7065;--dim:#4c6259;--faint:#5e7065;--gold:#2440d6;--hair:rgba(35,59,52,.2);--hair-strong:#9da593;--hairs:#9da593;background-color:#e7e0cc;color:#233b34; }
+body.atlas:not(.painted-landing) { background-image:linear-gradient(180deg,rgba(231,224,204,.35),#e7e0cc 440px),url('/hero/faro-pintura.webp');background-size:100% 540px,100% auto;background-position:center top,center top;background-repeat:no-repeat; }
+body.atlas:not(.painted-landing)::before { content:'';position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.045;background-image:url('/hero/paper-grain.svg');mix-blend-mode:multiply; }
+.atlas .atlas-banner { display:flex;align-items:center;gap:14px;font:11px ui-monospace,monospace;letter-spacing:.13em;text-transform:uppercase;padding:20px 0;color:#233b34; }
+.atlas-symbol { display:inline-flex;width:38px;height:38px;flex:none;align-items:center;justify-content:center;color:currentColor; }
+.atlas-symbol svg { width:100%;height:100%;overflow:visible;filter:url('#atlas-ink-edge'); }
+.atlas:not(.painted-landing) :is(.masthead,.mm-head,.df-head,.brief-head,.rw-head) { background:transparent;color:#233b34; }
+.atlas:not(.painted-landing) :is(h1,h2,h3,.display,.radar-title) { color:#233b34; }
+.atlas:not(.painted-landing) :is(.lede,.muted,.kicker,.dossier-kicker,.back-link,.how-link,.verdict-help,.step,.range p) { color:#4c6259; }
+.atlas:not(.painted-landing) :is(.memo-card,.radar-item,.signal-card,.company-card,.investor-card,.imap-example,.claim-row,.score-card,.memo-section,.card,.panel,.result-card,.imap-email,.next-card,.red-card) { background:rgba(249,244,229,.9);color:#233b34;border-color:rgba(35,59,52,.23);box-shadow:0 10px 30px rgba(40,55,40,.04); }
+.atlas:not(.painted-landing) :is(input,textarea,select) { background-color:rgba(249,244,229,.9);color:#233b34;border-color:#9da593; }
+.atlas:not(.painted-landing) select option { background:#f1ead8;color:#233b34; }
+.atlas:not(.painted-landing) :is(a,button) { --gold:#2440d6; }
+.atlas:not(.painted-landing) :is(.masthead,.radar,.filters,.table-section,.memo-topbar,.section-head,.stats-strip) { border-color:rgba(35,59,52,.25); }
+.atlas .ss-cross-navigation { position:relative;padding:50px 22px;background:linear-gradient(180deg,transparent,rgba(231,224,204,.94)),url('/hero/faro-pintura.webp') center 78%/cover;color:#233b34;min-height:180px;align-content:center; }
+.atlas .ss-cross-navigation a { display:flex;align-items:center;gap:7px;opacity:1; }
+.atlas .ss-cross-navigation .atlas-symbol { width:24px;height:24px; }
+.atlas .atlas-directory { margin:50px auto 0;max-width:1160px;padding:40px 24px;border-top:1px solid #9da593;color:#233b34; }
+.atlas-directory summary { font:400 30px Georgia,serif;cursor:pointer; }
+.atlas-directory-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px;margin-top:24px; }
+.atlas-directory-grid a { display:flex;align-items:center;gap:12px;padding:17px 0;border-bottom:1px solid #a6ae9a;color:#233b34;text-decoration:none; }
+/* Chapters share the same physical seascape under different painted glazes. */
+.atlas section.screen { isolation:isolate;background-color:#e7e0cc;background-image:linear-gradient(90deg,rgba(231,224,204,.96),rgba(231,224,204,.65) 50%,rgba(231,224,204,.06)),url('/hero/faro-pintura.webp');background-size:cover;background-position:center;color:#233b34;overflow:visible; }
+.atlas section.screen::before { content:'';position:absolute;inset:-55px 0;z-index:-1;pointer-events:none;background:inherit;mask-image:linear-gradient(transparent,#000 65px,#000 calc(100% - 65px),transparent); }
+.atlas section.screen::after { content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--chapter-glaze,#2440d6);opacity:.15;mix-blend-mode:multiply;mask-image:url('/hero/brush-edge.svg');mask-size:100% 100%; }
+.atlas .sec-01 { --chapter-glaze:#2440d6;background-position:35% 20%; }
+.atlas .sec-02 { --chapter-glaze:#d68b4c;background-position:48% 45%; }
+.atlas .sec-03 { --chapter-glaze:#e9ba41;background-position:20% 65%; }
+.atlas .sec-04 { --chapter-glaze:#407966;background-position:70% 80%; }
+.atlas .sec-cierre { background-position:65% 50%; }
+.atlas section.screen :is(.kicker,.margin-note) { color:#365047; }
+.atlas section.screen h2 { color:#233b34;filter:none; }
+.atlas section.screen :is(h1,h2) em { color:#2440d6; }
+.atlas section.screen .scene { filter:drop-shadow(0 14px 17px rgba(28,47,41,.12)); }
+.atlas section.screen .obj { filter:url('#atlas-ink-edge'); }
+.atlas #indexOverlay { background:linear-gradient(90deg,rgba(231,224,204,.98),rgba(231,224,204,.83)),url('/hero/faro-pintura.webp') center/cover;color:#233b34; }
+.atlas #indexOverlay :is(a,.num,.t,.idx-head,.idx-note,#idxClose) { color:#233b34; }
+.atlas #indexOverlay a.current .t { color:#2440d6; }
+.atlas #indexOverlay a { align-items:center;gap:15px; }
+.atlas #indexOverlay .atlas-symbol { width:40px;height:40px; }
+.atlas .chapter-mark { color:#233b34!important;background:rgba(231,224,204,.9)!important;border-color:rgba(35,59,52,.15); }
+.atlas .chapter-mark .atlas-symbol { width:23px;height:23px;vertical-align:middle;margin-right:8px; }
+.atlas section.screen .kicker { display:flex;align-items:center;gap:10px; }
+.atlas .atlas-arrive { animation:atlas-arrive .8s cubic-bezier(.2,.65,.3,1) both; }
+@keyframes atlas-arrive { from { opacity:.35;transform:translateY(24px);filter:blur(5px); } to { opacity:1;transform:none;filter:none; } }
+::view-transition-old(root) { animation:atlas-out .5s ease both; }
+::view-transition-new(root) { animation:atlas-page-in .75s cubic-bezier(.16,1,.3,1) both; }
+@keyframes atlas-out { to { opacity:0;transform:translateY(-18px);filter:blur(4px); } }
+@keyframes atlas-page-in { from { opacity:0;transform:translateY(34px);filter:blur(7px);clip-path:inset(8% 0 0); } to { opacity:1;transform:none;filter:none;clip-path:inset(0); } }
+@media(max-width:760px) {
+ body.atlas:not(.painted-landing) { background-size:100% 390px,auto 420px;background-position:center top,70% top; }
+ .atlas section.screen { background-image:linear-gradient(180deg,rgba(231,224,204,.97),rgba(231,224,204,.86) 45%,rgba(231,224,204,.4)),url('/hero/faro-pintura.webp');background-position:70% center; }
+ .atlas-directory-grid { grid-template-columns:1fr 1fr;gap:0 16px; }
+ .atlas-directory-grid a { font-size:13px; }
+ .atlas .atlas-banner { font-size:10px;padding-top:12px; }
+ .atlas #indexOverlay { padding:30px 22px; }
+ .atlas #indexOverlay .t { font-size:29px; }
+}
+@media(prefers-reduced-motion:reduce) { .atlas .atlas-arrive,::view-transition-new(root),::view-transition-old(root) { animation:none; } }
+/* A continuous ground, never an image edge cutting through a paragraph. */
+body.atlas:not(.painted-landing) { background-image:linear-gradient(rgba(231,224,204,.92),rgba(231,224,204,.97)),url('/hero/faro-pintura.webp');background-size:cover;background-position:center;background-attachment:fixed; }
+.atlas:not(.painted-landing) :is(p,label,small,nav,.imap-hero p,.imap-example p,.imap-example span,.wyi-nav a,.wyi-nav button,.imap-stepbar,.imap-head p,.score-label,.hint) { color:#4c6259; }
+.atlas:not(.painted-landing) :is(.imap-hero h1,.wyi-hero h1,.page-title) { color:#233b34; }
+.atlas section.screen { overflow:clip; }
+.atlas .claim-line { background:rgba(249,244,229,.92);color:#233b34; }
+.atlas .claim-line .state { color:#4c6259; }
+.atlas #indexOverlay .t em { color:#2440d6; }
+/* A single coastline stays behind the scroll. The painted glazes meet without a hard cut. */
+body.atlas:has(#s-hero) { position:relative;isolation:isolate; }
+.atlas-sea { position:fixed;inset:0;z-index:-1;pointer-events:none;background:url('/hero/faro-pintura.webp') 72% center/cover; }
+.atlas:has(.atlas-sea) section.screen { background:none; }
+.atlas:has(.atlas-sea) section.screen::before { inset:0;background:linear-gradient(90deg,rgba(231,224,204,.96),rgba(231,224,204,.74) 48%,rgba(231,224,204,.24));mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent); }
+.atlas .claim-line :is(.check,.status,.proof,.ok,.verified) { color:#4c6259; }
+.atlas .claim-line > :last-child { color:#4c6259; }
+.atlas .claim-line:first-child > :last-child { color:#a53b17; }
+.atlas:not(.painted-landing) :is(.confidence-ring,.score-ring,.ring-wrap) { background:#f5efdf;color:#233b34; }
+.atlas.atlas-leaving { opacity:0;transform:translateY(-12px);filter:blur(4px);transition:opacity .22s,transform .22s,filter .22s; }
+@media(max-width:760px) {
+ .atlas-sea { background-position:70% center; }
+ .atlas:has(.atlas-sea) section.screen::before { background:linear-gradient(180deg,rgba(231,224,204,.88),rgba(231,224,204,.94) 30%,rgba(231,224,204,.8)); }
+}
+.atlas .verdict-help summary::before,.atlas .verdict-help summary::after { content:none; }
+.atlas .verdict-help summary { list-style:none;text-decoration:underline;text-underline-offset:4px; }
+.atlas .atlas-object { position:fixed;right:7%;top:160px;width:min(30vw,380px);height:min(30vw,380px);color:#2440d6;opacity:.065;pointer-events:none;z-index:-1;transform:rotate(-8deg); }
+body.atlas:not(.painted-landing) { position:relative;isolation:isolate; }
+.atlas :is(.wyi-dim-label,.dim-label,.dimension-label,.cat-label) { color:#4c6259!important; }
+.atlas .rw-stats { max-width:100%;flex-wrap:wrap; }
+@media(max-width:760px) {
+ .atlas .atlas-object { right:-55px;top:100px;width:260px;height:260px;opacity:.055; }
+ .atlas :is(.rw-main,.rw-wrap,.rw-hero,.rw-stats) { min-width:0;max-width:100%; }
+ .atlas .rw-stats > * { min-width:0; }
+}
+.atlas .rw-filters { flex-wrap:wrap;min-width:0;max-width:100%; }
+.atlas .atlas-object { overflow:hidden;clip-path:inset(0);right:2%; }
+.atlas .gauge > circle:first-child { fill:#f4ecda; }
+.atlas .gauge text { fill:#233b34; }
+@media(max-width:760px) { .atlas .atlas-object { right:0; } }
+.atlas :is(.verdict-help,.reco-help) summary::before,.atlas :is(.verdict-help,.reco-help) summary::after { content:none; }
+.atlas :is(.verdict-help,.reco-help) summary { list-style:none;text-decoration:underline;text-underline-offset:4px; }
+.atlas .wyi-evidence dt,.atlas .wyi-evidence blockquote span { color:#4c6259; }
+.atlas :is(.wizard-next,.wyi-decision button:first-child,#next-case) { background:#2440d6;color:#f5f0e3;border-color:#2440d6; }
+.atlas section.screen .margin-note { opacity:1;color:#233b34; }
+.atlas #beam { display:none; }
