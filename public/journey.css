@@ -178,3 +178,44 @@ section.screen h1 em, section.screen h2 em { font-family: var(--j-serif); font-s
   .obj { transform: none; filter: none; }
   section.screen h2 { filter: none; }
 }
+
+/* Chapter composition: copy left, evidence right, no clipped lower note. */
+@media (min-width: 900px) {
+  section.screen:is(.sec-01,.sec-02,.sec-03) {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1.12fr);
+    grid-template-rows: auto auto auto;
+    column-gap: clamp(48px,7vw,140px);
+    row-gap: 22px;
+    align-content: center;
+    padding: 110px max(5vw,44px) 86px;
+    min-height: max(700px,100svh);
+  }
+  section.screen:is(.sec-01,.sec-02,.sec-03) > .kicker { grid-column:1;grid-row:1;margin:0; }
+  section.screen:is(.sec-01,.sec-02,.sec-03) > h2 { grid-column:1;grid-row:2;max-width:13ch;font-size:clamp(42px,4.5vw,78px); }
+  section.screen:is(.sec-01,.sec-02,.sec-03) > .margin-note { grid-column:1;grid-row:3;max-width:45ch;margin:8px 0 0;font-size:12px; }
+  section.screen:is(.sec-01,.sec-02,.sec-03) > .scene { grid-column:2;grid-row:1 / 4;align-self:center;justify-self:center;width:100%;margin:0; }
+  section.screen:is(.sec-01,.sec-02,.sec-03) > .scene > .obj { margin:auto; }
+  .sec-01 .deck { width:min(100%,510px);padding:30px 28px 24px; }
+  .sec-01 .deck .d-name { font-size:28px; }
+  .sec-01 .deck .d-kind,.sec-01 .deck .d-foot { font-size:11px; }
+  .sec-01 .deck .d-line { font-size:16px;line-height:1.55; }
+  .sec-01 .deck .d-chart { height:106px;gap:8px;margin:22px 0 16px; }
+  .sec-01 .scene > .obj { width:min(100%,510px)!important; }
+  .sec-02 .claims { width:min(100%,550px); }
+  .sec-02 .claim-line { padding:23px 22px;margin-bottom:16px;font-size:clamp(16px,1.4vw,22px);gap:18px; }
+  .sec-02 .claim-line .st { font-size:12px;max-width:140px; }
+  .sec-02 .lens { width:155px;height:155px;right:0;top:-60px; }
+  .sec-03 .memo { width:min(100%,560px);padding:30px 26px 26px;margin:auto; }
+  .sec-03 .memo .m-head { font-size:12px;padding-bottom:16px;margin-bottom:16px; }
+  .sec-03 .memo li { font-size:clamp(15px,1.2vw,19px);padding:12px 0;gap:15px;flex-wrap:wrap; }
+  .sec-03 .memo li .flag { margin-left:28px;flex-basis:100%;font-size:11px; }
+}
+@media (max-width:899px) {
+  section.screen:is(.sec-01,.sec-02,.sec-03) { min-height:100svh;height:auto;overflow:clip;padding:100px 24px 72px; }
+  section.screen:is(.sec-01,.sec-02,.sec-03) .scene { margin:42px auto 12px;width:max-content;max-width:100%; }
+  section.screen:is(.sec-01,.sec-02,.sec-03) .margin-note { max-width:46ch; }
+  .sec-01 .deck { width:min(76vw,360px); }
+  .sec-02 .claims { width:min(80vw,380px); }
+  .sec-03 .memo { width:min(82vw,390px); }
+}
