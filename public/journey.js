@@ -17,15 +17,15 @@
     'j-i5': ['El <em>cierre</em>', 'The <em>close</em>'],
     'j-k1': ['01 · LO QUE LLEGA', '01 · WHAT ARRIVES'],
     'j-h1': ['Todas las oportunidades llegan <em>bien vestidas</em>.', 'Every opportunity arrives <em>well dressed</em>.'],
-    'j-d1': ['Solar en cubiertas de polígonos industriales', 'Solar on industrial estate rooftops'],
-    'j-d2': ['"Mercado: 4.200 M€" · "12 cubiertas firmadas"', '"Market: €4.2bn" · "12 rooftops signed"'],
+    'j-d1': ['Instalaciones solares para empresas', 'Solar installations for businesses'],
+    'j-d2': ['"Mercado: 4.200 M€" · "12 contratos firmados"', '"Market: €4.2bn" · "12 contracts signed"'],
     'j-d3': ['serie semilla · cierra en 3 semanas · CASO FICTICIO', 'seed round · closes in 3 weeks · FICTIONAL CASE'],
     'j-n1': ['<span class="prompt">&gt;</span> el deck dice mercado enorme. el pitch dice tracción. el correo dice que hay que decidir ya.',
              '<span class="prompt">&gt;</span> the deck claims a huge market. the pitch claims traction. the email says you must decide now.'],
     'j-k2': ['02 · LO QUE CONTRASTAMOS', '02 · WHAT WE VERIFY'],
     'j-h2': ['Cada afirmación, contra una <em>evidencia</em>.', 'Every claim, against the <em>evidence</em>.'],
-    'j-c1': ['"12 cubiertas firmadas"', '"12 rooftops signed"'],
-    'j-c1s': ['3 verificables · 9 verbales', '3 verifiable · 9 verbal'],
+    'j-c1': ['"12 contratos firmados"', '"12 contracts signed"'],
+    'j-c1s': ['3 documentados · 9 acuerdos verbales', '3 documented · 9 verbal agreements'],
     'j-c2': ['"Mercado de 4.200 M€"', '"€4.2bn market"'],
     'j-c2s': ['dato público', 'public data'],
     'j-c3': ['"Equipo con historial"', '"Team with a track record"'],
@@ -38,7 +38,7 @@
     'j-m1': ['Qué dice la empresa', 'What the company claims'],
     'j-m2': ['Qué se sostiene con evidencia', 'What holds up to evidence'],
     'j-m3': ['Qué no se ha podido verificar', 'What could not be verified'],
-    'j-m3f': ['9 de 12 "firmadas"', '9 of 12 "signed"'],
+    'j-m3f': ['9 de 12 sin documentar', '9 of 12 undocumented'],
     'j-m4': ['Qué preguntas deciden la inversión', 'Which questions decide the investment'],
     'j-n3': ['<span class="prompt">&gt;</span> corto no porque falte trabajo: porque sobra todo lo que no cambia la decisión.',
              '<span class="prompt">&gt;</span> short not because work is missing: because everything that does not change the decision is left out.'],
@@ -49,10 +49,10 @@
     'j-n4': ['<span class="prompt">&gt;</span> un buen análisis no responde todas las preguntas. deja claras cuáles importan.',
              '<span class="prompt">&gt;</span> a good analysis does not answer every question. it makes clear which ones matter.'],
     'j-h5': ['Menos presentaciones. <em>Mejores decisiones</em>.', 'Fewer presentations. <em>Better decisions</em>.'],
-    'j-cta': ['Analizar una oportunidad →', 'Analyze an opportunity →'],
+    'j-cta': ['Explorar el radar →', 'Explore the radar →'],
   };
   if (l === 'en') {
-    document.title = 'For investors · Startup Scouting';
+    document.title = 'Startup Scouting';
     for (const id in T) { const el = document.getElementById(id); if (el) el.innerHTML = T[id][1]; }
     document.getElementById('indexBtn').textContent = 'index';
     document.getElementById('idxClose').textContent = 'close';
@@ -75,7 +75,7 @@
         header.classList.toggle('on', e.target.id !== 's-hero');
         const bg = getComputedStyle(e.target).backgroundColor;
         header.style.setProperty('--hbg', bg.replace('rgb(', 'rgba(').replace(')', ',.92)'));
-        header.classList.toggle('on-light', e.target.classList.contains('sec-03'));
+        header.classList.toggle('on-light', (e.target.classList.contains('sec-03') || e.target.classList.contains('sec-cierre')));
         idxLinks.forEach(a => a.classList.toggle('current', a.dataset[cmKey] === cmNow));
         e.target.querySelectorAll('.reveal').forEach((el, i) => setTimeout(() => el.classList.add('in'), 90 * i));
       }

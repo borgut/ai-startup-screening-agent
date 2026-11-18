@@ -1,0 +1,69 @@
+/* Shared painted threshold. The chapter palettes keep their own identities. */
+.painted-landing { background:#e7e0cc;color:#202a26; }
+.painted-landing .hero-scene { top:0;height:100svh;min-height:760px;animation:none; }
+.painted-landing .hs-in { inset:0;width:100%;height:100%;aspect-ratio:auto;animation:none;mask-image:none;-webkit-mask-image:none; }
+.painted-landing .hs-base { object-fit:cover;object-position:72% 55%;filter:none; }
+.painted-landing .hs-lit,.painted-landing .hs-haze,.painted-landing .hs-glow { display:none; }
+.painted-landing .hs-fade { background:linear-gradient(90deg,rgba(237,228,202,.85),rgba(237,228,202,.42) 42%,transparent 70%); }
+.painted-landing .gateway { max-width:none;padding:28px 5vw 0; }
+.painted-landing .gateway nav,.painted-landing .gateway nav a { color:#263b35; }
+.painted-landing .gateway nav { position:relative;z-index:3; }
+.painted-landing.role-page .gateway section { min-height:max(calc(100svh - 54px),706px);padding:50px 0 110px;justify-content:center; }
+.painted-landing .gateway section > p:first-child { color:#42594b;font-family:var(--j-mono,monospace);letter-spacing:.12em; }
+.painted-landing.role-page h1 { max-width:13ch;font-size:clamp(60px,6.3vw,100px);line-height:.98;text-shadow:none;margin:24px 0;letter-spacing:-.05em; }
+.painted-landing.role-page .role-copy { max-width:42ch;font-size:18px;line-height:1.6;color:#273b34;text-shadow:none; }
+.painted-landing .role-cta { background:#2440d6;color:#fffaf0;margin-top:24px; }
+.painted-landing .role-cta:hover { background:#1b30ac; }
+.painted-landing .scrollhint { color:#f4efe6;bottom:33px;opacity:1; }
+.painted-landing[data-role="investor"] .hero-scene:after { content:"";position:absolute;inset:auto 0 -1px;height:72px;background:#2440d6;clip-path:polygon(0 66%,8% 48%,18% 64%,28% 42%,40% 61%,52% 39%,65% 57%,78% 35%,89% 51%,100% 31%,100% 100%,0 100%); }
+.painted-landing .sec-cierre { background:#e7e0cc;color:#233b34; }
+.painted-landing .sec-cierre h1 em { color:#2440d6; }
+.painted-landing .sec-cierre .cta-line a { background:#2440d6;color:#f4efe6;animation:none; }
+/* Gateway and founder use the same paper, sea and ink rather than a black detour. */
+.painted-landing:has(.gate-choice) { background:#e7e0cc url('/hero/faro-pintura.webp') center/cover fixed; }
+.painted-landing .gate-choice { min-height:100svh;background:linear-gradient(90deg,rgba(237,228,202,.94),rgba(237,228,202,.8) 50%,rgba(237,228,202,.18)); }
+.painted-landing .gate-choice h1 { max-width:13ch;font-size:clamp(64px,7vw,110px); }
+.painted-landing .gate-choice section { min-height:calc(100svh - 80px);padding-bottom:60px; }
+.painted-landing .gate-list { max-width:850px;border-color:rgba(35,59,52,.4); }
+.painted-landing .gate-list a { color:#233b34;border-color:rgba(35,59,52,.4); }
+.painted-landing .gate-list small,.painted-landing .gate-list span { color:#2440d6; }
+.painted-landing .gate-list a:hover b { color:#2440d6; }
+.painted-landing .gateway nav button { color:#536358; }
+.painted-landing .gateway nav button.active { color:#2440d6; }
+.painted-landing[data-role="founder"] .hero-scene { height:900px; }
+.painted-landing[data-role="founder"] .hs-fade { background:linear-gradient(90deg,rgba(237,228,202,.92),rgba(237,228,202,.7) 45%,transparent 75%),linear-gradient(0deg,#e7e0cc,transparent 35%); }
+.painted-landing[data-role="founder"] .role-tools { margin-top:110px; }
+.painted-landing .role-tools a,.painted-landing .role-fit p,.painted-landing .role-fit p b { color:#233b34;border-color:rgba(35,59,52,.3); }
+.painted-landing .more-context summary { background:#e7e0cc;color:#233b34;border-color:#7e8c77; }
+.painted-landing .fs-form label,.painted-landing .fs-form input[type=file] { color:#233b34; }
+.painted-landing .fs-form input[type=text],.painted-landing .fs-form input[type=url],.painted-landing .fs-form textarea { background:#f5efdf;color:#233b34;border-color:#7e8c77; }
+@media(max-width:760px) {
+ .painted-landing .gateway { padding:23px 22px 0; }
+ .painted-landing.role-page .gateway section { padding:48px 0 115px;min-height:calc(100svh - 38px);justify-content:flex-start; }
+ .painted-landing.role-page h1 { font-size:clamp(47px,12.8vw,68px);max-width:12ch;line-height:1; }
+ .painted-landing.role-page .role-copy { font-size:16px;max-width:31ch; }
+ .painted-landing .hero-scene { min-height:820px;height:calc(100svh + 20px); }
+ .painted-landing .hs-base { object-position:74% bottom; }
+ .painted-landing .hs-fade { background:linear-gradient(180deg,rgba(237,228,202,.96),rgba(237,228,202,.87) 42%,rgba(237,228,202,.12) 70%,transparent); }
+ .painted-landing .scrollhint { bottom:25px; }
+ .painted-landing .gate-choice { padding:23px 22px 0;background:rgba(237,228,202,.83); }
+ .painted-landing .gate-choice h1 { font-size:55px; }
+ .painted-landing .gate-list b { font-size:30px; }
+ .painted-landing[data-role="founder"] .hero-scene { height:1000px; }
+ .painted-landing[data-role="founder"] .hs-fade { background:linear-gradient(180deg,rgba(237,228,202,.97),rgba(237,228,202,.85) 45%,rgba(237,228,202,.1) 70%,#e7e0cc 100%); }
+ .painted-landing[data-role="founder"] .role-tools { margin-top:310px; }
+}
+/* Keep the tower inside the narrow crop and the sea edge fluid. */
+.painted-landing .gateway nav > a:last-child { text-decoration:none;background:rgba(237,228,202,.78);padding:6px 9px; }
+.painted-landing .gateway nav > a:first-child:last-child { background:none;padding:0; }
+.painted-landing[data-role="investor"] .hero-scene:after { clip-path:ellipse(80% 66% at 50% 100%); }
+@media(max-width:760px) { .painted-landing .hs-base { object-position:88% bottom; } }
+/* A visible landmark in the mobile composition, below the reading area. */
+@media(max-width:760px) { .painted-landing .hs-base { object-position:88% bottom; } }
+/* The light remains the thread of the journey, not a flashing tower. */
+.painted-landing .hs-haze { display:block;inset:0;background:rgba(255,241,188,.3);filter:blur(4px);mask-image:none;-webkit-mask-image:none;clip-path:polygon(80% 33%,0 25%,0 37%);transform-origin:80% 33%;animation:hsB 8s linear infinite;mix-blend-mode:screen; }
+@media(max-width:760px) { .painted-landing .hs-haze { clip-path:polygon(49% 33%,0 28%,0 38%);transform-origin:49% 33%;opacity:.4; } }
+@media(prefers-reduced-motion:reduce) { .painted-landing .hs-haze { animation:none;opacity:.2; } }
+.painted-landing .role-status { color:#273b34;font-size:12px;line-height:1.6;max-width:43ch;margin:16px 0 0;padding-left:12px;border-left:2px solid #2440d6; }
+.painted-landing .fs-form :disabled { opacity:.5;cursor:not-allowed; }
+.painted-landing .fs-form .form-note { color:#233b34;line-height:1.6; }

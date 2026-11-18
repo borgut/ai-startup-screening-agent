@@ -3,6 +3,7 @@
   const I18N = {
     es: {
       h1: 'Lo que se mueve en el ecosistema, <em>antes de la prensa</em>.',
+      new_analysis_state: 'Los análisis de startups nuevas están en pruebas y todavía no están disponibles. Puedes explorar el radar y los memos de ejemplo.',
       lede: 'Radar de startups en fase temprana construido solo con señales públicas: primeros fichajes tech, lanzamientos nuevos y rondas pre-seed/seed. Cada señal lleva fecha y fuente; cuando la señal lo merece, un screen de una página con veredicto.',
       que_veredicto: '¿Qué significa el veredicto?',
       vl_inv: '<span class="vdot"></span> <strong>INVESTIGATE</strong>: merece 30 minutos de un inversor',
@@ -124,6 +125,7 @@
     },
     en: {
       h1: 'What moves in the ecosystem, <em>before the press</em>.',
+      new_analysis_state: 'New startup analyses are still in testing and are not available yet. You can explore the radar and example memos.',
       lede: 'A radar of early-stage startups built only from public signals: first tech hires, new launches and pre-seed/seed rounds. Every signal carries a date and a source; when a signal deserves it, a one-page screen with a verdict.',
       que_veredicto: 'What does the verdict mean?',
       vl_inv: '<span class="vdot"></span> <strong>INVESTIGATE</strong>: worth 30 minutes of an investor',

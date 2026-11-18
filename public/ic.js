@@ -115,7 +115,7 @@
       const data = await res.json();
       if (!res.ok || !data.memo) throw new Error(data.error || 'Memo not found');
       box.innerHTML = render(data.memo, lang);
-      document.title = 'IC: ' + data.memo.nombre + ' · Startup Scouting';
+      document.title = 'Startup Scouting';
     } catch (e) { box.innerHTML = '<p class="form-note error ic-loading">' + esc(e.message || e) + '</p>'; }
   }
   load();

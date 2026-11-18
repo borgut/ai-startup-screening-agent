@@ -232,7 +232,7 @@
   function render() {
     const x = t();
     document.documentElement.lang = lang;
-    document.title = 'Scouting';
+    document.title = 'Startup Scouting';
     $('fi-back').textContent = x.back; $('fi-back').href = '/raising?lang=' + lang;
     $('fi-prev').textContent = x.prev;
     $('fi-es').classList.toggle('active', lang === 'es');
