@@ -51,3 +51,5 @@ body.atlas:not(.painted-landing)::before{opacity:.025;}
 /* Two distinct painted controls: boat to choose again, lighthouse to the cover. */
 .role-page .gateway>nav>a{border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;background:transparent!important;}
 .role-page .gateway>nav>a:not(#role-back) .art-nav-image{width:45px;height:52px;}
+/* Logos are dark-on-cream everywhere; keep each brand's own colours. */
+.ed-logo,.pg-logo,.ic-logo,.hero-logo,body.ic-page .ic-logo,body.theme-poster .pg-logo,body.theme-poster .ed-logo{filter:none!important;opacity:1!important;}
