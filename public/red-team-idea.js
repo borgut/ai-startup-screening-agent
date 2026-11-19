@@ -174,6 +174,9 @@
     $('k-l-etapa').textContent = t.lEtapa;
     $('k-l-rival').textContent = t.lRival;
     $('b-go').textContent = t.go;
+    // Paused: the engine is not available, so nothing is sent from this form.
+    ['f-desc','f-url','f-sector','f-etapa','f-rival','b-go'].forEach(function (id) { var e = $(id); if (e) e.disabled = true; });
+    $('err').textContent = lang === 'en' ? 'Idea test: in testing, not available yet. Nothing is sent or analysed.' : 'Prueba de idea: en pruebas, todavía no disponible. No se envía ni se analiza nada.';
     $('k-h-claims').innerHTML = t.hClaims;
     $('k-n-claims').textContent = t.nClaims;
     $('k-h-muertos').innerHTML = t.hMuertos;
@@ -255,6 +258,7 @@
   }
 
   function go() {
+    return; // paused: no call to the analysis engine
     var t = T[lang];
     $('err').textContent = '';
     $('paused').classList.add('hidden');
