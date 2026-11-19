@@ -89,3 +89,7 @@
 }
 
 .painted-landing .painted-beam { transform:none; }
+
+/* Keep the lamp on through the whole sweep; its light is below the reading area. */
+@keyframes paintedSweep{0%,100%{clip-path:polygon(var(--lamp-x,80%) 33%,0 24%,0 31%);opacity:.45;}50%{clip-path:polygon(var(--lamp-x,80%) 33%,0 36%,0 45%);opacity:.9;}}
+@media(max-width:760px){.painted-landing[data-role="founder"] .role-tools{margin-top:340px;}.painted-landing[data-role="founder"] .hero-scene .hs-in{top:var(--mobile-art-top,550px);}.painted-landing .painted-beam{filter:blur(1.5px);}}
