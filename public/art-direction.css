@@ -48,3 +48,6 @@ body.atlas:not(.painted-landing)::before{opacity:.025;}
 .art-banner-object{width:38px;height:38px;object-fit:contain;mix-blend-mode:multiply;}
 .art-chapter-object{width:58px;height:58px;object-fit:contain;mix-blend-mode:multiply;}
 .atlas .art-title-object{margin-left:18px;}
+/* Two distinct painted controls: boat to choose again, lighthouse to the cover. */
+.role-page .gateway>nav>a{border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;background:transparent!important;}
+.role-page .gateway>nav>a:not(#role-back) .art-nav-image{width:45px;height:52px;}
