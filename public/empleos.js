@@ -16,7 +16,7 @@
       foot: 'Las vacantes se leen en vivo de los portales públicos de cada empresa (Greenhouse, Lever y Get on Board) y se actualizan cada pocas horas. Los boards de portafolio enlazan a las páginas oficiales de cada fondo.',
       searchPh: 'Filtrar por cargo, empresa o ciudad…',
       hCo: 'Empresa', hTi: 'Vacante', hLo: 'Localización',
-      allCo: 'Todas las empresas', allLo: 'Todas las ubicaciones', noLo: 'Sin ubicación', reset: 'Restablecer filtros', offers: 'ofertas', offer: 'Oferta', shown: 'de',
+      unc: 'Ubicación sin confirmar', allCo: 'Todas las empresas', allLo: 'Todas las ubicaciones', noLo: 'Sin ubicación', reset: 'Restablecer filtros', offers: 'ofertas', offer: 'Oferta', shown: 'de',
       of: 'vacantes',
       failed: 'Fuentes que no respondieron ahora: '
     },
@@ -33,7 +33,7 @@
       foot: 'Openings are read live from each company\u2019s public portal (Greenhouse, Lever, Get on Board and nothiring) and refresh every few hours. Portfolio boards link to each fund\u2019s official page.',
       searchPh: 'Filter by role, company or city…',
       hCo: 'Company', hTi: 'Opening', hLo: 'Location',
-      allCo: 'All companies', allLo: 'All locations', noLo: 'No location', reset: 'Reset filters', offers: 'postings', offer: 'Posting', shown: 'of',
+      unc: 'Location unconfirmed', allCo: 'All companies', allLo: 'All locations', noLo: 'No location', reset: 'Reset filters', offers: 'postings', offer: 'Posting', shown: 'of',
       of: 'openings',
       failed: 'Sources not responding right now: '
     }
@@ -62,7 +62,7 @@
   var region = 'es';
   var jobsByRegion = {};
   var filter = '', fCo = '', fLo = '';
-  function city(j) { return (j.location || '').split('\u00b7')[0].trim(); }
+  function city(j) { if (j.loc_unconfirmed) return '__unc'; return (j.location || '').split('\u00b7')[0].trim(); }
 
   function $(id) { return document.getElementById(id); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -129,7 +129,8 @@
     var cos = {}, los = {};
     all.forEach(function (j) { cos[j.company] = (cos[j.company] || 0) + 1; var c = city(j); los[c] = (los[c] || 0) + 1; });
     var coList = Object.keys(cos).sort(function (a, b) { return a.localeCompare(b); }).map(function (k) { return [k, k + ' (' + cos[k] + ')']; });
-    var loList = Object.keys(los).filter(Boolean).sort(function (a, b) { return a.localeCompare(b); }).map(function (k) { return [k, k + ' (' + los[k] + ')']; });
+    var loList = Object.keys(los).filter(function (k) { return k && k !== '__unc'; }).sort(function (a, b) { return a.localeCompare(b); }).map(function (k) { return [k, k + ' (' + los[k] + ')']; });
+    if (los['__unc']) loList.push(['__unc', t.unc + ' (' + los['__unc'] + ')']);
     if (los['']) loList.push(['__none', t.noLo + ' (' + los[''] + ')']);
     fillSelect($('f-co'), t.allCo, coList, fCo);
     fillSelect($('f-lo'), t.allLo, loList, fLo);
@@ -139,7 +140,7 @@
       if (fCo && j.company !== fCo) return false;
       if (fLo && (fLo === '__none' ? city(j) !== '' : city(j) !== fLo)) return false;
       if (!filter) return true;
-      var hay = ((j.title || '') + ' ' + (j.company || '') + ' ' + (j.location || '')).toLowerCase();
+      var hay = ((j.title || '') + ' ' + (j.company || '') + ' ' + (j.loc_unconfirmed ? '' : (j.location || ''))).toLowerCase();
       return hay.indexOf(filter) !== -1;
     });
     var cnt = list.length + (list.length !== all.length ? ' ' + t.shown + ' ' + all.length : '') + ' ' + t.of;
@@ -159,7 +160,7 @@
         ti.appendChild(vs);
       } else ti.textContent = j.title || '';
       a.appendChild(ti);
-      a.appendChild(el('span', 'lo', j.location || ''));
+      a.appendChild(el('span', 'lo', j.loc_unconfirmed ? t.unc : (j.location || '')));
       box.appendChild(a);
     });
   }
