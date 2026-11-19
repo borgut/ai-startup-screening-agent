@@ -90,5 +90,5 @@ body.boat-preview { background:#e7e0cc; }
 
 @media(min-width:761px){.approach-top a{color:#233b34;text-shadow:none;}}
 /* The animated light is pinned to the lamp in painting coordinates at every crop. */
-.approach-coast .coast-light{--lamp-x:79.8%;--lamp-y:31.2%;animation-name:coast-light-sweep;}
-@media(max-width:760px){.approach-coast .coast-light{--lamp-x:79.8%;--lamp-y:31.2%;animation-name:coast-light-sweep;}}
+.approach-coast .coast-light{--lamp-x:79.5%;--lamp-y:30.8%;animation-name:coast-light-sweep;}
+@media(max-width:760px){.approach-coast .coast-light{--lamp-x:79.5%;--lamp-y:30.8%;animation-name:coast-light-sweep;}}
