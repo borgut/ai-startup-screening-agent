@@ -146,6 +146,7 @@
     $('count').textContent = cnt + (data.failed_sources && data.failed_sources.length ? ' \u00b7 ' + t.failed + data.failed_sources.join(', ') : '');
     if (!list.length) { box.appendChild(el('p', 'loading', t.noJobs)); return; }
     list.slice(0, 500).forEach(function (j) {
+      if (j.tr) { var pick = j.tr.filter(function (x) { return x.lang === lang; })[0] || j.tr[0]; j = Object.assign({}, j, { title: pick.title, url: pick.url }); }
       var multi = j.variants && j.variants.length > 1;
       var a = el(multi ? 'div' : 'a', 'job');
       if (!multi) { a.href = j.url; a.target = '_blank'; a.rel = 'noopener'; }
