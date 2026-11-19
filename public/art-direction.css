@@ -65,3 +65,6 @@ body.atlas:not(.painted-landing)::before{opacity:.025;}
 @media(max-width:760px){.art-index .art-index-groups{grid-template-columns:1fr;gap:4px;}.art-index .art-index-items a{min-height:64px!important;}.art-index .art-index-head-link{font-size:22px!important;min-height:76px!important;}.art-index .art-index-head-link .art-index-object{width:52px;height:52px;}.art-index{overflow-y:auto;}}
 @media(min-width:761px){.art-index .art-index-items{grid-template-columns:1fr;}}
 @media(min-width:761px){.art-index .art-index-groups{grid-template-columns:1fr 2fr;}.art-index .art-index-investors .art-index-items{grid-template-columns:1fr 1fr;column-gap:36px;}.art-index .art-index-object{min-width:55px;}}
+/* contrast + shape fixes on red-team and regulatory pages */
+.quiet-nav>a{color:#233b34!important;opacity:1!important}.quiet-nav .lang-btn{color:#4f6459;opacity:1}.quiet-nav .lang-btn.active{color:#233b34}
+.rw-page .art-index-trigger,.rw-page .memo-topbar .art-index-trigger{border-radius:30px!important;background:#f4b6b2!important;border:0!important}
