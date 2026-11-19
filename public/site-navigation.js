@@ -8,7 +8,7 @@
   };
   const founderRoutes = ['/raising', '/investor-map', '/valoracion', '/red-team-idea', '/empleos'];
   const isFounder = founderRoutes.includes(location.pathname);
-  const cover = isFounder ? '/raising' : '/for-investors';
+  const cover = location.pathname === '/' ? '/' : (isFounder ? '/raising' : '/for-investors');
   function carry(anchor) {
     const raw = anchor.getAttribute('href');
     if (!raw || raw.startsWith('#') || anchor.hasAttribute('download')) return;
