@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const lang=()=>document.documentElement.lang==='en';
-const asset=id=>'/art/'+id+'.webp';
+const asset=id=>'/art/'+id+'.webp?v=2';
 function object(id,cls=''){const i=document.createElement('img');i.src=asset(id);i.alt='';i.setAttribute('aria-hidden','true');i.className=cls;i.decoding='async';return i;}
 function objectFor(path){if(path==='/')return'boat';if(/valoracion|regulatory/.test(path))return'evidence';if(/raising|founder|red-team-idea|next-10|empleos/.test(path))return'boat';if(/scouting|dealflow|regulatory/.test(path))return'signal';if(/memo|ic\/|brief|red-team|would-you-invest|como-esta-hecho/.test(path))return'evidence';return'compass';}
 const pageObject=objectFor(location.pathname);document.body.dataset.artObject=pageObject;
