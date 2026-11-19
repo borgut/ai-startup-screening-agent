@@ -2,7 +2,7 @@ body.boat-preview { background:#e7e0cc; }
 .approach { height:240svh;position:relative; }
 .approach-frame { position:sticky;top:0;height:100svh;overflow:hidden;background:#e7e0cc;isolation:isolate; }
 .approach-coast,.approach-lighthouse,.approach-wash { position:absolute;inset:0; }
-.approach-coast { background:url('/hero/approach-unified.webp') 65% center/cover;transform:scale(var(--coast-scale,1)); }
+.approach-coast { background:url('/hero/sunny-coast.webp') 65% center/cover;transform:scale(var(--coast-scale,1)); }
 .approach-lighthouse { background:url('/hero/faro-pintura.webp') 74% center/cover;opacity:var(--faro-opacity,0);transform:scale(var(--faro-scale,1.07)); }
 .approach-wash { background:linear-gradient(90deg,rgba(237,228,202,.6),transparent 65%);pointer-events:none; }
 .approach-top { position:absolute;top:28px;left:5vw;right:5vw;display:flex;justify-content:space-between;color:#233b34;font:12px Arial,sans-serif;z-index:3; }
@@ -68,8 +68,8 @@ body.boat-preview { background:#e7e0cc; }
 @media(max-width:760px){.approach-coast::after{mask-position:73% center;-webkit-mask-position:73% center;}.approach-lighthouse::after{mask-position:77% center;-webkit-mask-position:77% center;}}
 
 /* A single new coastal painting: open sea left, lighthouse on the headland right. */
-.approach-coast{background-image:url('/hero/approach-unified.webp');background-position:74% center;}
-.approach-coast::after{mask-image:url('/hero/sea-mask-unified.svg');-webkit-mask-image:url('/hero/sea-mask-unified.svg');mask-position:74% center;-webkit-mask-position:74% center;}
+.approach-coast{background-image:url('/hero/sunny-coast.webp');background-position:74% center;}
+.approach-coast::after{mask-image:url('/hero/sea-mask-sunny.svg');-webkit-mask-image:url('/hero/sea-mask-sunny.svg');mask-position:74% center;-webkit-mask-position:74% center;}
 .approach-coast .coast-light{clip-path:polygon(var(--lamp-x) var(--lamp-y),0 calc(var(--lamp-y) - 4%),0 calc(var(--lamp-y) + 5%));}
 @media(max-width:760px){
  .approach-coast{background-size:auto 66%;background-position:77% bottom;background-repeat:no-repeat;background-color:#e7e0cc;}
@@ -85,5 +85,10 @@ body.boat-preview { background:#e7e0cc; }
 
 /* Stay in the same place as the boat approaches. The shore never morphs. */
 .approach-lighthouse{display:none;}
-.boat-preview .gate-choice{background:linear-gradient(90deg,rgba(237,228,202,.97),rgba(237,228,202,.8) 60%,rgba(237,228,202,.3)),url('/hero/approach-unified.webp') 74% center/cover;}
+.boat-preview .gate-choice{background:linear-gradient(90deg,rgba(237,228,202,.97),rgba(237,228,202,.8) 60%,rgba(237,228,202,.3)),url('/hero/sunny-coast.webp') 74% center/cover;}
 @media(min-width:761px){.approach-top a{color:#fff4d5;text-shadow:0 1px 3px #182e2b;}}
+
+@media(min-width:761px){.approach-top a{color:#233b34;text-shadow:none;}}
+/* The animated light is pinned to the lamp in painting coordinates at every crop. */
+.approach-coast .coast-light{--lamp-x:79.8%;--lamp-y:31.2%;animation-name:coast-light-sweep;}
+@media(max-width:760px){.approach-coast .coast-light{--lamp-x:79.8%;--lamp-y:31.2%;animation-name:coast-light-sweep;}}

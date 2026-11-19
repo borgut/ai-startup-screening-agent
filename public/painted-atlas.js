@@ -35,7 +35,7 @@
  window.addEventListener('pageshow',()=>document.body.classList.remove('atlas-leaving'));
  const translateAtlas=()=>{
   en=document.documentElement.lang==='en';
-  const banner=document.querySelector('.atlas-banner');if(banner)banner.lastChild.textContent=en?record[2]:record[1];
+  const banner=document.querySelector('.atlas-banner');if(banner){const label=[...banner.childNodes].find(n=>n.nodeType===Node.TEXT_NODE);if(label)label.textContent=en?record[2]:record[1];}
   summary.textContent=en?'The atlas. Every section.':'El atlas. Todas las secciones.';
   [...grid.children].forEach((a,i)=>{a.lastChild.textContent=en?routes[i][2]:routes[i][1];a.href=routes[i][0]+'?lang='+(en?'en':'es');});
  };

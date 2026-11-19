@@ -1,0 +1,50 @@
+/* Scouting is a studio of ideas, not a repeating maritime wallpaper. */
+:root{--art-paper:#f5efdf;--art-ink:#233b34;--art-cobalt:#2440d6;--art-coral:#ed7046;}
+body.atlas:not(.painted-landing){background:var(--art-paper);}
+body.atlas:not(.painted-landing)::before{opacity:.025;}
+.atlas .atlas-banner{gap:10px;min-height:76px;padding:12px 0;border-bottom:1px solid #233b3425;margin-bottom:22px;letter-spacing:.09em;}
+.atlas .atlas-banner>.atlas-symbol{width:25px;height:25px;}
+.art-index-trigger{border:0;border-radius:30px;background:#f4b6b2;color:#233b34;padding:11px 22px;font:500 13px Arial,sans-serif;letter-spacing:0;cursor:pointer;white-space:nowrap;}
+.atlas-banner .art-index-trigger{margin-left:auto;}.gateway>nav .art-index-trigger{margin-left:18px;}
+.approach-top .art-index-trigger{order:1;margin-left:auto;margin-right:26px;}.approach-top>a{order:2;}
+.art-index-trigger:hover{background:#f6c8bd;}.art-index-trigger:focus-visible,.art-index a:focus-visible,.art-nav:focus-visible{outline:2px solid #2440d6;outline-offset:4px;}
+.art-index{width:min(1120px,calc(100% - 48px));max-height:calc(100svh - 48px);padding:32px 40px 40px;border:0;background:#f5efdf;color:#233b34;box-shadow:0 28px 100px #17261e55;}
+.art-index::backdrop{background:#152f395c;backdrop-filter:blur(7px);}.art-index-open{overflow:hidden;}
+.art-index-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;border-bottom:1px solid #233b3444;padding-bottom:24px;}
+.art-index h2{font:400 clamp(30px,4vw,58px)/1 Georgia,serif;letter-spacing:-.045em;margin:0;}
+.art-index-close{border:1px solid #233b3455;border-radius:30px;padding:10px 20px;background:transparent;color:#233b34;cursor:pointer;}
+.art-index .atlas-directory-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 26px;margin:12px 0 0;}
+.art-index .atlas-directory-grid a{padding:10px 0;font:15px/1.2 Arial,sans-serif;min-height:78px;border-color:#233b3428;gap:12px;}
+.art-index-object{width:55px;height:55px;object-fit:contain;mix-blend-mode:multiply;flex:none;}
+.art-title{position:relative;padding-right:30%;min-height:220px;max-width:none!important;font-size:clamp(44px,5.4vw,82px)!important;}
+.art-title-object{position:absolute;right:0;top:0;width:26%;height:220px;object-fit:contain;mix-blend-mode:multiply;transform:rotate(5deg);pointer-events:none;}
+.art-nav{display:inline-flex!important;gap:7px;align-items:center;text-decoration:none!important;background:none!important;}
+.art-nav-image{width:42px;height:42px;object-fit:contain;mix-blend-mode:multiply;flex:none;transition:transform .25s;}
+.art-nav:hover .art-nav-image{transform:rotate(-7deg) translateY(-2px);}
+.atlas .role-cta{background:#2440d6!important;color:#fff8e9;}.role-cta .art-nav-image{mix-blend-mode:normal;border-radius:50%;width:36px;height:36px;}
+.atlas .ss-cross-navigation{background:#f5efdf;min-height:0;padding:30px 5vw;border-top:1px solid #233b3422;gap:24px;}
+.atlas .ss-cross-navigation a{font-size:12px;}.atlas .ss-cross-navigation .art-nav-image{width:45px;height:45px;}
+.atlas section.screen{background:#f5efdf!important;}.atlas section.screen::before{background:none!important;}.atlas section.screen::after{display:none;}
+.atlas .sec-01{background:#dce9eb!important;}.atlas .sec-02{background:#f3dcca!important;}.atlas .sec-03{background:#e9e8cd!important;}.atlas .sec-04{background:#dce7d9!important;}
+.atlas #indexOverlay{background:#f5efdf;}.atlas .chapter-mark{background:#f5efdf!important;}
+.art-choice-object{width:80px;height:80px;object-fit:contain;mix-blend-mode:multiply;flex:none;}
+.boat-preview .gate-list a{gap:15px;padding:14px 0;}.boat-preview .gate-list small{display:none;}.boat-preview .gate-list b{font-size:clamp(28px,3.5vw,48px);}
+.boat-preview .gate-choice #gate-title{font-size:clamp(52px,6vw,88px);margin-bottom:36px;}
+@media(max-width:760px){
+ .art-index-trigger{padding:9px 15px;font-size:12px;}.approach-top .art-index-trigger{margin-right:18px;}.approach-top{align-items:center;}.approach-top>span{font-size:11px;}
+ .gateway>nav .art-index-trigger{margin-left:6px;}.gateway>nav{gap:10px;flex-wrap:wrap;}
+ .art-index{width:100%;max-width:100%;height:100svh;max-height:100svh;margin:0;padding:24px 20px;}
+ .art-index-head{padding-bottom:20px;align-items:center;}.art-index h2{max-width:7ch;font-size:36px;}.art-index .atlas-directory-grid{grid-template-columns:1fr 1fr;gap:0 18px;}
+ .art-index .atlas-directory-grid a{font-size:12px;min-height:76px;gap:7px;}.art-index-object{width:42px;height:48px;}
+ .art-title{padding-right:0;min-height:0;max-width:none!important;font-size:clamp(42px,11vw,62px)!important;}.art-title-object{position:relative;display:block;margin:22px 0 2px auto;width:132px;height:132px;top:auto;right:auto;}
+ .art-nav-image{width:34px;height:34px;}.atlas .ss-cross-navigation{padding:22px;gap:10px 22px;}.art-choice-object{width:65px;height:65px;}
+ .boat-preview .gate-choice #gate-title{font-size:52px;}.boat-preview .gate-list b{font-size:30px;}
+}
+@media(prefers-reduced-motion:reduce){.art-nav-image{transition:none;}.art-nav:hover .art-nav-image{transform:none;}}
+/* Content is present immediately, even on a cold arrival. */
+.atlas.role-page .gateway section>*,.atlas.role-page .gateway{animation:none!important;opacity:1!important;transform:none!important;filter:none!important;}
+.atlas .gateway nav .art-index-trigger{background:#f4b6b2;color:#233b34;border:0;padding:10px 18px;}
+@media(max-width:760px){.role-page .gateway>nav{flex-wrap:nowrap;gap:12px;}.role-page .gateway nav .art-nav:nth-of-type(2){font-size:0;gap:0;margin-left:auto;}.role-page .gateway nav .art-index-trigger{margin:0;}}
+.art-banner-object{width:38px;height:38px;object-fit:contain;mix-blend-mode:multiply;}
+.art-chapter-object{width:58px;height:58px;object-fit:contain;mix-blend-mode:multiply;}
+.atlas .art-title-object{margin-left:18px;}

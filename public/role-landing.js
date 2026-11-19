@@ -74,7 +74,7 @@
     const sc = document.createElement('div');
     sc.className = 'hero-scene ' + (founder ? 'hs-fou' : 'hs-inv');
     sc.setAttribute('aria-hidden', 'true');
-    const src = '/hero/faro-pintura.webp';
+    const src = '/hero/sunny-coast.webp';
     sc.innerHTML = '<div class="hs-in"><img class="hs-base" src="' + src + '" alt=""><img class="hs-lit" src="' + src + '" alt=""><i class="painted-beam"></i><i class="hs-glow"></i></div><i class="hs-fade"></i>';
     document.body.insertBefore(sc, document.body.firstChild);
     const cover = document.querySelector('.gateway');
