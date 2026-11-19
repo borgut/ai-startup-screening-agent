@@ -37,7 +37,7 @@
   en=document.documentElement.lang==='en';
   const banner=document.querySelector('.atlas-banner');if(banner){const label=[...banner.childNodes].find(n=>n.nodeType===Node.TEXT_NODE);if(label)label.textContent=en?record[2]:record[1];}
   summary.textContent=en?'The atlas. Every section.':'El atlas. Todas las secciones.';
-  [...grid.children].forEach((a,i)=>{a.lastChild.textContent=en?routes[i][2]:routes[i][1];a.href=routes[i][0]+'?lang='+(en?'en':'es');});
+  grid.querySelectorAll('a').forEach(a=>{const r=routes.find(r=>r[0]===new URL(a.href,location.origin).pathname);if(r){a.lastChild.textContent=en?r[2]:r[1];a.href=r[0]+'?lang='+(en?'en':'es');}});
  };
  new MutationObserver(translateAtlas).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  const arrival=document.querySelector('main,.wrap,.gateway');if(arrival)arrival.classList.add('atlas-arrive');

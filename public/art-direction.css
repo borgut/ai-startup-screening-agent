@@ -53,3 +53,15 @@ body.atlas:not(.painted-landing)::before{opacity:.025;}
 .role-page .gateway>nav>a:not(#role-back) .art-nav-image{width:45px;height:52px;}
 /* Logos are dark-on-cream everywhere; keep each brand's own colours. */
 .ed-logo,.pg-logo,.ic-logo,.hero-logo,body.ic-page .ic-logo,body.theme-poster .pg-logo,body.theme-poster .ed-logo{filter:none!important;opacity:1!important;}
+/* Index in two workstreams: Founders and Investors, tools under each. */
+.art-index .art-index-groups{display:grid!important;grid-template-columns:1fr 1fr;gap:6px 48px;margin:10px 0 0;align-items:start;}
+.art-index .art-index-groups>.art-index-home{grid-column:1/-1;border-bottom:1px solid #233b3428;}
+.art-index .art-index-group{min-width:0;}
+.art-index .art-index-head-link{font:400 26px/1.1 Georgia,serif!important;min-height:88px!important;border-bottom:2px solid #233b34!important;}
+.art-index .art-index-head-link .art-index-object{width:64px;height:64px;}
+.art-index .art-index-items{display:grid;grid-template-columns:1fr;}
+.art-index .art-index-items a{border-bottom:1px solid #233b3428;}
+.art-index .atlas-directory-grid.art-index-groups a{display:flex;align-items:center;text-decoration:none;color:#233b34;}
+@media(max-width:760px){.art-index .art-index-groups{grid-template-columns:1fr;gap:4px;}.art-index .art-index-items a{min-height:64px!important;}.art-index .art-index-head-link{font-size:22px!important;min-height:76px!important;}.art-index .art-index-head-link .art-index-object{width:52px;height:52px;}.art-index{overflow-y:auto;}}
+@media(min-width:761px){.art-index .art-index-items{grid-template-columns:1fr;}}
+@media(min-width:761px){.art-index .art-index-groups{grid-template-columns:1fr 2fr;}.art-index .art-index-investors .art-index-items{grid-template-columns:1fr 1fr;column-gap:36px;}.art-index .art-index-object{min-width:55px;}}

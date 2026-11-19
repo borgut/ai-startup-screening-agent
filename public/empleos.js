@@ -15,6 +15,8 @@
       nBoards: 'Los fondos agregan las vacantes de todas sus startups en un solo sitio. Es el formato de a16z jobs, aplicado a nuestro ecosistema.',
       foot: 'Las vacantes se leen en vivo de los portales públicos de cada empresa (Greenhouse, Lever y Get on Board) y se actualizan cada pocas horas. Los boards de portafolio enlazan a las páginas oficiales de cada fondo.',
       searchPh: 'Filtrar por cargo, empresa o ciudad…',
+      hCo: 'Empresa', hTi: 'Vacante', hLo: 'Localización',
+      allCo: 'Todas las empresas', allLo: 'Todas las ubicaciones', noLo: 'Sin ubicación', reset: 'Restablecer filtros', offers: 'ofertas', offer: 'Oferta', shown: 'de',
       of: 'vacantes',
       failed: 'Fuentes que no respondieron ahora: '
     },
@@ -30,6 +32,8 @@
       nBoards: 'Funds aggregate openings from all their startups in one place. It is the a16z jobs format, applied to our ecosystem.',
       foot: 'Openings are read live from each company\u2019s public portal (Greenhouse, Lever, Get on Board and nothiring) and refresh every few hours. Portfolio boards link to each fund\u2019s official page.',
       searchPh: 'Filter by role, company or city…',
+      hCo: 'Company', hTi: 'Opening', hLo: 'Location',
+      allCo: 'All companies', allLo: 'All locations', noLo: 'No location', reset: 'Reset filters', offers: 'postings', offer: 'Posting', shown: 'of',
       of: 'openings',
       failed: 'Sources not responding right now: '
     }
@@ -57,7 +61,8 @@
   var lang = (new URLSearchParams(location.search)).get('lang') === 'en' ? 'en' : 'es';
   var region = 'es';
   var jobsByRegion = {};
-  var filter = '';
+  var filter = '', fCo = '', fLo = '';
+  function city(j) { return (j.location || '').split('\u00b7')[0].trim(); }
 
   function $(id) { return document.getElementById(id); }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -105,23 +110,54 @@
     });
   }
 
+  function fillSelect(sel, all, values, current) {
+    sel.innerHTML = '';
+    var o = el('option', null, all); o.value = ''; sel.appendChild(o);
+    values.forEach(function (v) { var x = el('option', null, v[1]); x.value = v[0]; sel.appendChild(x); });
+    sel.value = current;
+    if (sel.value !== current) sel.value = '';
+  }
+
   function paintJobs() {
     var t = T[lang];
     var data = jobsByRegion[region];
     var box = $('jobs'); box.innerHTML = '';
+    $('h-co').textContent = t.hCo; $('h-ti').textContent = t.hTi; $('h-lo').textContent = t.hLo;
+    $('f-co-l').textContent = t.hCo; $('f-lo-l').textContent = t.hLo; $('f-reset').textContent = t.reset;
     if (!data) { box.appendChild(el('p', 'loading', t.loading)); $('count').textContent = ''; return; }
-    var list = data.jobs.filter(function (j) {
+    var all = data.jobs;
+    var cos = {}, los = {};
+    all.forEach(function (j) { cos[j.company] = (cos[j.company] || 0) + 1; var c = city(j); los[c] = (los[c] || 0) + 1; });
+    var coList = Object.keys(cos).sort(function (a, b) { return a.localeCompare(b); }).map(function (k) { return [k, k + ' (' + cos[k] + ')']; });
+    var loList = Object.keys(los).filter(Boolean).sort(function (a, b) { return a.localeCompare(b); }).map(function (k) { return [k, k + ' (' + los[k] + ')']; });
+    if (los['']) loList.push(['__none', t.noLo + ' (' + los[''] + ')']);
+    fillSelect($('f-co'), t.allCo, coList, fCo);
+    fillSelect($('f-lo'), t.allLo, loList, fLo);
+    fCo = $('f-co').value; fLo = $('f-lo').value;
+    $('f-reset').hidden = !(fCo || fLo || filter);
+    var list = all.filter(function (j) {
+      if (fCo && j.company !== fCo) return false;
+      if (fLo && (fLo === '__none' ? city(j) !== '' : city(j) !== fLo)) return false;
       if (!filter) return true;
       var hay = ((j.title || '') + ' ' + (j.company || '') + ' ' + (j.location || '')).toLowerCase();
       return hay.indexOf(filter) !== -1;
     });
-    $('count').textContent = list.length + ' ' + t.of + (data.failed_sources && data.failed_sources.length ? ' · ' + t.failed + data.failed_sources.join(', ') : '');
+    var cnt = list.length + (list.length !== all.length ? ' ' + t.shown + ' ' + all.length : '') + ' ' + t.of;
+    $('count').textContent = cnt + (data.failed_sources && data.failed_sources.length ? ' \u00b7 ' + t.failed + data.failed_sources.join(', ') : '');
     if (!list.length) { box.appendChild(el('p', 'loading', t.noJobs)); return; }
     list.slice(0, 500).forEach(function (j) {
-      var a = el('a', 'job');
-      a.href = j.url; a.target = '_blank'; a.rel = 'noopener';
+      var multi = j.variants && j.variants.length > 1;
+      var a = el(multi ? 'div' : 'a', 'job');
+      if (!multi) { a.href = j.url; a.target = '_blank'; a.rel = 'noopener'; }
       a.appendChild(el('span', 'co', j.company || ''));
-      a.appendChild(el('span', 'ti', j.title || ''));
+      var ti = el('span', 'ti');
+      if (multi) {
+        var main = el('a', null, j.title || ''); main.href = j.variants[0]; main.target = '_blank'; main.rel = 'noopener'; ti.appendChild(main);
+        var vs = el('span', 'vs'); vs.appendChild(document.createTextNode(j.variants.length + ' ' + t.offers + ':'));
+        j.variants.forEach(function (u, i) { var l = el('a', null, String(i + 1)); l.href = u; l.target = '_blank'; l.rel = 'noopener'; l.setAttribute('aria-label', t.offer + ' ' + (i + 1)); vs.appendChild(l); });
+        ti.appendChild(vs);
+      } else ti.textContent = j.title || '';
+      a.appendChild(ti);
       a.appendChild(el('span', 'lo', j.location || ''));
       box.appendChild(a);
     });
@@ -139,6 +175,9 @@
   $('l-es').addEventListener('click', function () { lang = 'es'; paint(); });
   $('l-en').addEventListener('click', function () { lang = 'en'; paint(); });
   $('q').addEventListener('input', function (e) { filter = e.target.value.trim().toLowerCase(); paintJobs(); });
+  $('f-co').addEventListener('change', function (e) { fCo = e.target.value; paintJobs(); });
+  $('f-lo').addEventListener('change', function (e) { fLo = e.target.value; paintJobs(); });
+  $('f-reset').addEventListener('click', function () { fCo = ''; fLo = ''; filter = ''; $('q').value = ''; paintJobs(); });
   paint();
   load();
 })();
