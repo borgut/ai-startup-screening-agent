@@ -6,7 +6,9 @@ body.boat-preview { background:#e7e0cc; }
 .approach-lighthouse { background:url('/hero/faro-pintura.webp') 74% center/cover;opacity:var(--faro-opacity,0);transform:scale(var(--faro-scale,1.07)); }
 .approach-wash { background:linear-gradient(90deg,rgba(237,228,202,.6),transparent 65%);pointer-events:none; }
 .approach-top { position:absolute;top:28px;left:5vw;right:5vw;display:flex;justify-content:space-between;color:#233b34;font:12px Arial,sans-serif;z-index:3; }
-.approach-top a { color:#233b34;background:#ede4caed;padding:9px 12px;text-underline-offset:4px; }
+.approach-top a { color:#233b34;background:none;padding:9px 0;text-decoration:none; }
+.approach-top a:hover { text-decoration:none; }
+.approach-top a:focus-visible { outline:1px solid currentColor;outline-offset:4px; }
 .approach-top>span { padding:9px 0; }
 .approach-caption { position:absolute;left:7%;top:25%;color:#233b34;max-width:570px;opacity:var(--caption-opacity,1); }
 .approach-caption>p:first-child,.approach-caption>span { font:10px monospace;letter-spacing:.15em; }
